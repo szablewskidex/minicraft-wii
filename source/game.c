@@ -1,17 +1,7 @@
 #include "crafting/crafting.h"
 #include "gfx/spritesheet.h"
 #include "gfx/font.h"
-
-#ifdef USE_SDL1
-	#include <SDL/SDL.h>
-	/* SDL1 compatibility layer */
-	typedef SDL_Surface* SDL_Window;
-	#define SDL_WINDOWPOS_UNDEFINED 0
-	#define SDL_GetError() SDL_GetError()
-#else
-	#include <SDL2/SDL.h>
-#endif
-
+#include <SDL2/SDL.h>
 #include "game.h"
 #include "inputhandler.h"
 #include "utils/arraylist.h"
@@ -26,71 +16,6 @@
 #include "entity/_entity_caller.h"
 #include "item/item.h"
 #include "icons.h"
-
-// Helper: print available SDL video drivers
-static void print_sdl_video_drivers(void) {
-#ifdef USE_SDL1
-    char driver[32];
-    if (SDL_VideoDriverName(driver, sizeof(driver))) {
-        printf("SDL1 video driver: %s\n", driver);
-    } else {
-        printf("SDL1 video driver: (unknown)\n");
-    }
-#else
-    int num = SDL_GetNumVideoDrivers();
-    printf("Available SDL2 video drivers (%d):\n", num);
-    if (num <= 0) {
-        printf("  (none)\n");
-        return;
-    }
-    for (int i = 0; i < num; ++i) {
-        const char* drv = SDL_GetVideoDriver(i);
-        printf("  %d: %s\n", i, drv ? drv : "(null)");
-    }
-    const char* current = SDL_GetCurrentVideoDriver();
-    if (current) {
-        printf("Current driver: %s\n", current);
-    }
-#endif
-}
-
-// Set video driver hint (called before SDL_Init)
-static void set_video_driver_hint(void) {
-    const char* driver = NULL;
-
-#ifdef USE_FB
-    #ifdef USE_SDL1
-        driver = "fbcon";   // SDL1 framebuffer driver (needs /dev/fb0)
-    #else
-        driver = "KMSDRM";  // SDL2 modern framebuffer (needs DRM/KMS)
-    #endif
-#endif
-
-    if (driver) {
-#ifdef USE_SDL1
-        // SDL1: use environment variable
-        char env[128];
-        snprintf(env, sizeof(env), "SDL_VIDEODRIVER=%s", driver);
-        putenv(env);
-#else
-        SDL_SetHint(SDL_HINT_VIDEO_DRIVER, driver);
-#endif
-        printf("Forcing video driver: %s\n", driver);
-    }
-
-    // Allow user override via env var
-    const char* env_driver = getenv("SDL_VIDEODRIVER");
-    if (env_driver && !driver) {
-#ifdef USE_SDL1
-        char env[128];
-        snprintf(env, sizeof(env), "SDL_VIDEODRIVER=%s", env_driver);
-        putenv(env);
-#else
-        SDL_SetHint(SDL_HINT_VIDEO_DRIVER, env_driver);
-#endif
-        printf("Using SDL_VIDEODRIVER from environment: %s\n", env_driver);
-    }
-}
 
 Screen game_screen;
 Screen game_lightScreen;
@@ -462,49 +387,21 @@ int main(int argc, char** argv) {
 
 	// printf("Starting...\n");
 
-#ifdef USE_SDL1
-	SDL_Surface* window = NULL;   /* In SDL1 the "window" is the video surface */
-	SDL_Surface* surface = NULL;
-#else
 	SDL_Window* window = NULL;
 	SDL_Surface* surface = NULL;
-#endif
 	SDL_Event event;
-#ifdef USE_SDL1
 	SDL_KeyboardEvent* keyEvent = (SDL_KeyboardEvent*) &event;
-#else
-	SDL_KeyboardEvent* keyEvent = (SDL_KeyboardEvent*) &event;
-#endif
 	SDL_Rect pixel = {0, 0, SCALE, SCALE};
 
 	game_init();
 
-	// Set video driver hint (FB or SDL_VIDEODRIVER env) BEFORE SDL_Init
-	set_video_driver_hint();
-
 	// Initialize SDL and create the window
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		printf("SDL_Init Error: %s\n", SDL_GetError());
-		print_sdl_video_drivers();
-		printf("\nHint: Try setting SDL_VIDEODRIVER=KMSDRM (SDL2) or fbcon (SDL1)\n");
-		printf("      or export SDL_VIDEODRIVER=... before running.\n");
-		printf("      On headless / embedded / RISC-V systems you may need DRM/KMS or /dev/fb0 in kernel.\n");
 		ret = 1;
 		goto QUIT;
 	}
 
-#ifdef USE_SDL1
-	/* SDL 1.2: use SDL_SetVideoMode */
-	window = SDL_SetVideoMode(winWidth, winHeight, 32, SDL_SWSURFACE | SDL_DOUBLEBUF);
-	if (!window) {
-		printf("Failed to set video mode (SDL1): %s\n", SDL_GetError());
-		ret = 1;
-		goto QUIT;
-	}
-	surface = window;   /* In SDL1 the returned surface IS the display surface */
-
-	SDL_WM_SetCaption("Minicraft", NULL);
-#else
 	window = SDL_CreateWindow("Minicraft", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, winWidth, winHeight, 0);
 	if (!window) {
 		printf("Failed to create window: %s\n", SDL_GetError());
@@ -522,19 +419,14 @@ int main(int argc, char** argv) {
 		ret = 1;
 		goto QUIT;
 	}
-#endif
 
-	// Set palette (SDL1 vs SDL2)
+	// Set palette to 8 bits (if the surface has a palette)
 	if (surface->format->palette != NULL) {
-#ifdef USE_SDL1
-		SDL_SetColors(surface, (SDL_Color*)sdl_colors, 0, 256);
-#else
 		SDL_SetPaletteColors(surface->format->palette, sdl_colors, 0, 256);
-#endif
 	}
 
-    // -DLEVELGENTEST (only supported on SDL2 for now)
-    #if defined(LEVELGENTEST) && !defined(USE_SDL1)
+    // -DLEVELGENTEST
+    #ifdef LEVELGENTEST
 	{
 		#define set_px(x, y, color) {             \
 			pixel.x = (x)*SCALE;                  \
@@ -621,29 +513,14 @@ int main(int argc, char** argv) {
 		while (SDL_PollEvent(&event)) {
 			switch (event.type) {
 				case SDL_KEYUP:
-#ifdef USE_SDL1
-					input_toggle(event.key.keysym.sym, 0);
-#else
 					input_toggle(keyEvent->keysym.sym, 0);
-#endif
 					break;
 				case SDL_KEYDOWN:
-#ifdef USE_SDL1
-					input_toggle(event.key.keysym.sym, 1);
-#else
 					input_toggle(keyEvent->keysym.sym, 1);
-#endif
 					break;
 				case SDL_QUIT:
 					running = 0;
 					break;
-#ifdef USE_SDL1
-				case SDL_ACTIVEEVENT:
-					if (event.active.state & SDL_APPACTIVE) {
-						game_hasfocus = event.active.gain;
-					}
-					break;
-#else
 				case SDL_WINDOWEVENT:
 					// To manage focus, the WINDOWEVENT_FOCUS_GAINED/LOST event is used
 					if(event.window.event == SDL_WINDOWEVENT_FOCUS_LOST)
@@ -651,7 +528,6 @@ int main(int argc, char** argv) {
 					else if(event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED)
 						game_hasfocus = 1;
 					break;
-#endif
 			}
 		}
 
@@ -722,14 +598,7 @@ int main(int argc, char** argv) {
 		if (needsFlip) {
 			// printf("RENDERING %d %d %d %d\n", flipXMin, flipXMax, flipYMin, flipYMax);
             SDL_Rect updateRect = { flipXMin, flipYMin, flipXMax - flipXMin, flipYMax - flipYMin };
-
-#ifdef USE_SDL1
-			/* SDL1: update whole surface or use dirty rects */
-			SDL_Flip(surface);                 /* simple double buffer flip */
-			/* Alternative for performance: SDL_UpdateRect(surface, flipXMin, flipYMin, ...); */
-#else
 			SDL_UpdateWindowSurfaceRects(window, &updateRect, 1);
-#endif
 		}
 
 		if (now - lastPrinted > 1000000) {
