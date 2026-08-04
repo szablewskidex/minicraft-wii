@@ -9,11 +9,15 @@ SOURCE_DIR = source
 # Build options:
 #   make                   SDL2 (default)
 #   make SDL=1             SDL 1.2 (SDL1)
-#   make SDL=1 FB=1        SDL1 + prefer framebuffer (fbcon)
-#   make FB=1              SDL2 + prefer framebuffer (KMSDRM / fbdev)
+#   make SDL=1 FB=1        SDL1 + prefer framebuffer (fbcon)   [Linux only]
+#   make FB=1              SDL2 + prefer framebuffer (KMSDRM)   [Linux only]
 #
-# Cross example:
-#   CC=riscv64-linux-gnu-gcc make SDL=1
+# Windows (MinGW) examples:
+#   make                   SDL2
+#   make SDL=1             SDL 1.2
+#
+# Cross example (Linux):
+#   CC=riscv64-linux-gnu-gcc make SDL=1 FB=1
 
 SDL ?= 2
 FB ?= 0
@@ -25,10 +29,29 @@ FB ?= 0
 
 # Platform-specific settings
 ifeq ($(OS),Windows_NT)
+    # ===================== Windows (MinGW) =====================
     OUTPUT  = game.exe
     CFLAGS += -Wall -Wextra -O2 -static -static-libgcc
-    LDFLAGS += -lmingw32 -lSDL2main -lSDL2 -lm -lkernel32 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lversion -luuid -ladvapi32 -lsetupapi -lshell32 -ldinput8
+
+    ifeq ($(SDL),1)
+        # SDL 1.2 (SDL1) on Windows
+        # Typical MinGW package: mingw32-SDL or SDL-1.2.15
+        CFLAGS += -DUSE_SDL1
+        LDFLAGS += -lmingw32 -lSDLmain -lSDL -lm \
+                   -lkernel32 -luser32 -lgdi32 -lwinmm -limm32 \
+                   -lole32 -loleaut32 -lversion -luuid -ladvapi32 \
+                   -lsetupapi -lshell32 -ldinput8
+    else
+        # SDL2 (default)
+        CFLAGS += -DUSE_SDL2
+        LDFLAGS += -lmingw32 -lSDL2main -lSDL2 -lm \
+                   -lkernel32 -luser32 -lgdi32 -lwinmm -limm32 \
+                   -lole32 -loleaut32 -lversion -luuid -ladvapi32 \
+                   -lsetupapi -lshell32 -ldinput8
+    endif
+
 else
+    # ===================== Linux / Unix =====================
     OUTPUT  = game
 
     ifeq ($(SDL),1)
@@ -43,13 +66,13 @@ else
         LDFLAGS += -lSDL2 -lm
     endif
 
-# Ensure one of the defines is always present
-ifneq ($(filter -DUSE_SDL%,$(CFLAGS)),)
-else
-    CFLAGS += -DUSE_SDL2
-endif
+    # Ensure one of the defines is always present (Linux)
+    ifneq ($(filter -DUSE_SDL%,$(CFLAGS)),)
+    else
+        CFLAGS += -DUSE_SDL2
+    endif
 
-    # Framebuffer hints
+    # Framebuffer hints (Linux only)
     ifeq ($(FB),1)
         CFLAGS += -DUSE_FB
     endif
