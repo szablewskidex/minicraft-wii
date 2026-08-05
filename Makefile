@@ -34,13 +34,20 @@ ifeq ($(OS),Windows_NT)
     CFLAGS += -Wall -Wextra -O2 -static -static-libgcc
 
     ifeq ($(SDL),1)
-        # SDL 1.2 (SDL1) on Windows
-        # Typical MinGW package: mingw32-SDL or SDL-1.2.15
+        # SDL 1.2 (SDL1) on Windows (MSYS2 MINGW32)
+        # Package: mingw-w64-i686-SDL
+        #
+        # The static libSDL.a was built with DirectX 5/6/7 support.
+        # It references many COM GUIDs that are defined in:
+        #   - dxguid  (IID_*, GUID_*)
+        #   - ddraw   (some DirectDraw symbols)
+        #
+        # You MUST add -ldxguid -lddraw right after -lSDL.
         CFLAGS += -DUSE_SDL1
-        LDFLAGS += -lmingw32 -lSDLmain -lSDL -lm \
+        LDFLAGS += -lmingw32 -lSDLmain -lSDL -ldxguid -lddraw -ldinput8 -lm \
                    -lkernel32 -luser32 -lgdi32 -lwinmm -limm32 \
                    -lole32 -loleaut32 -lversion -luuid -ladvapi32 \
-                   -lsetupapi -lshell32 -ldinput8
+                   -lsetupapi -lshell32
     else
         # SDL2 (default)
         CFLAGS += -DUSE_SDL2
