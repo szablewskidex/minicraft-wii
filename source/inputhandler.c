@@ -1,5 +1,9 @@
 #include "inputhandler.h"
-#include <SDL2/SDL.h>
+#ifdef USE_SDL1
+	#include <SDL/SDL.h>
+#else
+	#include <SDL2/SDL.h>
+#endif
 
 Key up;
 Key down;
@@ -40,7 +44,12 @@ void input_tick(){
 }
 
 
+#ifdef USE_SDL1
+void input_toggle(SDLKey key, char pressed) {
+#else
 void input_toggle(SDL_Keycode key, char pressed) {
+#endif
+
     switch (key) {
         case SDLK_w:
         case SDLK_UP:
