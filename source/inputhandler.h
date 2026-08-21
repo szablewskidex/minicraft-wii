@@ -12,7 +12,7 @@ typedef struct{
 	char down, clicked;
 } Key;
 
-extern Key up, down, left, right, attack, menu;
+extern Key up, down, left, right, attack, menu, pause_key;
 
 void key_toggle(Key* key, char pressed);
 void key_tick(Key* key);

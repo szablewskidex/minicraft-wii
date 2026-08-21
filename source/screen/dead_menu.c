@@ -16,10 +16,14 @@ const menu_vt deadmenu_vt = {
 };
 
 
+#include "../sound.h"
+#include "../lang.h"
+
 void deadmenu_tick(){
 	if(deadmenu_inputDelay > 0){
 		--deadmenu_inputDelay;
 	}else if(attack.clicked || menu.clicked){
+		sound_play(SND_CONFIRM);
 		game_set_menu(mid_TITLE);
 	}
 }
@@ -35,7 +39,8 @@ void deadmenu_render(Screen* screen) {
 	char timeString[256];
 
 	font_renderFrame(screen, vd, 0, 1, 3, 18, 9);
-	font_draw(udiedawman, strlen(udiedawman), screen, 2 * 8, 4 * 8, getColor4(-1, 555, 555, 555));
+	const char* died = _T(STR_YOU_DIED);
+	font_draw((char*)died, strlen(died), screen, 2 * 8, 4 * 8, getColor4(-1, 555, 555, 555));
 
 	int seconds = game_gameTime / 60;
 	int minutes = seconds / 60;
@@ -57,16 +62,18 @@ void deadmenu_render(Screen* screen) {
 		}
 	}
 
-	char time[] = "Time:";
-	char scor[] = "Score:";
-	char prec[] = "Press C to lose";
+	char time[32];
+	char scor[32];
+	snprintf(time, sizeof(time), "%s:", _T(STR_TIME));
+	snprintf(scor, sizeof(scor), "%s:", _T(STR_SCORE));
+	const char* prec = _T(STR_PRESS_TO_RESTART);
 
 	char score[32];
 	sprintf(score, "%d", game_player->score);
 
-	font_draw(time, 5, screen, 2 * 8, 5 * 8, getColor4(-1, 555, 555, 555));
-	font_draw(timeString, strlen(timeString), screen, (2 + 5) * 8, 5 * 8, getColor4(-1, 550, 550, 550));
-	font_draw(scor, 6, screen, 2 * 8, 6 * 8, getColor4(-1, 555, 555, 555));
-	font_draw(score, strlen(score), screen, (2 + 6) * 8, 6 * 8, getColor4(-1, 550, 550, 550));
-	font_draw(prec, strlen(prec), screen, 2 * 8, 8 * 8, getColor4(-1, 333, 333, 333));
+	font_draw(time, strlen(time), screen, 2 * 8, 5 * 8, getColor4(-1, 555, 555, 555));
+	font_draw(timeString, strlen(timeString), screen, (2 + strlen(time) + 1) * 8, 5 * 8, getColor4(-1, 550, 550, 550));
+	font_draw(scor, strlen(scor), screen, 2 * 8, 6 * 8, getColor4(-1, 555, 555, 555));
+	font_draw(score, strlen(score), screen, (2 + strlen(scor) + 1) * 8, 6 * 8, getColor4(-1, 550, 550, 550));
+	font_draw((char*)prec, strlen(prec), screen, 2 * 8, 8 * 8, getColor4(-1, 333, 333, 333));
 }

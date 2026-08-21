@@ -79,8 +79,10 @@ void itementity_render(ItemEntity* item, Screen* screen){
 }
 
 
+#include "../sound.h"
+
 void itementity_take(ItemEntity* item, Player* player){
-	// TODO Sound.pickup.play();
+	sound_play(SND_PICKUP);
 
 	++player->score;
 	item_onTake(&item->item, (struct _ItemEntity *) item);

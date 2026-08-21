@@ -193,6 +193,9 @@ void game_reset() {
 }
 
 
+#include "sound.h"
+#include "lang.h"
+
 void game_init(){
 	levelgen_preinit();
 	font_pre_init();
@@ -200,6 +203,8 @@ void game_init(){
 	init_tiles();
 	init_menus();
 	crafting_init();
+	sound_init();
+	lang_init();
 
 	int pp = 0;
 	for (int r = 0; r < 6; ++r) {
@@ -332,42 +337,45 @@ void game_renderGui() {
         font_draw(fpsticks, strlen(fpsticks), &game_screen, 2, 2, getColor4(000, 200, 500, 533));
     #endif
 
+	int hud_x = 12;
+	int hud_y = game_screen.h - 22;
+
 	for (int y = 0; y < 2; ++y) {
-		for (int x = 0; x < 36; ++x) {
-			render_screen(&game_screen, x * 8, game_screen.h - 16 + (y * 8), 0 + 12 * 32, getColor4(0, 0, 0, 0), 0);
+		for (int x = 0; x < 38; ++x) {
+			render_screen(&game_screen, x * 8, hud_y + (y * 8), 0 + 12 * 32, getColor4(0, 0, 0, 0), 0);
 		}
 	}
 
 	if (isingame){
-        /// RENDER THE HUD
+        /// RENDER THE HUD with safe margins
 		for (int i = 0; i < 10; ++i) {
 
             // Player's health bar
 			if (i < game_player->mob.health) {
-				render_screen(&game_screen, i * 8, game_screen.h - 16, 0 + 12 * 32, getColor4(000, 200, 500, 533), 0);
+				render_screen(&game_screen, hud_x + i * 8, hud_y, 0 + 12 * 32, getColor4(000, 200, 500, 533), 0);
 			} else {
-				render_screen(&game_screen, i * 8, game_screen.h - 16, 0 + 12 * 32, getColor4(000, 100, 000, 000), 0);
+				render_screen(&game_screen, hud_x + i * 8, hud_y, 0 + 12 * 32, getColor4(000, 100, 000, 000), 0);
 			}
 
             // Player's stamina bar
 			if (game_player->staminaRechargeDelay > 0) {
 				if (game_player->staminaRechargeDelay / 4 % 2 == 0) {
-					render_screen(&game_screen, i * 8, game_screen.h - 8, 1 + 12 * 32, getColor4(000, 555, 000, 000), 0);
+					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(000, 555, 000, 000), 0);
 				} else {
-					render_screen(&game_screen, i * 8, game_screen.h - 8, 1 + 12 * 32, getColor4(000, 110, 000, 000), 0);
+					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(000, 110, 000, 000), 0);
 				}
 			} else {
 				if (i < game_player->stamina) {
-					render_screen(&game_screen, i * 8, game_screen.h - 8, 1 + 12 * 32, getColor4(000, 220, 550, 553), 0);
+					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(000, 220, 550, 553), 0);
 				} else {
-					render_screen(&game_screen, i * 8, game_screen.h - 8, 1 + 12 * 32, getColor4(000, 110, 000, 000), 0);
+					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(000, 110, 000, 000), 0);
 				}
 			}
 		}
 
         // Player's current item
 		if (game_player->activeItem) {
-			item_renderInventory(game_player->activeItem, &game_screen, 10 * 8, game_screen.h - 16);
+			item_renderInventory(game_player->activeItem, &game_screen, hud_x + 10 * 8 + 6, hud_y);
 		}
 	}
 

@@ -14,6 +14,7 @@
 #include "crafting_menu.h"
 #include "container_menu.h"
 #include "won_menu.h"
+#include "pause_menu.h"
 
 #include <string.h>
 #include <stdio.h>
@@ -42,6 +43,7 @@ void init_menus() {
 	menus[mid_CRAFTING] = &craftingmenu_vt;
 	menus[mid_CONTAINER] = &containermenu_vt;
 	menus[mid_WON] = &wonmenu_vt;
+	menus[mid_PAUSE] = &pausemenu_vt;
 }
 
 

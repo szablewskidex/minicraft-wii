@@ -21,7 +21,8 @@ enum menu_id{
 	mid_INSTRUCTIONS,
 	mid_LEVEL_TRANSITION,
 	mid_WON,
-	mid_INVENTORY
+	mid_INVENTORY,
+	mid_PAUSE
 };
 
 void init_menus();

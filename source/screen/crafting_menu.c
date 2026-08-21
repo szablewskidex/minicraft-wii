@@ -5,6 +5,8 @@
 #include "../game.h"
 #include "../inputhandler.h"
 
+#include "../sound.h"
+
 const menu_vt craftingmenu_vt = {
 	&craftingmenu_tick,
 	&craftingmenu_render,
@@ -13,11 +15,19 @@ const menu_vt craftingmenu_vt = {
 
 ArrayList* crmenu_recipes = 0;
 static int selected = 0;
+#include "../lang.h"
+
 void craftingmenu_tick(){
 
 	if(menu.clicked) game_set_menu(0);
-	if(up.clicked) --selected;
-	if(down.clicked) ++selected;
+	if(up.clicked) {
+		--selected;
+		sound_play(SND_SELECT);
+	}
+	if(down.clicked) {
+		++selected;
+		sound_play(SND_SELECT);
+	}
 
 	int len = crmenu_recipes->size;
 	if(len == 0) selected = 0;
@@ -27,10 +37,11 @@ void craftingmenu_tick(){
 	if(attack.clicked && len > 0){
 		Recipe* r = crmenu_recipes->elements[selected];
 		recipe_checkCanCraft(r, game_player);
+
 		if(r->canCraft){
 			recipe_deductCost(r, game_player);
 			recipe_craft(r, game_player);
-			//TODO sounds Sound.craft.play();
+			sound_play(SND_CRAFT);
 		}
 
 		for(int i = 0; i < crmenu_recipes->size; ++i){
@@ -59,11 +70,11 @@ void craftingmenu_init(){
 void craftingmenu_render(Screen* screen){
 	char s1[] = "Have";
 	char s2[] = "Cost";
-	char s3[] = "Crafting";
+	const char* s3 = _T(STR_CRAFTING);
 	char buf[64] = {0};
 	font_renderFrame(screen, s1, strlen(s1), 12, 1, 19, 3);
 	font_renderFrame(screen, s2, strlen(s2), 12, 4, 19, 11);
-	font_renderFrame(screen, s3, strlen(s3), 0, 1, 11, 11);
+	font_renderFrame(screen, (char*)s3, strlen(s3), 0, 1, 11, 11);
 	menu_render_item_list(screen, 0, 1, 11, 11, crmenu_recipes, selected, recipe_renderInventory);
 	if(crmenu_recipes->size > 0){
 		Recipe* recipe = crmenu_recipes->elements[selected];

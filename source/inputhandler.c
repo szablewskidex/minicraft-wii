@@ -16,6 +16,7 @@ Key left;
 Key right;
 Key attack;
 Key menu;
+Key pause_key;
 
 
 void key_toggle(Key* key, char pressed){
@@ -55,7 +56,8 @@ void input_tick(){
     char move_right = (w_held & (WPAD_BUTTON_RIGHT | WPAD_BUTTON_DOWN | WPAD_CLASSIC_BUTTON_RIGHT)) || (g_held & PAD_BUTTON_RIGHT) || (stick_x > 40);
 
     char act_attack = (w_held & (WPAD_BUTTON_2 | WPAD_BUTTON_A | WPAD_CLASSIC_BUTTON_A | WPAD_CLASSIC_BUTTON_B)) || (g_held & (PAD_BUTTON_A | PAD_BUTTON_B));
-    char act_menu   = (w_held & (WPAD_BUTTON_1 | WPAD_BUTTON_B | WPAD_BUTTON_PLUS | WPAD_BUTTON_HOME | WPAD_CLASSIC_BUTTON_PLUS | WPAD_CLASSIC_BUTTON_X | WPAD_CLASSIC_BUTTON_Y)) || (g_held & (PAD_BUTTON_START | PAD_BUTTON_X | PAD_BUTTON_Y));
+    char act_menu   = (w_held & (WPAD_BUTTON_1 | WPAD_BUTTON_B | WPAD_CLASSIC_BUTTON_X | WPAD_CLASSIC_BUTTON_Y)) || (g_held & (PAD_BUTTON_X | PAD_BUTTON_Y));
+    char act_pause  = (w_held & (WPAD_BUTTON_PLUS | WPAD_BUTTON_HOME | WPAD_CLASSIC_BUTTON_PLUS | WPAD_CLASSIC_BUTTON_HOME)) || (g_held & PAD_BUTTON_START);
 
     key_toggle(&up, move_up);
     key_toggle(&down, move_down);
@@ -63,6 +65,7 @@ void input_tick(){
     key_toggle(&right, move_right);
     key_toggle(&attack, act_attack);
     key_toggle(&menu, act_menu);
+    key_toggle(&pause_key, act_pause);
 #endif
 
     key_tick(&up);
@@ -71,6 +74,7 @@ void input_tick(){
     key_tick(&right);
     key_tick(&attack);
     key_tick(&menu);
+    key_tick(&pause_key);
 }
 
 
@@ -93,20 +97,22 @@ void input_toggle(SDL_Keycode key, char pressed) {
         case SDLK_LEFT:
             key_toggle(&left, pressed);
             break;
-        case SDLK_6:
+        case SDLK_d:
         case SDLK_RIGHT:
             key_toggle(&right, pressed);
             break;
         case SDLK_TAB:
-        case SDLK_LALT:
-        case SDLK_RALT:
-        case SDLK_RETURN:
         case SDLK_x:
+        case SDLK_e:
             key_toggle(&menu, pressed);
+            break;
+        case SDLK_ESCAPE:
+        case SDLK_p:
+        case SDLK_RETURN:
+            key_toggle(&pause_key, pressed);
             break;
         case SDLK_SPACE:
         case SDLK_LCTRL:
-        case SDLK_INSERT:
         case SDLK_c:
             key_toggle(&attack, pressed);
             break;

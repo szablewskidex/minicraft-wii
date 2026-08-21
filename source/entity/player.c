@@ -19,6 +19,7 @@
 #include "furnace.h"
 #include "chest.h"
 #include "../gfx/color.h"
+#include "../sound.h"
 
 void player_create(Player* player) {
 	mob_create(&player->mob);
@@ -408,8 +409,15 @@ void player_tick(Player* player){
 		}
 	}
 
+	if (pause_key.clicked) {
+		sound_play(SND_CONFIRM);
+		game_set_menu(mid_PAUSE);
+		return;
+	}
+
 	if (menu.clicked) {
 		if (!player_use_(player)) {
+			sound_play(SND_CONFIRM);
 			game_set_menu(mid_INVENTORY);
 		}
 	}

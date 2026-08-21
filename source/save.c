@@ -17,6 +17,7 @@
 #include "entity/chest.h"
 #include "entity/lantern.h"
 #include "entity/_entity_caller.h"
+#include "lang.h"
 
 #define SAVE_MAGIC 0x4D435749 // "MCWI"
 #define SAVE_VERSION 1
@@ -80,10 +81,12 @@ int save_game(const char* filepath) {
     int32_t cLevel = game_currentLevel;
     int32_t hWon = game_hasWon;
     int32_t wTimer = game_wonTimer;
+    int32_t sLang = (int32_t)g_currentLanguage;
     fwrite(&gTime, sizeof(int32_t), 1, f);
     fwrite(&cLevel, sizeof(int32_t), 1, f);
     fwrite(&hWon, sizeof(int32_t), 1, f);
     fwrite(&wTimer, sizeof(int32_t), 1, f);
+    fwrite(&sLang, sizeof(int32_t), 1, f);
 
     // 3. Player state
     int32_t px = game_player->mob.entity.x;
@@ -185,11 +188,16 @@ int load_game(const char* filepath) {
     }
 
     // Read game state
-    int32_t gTime = 0, cLevel = 3, hWon = 0, wTimer = 0;
+    int32_t gTime = 0, cLevel = 3, hWon = 0, wTimer = 0, sLang = 1;
     fread(&gTime, sizeof(int32_t), 1, f);
     fread(&cLevel, sizeof(int32_t), 1, f);
     fread(&hWon, sizeof(int32_t), 1, f);
     fread(&wTimer, sizeof(int32_t), 1, f);
+    if (fread(&sLang, sizeof(int32_t), 1, f) == 1) {
+        if (sLang >= 0 && sLang < LANG_COUNT) {
+            g_currentLanguage = (Language)sLang;
+        }
+    }
 
     game_gameTime = gTime;
     game_currentLevel = cLevel;

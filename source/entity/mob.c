@@ -22,17 +22,15 @@ void mob_create(Mob* mob){
 }
 
 
+#include "../sound.h"
+
 void mob_doHurt(Mob* mob, int damage, int attackDir) {
 	if (mob->hurtTime > 0) return;
 
-	if (game_player->mob.entity.level == mob->entity.level) {
-		/* TODO: Sounds
-		 * int xd = level.player.x - x;
-			int yd = level.player.y - y;
-			if (xd * xd + yd * yd < 80 * 80) {
-				Sound.monsterHurt.play();
-			}
-		*/
+	if (mob->entity.type == PLAYER) {
+		sound_play(SND_PLAYERHURT);
+	} else {
+		sound_play(SND_MONSTERHURT);
 	}
 
 	TextParticle* text_particle = malloc(sizeof(TextParticle));

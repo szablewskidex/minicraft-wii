@@ -5,29 +5,14 @@
 #include "../gfx/font.h"
 #include "../game.h"
 #include "../save.h"
+#include "../sound.h"
+#include "../lang.h"
 
 #include <string.h>
-
-static char continue_game[] = "Continue";
-static char start_game[] = "Start game";
-static char new_game[] = "New Game";
-static char how_to_play[] = "How to play";
-static char about[] = "About";
-
-static char s_continue_game[] = "> Continue <";
-static char s_start_game[] = "> Start Game <";
-static char s_new_game[] = "> New Game <";
-static char s_how_to_play[] = "> How to play <";
-static char s_about[] = "> About <";
-
-static char small_help_msg[] = "(D-Pad, 2 to Action, 1 for Menu)";
-
-static char* titlemenu_options[4];
-static char* s_titlemenu_options[4];
-static int titlemenu_count = 3;
-static int has_save = 0;
+#include <stdio.h>
 
 int titlemenu_selected = 0;
+static int has_save = 0;
 
 const menu_vt titlemenu_vt = {
 	&titlemenu_tick,
@@ -38,27 +23,6 @@ const menu_vt titlemenu_vt = {
 
 void titlemenu_init() {
 	has_save = save_exists(NULL);
-	if (has_save) {
-		titlemenu_options[0] = continue_game;
-		titlemenu_options[1] = new_game;
-		titlemenu_options[2] = how_to_play;
-		titlemenu_options[3] = about;
-
-		s_titlemenu_options[0] = s_continue_game;
-		s_titlemenu_options[1] = s_new_game;
-		s_titlemenu_options[2] = s_how_to_play;
-		s_titlemenu_options[3] = s_about;
-		titlemenu_count = 4;
-	} else {
-		titlemenu_options[0] = start_game;
-		titlemenu_options[1] = how_to_play;
-		titlemenu_options[2] = about;
-
-		s_titlemenu_options[0] = s_start_game;
-		s_titlemenu_options[1] = s_how_to_play;
-		s_titlemenu_options[2] = s_about;
-		titlemenu_count = 3;
-	}
 	titlemenu_selected = 0;
 }
 
@@ -68,7 +32,7 @@ void titlemenu_render(Screen* screen) {
 
 	int h = 2;
 	int w = 13;
-    int yo = 24;
+    int yo = 20;
     int xo = (screen->w - w * 8) / 2;
     
 	int titleColor = getColor4(0, 10, 131, 551);
@@ -79,36 +43,64 @@ void titlemenu_render(Screen* screen) {
 		}
 	}
 
-	for (int i = 0; i < titlemenu_count; ++i) {
-		char* option = titlemenu_options[i];
-		int col = getColor4(0, 222, 222, 222);
+	int count = has_save ? 5 : 4;
+	for (int i = 0; i < count; ++i) {
+		char optBuf[64] = {0};
+		const char* text = "";
 
-		if (i == titlemenu_selected) {
-			col = getColor4(0, 555, 555, 555);
-			option = s_titlemenu_options[i];
+		if (has_save) {
+			if (i == 0) text = _T(STR_CONTINUE);
+			else if (i == 1) text = _T(STR_NEW_GAME);
+			else if (i == 2) text = _T(STR_LANGUAGE);
+			else if (i == 3) text = _T(STR_HOW_TO_PLAY);
+			else if (i == 4) text = _T(STR_ABOUT);
+		} else {
+			if (i == 0) text = _T(STR_START_GAME);
+			else if (i == 1) text = _T(STR_LANGUAGE);
+			else if (i == 2) text = _T(STR_HOW_TO_PLAY);
+			else if (i == 3) text = _T(STR_ABOUT);
 		}
 
-		int optionLength = strlen(option);
-		font_draw(option, optionLength, screen, (screen->w - optionLength * 8) / 2, (8 + i) * 8, col);
+		int col = getColor4(0, 222, 222, 222);
+		if (i == titlemenu_selected) {
+			col = getColor4(0, 555, 555, 555);
+			snprintf(optBuf, sizeof(optBuf), "> %s <", text);
+		} else {
+			snprintf(optBuf, sizeof(optBuf), "%s", text);
+		}
+
+		int optionLength = strlen(optBuf);
+		font_draw(optBuf, optionLength, screen, (screen->w - optionLength * 8) / 2, (7 + i) * 10, col);
 	}
 
-	font_draw(small_help_msg, strlen(small_help_msg), screen, 0, screen->h - 8, getColor4(0, 111, 111, 111));
+	const char* help = _T(STR_HELP_MSG);
+	int helpLen = strlen(help);
+	font_draw(help, helpLen, screen, (screen->w - helpLen * 8) / 2, screen->h - 12, getColor4(0, 111, 111, 111));
 }
 
 
 void titlemenu_tick() {
-	if (up.clicked) --titlemenu_selected;
-	if (down.clicked) ++titlemenu_selected;
+	int count = has_save ? 5 : 4;
+
+	if (up.clicked) {
+		--titlemenu_selected;
+		sound_play(SND_SELECT);
+	}
+	if (down.clicked) {
+		++titlemenu_selected;
+		sound_play(SND_SELECT);
+	}
 
 	if (titlemenu_selected < 0) titlemenu_selected = 0;
-	if (titlemenu_selected >= titlemenu_count) titlemenu_selected = titlemenu_count - 1;
+	if (titlemenu_selected >= count) titlemenu_selected = count - 1;
 
 	if (attack.clicked || menu.clicked) {
+		sound_play(SND_CONFIRM);
+
 		if (has_save) {
 			if (titlemenu_selected == 0) {
 				// Continue / Load
 				if (!load_game(NULL)) {
-					// If load failed, start fresh
 					isingame = 1;
 					game_reset();
 					game_set_menu(0);
@@ -119,9 +111,12 @@ void titlemenu_tick() {
 				game_reset();
 				game_set_menu(0);
 			} else if (titlemenu_selected == 2) {
+				// Switch Language
+				lang_next();
+			} else if (titlemenu_selected == 3) {
 				menu_parent = mid_TITLE;
 				game_set_menu(mid_INSTRUCTIONS);
-			} else if (titlemenu_selected == 3) {
+			} else if (titlemenu_selected == 4) {
 				menu_parent = mid_TITLE;
 				game_set_menu(mid_ABOUT);
 			}
@@ -131,9 +126,12 @@ void titlemenu_tick() {
 				game_reset();
 				game_set_menu(0);
 			} else if (titlemenu_selected == 1) {
+				// Switch Language
+				lang_next();
+			} else if (titlemenu_selected == 2) {
 				menu_parent = mid_TITLE;
 				game_set_menu(mid_INSTRUCTIONS);
-			} else if (titlemenu_selected == 2) {
+			} else if (titlemenu_selected == 3) {
 				menu_parent = mid_TITLE;
 				game_set_menu(mid_ABOUT);
 			}

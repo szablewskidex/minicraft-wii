@@ -4,6 +4,8 @@
 #include "../gfx/font.h"
 #include "../item/item.h"
 #include "../utils/arraylist.h"
+#include "../sound.h"
+#include "../lang.h"
 
 #include <string.h>
 
@@ -18,8 +20,14 @@ int inventorymenu_selected;
 void inventorymenu_tick() {
 	if (menu.clicked) game_set_menu(0);
 
-	if (up.clicked) --inventorymenu_selected;
-	if (down.clicked) ++inventorymenu_selected;
+	if (up.clicked) {
+		--inventorymenu_selected;
+		sound_play(SND_SELECT);
+	}
+	if (down.clicked) {
+		++inventorymenu_selected;
+		sound_play(SND_SELECT);
+	}
 
 	int len = game_player->inventory.items.size;
 	if (len == 0) {
@@ -35,6 +43,7 @@ void inventorymenu_tick() {
     }
 
 	if (attack.clicked && len > 0) {
+		sound_play(SND_CONFIRM);
 		Item* item = arraylist_removeId(&game_player->inventory.items, inventorymenu_selected);
 		game_player->activeItem = item;
 		game_set_menu(0);
@@ -52,7 +61,7 @@ void inventorymenu_init() {
 
 
 void inventorymenu_render(Screen* screen) {
-	char inv[] = "inventory";
-	font_renderFrame(screen, inv, strlen(inv), 1, 1, 12, 11);
+	const char* inv = _T(STR_INVENTORY);
+	font_renderFrame(screen, (char*)inv, strlen(inv), 1, 1, 12, 11);
 	menu_render_item_list(screen, 1, 1, 12, 11, &game_player->inventory.items, inventorymenu_selected, item_renderInventory);
 }

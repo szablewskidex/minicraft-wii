@@ -1,0 +1,44 @@
+﻿#ifndef LANG_H
+#define LANG_H
+
+typedef enum {
+    LANG_PL = 0,
+    LANG_EN = 1,
+    LANG_DE = 2,
+    LANG_COUNT = 3
+} Language;
+
+typedef enum {
+    STR_START_GAME,
+    STR_NEW_GAME,
+    STR_CONTINUE,
+    STR_HOW_TO_PLAY,
+    STR_ABOUT,
+    STR_LANGUAGE,
+    STR_SCREEN_MODE,
+    STR_HELP_MSG,
+    STR_INVENTORY,
+    STR_CRAFTING,
+    STR_YOU_DIED,
+    STR_YOU_WON,
+    STR_TIME,
+    STR_SCORE,
+    STR_PRESS_TO_RESTART,
+    STR_PAUSE,
+    STR_RESUME,
+    STR_SAVE_GAME,
+    STR_LOAD_GAME,
+    STR_QUIT_TITLE,
+    STR_SAVED_MSG,
+    STR_COUNT
+} StringID;
+
+extern Language g_currentLanguage;
+
+void lang_init(void);
+void lang_next(void);
+const char* lang_get(StringID id);
+
+#define _T(id) lang_get(id)
+
+#endif // LANG_H
