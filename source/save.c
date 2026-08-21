@@ -49,6 +49,78 @@ static void get_slot_path(int slot, char* buf, size_t buflen) {
 #endif
 }
 
+
+static void save_inventory(Inventory* inv, FILE* f) {
+    int32_t inv_count = inv->items.size;
+    fwrite(&inv_count, sizeof(int32_t), 1, f);
+    for (int i = 0; i < inv_count; ++i) {
+        Item* item = (Item*)arraylist_get(&inv->items, i);
+        uint8_t item_id = (uint8_t)item->id;
+        fwrite(&item_id, sizeof(uint8_t), 1, f);
+        if (item->id == RESOURCE) {
+            int32_t res_idx = get_resource_index(item->add.resource.resource);
+            int32_t count = item->add.resource.count;
+            fwrite(&res_idx, sizeof(int32_t), 1, f);
+            fwrite(&count, sizeof(int32_t), 1, f);
+        } else if (item->id == TOOL) {
+            int32_t t_type = (int32_t)item->add.tool.type;
+            int32_t t_level = item->add.tool.level;
+            fwrite(&t_type, sizeof(int32_t), 1, f);
+            fwrite(&t_level, sizeof(int32_t), 1, f);
+        } else if (item->id == FURNITURE) {
+            int32_t f_type = item->add.furniture.furniture ? (int32_t)item->add.furniture.furniture->entity.type : WORKBENCH;
+            fwrite(&f_type, sizeof(int32_t), 1, f);
+        }
+    }
+}
+
+static void load_inventory(Inventory* inv, FILE* f) {
+    int32_t inv_count = 0;
+    fread(&inv_count, sizeof(int32_t), 1, f);
+    for (int i = 0; i < inv_count; ++i) {
+        uint8_t item_id = 0;
+        fread(&item_id, sizeof(uint8_t), 1, f);
+        Item* item = (Item*)malloc(sizeof(Item));
+        memset(item, 0, sizeof(Item));
+        if (item_id == RESOURCE) {
+            int32_t res_idx = 0, count = 1;
+            fread(&res_idx, sizeof(int32_t), 1, f);
+            fread(&count, sizeof(int32_t), 1, f);
+            if (res_idx >= 0 && (size_t)res_idx < NUM_RESOURCES) {
+                resourceitem_create_cnt(item, resource_list[res_idx], count);
+                inventory_addItem(inv, item);
+            } else {
+                free(item);
+            }
+        } else if (item_id == TOOL) {
+            int32_t t_type = 0, t_level = 0;
+            fread(&t_type, sizeof(int32_t), 1, f);
+            fread(&t_level, sizeof(int32_t), 1, f);
+            toolitem_create(item, (ToolType)t_type, t_level);
+            inventory_addItem(inv, item);
+        } else if (item_id == FURNITURE) {
+            int32_t f_type = 0;
+            fread(&f_type, sizeof(int32_t), 1, f);
+            Furniture* furn = (Furniture*)malloc(sizeof(Furniture));
+            if (f_type == WORKBENCH) workbench_create((Workbench*)furn);
+            else if (f_type == FURNACE) furnace_create((Furnace*)furn);
+            else if (f_type == OVEN) oven_create((Oven*)furn);
+            else if (f_type == ANVIL) anvil_create((Anvil*)furn);
+            else if (f_type == CHEST) chest_create((Chest*)furn);
+            else if (f_type == LANTERN) lantern_create((Lantern*)furn);
+            else if (f_type == BED) bed_create((Bed*)furn);
+            else workbench_create((Workbench*)furn);
+            furnitureitem_create(item, furn);
+            inventory_addItem(inv, item);
+        } else if (item_id == POWERGLOVE) {
+            powergloveitem_create(item);
+            inventory_addItem(inv, item);
+        } else {
+            free(item);
+        }
+    }
+}
+
 static FILE* open_slot_file_read(int slot) {
     char path[128];
     get_slot_path(slot, path, sizeof(path));
@@ -211,29 +283,7 @@ int save_slot(int slot) {
     fwrite(&pscore, sizeof(int32_t), 1, f);
 
     // 4. Inventory
-    int32_t inv_count = game_player->inventory.items.size;
-    fwrite(&inv_count, sizeof(int32_t), 1, f);
-
-    for (int i = 0; i < inv_count; ++i) {
-        Item* item = (Item*)arraylist_get(&game_player->inventory.items, i);
-        uint8_t item_id = (uint8_t)item->id;
-        fwrite(&item_id, sizeof(uint8_t), 1, f);
-
-        if (item->id == RESOURCE) {
-            int32_t res_idx = get_resource_index(item->add.resource.resource);
-            int32_t count = item->add.resource.count;
-            fwrite(&res_idx, sizeof(int32_t), 1, f);
-            fwrite(&count, sizeof(int32_t), 1, f);
-        } else if (item->id == TOOL) {
-            int32_t t_type = (int32_t)item->add.tool.type;
-            int32_t t_level = item->add.tool.level;
-            fwrite(&t_type, sizeof(int32_t), 1, f);
-            fwrite(&t_level, sizeof(int32_t), 1, f);
-        } else if (item->id == FURNITURE) {
-            int32_t f_type = item->add.furniture.furniture ? (int32_t)item->add.furniture.furniture->entity.type : WORKBENCH;
-            fwrite(&f_type, sizeof(int32_t), 1, f);
-        }
-    }
+    save_inventory(&game_player->inventory, f);
 
     // 5. Levels (5 levels: 0 to 4)
     for (int lvl = 0; lvl < 5; ++lvl) {
@@ -256,6 +306,30 @@ int save_slot(int slot) {
 
         fwrite(l->tiles, sizeof(unsigned char), w * h, f);
         fwrite(l->data, sizeof(unsigned char), w * h, f);
+
+        // Save furniture and chests
+        int32_t num_entities = 0;
+        for (int i = 0; i < l->entities.size; ++i) {
+            Entity* e = l->entities.elements[i];
+            if (entity_isfurniture(e)) num_entities++;
+        }
+        fwrite(&num_entities, sizeof(int32_t), 1, f);
+
+        for (int i = 0; i < l->entities.size; ++i) {
+            Entity* e = l->entities.elements[i];
+            if (entity_isfurniture(e)) {
+                int32_t type = (int32_t)e->type;
+                int32_t ex = e->x, ey = e->y;
+                fwrite(&type, sizeof(int32_t), 1, f);
+                fwrite(&ex, sizeof(int32_t), 1, f);
+                fwrite(&ey, sizeof(int32_t), 1, f);
+
+                if (e->type == CHEST) {
+                    Chest* chest = (Chest*)e;
+                    save_inventory(&chest->inventory, f);
+                }
+            }
+        }
     }
 
     fclose(f);
@@ -354,54 +428,7 @@ int load_slot(int slot) {
     game_player->score = pscore;
 
     // Read inventory
-    int32_t inv_count = 0;
-    fread(&inv_count, sizeof(int32_t), 1, f);
-
-    for (int i = 0; i < inv_count; ++i) {
-        uint8_t item_id = 0;
-        fread(&item_id, sizeof(uint8_t), 1, f);
-
-        Item* item = (Item*)malloc(sizeof(Item));
-        memset(item, 0, sizeof(Item));
-
-        if (item_id == RESOURCE) {
-            int32_t res_idx = 0, count = 1;
-            fread(&res_idx, sizeof(int32_t), 1, f);
-            fread(&count, sizeof(int32_t), 1, f);
-            if (res_idx >= 0 && (size_t)res_idx < NUM_RESOURCES) {
-                resourceitem_create_cnt(item, resource_list[res_idx], count);
-                inventory_addItem(&game_player->inventory, item);
-            } else {
-                free(item);
-            }
-        } else if (item_id == TOOL) {
-            int32_t t_type = 0, t_level = 0;
-            fread(&t_type, sizeof(int32_t), 1, f);
-            fread(&t_level, sizeof(int32_t), 1, f);
-            toolitem_create(item, (ToolType)t_type, t_level);
-            inventory_addItem(&game_player->inventory, item);
-        } else if (item_id == FURNITURE) {
-            int32_t f_type = 0;
-            fread(&f_type, sizeof(int32_t), 1, f);
-            Furniture* furn = (Furniture*)malloc(sizeof(Furniture));
-            if (f_type == WORKBENCH) workbench_create((Workbench*)furn);
-            else if (f_type == FURNACE) furnace_create((Furnace*)furn);
-            else if (f_type == OVEN) oven_create((Oven*)furn);
-            else if (f_type == ANVIL) anvil_create((Anvil*)furn);
-            else if (f_type == CHEST) chest_create((Chest*)furn);
-            else if (f_type == LANTERN) lantern_create((Lantern*)furn);
-            else if (f_type == BED) bed_create((Bed*)furn);
-            else workbench_create((Workbench*)furn);
-
-            furnitureitem_create(item, furn);
-            inventory_addItem(&game_player->inventory, item);
-        } else if (item_id == POWERGLOVE) {
-            powergloveitem_create(item);
-            inventory_addItem(&game_player->inventory, item);
-        } else {
-            free(item);
-        }
-    }
+    load_inventory(&game_player->inventory, f);
 
     // Set first inventory item as activeItem if available
     if (game_player->inventory.items.size > 0) {
@@ -442,6 +469,29 @@ int load_slot(int slot) {
         l->entitiesInTiles = (ArrayList*)malloc(sizeof(ArrayList) * w * h);
         for (int i = 0; i < w * h; ++i) {
             create_arraylist(l->entitiesInTiles + i);
+        }
+
+        if (version == SAVE_VERSION_2) {
+            int32_t num_entities = 0;
+            if (fread(&num_entities, sizeof(int32_t), 1, f) == 1) {
+                for (int i = 0; i < num_entities; ++i) {
+                    int32_t type = 0, ex = 0, ey = 0;
+                    fread(&type, sizeof(int32_t), 1, f);
+                    fread(&ex, sizeof(int32_t), 1, f);
+                    fread(&ey, sizeof(int32_t), 1, f);
+
+                    Furniture* furn = entity_createFurniture((EntityId)type);
+                    if (furn) {
+                        furn->entity.x = ex;
+                        furn->entity.y = ey;
+                        if (type == CHEST) {
+                            Chest* chest = (Chest*)furn;
+                            load_inventory(&chest->inventory, f);
+                        }
+                        level_addEntity(l, &furn->entity);
+                    }
+                }
+            }
         }
 
         level_trySpawn(l, 3000);

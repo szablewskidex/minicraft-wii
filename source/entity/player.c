@@ -200,6 +200,7 @@ void player_attack(Player* player){
 			}
 
 			if (item_isDepleted(player->activeItem)) {
+				arraylist_removeElement(&player->inventory.items, player->activeItem);
 				item_free(player->activeItem);
 				free(player->activeItem);
 				if (player->attackItem == player->activeItem) {

@@ -1,4 +1,4 @@
-﻿#include "pause_menu.h"
+#include "pause_menu.h"
 #include "../inputhandler.h"
 #include "../gfx/color.h"
 #include "../gfx/font.h"
@@ -27,21 +27,22 @@ void pausemenu_init(void) {
 void pausemenu_render(Screen* screen) {
     // Draw a semi-transparent or bordered frame in the middle
     int w = 22;
-    int h = 14;
+    int h = 16;
     int xo = (screen->w / 8 - w) / 2;
     int yo = (screen->h / 8 - h) / 2;
 
     const char* pTitle = _T(STR_PAUSE);
     font_renderFrame(screen, (char*)pTitle, strlen(pTitle), xo, yo, xo + w, yo + h);
 
-    const char* options[5];
+    const char* options[6];
     options[0] = _T(STR_RESUME);
     options[1] = _T(STR_SAVE_GAME);
     options[2] = _T(STR_LOAD_GAME);
     options[3] = _T(STR_LANGUAGE);
     options[4] = _T(STR_QUIT_TITLE);
+    options[5] = _T(STR_QUIT_NO_SAVE);
 
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 6; ++i) {
         char buf[64] = {0};
         int col = getColor4(0, 222, 222, 222);
 
@@ -59,7 +60,7 @@ void pausemenu_render(Screen* screen) {
     if (save_notification_timer > 0) {
         const char* msg = _T(STR_SAVED_MSG);
         int mLen = strlen(msg);
-        font_draw((char*)msg, mLen, screen, (screen->w - mLen * 8) / 2, (yo + 12) * 8, getColor4(0, 151, 551, 555));
+        font_draw((char*)msg, mLen, screen, (screen->w - mLen * 8) / 2, (yo + 14) * 8, getColor4(0, 151, 551, 555));
     }
 }
 
@@ -85,7 +86,7 @@ void pausemenu_tick(void) {
     }
 
     if (pause_selected < 0) pause_selected = 0;
-    if (pause_selected > 4) pause_selected = 4;
+    if (pause_selected > 5) pause_selected = 5;
 
     if (attack.clicked) {
         sound_play(SND_CONFIRM);
@@ -106,6 +107,10 @@ void pausemenu_tick(void) {
         } else if (pause_selected == 4) {
             // Save & Quit to Title
             save_game(NULL);
+            isingame = 0;
+            game_set_menu(mid_TITLE);
+        } else if (pause_selected == 5) {
+            // Quit to Title without saving
             isingame = 0;
             game_set_menu(mid_TITLE);
         }

@@ -1,4 +1,4 @@
-﻿#include "lang.h"
+#include "lang.h"
 
 Language g_currentLanguage = LANG_PL; // Default to Polish as requested!
 
@@ -22,7 +22,8 @@ static const char* strings[STR_COUNT][LANG_COUNT] = {
     [STR_RESUME] = { "Wroc do gry", "Resume Game", "Weiterspielen" },
     [STR_SAVE_GAME] = { "Zapisz gre", "Save Game", "Spiel speichern" },
     [STR_LOAD_GAME] = { "Wczytaj zapis", "Load Game", "Spiel laden" },
-    [STR_QUIT_TITLE] = { "Zapisz i Wyjdz", "Save & Quit to Title", "Speichern & Beenden" },
+    [STR_QUIT_TITLE] = { "Zapisz i Wyjdz", "Save & Quit", "Speichern & Beenden" },
+    [STR_QUIT_NO_SAVE] = { "Wyjdz (Bez zapisu)", "Quit (No Save)", "Beenden (Ohne speichern)" },
     [STR_SAVED_MSG] = { "* GRA ZAPISANA! *", "* GAME SAVED! *", "* GESPEICHERT! *" }
 };
 

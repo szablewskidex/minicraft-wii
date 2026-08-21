@@ -1,4 +1,4 @@
-﻿#ifndef LANG_H
+#ifndef LANG_H
 #define LANG_H
 
 typedef enum {
@@ -29,6 +29,7 @@ typedef enum {
     STR_SAVE_GAME,
     STR_LOAD_GAME,
     STR_QUIT_TITLE,
+    STR_QUIT_NO_SAVE,
     STR_SAVED_MSG,
     STR_COUNT
 } StringID;
