@@ -186,7 +186,10 @@ int tile_getLightRadius(TileID id, Level* level, int x, int y){
 }
 
 
+#include "../../sound.h"
+
 void tile_hurt(TileID id, Level* level, int x, int y, Mob* source, int dmg, int attackDir){
+	sound_play(SND_MONSTERHURT);
 	switch(id){
 		case CACTUS:
 			cactus_hurt(id, level, x, y, source, dmg, attackDir);

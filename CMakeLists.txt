@@ -38,6 +38,7 @@ target_link_libraries(minicraft PRIVATE
     mad
     SDL
     wiikeyboard
+    asnd
     aesnd
     fat
     wiiuse
