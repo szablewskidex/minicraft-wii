@@ -283,6 +283,16 @@ void call_entity_touchedBy(Entity* entity, Entity* e) {
 		case COW:
 			cow_touchedBy((Cow *) entity, e);
 			break;
+		case ITEMENTITY:
+			if (e->type == PLAYER) {
+				call_entity_touchItem(e, (ItemEntity *) entity);
+			}
+			break;
+		case PLAYER:
+			if (e->type == ITEMENTITY) {
+				call_entity_touchItem(entity, (ItemEntity *) e);
+			}
+			break;
 		default:
 			break;
 	}
@@ -408,7 +418,7 @@ extern inline int call_entity_getLightRadius(Entity* entity) {
 			return 8;
 		case PLAYER:
 			p = (Player*) entity;
-			r = 0;
+			r = 3;
 			if (p->activeItem && item_getLightRadius_safe(p->activeItem) > 0) {
 				r = item_getLightRadius_safe(p->activeItem);
 			}

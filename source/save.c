@@ -1,4 +1,4 @@
-#include "save.h"
+﻿#include "save.h"
 #include "gamemode.h"
 #include "lang.h"
 #include <stdio.h>
@@ -18,10 +18,13 @@
 #include "entity/anvil.h"
 #include "entity/chest.h"
 #include "entity/lantern.h"
+#include "entity/bed.h"
 #include "entity/_entity_caller.h"
 
-#define SAVE_MAGIC 0x4D435732 // "MCW2" (Format version 2)
-#define SAVE_VERSION 2
+#define SAVE_MAGIC_V1 0x4D435749 // "MCWI"
+#define SAVE_MAGIC_V2 0x4D435732 // "MCW2"
+#define SAVE_VERSION_1 1
+#define SAVE_VERSION_2 2
 
 static Resource* resource_list[] = {
     &wood, &stone, &flower, &acorn, &dirt, &sand, &cactusFlower, &seeds,
@@ -46,17 +49,31 @@ static void get_slot_path(int slot, char* buf, size_t buflen) {
 #endif
 }
 
-int slot_exists(int slot) {
+static FILE* open_slot_file_read(int slot) {
     char path[128];
     get_slot_path(slot, path, sizeof(path));
     FILE* f = fopen(path, "rb");
-    if (!f) {
-        // Try fallback without sd:
-        char fallback[64];
-        snprintf(fallback, sizeof(fallback), "save_slot%d.dat", slot);
-        f = fopen(fallback, "rb");
-        if (!f) return 0;
+    if (f) return f;
+
+    char fallback[64];
+    snprintf(fallback, sizeof(fallback), "save_slot%d.dat", slot);
+    f = fopen(fallback, "rb");
+    if (f) return f;
+
+    if (slot == 1) {
+#ifdef __wii__
+        f = fopen("sd:/apps/minicraft/save.dat", "rb");
+        if (f) return f;
+#endif
+        f = fopen("save.dat", "rb");
+        if (f) return f;
     }
+    return NULL;
+}
+
+int slot_exists(int slot) {
+    FILE* f = open_slot_file_read(slot);
+    if (!f) return 0;
 
     uint32_t magic = 0, version = 0;
     if (fread(&magic, sizeof(uint32_t), 1, f) != 1 ||
@@ -65,49 +82,60 @@ int slot_exists(int slot) {
         return 0;
     }
     fclose(f);
-    return (magic == SAVE_MAGIC && version == SAVE_VERSION);
+    return ((magic == SAVE_MAGIC_V2 && version == SAVE_VERSION_2) ||
+            (magic == SAVE_MAGIC_V1 && version == SAVE_VERSION_1));
 }
 
 int get_slot_info(int slot, SlotInfo* info) {
     memset(info, 0, sizeof(SlotInfo));
-    char path[128];
-    get_slot_path(slot, path, sizeof(path));
-    FILE* f = fopen(path, "rb");
-    if (!f) {
-        char fallback[64];
-        snprintf(fallback, sizeof(fallback), "save_slot%d.dat", slot);
-        f = fopen(fallback, "rb");
-        if (!f) return 0;
-    }
+    FILE* f = open_slot_file_read(slot);
+    if (!f) return 0;
 
     uint32_t magic = 0, version = 0;
     if (fread(&magic, sizeof(uint32_t), 1, f) != 1 ||
-        fread(&version, sizeof(uint32_t), 1, f) != 1 ||
-        magic != SAVE_MAGIC || version != SAVE_VERSION) {
+        fread(&version, sizeof(uint32_t), 1, f) != 1) {
         fclose(f);
         return 0;
     }
 
-    int32_t mode = 0, wsize = 128, gTime = 0, score = 0;
-    fread(&mode, sizeof(int32_t), 1, f);
-    fread(&wsize, sizeof(int32_t), 1, f);
-    fread(&gTime, sizeof(int32_t), 1, f);
-    // skip cLevel, hWon, wTimer, sLang
-    int32_t dummy[4];
-    fread(dummy, sizeof(int32_t), 4, f);
-    // skip px, py, phealth, pmaxHealth, pdir, pstamina, pmaxStamina
-    int32_t dummy2[7];
-    fread(dummy2, sizeof(int32_t), 7, f);
-    fread(&score, sizeof(int32_t), 1, f);
+    if (version == SAVE_VERSION_2 && magic == SAVE_MAGIC_V2) {
+        int32_t mode = 0, wsize = 128, gTime = 0, score = 0;
+        fread(&mode, sizeof(int32_t), 1, f);
+        fread(&wsize, sizeof(int32_t), 1, f);
+        fread(&gTime, sizeof(int32_t), 1, f);
+        int32_t dummy[4];
+        fread(dummy, sizeof(int32_t), 4, f);
+        int32_t dummy2[7];
+        fread(dummy2, sizeof(int32_t), 7, f);
+        fread(&score, sizeof(int32_t), 1, f);
+        fclose(f);
+
+        info->exists = 1;
+        info->mode = (GameMode)mode;
+        info->size = (WorldSize)wsize;
+        info->gameTime = gTime;
+        info->score = score;
+        return 1;
+    } else if (version == SAVE_VERSION_1 && magic == SAVE_MAGIC_V1) {
+        int32_t gTime = 0, score = 0;
+        fread(&gTime, sizeof(int32_t), 1, f);
+        int32_t dummy[4];
+        fread(dummy, sizeof(int32_t), 4, f);
+        int32_t dummy2[7];
+        fread(dummy2, sizeof(int32_t), 7, f);
+        fread(&score, sizeof(int32_t), 1, f);
+        fclose(f);
+
+        info->exists = 1;
+        info->mode = MODE_SURVIVAL;
+        info->size = WORLD_NORMAL;
+        info->gameTime = gTime;
+        info->score = score;
+        return 1;
+    }
 
     fclose(f);
-
-    info->exists = 1;
-    info->mode = (GameMode)mode;
-    info->size = (WorldSize)wsize;
-    info->gameTime = gTime;
-    info->score = score;
-    return 1;
+    return 0;
 }
 
 int delete_slot(int slot) {
@@ -117,6 +145,12 @@ int delete_slot(int slot) {
     char fallback[64];
     snprintf(fallback, sizeof(fallback), "save_slot%d.dat", slot);
     remove(fallback);
+    if (slot == 1) {
+#ifdef __wii__
+        remove("sd:/apps/minicraft/save.dat");
+#endif
+        remove("save.dat");
+    }
     return 1;
 }
 
@@ -134,9 +168,9 @@ int save_slot(int slot) {
         if (!f) return 0;
     }
 
-    // 1. Header
-    uint32_t magic = SAVE_MAGIC;
-    uint32_t version = SAVE_VERSION;
+    // 1. Header (Format V2)
+    uint32_t magic = SAVE_MAGIC_V2;
+    uint32_t version = SAVE_VERSION_2;
     fwrite(&magic, sizeof(uint32_t), 1, f);
     fwrite(&version, sizeof(uint32_t), 1, f);
 
@@ -232,20 +266,18 @@ int save_slot(int slot) {
 int load_slot(int slot) {
     if (slot < 1 || slot > 3) slot = 1;
 
-    char path[128];
-    get_slot_path(slot, path, sizeof(path));
-    FILE* f = fopen(path, "rb");
-    if (!f) {
-        char fallback[64];
-        snprintf(fallback, sizeof(fallback), "save_slot%d.dat", slot);
-        f = fopen(fallback, "rb");
-        if (!f) return 0;
-    }
+    FILE* f = open_slot_file_read(slot);
+    if (!f) return 0;
 
     uint32_t magic = 0, version = 0;
     if (fread(&magic, sizeof(uint32_t), 1, f) != 1 ||
-        fread(&version, sizeof(uint32_t), 1, f) != 1 ||
-        magic != SAVE_MAGIC || version != SAVE_VERSION) {
+        fread(&version, sizeof(uint32_t), 1, f) != 1) {
+        fclose(f);
+        return 0;
+    }
+
+    if (!((magic == SAVE_MAGIC_V2 && version == SAVE_VERSION_2) ||
+          (magic == SAVE_MAGIC_V1 && version == SAVE_VERSION_1))) {
         fclose(f);
         return 0;
     }
@@ -260,17 +292,32 @@ int load_slot(int slot) {
         game_player = NULL;
     }
 
-    // Read game mode & state
     int32_t sMode = 0, sWSize = 128, gTime = 0, cLevel = 3, hWon = 0, wTimer = 0, sLang = 0;
-    fread(&sMode, sizeof(int32_t), 1, f);
-    fread(&sWSize, sizeof(int32_t), 1, f);
-    fread(&gTime, sizeof(int32_t), 1, f);
-    fread(&cLevel, sizeof(int32_t), 1, f);
-    fread(&hWon, sizeof(int32_t), 1, f);
-    fread(&wTimer, sizeof(int32_t), 1, f);
-    if (fread(&sLang, sizeof(int32_t), 1, f) == 1) {
-        if (sLang >= 0 && sLang < LANG_COUNT) {
-            g_currentLanguage = (Language)sLang;
+
+    if (version == SAVE_VERSION_2) {
+        fread(&sMode, sizeof(int32_t), 1, f);
+        fread(&sWSize, sizeof(int32_t), 1, f);
+        fread(&gTime, sizeof(int32_t), 1, f);
+        fread(&cLevel, sizeof(int32_t), 1, f);
+        fread(&hWon, sizeof(int32_t), 1, f);
+        fread(&wTimer, sizeof(int32_t), 1, f);
+        if (fread(&sLang, sizeof(int32_t), 1, f) == 1) {
+            if (sLang >= 0 && sLang < LANG_COUNT) {
+                g_currentLanguage = (Language)sLang;
+            }
+        }
+    } else {
+        // Version 1 format
+        sMode = (int32_t)MODE_SURVIVAL;
+        sWSize = 128;
+        fread(&gTime, sizeof(int32_t), 1, f);
+        fread(&cLevel, sizeof(int32_t), 1, f);
+        fread(&hWon, sizeof(int32_t), 1, f);
+        fread(&wTimer, sizeof(int32_t), 1, f);
+        if (fread(&sLang, sizeof(int32_t), 1, f) == 1) {
+            if (sLang >= 0 && sLang < LANG_COUNT) {
+                g_currentLanguage = (Language)sLang;
+            }
         }
     }
 
@@ -343,6 +390,7 @@ int load_slot(int slot) {
             else if (f_type == ANVIL) anvil_create((Anvil*)furn);
             else if (f_type == CHEST) chest_create((Chest*)furn);
             else if (f_type == LANTERN) lantern_create((Lantern*)furn);
+            else if (f_type == BED) bed_create((Bed*)furn);
             else workbench_create((Workbench*)furn);
 
             furnitureitem_create(item, furn);
@@ -353,6 +401,11 @@ int load_slot(int slot) {
         } else {
             free(item);
         }
+    }
+
+    // Set first inventory item as activeItem if available
+    if (game_player->inventory.items.size > 0) {
+        game_player->activeItem = (Item*)game_player->inventory.items.elements[0];
     }
 
     // Read 5 Levels
