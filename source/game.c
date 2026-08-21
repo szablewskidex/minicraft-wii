@@ -26,6 +26,7 @@
 #include "entity/_entity_caller.h"
 #include "item/item.h"
 #include "icons.h"
+#include "save.h"
 
 // Helper: print available SDL video drivers (useful for embedded / RISC-V / no-X11 systems)
 static void print_sdl_video_drivers(void) {
@@ -140,6 +141,7 @@ void game_changeLevel(int dir) {
 	game_player->mob.entity.y = (game_player->mob.entity.y >> 4) * 16 + 8;
 
 	level_addEntity(game_level, &game_player->mob.entity);
+	save_game(NULL);
 }
 
 
@@ -242,6 +244,9 @@ void game_tick(){
 		if (isingame) {
             if (!game_player->mob.entity.removed && !game_hasWon) {
                 ++game_gameTime;
+                if (game_gameTime > 0 && (game_gameTime % 1800 == 0)) {
+                    save_game(NULL);
+                }
             }
         }
 
