@@ -1,4 +1,4 @@
-﻿# Build dirs
+# Build dirs
 build/
 build-wii/
 bin/
@@ -9,6 +9,7 @@ bin/
 *.obj
 *.elf
 *.dol
+!apps/minicraft/boot.dol
 
 # Linker output
 *.ilk
