@@ -37,5 +37,7 @@ void player_doHurt(Player* player, int damage, int attackDir);
 void player_die(Player* mob);
 void player_gameWon(Player* player);
 void player_free(Player* player);
+void player_cycleNextItem(Player* player);
+void player_cyclePrevItem(Player* player);
 
 #endif // PLAYER_H

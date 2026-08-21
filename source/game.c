@@ -403,10 +403,15 @@ void game_renderGui() {
 			}
 		}
 
-        // Player's current item
-		if (game_player->activeItem) {
-			item_renderInventory(game_player->activeItem, &game_screen, hud_x + 10 * 8 + 6, hud_y);
-		}
+        // Active item / tool box on the right side of HUD
+        int tool_x = game_screen.w - 96;
+        int tool_y = hud_y;
+        if (game_player->activeItem) {
+            item_renderInventory(game_player->activeItem, &game_screen, tool_x, tool_y);
+        } else {
+            const char* no_item = (g_currentLanguage == LANG_PL) ? "[Reka]" : "[Hand]";
+            font_draw((char*)no_item, strlen(no_item), &game_screen, tool_x + 8, tool_y + 4, getColor4(-1, 333, 333, 333));
+        }
 	}
 
 	if (current_menu) {

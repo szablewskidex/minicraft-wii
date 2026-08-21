@@ -17,6 +17,8 @@ Key right;
 Key attack;
 Key menu;
 Key pause_key;
+Key cycle_next;
+Key cycle_prev;
 
 
 void key_toggle(Key* key, char pressed){
@@ -55,9 +57,13 @@ void input_tick(){
     char move_left  = (w_held & (WPAD_BUTTON_LEFT | WPAD_BUTTON_UP | WPAD_CLASSIC_BUTTON_LEFT)) || (g_held & PAD_BUTTON_LEFT) || (stick_x < -40);
     char move_right = (w_held & (WPAD_BUTTON_RIGHT | WPAD_BUTTON_DOWN | WPAD_CLASSIC_BUTTON_RIGHT)) || (g_held & PAD_BUTTON_RIGHT) || (stick_x > 40);
 
-    char act_attack = (w_held & (WPAD_BUTTON_2 | WPAD_BUTTON_A | WPAD_CLASSIC_BUTTON_A | WPAD_CLASSIC_BUTTON_B)) || (g_held & (PAD_BUTTON_A | PAD_BUTTON_B));
-    char act_menu   = (w_held & (WPAD_BUTTON_1 | WPAD_BUTTON_B | WPAD_CLASSIC_BUTTON_X | WPAD_CLASSIC_BUTTON_Y)) || (g_held & (PAD_BUTTON_X | PAD_BUTTON_Y));
+    char act_attack = (w_held & (WPAD_BUTTON_2 | WPAD_CLASSIC_BUTTON_A | WPAD_CLASSIC_BUTTON_B)) || (g_held & (PAD_BUTTON_A | PAD_BUTTON_B));
+    char act_menu   = (w_held & (WPAD_BUTTON_1 | WPAD_CLASSIC_BUTTON_X | WPAD_CLASSIC_BUTTON_Y)) || (g_held & (PAD_BUTTON_X | PAD_BUTTON_Y));
     char act_pause  = (w_held & (WPAD_BUTTON_PLUS | WPAD_BUTTON_HOME | WPAD_CLASSIC_BUTTON_PLUS | WPAD_CLASSIC_BUTTON_HOME)) || (g_held & PAD_BUTTON_START);
+
+    // Quick Tool / Item Cycle: Wiimote B (trigger) or Minus, Classic L/R, GC L/R/Z
+    char act_next   = (w_held & (WPAD_BUTTON_B | WPAD_BUTTON_MINUS | WPAD_CLASSIC_BUTTON_FULL_R | WPAD_CLASSIC_BUTTON_ZR)) || (g_held & (PAD_TRIGGER_R | PAD_TRIGGER_Z));
+    char act_prev   = (w_held & (WPAD_BUTTON_A | WPAD_CLASSIC_BUTTON_FULL_L | WPAD_CLASSIC_BUTTON_ZL)) || (g_held & PAD_TRIGGER_L);
 
     key_toggle(&up, move_up);
     key_toggle(&down, move_down);
@@ -66,6 +72,8 @@ void input_tick(){
     key_toggle(&attack, act_attack);
     key_toggle(&menu, act_menu);
     key_toggle(&pause_key, act_pause);
+    key_toggle(&cycle_next, act_next);
+    key_toggle(&cycle_prev, act_prev);
 #endif
 
     key_tick(&up);
@@ -75,6 +83,8 @@ void input_tick(){
     key_tick(&attack);
     key_tick(&menu);
     key_tick(&pause_key);
+    key_tick(&cycle_next);
+    key_tick(&cycle_prev);
 }
 
 
@@ -115,6 +125,12 @@ void input_toggle(SDL_Keycode key, char pressed) {
         case SDLK_LCTRL:
         case SDLK_c:
             key_toggle(&attack, pressed);
+            break;
+        case SDLK_q:
+            key_toggle(&cycle_prev, pressed);
+            break;
+        case SDLK_r:
+            key_toggle(&cycle_next, pressed);
             break;
         default:
             break;

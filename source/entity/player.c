@@ -420,6 +420,14 @@ void player_tick(Player* player){
 		return;
 	}
 
+	if (cycle_next.clicked) {
+		player_cycleNextItem(player);
+	}
+
+	if (cycle_prev.clicked) {
+		player_cyclePrevItem(player);
+	}
+
 	if (menu.clicked) {
 		if (!player_use_(player)) {
 			sound_play(SND_CONFIRM);
@@ -594,4 +602,36 @@ void player_free(Player* player){
 		item_free(player->activeItem);
 		free(player->activeItem);
 	}
+}
+
+void player_cycleNextItem(Player* player) {
+	if (!player || player->inventory.items.size == 0) return;
+
+	int current_idx = -1;
+	for (int i = 0; i < player->inventory.items.size; ++i) {
+		if (player->inventory.items.elements[i] == player->activeItem) {
+			current_idx = i;
+			break;
+		}
+	}
+
+	int next_idx = (current_idx + 1) % player->inventory.items.size;
+	player->activeItem = (Item*)player->inventory.items.elements[next_idx];
+	sound_play(SND_SELECT);
+}
+
+void player_cyclePrevItem(Player* player) {
+	if (!player || player->inventory.items.size == 0) return;
+
+	int current_idx = 0;
+	for (int i = 0; i < player->inventory.items.size; ++i) {
+		if (player->inventory.items.elements[i] == player->activeItem) {
+			current_idx = i;
+			break;
+		}
+	}
+
+	int prev_idx = (current_idx + player->inventory.items.size - 1) % player->inventory.items.size;
+	player->activeItem = (Item*)player->inventory.items.elements[prev_idx];
+	sound_play(SND_SELECT);
 }
