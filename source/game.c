@@ -470,10 +470,17 @@ void game_render() {
 		level_renderBackground(game_level, &game_screen, xScroll, yScroll);
 		level_renderSprites(game_level, &game_screen, xScroll, yScroll);
 
-		if(game_currentLevel < 3){
+		if (game_currentLevel < 3) {
 			clear_screen(&game_lightScreen, 0);
 			renderLight(game_level, &game_lightScreen, xScroll, yScroll);
 			screen_overlay(&game_screen, &game_lightScreen, xScroll, yScroll);
+		} else if (game_currentLevel == 3) {
+			int dayTime = game_gameTime % 24000;
+			if (dayTime > 12000 && dayTime < 22000) {
+				clear_screen(&game_lightScreen, 0);
+				renderLight(game_level, &game_lightScreen, xScroll, yScroll);
+				screen_overlay(&game_screen, &game_lightScreen, xScroll, yScroll);
+			}
 		}
 	}
 

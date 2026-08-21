@@ -118,6 +118,12 @@ void level_sortAndRender(Level* level, Screen* screen, ArrayList* list) {
 }
 
 
+#include "../entity/skeleton.h"
+#include "../entity/creeper.h"
+#include "../entity/knight.h"
+#include "../entity/cow.h"
+#include "../game.h"
+
 void level_trySpawn(Level* level, int count){
 	Random* random = &level->random;
 
@@ -131,16 +137,63 @@ void level_trySpawn(Level* level, int count){
 		if (level->depth > 0) minLevel = maxLevel = 4;
 
 		int lvl = random_next_int(random, maxLevel - minLevel + 1) + minLevel;
+		int choice = random_next_int(random, 100);
 
-		if (random_next_int(random, 2) == 0) {
+		if (level->depth == 0) {
+			// Surface level: check Day / Night
+			int dayTime = game_gameTime % 24000;
+			int isNight = (dayTime > 12000 && dayTime < 22000);
+
+			if (!isNight) {
+				if (choice < 50) {
+					mob = malloc(sizeof(Cow));
+					cow_create((Cow *) mob);
+				} else if (choice < 80) {
+					mob = malloc(sizeof(Slime));
+					slime_create((Slime *) mob, lvl);
+				} else {
+					mob = malloc(sizeof(Zombie));
+					zombie_create((Zombie *) mob, lvl);
+				}
+			} else {
+				if (choice < 35) {
+					mob = malloc(sizeof(Zombie));
+					zombie_create((Zombie *) mob, lvl);
+				} else if (choice < 65) {
+					mob = malloc(sizeof(Skeleton));
+					skeleton_create((Skeleton *) mob, lvl);
+				} else if (choice < 85) {
+					mob = malloc(sizeof(Creeper));
+					creeper_create((Creeper *) mob, lvl);
+				} else {
+					mob = malloc(sizeof(Slime));
+					slime_create((Slime *) mob, lvl);
+				}
+			}
+		} else if (level->depth < 0) {
+			// Caves
+			if (choice < 25) {
+				mob = malloc(sizeof(Slime));
+				slime_create((Slime *) mob, lvl);
+			} else if (choice < 50) {
+				mob = malloc(sizeof(Zombie));
+				zombie_create((Zombie *) mob, lvl);
+			} else if (choice < 70) {
+				mob = malloc(sizeof(Skeleton));
+				skeleton_create((Skeleton *) mob, lvl);
+			} else if (choice < 85) {
+				mob = malloc(sizeof(Creeper));
+				creeper_create((Creeper *) mob, lvl);
+			} else {
+				mob = malloc(sizeof(Knight));
+				knight_create((Knight *) mob, lvl);
+			}
+		} else {
 			mob = malloc(sizeof(Slime));
 			slime_create((Slime *) mob, lvl);
-		} else {
-			mob = malloc(sizeof(Zombie));
-			zombie_create((Zombie *) mob, lvl);
 		}
 
-		if (!mob) continue; // ... I should check this later ...
+		if (!mob) continue;
 
 		if (mob_findStartPos(mob, level)) {
 			level_addEntity(level, &mob->entity);

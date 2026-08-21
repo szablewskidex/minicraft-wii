@@ -16,7 +16,11 @@ typedef enum{
 	ZOMBIE,
 	SMASHPARTICLE,
 	TEXTPARTICLE,
-	BED
+	BED,
+	SKELETON,
+	CREEPER,
+	KNIGHT,
+	COW
 } EntityId;
 
 #endif // ENTITYID_H

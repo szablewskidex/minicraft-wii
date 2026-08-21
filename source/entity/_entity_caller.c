@@ -18,9 +18,15 @@
 #include "spark.h"
 #include "workbench.h"
 #include "zombie.h"
+#include "bed.h"
+#include "skeleton.h"
+#include "creeper.h"
+#include "knight.h"
+#include "cow.h"
+#include "../item/item.h"
 
 #include <string.h>
-
+#include <stdio.h>
 
 void call_entity_tick(Entity* entity) {
 	switch (entity->type) {
@@ -51,6 +57,18 @@ void call_entity_tick(Entity* entity) {
 		case ZOMBIE:
 			zombie_tick((Zombie *) entity);
 			break;
+		case SKELETON:
+			skeleton_tick((Skeleton *) entity);
+			break;
+		case CREEPER:
+			creeper_tick((Creeper *) entity);
+			break;
+		case KNIGHT:
+			knight_tick((Knight *) entity);
+			break;
+		case COW:
+			cow_tick((Cow *) entity);
+			break;
 		case AIRWIZARD:
 			airwizard_tick((AirWizard *) entity);
 			break;
@@ -58,11 +76,9 @@ void call_entity_tick(Entity* entity) {
 			spark_tick((Spark *) entity);
 			break;
 		default:
-			printf("Calling entity tick on unknown entity type! %d\n", entity->type);
 			break;
 	}
 }
-
 
 uint8_t call_entity_canSwim(Entity* entity) {
 	switch (entity->type) {
@@ -72,7 +88,6 @@ uint8_t call_entity_canSwim(Entity* entity) {
 			return 0;
 	}
 }
-
 
 uint8_t call_entity_isBlockableBy(Entity* entity, Mob* mob) {
 	switch (entity->type) {
@@ -84,7 +99,6 @@ uint8_t call_entity_isBlockableBy(Entity* entity, Mob* mob) {
 			return 1;
 	}
 }
-
 
 void call_entity_render(Entity* entity, Screen* screen) {
 	switch (entity->type) {
@@ -106,7 +120,20 @@ void call_entity_render(Entity* entity, Screen* screen) {
 		case ZOMBIE:
 			zombie_render((Zombie *) entity, screen);
 			break;
+		case SKELETON:
+			skeleton_render((Skeleton *) entity, screen);
+			break;
+		case CREEPER:
+			creeper_render((Creeper *) entity, screen);
+			break;
+		case KNIGHT:
+			knight_render((Knight *) entity, screen);
+			break;
+		case COW:
+			cow_render((Cow *) entity, screen);
+			break;
 		case ANVIL:
+		case BED:
 		case CHEST:
 		case FURNACE:
 		case LANTERN:
@@ -121,11 +148,9 @@ void call_entity_render(Entity* entity, Screen* screen) {
 			spark_render((Spark *) entity, screen);
 			break;
 		default:
-			printf("Calling entity render on unknown entity type! %d\n", entity->type);
 			break;
 	}
 }
-
 
 void call_entity_touchItem(Entity* entity, ItemEntity* item){
 	Player* pl;
@@ -140,7 +165,6 @@ void call_entity_touchItem(Entity* entity, ItemEntity* item){
 	}
 }
 
-
 void call_entity_die(Entity* entity) {
 	switch (entity->type) {
 		case PLAYER:
@@ -152,15 +176,25 @@ void call_entity_die(Entity* entity) {
 		case ZOMBIE:
 			zombie_die((Zombie *) entity);
 			break;
+		case SKELETON:
+			skeleton_die((Skeleton *) entity);
+			break;
+		case CREEPER:
+			creeper_die((Creeper *) entity);
+			break;
+		case KNIGHT:
+			knight_die((Knight *) entity);
+			break;
+		case COW:
+			cow_die((Cow *) entity);
+			break;
 		case AIRWIZARD:
 			airwizard_die((AirWizard *) entity);
 			break;
 		default:
-			printf("Tried dying undyable entity (wat)! %d\n", entity->type);
 			break;
 	}
 }
-
 
 void call_entity_doHurt(Entity* entity, int damage, int attackDir) {
 	switch (entity->type) {
@@ -172,46 +206,58 @@ void call_entity_doHurt(Entity* entity, int damage, int attackDir) {
 			break;
 		case SLIME:
 		case ZOMBIE:
+		case SKELETON:
+		case CREEPER:
+		case KNIGHT:
+		case COW:
 			mob_doHurt((Mob *) entity, damage, attackDir);
 			break;
 		default:
-			printf("Tried hurting unhurtable entity! %d\n", entity->type);
 			break;
 	}
 }
-
 
 void call_entity_hurtTile(Entity* entity, TileID tile, int x, int y, int damage) {
 	switch (entity->type){
 		case SLIME:
 		case ZOMBIE:
+		case SKELETON:
+		case CREEPER:
+		case KNIGHT:
+		case COW:
 		case AIRWIZARD:
 		case PLAYER:
 			mob_hurtTile((Mob *) entity, tile, x, y, damage);
 			break;
+		default:
+			break;
 	}
 }
-
 
 void call_entity_hurt(Entity* entity, Mob* mob, int damage, int attackDir) {
 	switch (entity->type) {
 		case SLIME:
 		case ZOMBIE:
+		case SKELETON:
+		case CREEPER:
+		case KNIGHT:
+		case COW:
 		case AIRWIZARD:
 		case PLAYER:
 			mob_hurt((Mob *) entity, mob, damage, attackDir);
 			break;
+		default:
+			break;
 	}
 }
-
 
 void call_entity_touchedBy(Entity* entity, Entity* e) {
 	switch (entity->type) {
 		case AIRWIZARD:
 			airwizard_touchedBy((AirWizard *) entity, e);
 			break;
-
 		case ANVIL:
+		case BED:
 		case CHEST:
 		case FURNACE:
 		case LANTERN:
@@ -219,58 +265,57 @@ void call_entity_touchedBy(Entity* entity, Entity* e) {
 		case WORKBENCH:
 			furniture_touchedBy((Furniture *) entity, e);
 			break;
-
-		case ITEMENTITY:
-			if (((ItemEntity*) entity)->time > 30) call_entity_touchItem(e, (ItemEntity *) entity);
-			break;
-
-		case PLAYER:
-			if (e->type != PLAYER) call_entity_touchedBy(e, entity);
-			break;
-
 		case SLIME:
 			slime_touchedBy((Slime *) entity, e);
 			break;
-
 		case ZOMBIE:
 			zombie_touchedBy((Zombie *) entity, e);
 			break;
-
+		case SKELETON:
+			skeleton_touchedBy((Skeleton *) entity, e);
+			break;
+		case CREEPER:
+			creeper_touchedBy((Creeper *) entity, e);
+			break;
+		case KNIGHT:
+			knight_touchedBy((Knight *) entity, e);
+			break;
+		case COW:
+			cow_touchedBy((Cow *) entity, e);
+			break;
 		default:
 			break;
 	}
 }
-
-
-#include "bed.h"
 
 char call_entity_use(Entity* entity, Player* player, int attackDir) {
 	switch (entity->type) {
 		case ANVIL: return anvil_use((Anvil *) entity, player, attackDir);
+		case BED: return bed_use((Bed *) entity, player, attackDir);
 		case CHEST: return chest_use((Chest *) entity, player, attackDir);
 		case FURNACE: return furnace_use((Furnace *) entity, player, attackDir);
 		case OVEN: return oven_use((Oven *) entity, player, attackDir);
 		case WORKBENCH: return workbench_use((Workbench *) entity, player, attackDir);
-		case BED: return bed_use((Bed *) entity, player, attackDir);
-
-		default:
-			return 0;
+		default: return 0;
 	}
 }
-
 
 char call_entity_blocks(Entity* entity, Entity* e) {
 	switch (entity->type) {
 		case ANVIL:
+		case BED:
 		case CHEST:
 		case FURNACE:
 		case LANTERN:
 		case OVEN:
 		case WORKBENCH:
-		case BED:
 			return 1;
 		case SLIME:
 		case ZOMBIE:
+		case SKELETON:
+		case CREEPER:
+		case KNIGHT:
+		case COW:
 		case AIRWIZARD:
 		case PLAYER:
 			return call_entity_isBlockableBy(e, (Mob *) entity);
@@ -279,11 +324,14 @@ char call_entity_blocks(Entity* entity, Entity* e) {
 	}
 }
 
-
 char entity_ismob(Entity* entity) {
 	switch (entity->type) {
 		case SLIME:
 		case ZOMBIE:
+		case SKELETON:
+		case CREEPER:
+		case KNIGHT:
+		case COW:
 		case AIRWIZARD:
 		case PLAYER:
 			return 1;
@@ -292,13 +340,16 @@ char entity_ismob(Entity* entity) {
 	}
 }
 
-
 Furniture* entity_createFurniture(EntityId id) {
 	Furniture* furn = 0;
 	switch (id) {
 		case ANVIL:
 			furn = malloc(sizeof(Anvil));
 			anvil_create((Anvil *) furn);
+			break;
+		case BED:
+			furn = malloc(sizeof(Bed));
+			bed_create((Bed *) furn);
 			break;
 		case CHEST:
 			furn = malloc(sizeof(Chest));
@@ -320,31 +371,34 @@ Furniture* entity_createFurniture(EntityId id) {
 			furn = malloc(sizeof(Workbench));
 			workbench_create((Workbench *) furn);
 			break;
-		case BED:
-			furn = malloc(sizeof(Bed));
-			bed_create((Bed *) furn);
+		default:
 			break;
 	}
-
 	return furn;
 }
-
 
 char entity_isfurniture(Entity* entity) {
 	switch (entity->type) {
 		case ANVIL:
+		case BED:
 		case CHEST:
 		case FURNACE:
 		case LANTERN:
 		case OVEN:
 		case WORKBENCH:
-		case BED:
 			return 1;
 		default:
 			return 0;
 	}
 }
 
+static inline int item_getLightRadius_safe(Item* item) {
+	if (!item) return 0;
+	if (item->id == FURNITURE && item->add.furniture.furniture) {
+		if (item->add.furniture.furniture->entity.type == LANTERN) return 8;
+	}
+	return 0;
+}
 
 extern inline int call_entity_getLightRadius(Entity* entity) {
 	int r, rr;
@@ -353,11 +407,17 @@ extern inline int call_entity_getLightRadius(Entity* entity) {
 		case LANTERN:
 			return 8;
 		case PLAYER:
-			r = 2;
 			p = (Player*) entity;
-			if (p->activeItem && p->activeItem->id == FURNITURE) {
-				rr = call_entity_getLightRadius((Entity *) p->activeItem->add.furniture.furniture);
-				if(rr > r) return rr;
+			r = 0;
+			if (p->activeItem && item_getLightRadius_safe(p->activeItem) > 0) {
+				r = item_getLightRadius_safe(p->activeItem);
+			}
+			if (p->inventory.items.size) {
+				for (int i = 0; i < p->inventory.items.size; ++i) {
+					Item* item = (Item*) p->inventory.items.elements[i];
+					rr = item_getLightRadius_safe(item);
+					if (rr > r) r = rr;
+				}
 			}
 			return r;
 		default:
@@ -365,75 +425,27 @@ extern inline int call_entity_getLightRadius(Entity* entity) {
 	}
 }
 
-
-Furniture* furniture_create_copy(Furniture* old) {
-	size_t size;
-	switch (old->entity.type) {
-		case WORKBENCH: size = sizeof(Workbench); break;
-		case LANTERN: size = sizeof(Lantern); break;
-		case OVEN: size = sizeof(Oven); break;
-		case FURNACE: size = sizeof(Furnace); break;
-		case ANVIL: size = sizeof(Anvil); break;
-		case CHEST: size = sizeof(Chest); break;
-
-		default:
-			return 0;
-	}
-
-	Furniture* new = malloc(size);
-	memcpy(new, old, size);
-	old->name = 0;
-
-	if (old->entity.type == CHEST) {
-		Chest* chest = (Chest*) new;
-		Chest* oldc = (Chest*) old;
-
-		inventory_create(&chest->inventory);
-		for (int e = 0; e < oldc->inventory.items.size; ++e) {
-			Item* itm = oldc->inventory.items.elements[e];
-			inventory_addItem(&chest->inventory, itm);
-
-			if (itm->id == FURNITURE) {
-				itm->add.furniture.furniture = 0;
-			}
-		}
-	}
-
-	return new;
-}
-
-
 void call_entity_free(Entity* entity) {
 	switch (entity->type) {
-		case TEXTPARTICLE:
-			textparticle_free((TextParticle *) entity);
-			break;
 		case CHEST:
 			chest_free((Chest *) entity);
 			break;
-		case ANVIL:
-		case FURNACE:
-		case LANTERN:
-		case OVEN:
-		case WORKBENCH:
-			furniture_free((Furniture *) entity);
-			break;
 		case PLAYER:
-			player_free((Player*) entity);
+			player_free((Player *) entity);
+			break;
+		default:
+			break;
 	}
 }
 
-
 char call_entity_isSwimming(Entity* entity) {
-	switch (entity->type) {
-		case PLAYER:
-		case SLIME:
-		case ZOMBIE:
-		case AIRWIZARD:
-			return mob_isSwimming((Mob*) entity);
-		default:
-			printf("Calling entity isSwimming on unknown entity type! %d\n", entity->type);
-		case SMASHPARTICLE:
-			return 0;
+	if (entity->level) {
+		TileID tile = level_get_tile(entity->level, entity->x >> 4, entity->y >> 4);
+		return tile == WATER || tile == LAVA;
 	}
+	return 0;
+}
+
+Furniture* furniture_create_copy(Furniture* old) {
+	return entity_createFurniture(old->entity.type);
 }
