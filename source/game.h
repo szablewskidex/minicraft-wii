@@ -2,9 +2,15 @@
 #include "entity/player.h"
 #include "screen/menu.h"
 
+#ifdef __wii__
+#define HEIGHT 240
+#define WIDTH 320
+#define SCALE 2
+#else
 #define HEIGHT 192
 #define WIDTH 288
 #define SCALE 3
+#endif
 
 extern Player* game_player;
 extern int game_gameTime;

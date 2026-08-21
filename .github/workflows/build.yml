@@ -1,0 +1,34 @@
+﻿name: Build Nintendo Wii DOL
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: devkitpro/devkitppc:latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Minicraft Wii (.dol)
+        shell: bash
+        run: |
+          source /opt/devkitpro/wiivars.sh
+          cmake -B build-wii -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Wii.cmake
+          cmake --build build-wii
+          cp build-wii/minicraft.dol boot.dol
+
+      - name: Upload boot.dol artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: minicraft-wii-boot.dol
+          path: |
+            boot.dol
+            meta.xml
+            README.md

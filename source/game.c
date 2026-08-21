@@ -442,7 +442,18 @@ void game_render() {
 }
 
 
+#ifdef __wii__
+#include <fat.h>
+#include <wiiuse/wpad.h>
+#include <ogc/pad.h>
+#endif
+
 int main(int argc, char** argv) {
+#ifdef __wii__
+	fatInitDefault();
+	WPAD_Init();
+	PAD_Init();
+#endif
 	unsigned long long int lastTime = getTimeUS();
 	unsigned long long int lastPrinted = lastTime;
 	double unprocessed = 0;
@@ -479,8 +490,10 @@ int main(int argc, char** argv) {
 
 	game_init();
 
+#ifndef __wii__
 	// Set video driver hint (FB or SDL_VIDEODRIVER env) BEFORE SDL_Init
 	set_video_driver_hint();
+#endif
 
 	// Initialize SDL and create the window
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -495,7 +508,11 @@ int main(int argc, char** argv) {
 
 #ifdef USE_SDL1
 	/* SDL 1.2: use SDL_SetVideoMode */
+#ifdef __wii__
+	window = SDL_SetVideoMode(winWidth, winHeight, 16, SDL_DOUBLEBUF | SDL_HWSURFACE);
+#else
 	window = SDL_SetVideoMode(winWidth, winHeight, 32, SDL_SWSURFACE | SDL_DOUBLEBUF);
+#endif
 	if (!window) {
 		printf("Failed to set video mode (SDL1): %s\n", SDL_GetError());
 		ret = 1;
@@ -695,24 +712,26 @@ int main(int argc, char** argv) {
 					if (ymin < flipYMin) flipYMin = ymin;
 					if (ymax > flipYMax) flipYMax = ymax;
 
-					// Convert index pallete to 32-bit color pallete.
+					// Convert index pallete to color.
 					Uint32 mapped_color = SDL_MapRGB(surface->format, sdl_colors[screen_px].r, sdl_colors[screen_px].g, sdl_colors[screen_px].b);
 
-                    #if SCALE == 1
-                        ((Uint32*)surface->pixels)[ y * (surface->pitch / 4) + x] = mapped_color;
-
-                    #elif SCALE == 2
-                        for (int sub_y = 0; sub_y < SCALE; sub_y++){
-                            for (int sub_x = 0; sub_x < SCALE; sub_x++){
-                                int dest_x = x * SCALE + sub_x;
-                                int dest_y = y * SCALE + sub_y;
-                                ((Uint32*)surface->pixels)[ dest_y * (surface->pitch / 4) + dest_x] = mapped_color;
-                            }
-                        }
-
-                    #else
-                        SDL_FillRect(surface, &pixel, mapped_color);
-                    #endif
+					if (surface->format->BytesPerPixel == 2) {
+						for (int sub_y = 0; sub_y < SCALE; sub_y++){
+							for (int sub_x = 0; sub_x < SCALE; sub_x++){
+								int dest_x = x * SCALE + sub_x;
+								int dest_y = y * SCALE + sub_y;
+								((Uint16*)surface->pixels)[ dest_y * (surface->pitch / 2) + dest_x] = (Uint16)mapped_color;
+							}
+						}
+					} else {
+						for (int sub_y = 0; sub_y < SCALE; sub_y++){
+							for (int sub_x = 0; sub_x < SCALE; sub_x++){
+								int dest_x = x * SCALE + sub_x;
+								int dest_y = y * SCALE + sub_y;
+								((Uint32*)surface->pixels)[ dest_y * (surface->pitch / 4) + dest_x] = mapped_color;
+							}
+						}
+					}
 				}
 			}
 		}

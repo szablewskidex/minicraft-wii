@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<app version="1.0">
+    <name>Minicraft</name>
+    <version>1.0</version>
+    <release_date>2026</release_date>
+    <coder>Notch / TheBigEye / Ported for Nintendo Wii by szablewskidex</coder>
+    <short_description>2D Top-Down Survival Game</short_description>
+    <long_description>Minicraft is a 2D top-down survival crafting game originally created by Markus "Notch" Persson for Ludum Dare 22, ported to Nintendo Wii with Wiimote and GameCube controller support.</long_description>
+</app>
