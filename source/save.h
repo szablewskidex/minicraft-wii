@@ -2,17 +2,25 @@
 #define SAVE_H
 
 #include "game.h"
+#include "gamemode.h"
 
-// Returns 1 on success, 0 on failure
+typedef struct {
+    int exists;
+    GameMode mode;
+    WorldSize size;
+    int gameTime;
+    int score;
+} SlotInfo;
+
+int save_slot(int slot);
+int load_slot(int slot);
+int slot_exists(int slot);
+int get_slot_info(int slot, SlotInfo* info);
+int delete_slot(int slot);
+
+// Helpers for current slot
 int save_game(const char* filepath);
-
-// Returns 1 on success, 0 on failure
 int load_game(const char* filepath);
-
-// Returns 1 if save file exists and is valid
 int save_exists(const char* filepath);
-
-// Default save path for Nintendo Wii SD Card / Local
-const char* get_save_path(void);
 
 #endif // SAVE_H

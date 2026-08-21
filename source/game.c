@@ -25,6 +25,8 @@
 #include "entity/player.h"
 #include "entity/_entity_caller.h"
 #include "item/item.h"
+#include "item/tool_item.h"
+#include "item/resourceitem.h"
 #include "icons.h"
 #include "save.h"
 
@@ -151,6 +153,8 @@ void game_won(){
 }
 
 
+#include "gamemode.h"
+
 void game_reset() {
 	game_playerDeadTime = 0;
 	game_wonTimer = 0;
@@ -158,7 +162,6 @@ void game_reset() {
 	game_hasWon = 0;
 
 	for (int i = 0; i < 5; ++i) {
-		printf("Freeing level %d\n", i);
 		level_free(game_levels + i);
 	}
 
@@ -168,12 +171,15 @@ void game_reset() {
 
 	memset(game_levels, 0, sizeof(game_levels));
 
+	int size = (int)g_worldSize;
+	if (size != 64 && size != 128 && size != 256) size = 128;
+
 	game_currentLevel = 3;
-	level_init(game_levels + 4, 128, 128, 1, 0);
-	level_init(game_levels + 3, 128, 128, 0, game_levels + 4);
-	level_init(game_levels + 2, 128, 128, -1, game_levels + 3);
-	level_init(game_levels + 1, 128, 128, -2, game_levels + 2);
-	level_init(game_levels + 0, 128, 128, -3, game_levels + 1);
+	level_init(game_levels + 4, size, size, 1, 0);
+	level_init(game_levels + 3, size, size, 0, game_levels + 4);
+	level_init(game_levels + 2, size, size, -1, game_levels + 3);
+	level_init(game_levels + 1, size, size, -2, game_levels + 2);
+	level_init(game_levels + 0, size, size, -3, game_levels + 1);
 
 	if (game_player) {
 		call_entity_free(&game_player->mob.entity);
@@ -184,6 +190,30 @@ void game_reset() {
 	game_player = (Player*) malloc(sizeof(Player));
 	player_create(game_player);
 	player_findStartPos(game_player, game_level);
+
+	if (g_gameMode == MODE_CREATIVE) {
+		// Creative mode starting inventory
+		Item cItem;
+		toolitem_create(&cItem, SWORD, 4); // Gem Sword
+		inventory_addItem(&game_player->inventory, &cItem);
+		toolitem_create(&cItem, PICKAXE, 4); // Gem Pickaxe
+		inventory_addItem(&game_player->inventory, &cItem);
+		toolitem_create(&cItem, AXE, 4); // Gem Axe
+		inventory_addItem(&game_player->inventory, &cItem);
+		toolitem_create(&cItem, SHOVEL, 4); // Gem Shovel
+		inventory_addItem(&game_player->inventory, &cItem);
+
+		resourceitem_create_cnt(&cItem, &wood, 999);
+		inventory_addItem(&game_player->inventory, &cItem);
+		resourceitem_create_cnt(&cItem, &stone, 999);
+		inventory_addItem(&game_player->inventory, &cItem);
+		resourceitem_create_cnt(&cItem, &ironIngot, 999);
+		inventory_addItem(&game_player->inventory, &cItem);
+		resourceitem_create_cnt(&cItem, &goldIngot, 999);
+		inventory_addItem(&game_player->inventory, &cItem);
+		resourceitem_create_cnt(&cItem, &gem, 999);
+		inventory_addItem(&game_player->inventory, &cItem);
+	}
 
 	level_addEntity(game_level, &game_player->mob.entity);
 

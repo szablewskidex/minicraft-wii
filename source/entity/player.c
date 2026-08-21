@@ -107,7 +107,11 @@ void player_create(Player* player) {
 }
 
 
+#include "../gamemode.h"
+
 int player_getAttackDamage(Player* player, Entity* e) {
+	if (g_gameMode == MODE_CREATIVE) return 100;
+
 	int dmg = random_next_int(&player->mob.entity.random, 3) + 1;
 	if (player->attackItem) {
 		dmg += item_getAttackDamageBonus(player->attackItem, e);
@@ -238,6 +242,7 @@ void player_attack(Player* player){
 
 
 void player_doHurt(Player* player, int damage, int attackDir){
+	if (g_gameMode == MODE_CREATIVE) return;
 	if (player->mob.hurtTime > 0 || player->invulnerableTime > 0) {
         return;
     }
@@ -429,6 +434,7 @@ void player_tick(Player* player){
 
 
 char player_payStamina(Player* player, int cost){
+	if (g_gameMode == MODE_CREATIVE) return 1;
 	if (cost > player->stamina) {
         return 0;
     }

@@ -1,4 +1,6 @@
 #include "save.h"
+#include "gamemode.h"
+#include "lang.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,10 +19,9 @@
 #include "entity/chest.h"
 #include "entity/lantern.h"
 #include "entity/_entity_caller.h"
-#include "lang.h"
 
-#define SAVE_MAGIC 0x4D435749 // "MCWI"
-#define SAVE_VERSION 1
+#define SAVE_MAGIC 0x4D435732 // "MCW2" (Format version 2)
+#define SAVE_VERSION 2
 
 static Resource* resource_list[] = {
     &wood, &stone, &flower, &acorn, &dirt, &sand, &cactusFlower, &seeds,
@@ -36,18 +37,26 @@ static int get_resource_index(Resource* res) {
     return -1;
 }
 
-const char* get_save_path(void) {
+static void get_slot_path(int slot, char* buf, size_t buflen) {
+    if (slot < 1 || slot > 3) slot = 1;
 #ifdef __wii__
-    return "sd:/apps/minicraft/save.dat";
+    snprintf(buf, buflen, "sd:/apps/minicraft/save_slot%d.dat", slot);
 #else
-    return "save.dat";
+    snprintf(buf, buflen, "save_slot%d.dat", slot);
 #endif
 }
 
-int save_exists(const char* filepath) {
-    if (!filepath) filepath = get_save_path();
-    FILE* f = fopen(filepath, "rb");
-    if (!f) return 0;
+int slot_exists(int slot) {
+    char path[128];
+    get_slot_path(slot, path, sizeof(path));
+    FILE* f = fopen(path, "rb");
+    if (!f) {
+        // Try fallback without sd:
+        char fallback[64];
+        snprintf(fallback, sizeof(fallback), "save_slot%d.dat", slot);
+        f = fopen(fallback, "rb");
+        if (!f) return 0;
+    }
 
     uint32_t magic = 0, version = 0;
     if (fread(&magic, sizeof(uint32_t), 1, f) != 1 ||
@@ -59,14 +68,69 @@ int save_exists(const char* filepath) {
     return (magic == SAVE_MAGIC && version == SAVE_VERSION);
 }
 
-int save_game(const char* filepath) {
-    if (!filepath) filepath = get_save_path();
-    if (!game_player || !isingame) return 0;
-
-    FILE* f = fopen(filepath, "wb");
+int get_slot_info(int slot, SlotInfo* info) {
+    memset(info, 0, sizeof(SlotInfo));
+    char path[128];
+    get_slot_path(slot, path, sizeof(path));
+    FILE* f = fopen(path, "rb");
     if (!f) {
-        // Fallback to local save.dat if sd: path failed
-        f = fopen("save.dat", "wb");
+        char fallback[64];
+        snprintf(fallback, sizeof(fallback), "save_slot%d.dat", slot);
+        f = fopen(fallback, "rb");
+        if (!f) return 0;
+    }
+
+    uint32_t magic = 0, version = 0;
+    if (fread(&magic, sizeof(uint32_t), 1, f) != 1 ||
+        fread(&version, sizeof(uint32_t), 1, f) != 1 ||
+        magic != SAVE_MAGIC || version != SAVE_VERSION) {
+        fclose(f);
+        return 0;
+    }
+
+    int32_t mode = 0, wsize = 128, gTime = 0, score = 0;
+    fread(&mode, sizeof(int32_t), 1, f);
+    fread(&wsize, sizeof(int32_t), 1, f);
+    fread(&gTime, sizeof(int32_t), 1, f);
+    // skip cLevel, hWon, wTimer, sLang
+    int32_t dummy[4];
+    fread(dummy, sizeof(int32_t), 4, f);
+    // skip px, py, phealth, pmaxHealth, pdir, pstamina, pmaxStamina
+    int32_t dummy2[7];
+    fread(dummy2, sizeof(int32_t), 7, f);
+    fread(&score, sizeof(int32_t), 1, f);
+
+    fclose(f);
+
+    info->exists = 1;
+    info->mode = (GameMode)mode;
+    info->size = (WorldSize)wsize;
+    info->gameTime = gTime;
+    info->score = score;
+    return 1;
+}
+
+int delete_slot(int slot) {
+    char path[128];
+    get_slot_path(slot, path, sizeof(path));
+    remove(path);
+    char fallback[64];
+    snprintf(fallback, sizeof(fallback), "save_slot%d.dat", slot);
+    remove(fallback);
+    return 1;
+}
+
+int save_slot(int slot) {
+    if (!game_player || !isingame) return 0;
+    if (slot < 1 || slot > 3) slot = 1;
+
+    char path[128];
+    get_slot_path(slot, path, sizeof(path));
+    FILE* f = fopen(path, "wb");
+    if (!f) {
+        char fallback[64];
+        snprintf(fallback, sizeof(fallback), "save_slot%d.dat", slot);
+        f = fopen(fallback, "wb");
         if (!f) return 0;
     }
 
@@ -76,12 +140,17 @@ int save_game(const char* filepath) {
     fwrite(&magic, sizeof(uint32_t), 1, f);
     fwrite(&version, sizeof(uint32_t), 1, f);
 
-    // 2. Game state
+    // 2. Game Mode & World Info
+    int32_t sMode = (int32_t)g_gameMode;
+    int32_t sWSize = (int32_t)g_worldSize;
     int32_t gTime = game_gameTime;
     int32_t cLevel = game_currentLevel;
     int32_t hWon = game_hasWon;
     int32_t wTimer = game_wonTimer;
     int32_t sLang = (int32_t)g_currentLanguage;
+
+    fwrite(&sMode, sizeof(int32_t), 1, f);
+    fwrite(&sWSize, sizeof(int32_t), 1, f);
     fwrite(&gTime, sizeof(int32_t), 1, f);
     fwrite(&cLevel, sizeof(int32_t), 1, f);
     fwrite(&hWon, sizeof(int32_t), 1, f);
@@ -156,16 +225,20 @@ int save_game(const char* filepath) {
     }
 
     fclose(f);
-    printf("Game saved successfully to %s!\n", filepath);
+    printf("Game saved to Slot %d!\n", slot);
     return 1;
 }
 
-int load_game(const char* filepath) {
-    if (!filepath) filepath = get_save_path();
+int load_slot(int slot) {
+    if (slot < 1 || slot > 3) slot = 1;
 
-    FILE* f = fopen(filepath, "rb");
+    char path[128];
+    get_slot_path(slot, path, sizeof(path));
+    FILE* f = fopen(path, "rb");
     if (!f) {
-        f = fopen("save.dat", "rb");
+        char fallback[64];
+        snprintf(fallback, sizeof(fallback), "save_slot%d.dat", slot);
+        f = fopen(fallback, "rb");
         if (!f) return 0;
     }
 
@@ -187,8 +260,10 @@ int load_game(const char* filepath) {
         game_player = NULL;
     }
 
-    // Read game state
-    int32_t gTime = 0, cLevel = 3, hWon = 0, wTimer = 0, sLang = 1;
+    // Read game mode & state
+    int32_t sMode = 0, sWSize = 128, gTime = 0, cLevel = 3, hWon = 0, wTimer = 0, sLang = 0;
+    fread(&sMode, sizeof(int32_t), 1, f);
+    fread(&sWSize, sizeof(int32_t), 1, f);
     fread(&gTime, sizeof(int32_t), 1, f);
     fread(&cLevel, sizeof(int32_t), 1, f);
     fread(&hWon, sizeof(int32_t), 1, f);
@@ -199,6 +274,9 @@ int load_game(const char* filepath) {
         }
     }
 
+    g_gameMode = (GameMode)sMode;
+    g_worldSize = (WorldSize)sWSize;
+    g_currentSlot = slot;
     game_gameTime = gTime;
     game_currentLevel = cLevel;
     game_hasWon = (char)hWon;
@@ -316,7 +394,6 @@ int load_game(const char* filepath) {
         level_trySpawn(l, 3000);
     }
 
-    // Connect level current and add player
     if (game_currentLevel < 0 || game_currentLevel > 4) game_currentLevel = 3;
     game_level = &game_levels[game_currentLevel];
     level_addEntity(game_level, &game_player->mob.entity);
@@ -325,6 +402,21 @@ int load_game(const char* filepath) {
     game_set_menu(0);
 
     fclose(f);
-    printf("Game loaded successfully from %s!\n", filepath);
+    printf("Game loaded from Slot %d!\n", slot);
     return 1;
+}
+
+int save_game(const char* filepath) {
+    (void)filepath;
+    return save_slot(g_currentSlot);
+}
+
+int load_game(const char* filepath) {
+    (void)filepath;
+    return load_slot(g_currentSlot);
+}
+
+int save_exists(const char* filepath) {
+    (void)filepath;
+    return slot_exists(1) || slot_exists(2) || slot_exists(3);
 }

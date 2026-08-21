@@ -15,6 +15,8 @@
 #include "container_menu.h"
 #include "won_menu.h"
 #include "pause_menu.h"
+#include "slot_menu.h"
+#include "newgame_menu.h"
 
 #include <string.h>
 #include <stdio.h>
@@ -44,6 +46,8 @@ void init_menus() {
 	menus[mid_CONTAINER] = &containermenu_vt;
 	menus[mid_WON] = &wonmenu_vt;
 	menus[mid_PAUSE] = &pausemenu_vt;
+	menus[mid_SLOT_SELECT] = &slotmenu_vt;
+	menus[mid_NEW_GAME] = &newgamemenu_vt;
 }
 
 

@@ -1,6 +1,7 @@
 #include "menu.h"
 #include "../inputhandler.h"
 #include "title_menu.h"
+#include "slot_menu.h"
 #include "../gfx/color.h"
 #include "../gfx/font.h"
 #include "../game.h"
@@ -99,17 +100,13 @@ void titlemenu_tick() {
 
 		if (has_save) {
 			if (titlemenu_selected == 0) {
-				// Continue / Load
-				if (!load_game(NULL)) {
-					isingame = 1;
-					game_reset();
-					game_set_menu(0);
-				}
+				// Continue -> Slot Selection
+				slotmenu_mode = 0;
+				game_set_menu(mid_SLOT_SELECT);
 			} else if (titlemenu_selected == 1) {
-				// New Game
-				isingame = 1;
-				game_reset();
-				game_set_menu(0);
+				// New Game -> Slot Selection
+				slotmenu_mode = 1;
+				game_set_menu(mid_SLOT_SELECT);
 			} else if (titlemenu_selected == 2) {
 				// Switch Language
 				lang_next();
@@ -122,9 +119,9 @@ void titlemenu_tick() {
 			}
 		} else {
 			if (titlemenu_selected == 0) {
-				isingame = 1;
-				game_reset();
-				game_set_menu(0);
+				// New Game / Start Game -> Slot Selection
+				slotmenu_mode = 1;
+				game_set_menu(mid_SLOT_SELECT);
 			} else if (titlemenu_selected == 1) {
 				// Switch Language
 				lang_next();

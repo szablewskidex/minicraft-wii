@@ -15,7 +15,8 @@ typedef enum{
 	WORKBENCH,
 	ZOMBIE,
 	SMASHPARTICLE,
-	TEXTPARTICLE
+	TEXTPARTICLE,
+	BED
 } EntityId;
 
 #endif // ENTITYID_H

@@ -18,12 +18,17 @@ const menu_vt deadmenu_vt = {
 
 #include "../sound.h"
 #include "../lang.h"
+#include "../gamemode.h"
+#include "../save.h"
 
 void deadmenu_tick(){
 	if(deadmenu_inputDelay > 0){
 		--deadmenu_inputDelay;
 	}else if(attack.clicked || menu.clicked){
 		sound_play(SND_CONFIRM);
+		if (g_gameMode == MODE_HARDCORE) {
+			delete_slot(g_currentSlot);
+		}
 		game_set_menu(mid_TITLE);
 	}
 }

@@ -22,7 +22,9 @@ enum menu_id{
 	mid_LEVEL_TRANSITION,
 	mid_WON,
 	mid_INVENTORY,
-	mid_PAUSE
+	mid_PAUSE,
+	mid_SLOT_SELECT,
+	mid_NEW_GAME
 };
 
 void init_menus();

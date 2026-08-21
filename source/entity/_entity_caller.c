@@ -37,6 +37,7 @@ void call_entity_tick(Entity* entity) {
 			itementity_tick((ItemEntity*) entity);
 			break;
 		case ANVIL:
+		case BED:
 		case CHEST:
 		case FURNACE:
 		case LANTERN:
@@ -241,6 +242,8 @@ void call_entity_touchedBy(Entity* entity, Entity* e) {
 }
 
 
+#include "bed.h"
+
 char call_entity_use(Entity* entity, Player* player, int attackDir) {
 	switch (entity->type) {
 		case ANVIL: return anvil_use((Anvil *) entity, player, attackDir);
@@ -248,6 +251,7 @@ char call_entity_use(Entity* entity, Player* player, int attackDir) {
 		case FURNACE: return furnace_use((Furnace *) entity, player, attackDir);
 		case OVEN: return oven_use((Oven *) entity, player, attackDir);
 		case WORKBENCH: return workbench_use((Workbench *) entity, player, attackDir);
+		case BED: return bed_use((Bed *) entity, player, attackDir);
 
 		default:
 			return 0;
@@ -263,6 +267,7 @@ char call_entity_blocks(Entity* entity, Entity* e) {
 		case LANTERN:
 		case OVEN:
 		case WORKBENCH:
+		case BED:
 			return 1;
 		case SLIME:
 		case ZOMBIE:
@@ -315,6 +320,10 @@ Furniture* entity_createFurniture(EntityId id) {
 			furn = malloc(sizeof(Workbench));
 			workbench_create((Workbench *) furn);
 			break;
+		case BED:
+			furn = malloc(sizeof(Bed));
+			bed_create((Bed *) furn);
+			break;
 	}
 
 	return furn;
@@ -329,6 +338,7 @@ char entity_isfurniture(Entity* entity) {
 		case LANTERN:
 		case OVEN:
 		case WORKBENCH:
+		case BED:
 			return 1;
 		default:
 			return 0;
