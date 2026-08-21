@@ -286,6 +286,7 @@ void game_tick(){
         }
 
 		input_tick();
+		sound_tick();
 
 		if (current_menu) {
 			tick_menu(current_menu);

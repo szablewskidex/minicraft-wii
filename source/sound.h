@@ -1,4 +1,4 @@
-﻿#ifndef SOUND_H
+#ifndef SOUND_H
 #define SOUND_H
 
 typedef enum {
@@ -14,6 +14,7 @@ typedef enum {
 } SoundEffect;
 
 void sound_init(void);
+void sound_tick(void);
 void sound_play(SoundEffect effect);
 void sound_cleanup(void);
 

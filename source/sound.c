@@ -1,4 +1,4 @@
-﻿#include "sound.h"
+#include "sound.h"
 #include "sound_data.h"
 #include <stdio.h>
 #include <stdint.h>
@@ -41,9 +41,25 @@ void sound_init(void) {
 #endif
 }
 
+#include "game.h" // for getting current tick or frame, but we can just use our own counter
+
+static int sound_last_played[9] = {0};
+static int sound_frame_counter = 0;
+
+void sound_tick(void) {
+    sound_frame_counter++;
+}
+
 void sound_play(SoundEffect effect) {
     if (!sound_ready) return;
     if (effect < 0 || effect >= 9) return;
+
+    // Prevent the same sound from playing multiple times within a short time (e.g., 3 frames)
+    // This stops "cloning/echo" when hitting multiple entities or rapid events.
+    if (sound_frame_counter - sound_last_played[effect] < 3) {
+        return;
+    }
+    sound_last_played[effect] = sound_frame_counter;
 
 #ifdef __wii__
     const uint8_t* raw = sound_ptrs[effect];
