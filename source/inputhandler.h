@@ -24,5 +24,6 @@ void input_toggle(SDL_Keycode key, char pressed);
 #endif
 
 void input_tick();
+void input_rumble(int frames);
 
 #endif /* INPUTHANDLER_H_ */

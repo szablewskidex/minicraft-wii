@@ -6,6 +6,9 @@
 #include "../entity/slime.h"
 #include "../entity/zombie.h"
 #include "../entity/airwizard.h"
+#include "../entity/chest.h"
+#include "../item/resourceitem.h"
+#include "../item/resource/resource.h"
 #include "../utils/javarandom.h"
 #include "../utils/utils.h"
 #include "../gfx/screen.h"
@@ -68,6 +71,45 @@ void level_init(Level* lvl, int w, int h, int level, Level* parent) {
 	lvl->entitiesInTiles = malloc(sizeof(ArrayList) * w * h);
 	for (int i = 0; i < w * h; ++i) {
 		create_arraylist(lvl->entitiesInTiles + i);
+	}
+
+	if (level < 0) {
+		// Generate 3 underground dungeon rooms with treasure chests!
+		for (int d = 0; d < 3; ++d) {
+			int rx = 15 + (d * 36) + random_next_int(&lvl->random, 10);
+			int ry = 15 + random_next_int(&lvl->random, h - 35);
+			if (rx + 5 < w && ry + 5 < h) {
+				for (int dy = 0; dy < 5; ++dy) {
+					for (int dx = 0; dx < 5; ++dx) {
+						if (dx == 0 || dx == 4 || dy == 0 || dy == 4) {
+							level_set_tile(lvl, rx + dx, ry + dy, (int)HARD_ROCK, 0);
+						} else {
+							level_set_tile(lvl, rx + dx, ry + dy, (int)DIRT, 0);
+						}
+					}
+				}
+				// Door opening
+				level_set_tile(lvl, rx + 2, ry, (int)DIRT, 0);
+
+				// Place treasure Chest in center
+				Chest* chest = malloc(sizeof(Chest));
+				if (chest) {
+					chest_create(chest);
+					chest->furniture.entity.x = (rx + 2) * 16 + 8;
+					chest->furniture.entity.y = (ry + 2) * 16 + 8;
+
+					Item loot1, loot2, loot3;
+					resourceitem_create(&loot1, &gem);
+					inventory_addItem(&chest->inventory, &loot1);
+					resourceitem_create(&loot2, &ironIngot);
+					inventory_addItem(&chest->inventory, &loot2);
+					resourceitem_create(&loot3, &arrow);
+					inventory_addItem(&chest->inventory, &loot3);
+
+					level_addEntity(lvl, (Entity*)chest);
+				}
+			}
+		}
 	}
 
 	if (level == 1) {

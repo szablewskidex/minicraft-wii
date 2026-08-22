@@ -436,6 +436,50 @@ void game_renderGui() {
             const char* no_item = (g_currentLanguage == LANG_PL) ? "[Reka]" : "[Hand]";
             font_draw((char*)no_item, strlen(no_item), &game_screen, tool_x + 8, tool_y + 4, getColor4(-1, 333, 333, 333));
         }
+
+        // Top-right Minimap Radar
+        int map_w = 40;
+        int map_h = 32;
+        int map_x = game_screen.w - map_w - 6;
+        int map_y = 6;
+        int p_tx = game_player->mob.entity.x >> 4;
+        int p_ty = game_player->mob.entity.y >> 4;
+
+        for (int my = 0; my < map_h; ++my) {
+            for (int mx = 0; mx < map_w; ++mx) {
+                int sx = map_x + mx;
+                int sy = map_y + my;
+                if (sx < 0 || sx >= game_screen.w || sy < 0 || sy >= game_screen.h) continue;
+
+                if (mx == 0 || mx == map_w - 1 || my == 0 || my == map_h - 1) {
+                    game_screen.pixels[sx + sy * game_screen.w] = getColor(111);
+                    continue;
+                }
+
+                int sample_x = p_tx - (map_w / 2) + mx;
+                int sample_y = p_ty - (map_h / 2) + my;
+
+                unsigned char pix_col = getColor(000);
+                if (sample_x >= 0 && sample_y >= 0 && sample_x < game_level->w && sample_y < game_level->h) {
+                    TileID t = level_get_tile(game_level, sample_x, sample_y);
+                    if (t == WATER) pix_col = getColor(115);
+                    else if (t == SAND) pix_col = getColor(550);
+                    else if (t == GRASS) pix_col = getColor(040);
+                    else if (t == TREE) pix_col = getColor(020);
+                    else if (t == ROCK || t == HARD_ROCK) pix_col = getColor(222);
+                    else if (t == DIRT || t == FARMLAND) pix_col = getColor(320);
+                    else if (t == LAVA) pix_col = getColor(520);
+                    else if (t == STAIRS_DOWN || t == STAIRS_UP) pix_col = getColor(555);
+                }
+
+                // Player dot in center
+                if (mx >= (map_w / 2 - 1) && mx <= (map_w / 2) && my >= (map_h / 2 - 1) && my <= (map_h / 2)) {
+                    pix_col = getColor(555);
+                }
+
+                game_screen.pixels[sx + sy * game_screen.w] = pix_col;
+            }
+        }
 	}
 
 	if (current_menu) {

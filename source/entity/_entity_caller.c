@@ -30,6 +30,7 @@
 #include "frog.h"
 #include "door.h"
 #include "exporb.h"
+#include "arrow.h"
 #include "../item/item.h"
 
 #include <string.h>
@@ -51,6 +52,9 @@ void call_entity_tick(Entity* entity) {
 			break;
 		case EXPORB:
 			exporb_tick((ExpOrb*) entity);
+			break;
+		case ARROW:
+			arrow_tick((Arrow*) entity);
 			break;
 		case ANVIL:
 		case BED:
@@ -121,6 +125,7 @@ uint8_t call_entity_isBlockableBy(Entity* entity, Mob* mob) {
 	switch (entity->type) {
 		case ITEMENTITY:
 		case EXPORB:
+		case ARROW:
 		case SPARK:
 			return 0;
 		case PLAYER:
@@ -142,6 +147,9 @@ void call_entity_render(Entity* entity, Screen* screen) {
 			break;
 		case EXPORB:
 			exporb_render((ExpOrb*) entity, screen);
+			break;
+		case ARROW:
+			arrow_render((Arrow*) entity, screen);
 			break;
 		case TEXTPARTICLE:
 			textparticle_render((TextParticle*) entity, screen);
@@ -389,11 +397,16 @@ void call_entity_touchedBy(Entity* entity, Entity* e) {
 				exporb_touchedBy((ExpOrb*)entity, e);
 			}
 			break;
+		case ARROW:
+			arrow_touchedBy((Arrow*)entity, e);
+			break;
 		case PLAYER:
 			if (e->type == ITEMENTITY) {
 				call_entity_touchItem(entity, (ItemEntity *) e);
 			} else if (e->type == EXPORB) {
 				exporb_touchedBy((ExpOrb*)e, entity);
+			} else if (e->type == ARROW) {
+				arrow_touchedBy((Arrow*)e, entity);
 			}
 			break;
 		default:

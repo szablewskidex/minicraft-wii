@@ -3,9 +3,14 @@
 #include "resource.h"
 #include "plantable_resource.h"
 #include "food_resource.h"
+#include "../resourceitem.h"
 #include "../../gfx/color.h"
 #include "../../entity/player.h"
+#include "../../entity/arrow.h"
+#include "../../entity/itementity.h"
+#include "../../entity/particle/textparticle.h"
 #include "../../sound.h"
+#include "../../inputhandler.h"
 
 Resource wood;
 Resource stone;
@@ -37,6 +42,15 @@ Resource ironArmor;
 Resource goldArmor;
 Resource gemArmor;
 
+Resource bow;
+Resource arrow;
+Resource fishingRod;
+Resource rawFish;
+Resource cookedFish;
+Resource shears;
+Resource carrot;
+Resource potato;
+
 
 void init_resource(Resource* resource, char* name, int sprite, int color) {
 	memset(resource->name, 0, sizeof(resource->name));
@@ -55,6 +69,7 @@ TileID cactus_sources[] = {SAND};
 TileID seeds_sources[] = {FARMLAND};
 TileID cloud_sources[] = {INFINITE_FALL};
 TileID stone_sources[] = {GRASS, DIRT, SAND, FARMLAND, HOLE, WATER, LAVA};
+TileID crop_sources[] = {FARMLAND};
 
 
 void init_resources() {
@@ -91,6 +106,16 @@ void init_resources() {
 	init_resource(&goldArmor, "G.Armor", 12 + 4 * 32, getColor4(-1, 110, 440, 553));
 	init_resource(&gemArmor, "Gem Armor", 13 + 4 * 32, getColor4(-1, 101, 244, 455));
 
+	// New Tools & Items
+	init_resource(&bow, "Bow", 0 + 5 * 32, getColor4(-1, 100, 321, 431));
+	init_resource(&arrow, "Arrow", 1 + 5 * 32, getColor4(-1, 100, 321, 555));
+	init_resource(&fishingRod, "Rod", 2 + 5 * 32, getColor4(-1, 100, 321, 444));
+	init_food_resource(&rawFish, "Raw Fish", 3 + 5 * 32, getColor4(-1, 111, 233, 445), 1, 3);
+	init_food_resource(&cookedFish, "C.Fish", 4 + 5 * 32, getColor4(-1, 100, 321, 432), 4, 10);
+	init_resource(&shears, "Shears", 5 + 5 * 32, getColor4(-1, 100, 333, 555));
+	init_food_resource(&carrot, "Carrot", 6 + 5 * 32, getColor4(-1, 10, 530, 50), 2, 4);
+	init_food_resource(&potato, "Potato", 7 + 5 * 32, getColor4(-1, 100, 431, 542), 2, 4);
+
 	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources)/sizeof(TileID));
 	init_resource(&gem, "gem", 13 + 4 * 32, getColor4(-1, 101, 404, 545));
 }
@@ -106,7 +131,7 @@ char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, 
 			}
 		}
 		return 0;
-	} else if (resource == &bread || resource == &apple) {
+	} else if (resource == &bread || resource == &apple || resource == &rawFish || resource == &cookedFish || resource == &carrot || resource == &potato) {
 		if (player->mob.health < player->mob.maxHealth && player_payStamina(player, resource->add.food.staminaCost)) {
 			mob_heal(&player->mob, resource->add.food.heal);
 			sound_play(SND_CONFIRM);
@@ -120,6 +145,101 @@ char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, 
 			sound_play(SND_CONFIRM);
 			return 1;
 		}
+		return 0;
+	} else if (resource == &bow) {
+		// Find arrow in inventory
+		Item* arrowItem = inventory_findResource(&player->inventory, &arrow);
+		if (arrowItem && player_payStamina(player, 2)) {
+			// Consume 1 arrow
+			if (arrowItem->id == RESOURCE) {
+				resourceitem_interactOn(arrowItem, tile, level, xt, yt, player, attackDir);
+			}
+			Arrow* arrow_entity = malloc(sizeof(Arrow));
+			if (arrow_entity) {
+				arrow_create(arrow_entity, (Mob*)player, player->mob.entity.x, player->mob.entity.y, player->mob.dir, 12);
+				level_addEntity(level, &arrow_entity->entity);
+			}
+			sound_play(SND_MONSTERHURT);
+			input_rumble(3);
+			return 1;
+		}
+		return 0;
+	} else if (resource == &fishingRod) {
+		if (tile == WATER && player_payStamina(player, 2)) {
+			int r = random_next_int(&player->mob.entity.random, 100);
+			Resource* catchRes = &rawFish;
+			if (r < 65) catchRes = &rawFish;
+			else if (r < 80) catchRes = &ironIngot;
+			else if (r < 90) catchRes = &leather;
+			else catchRes = &gem;
+
+			Item catchItem;
+			resourceitem_create(&catchItem, catchRes);
+			inventory_addItem(&player->inventory, &catchItem);
+
+			sound_play(SND_PICKUP);
+			input_rumble(6);
+
+			TextParticle* text_p = malloc(sizeof(TextParticle));
+			if (text_p) {
+				char msg[16];
+				sprintf(msg, "+%s", catchRes->name);
+				textparticle_create(text_p, strdup(msg), player->mob.entity.x, player->mob.entity.y - 8, getColor4(-1, 550, 550, 550));
+				level_addEntity(level, &text_p->entity);
+			}
+			return 1;
+		}
+		return 0;
+	} else if (resource == &shears) {
+		// Check nearby sheep to shear
+		ArrayList entities;
+		create_arraylist(&entities);
+		level_getEntities(level, &entities, player->mob.entity.x - 16, player->mob.entity.y - 16, player->mob.entity.x + 16, player->mob.entity.y + 16);
+		for (int i = 0; i < entities.size; ++i) {
+			Entity* e = entities.elements[i];
+			if (e->type == SHEEP) {
+				// Drop wool / cloth!
+				Item woolItem;
+				resourceitem_create(&woolItem, &cloth);
+				inventory_addItem(&player->inventory, &woolItem);
+				inventory_addItem(&player->inventory, &woolItem);
+
+				sound_play(SND_CONFIRM);
+				input_rumble(4);
+
+				TextParticle* text_p = malloc(sizeof(TextParticle));
+				if (text_p) {
+					textparticle_create(text_p, strdup("+2 Wool"), e->x, e->y - 8, getColor4(-1, 555, 555, 555));
+					level_addEntity(level, &text_p->entity);
+				}
+				arraylist_remove(&entities);
+				return 1;
+			}
+		}
+		arraylist_remove(&entities);
+		return 0;
+	} else if (resource == &wheat || resource == &seeds || resource == &carrot) {
+		// Feed animals to breed
+		ArrayList entities;
+		create_arraylist(&entities);
+		level_getEntities(level, &entities, player->mob.entity.x - 16, player->mob.entity.y - 16, player->mob.entity.x + 16, player->mob.entity.y + 16);
+		for (int i = 0; i < entities.size; ++i) {
+			Entity* e = entities.elements[i];
+			if (e->type == COW || e->type == SHEEP || e->type == CHICKEN || e->type == PIG) {
+				sound_play(SND_CONFIRM);
+				input_rumble(3);
+
+				TextParticle* text_p = malloc(sizeof(TextParticle));
+				if (text_p) {
+					textparticle_create(text_p, strdup("<3"), e->x, e->y - 10, getColor4(-1, 500, 500, 555));
+					level_addEntity(level, &text_p->entity);
+				}
+				player_addExp(player, 10);
+				arraylist_remove(&entities);
+				return 1;
+			}
+		}
+		arraylist_remove(&entities);
 		return 0;
 	} else if (resource == &leatherArmor || resource == &ironArmor || resource == &goldArmor || resource == &gemArmor) {
 		player->armor = resource;

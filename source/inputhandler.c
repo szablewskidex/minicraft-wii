@@ -41,6 +41,16 @@ void key_tick(Key* key){
 }
 
 
+#ifdef __wii__
+static int s_rumbleFrames = 0;
+void input_rumble(int frames) {
+    s_rumbleFrames = frames;
+    WPAD_Rumble(0, 1);
+}
+#else
+void input_rumble(int frames) { (void)frames; }
+#endif
+
 void input_tick(){
 #ifdef __wii__
     WPAD_ScanPads();
@@ -89,6 +99,13 @@ void input_tick(){
     key_toggle(&pause_key, act_pause);
     key_toggle(&cycle_next, act_next);
     key_toggle(&cycle_prev, act_prev);
+
+    if (s_rumbleFrames > 0) {
+        --s_rumbleFrames;
+        if (s_rumbleFrames <= 0) {
+            WPAD_Rumble(0, 0);
+        }
+    }
 #endif
 
     key_tick(&up);

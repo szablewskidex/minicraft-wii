@@ -2,21 +2,50 @@
 
 An enhanced native **Nintendo Wii** port of *Minicraft*, the 2D top-down survival crafting game originally created by Markus "Notch" Persson for Ludum Dare 22.
 
-Based on the C/SDL reimplementation by [TheBigEye](https://github.com/thebigeye/minicraft-sdl), ported and significantly expanded for Nintendo Wii with native controller support, expanded monsters & animated animals, leveling & EXP orbs, full 4-tier armor system, doors, boats, smooth day/night cycle, save slots, and multi-language support.
+Based on the C/SDL reimplementation by [TheBigEye](https://github.com/thebigeye/minicraft-sdl), ported and significantly expanded for Nintendo Wii with native controller & Wiimote rumble support, bow & arrow combat, fishing rod & fish, farming & animal breeding, subterranean dungeons & treasure chests, HUD minimap radar, 4-tier armor system, doors, boats, leveling with glowing EXP orbs, smooth day/night cycle, multi-slot save system, and multi-language support.
 
 ---
 
 ## ✨ Features & Enhancements
 
+### 🏹 Bow & Arrow Ranged Combat
+- Craftable **Bow** (`Wood` × 5 + `Cloth` × 3) and **Arrows** (`Wood` × 3 + `Stone` × 2 + `Cloth` × 1).
+- Fire arrows across distance with directional physics, hit detection against monsters/animals, tile collisions, and smash particles.
+
+### 🎣 Fishing Rod & Marine Loot
+- Craftable **Fishing Rod** (`Wood` × 5 + `Cloth` × 3).
+- Cast into water/oceans to catch **Raw Fish**, and rarely reel up precious treasures (**Gems, Iron Ingots, Hide**).
+- Cook raw fish in the **Oven** with coal to produce delicious **Cooked Fish** (restores 4 full hearts!).
+
+### 🌾 Agriculture, Animal Breeding & Shears
+- **Animal Breeding:** Feed Wheat to Cows/Sheep, Seeds to Chickens, and Carrots/Apples to Pigs to display love hearts (`<3`) and gain bonus EXP!
+- **Shears Tool:** Craftable with 2 Iron Ingots at the Anvil to shear live sheep for wool/cloth without hurting them.
+- **New Crops:** Plantable and edible **Carrots** and **Potatoes**.
+
+### 📯 Wiimote Rumble Feedback
+- Realistic haptic feedback on the Wiimote controller:
+  - Subtle tap when mining rocks, chopping trees, or shooting arrows.
+  - Medium rumble when hitting monsters or catching fish.
+  - Strong rumble on taking damage or creeper explosions!
+
+### 🗺️ HUD Minimap Radar
+- Integrated live radar in the top-right corner of the screen:
+  - Real-time terrain colors (Oceans, Beaches, Forests, Caves, Lava, Dungeons).
+  - Center player tracking and direction indicator.
+
+### 🏰 Subterranean Dungeons & Treasure Chests
+- Procedurally generated underground dungeon rooms built with reinforced hard rock.
+- Guarded treasure chests filled with valuable minerals, gems, weapons, and ammunition.
+
 ### 🐾 Animated Animals & Biomes
 - **Chicken (Kura), Pig (Świnka), Sheep (Owca)** roaming grassy biomes.
 - **Crab (Krab)** scuttling along beaches and coastlines.
 - **Frog (Żaba)** hopping through ponds and forests.
-- 4-frame smooth walking animations and custom resource drops (feathers, hide, wool, meat).
+- 4-frame smooth animations and resource drops (feathers, hide, wool, meat).
 
 ### ⚔️ Upgraded Monsters & Combat
 - 4-frame walking and attack animations for **Zombies, Skeletons, Slimes, Creepers, and Knights**.
-- Boss fight against the **Air Wizard**.
+- Boss battle with the **Air Wizard**.
 
 ### ✨ EXP Orbs & Leveling System
 - Defeated monsters and animals drop **bouncing, glowing EXP Orbs** that pulse with vivid colors.
@@ -51,10 +80,6 @@ Based on the C/SDL reimplementation by [TheBigEye](https://github.com/thebigeye/
 - Torches, lanterns, and lava pierce through the dark.
 - Beds allow fast-forwarding through the night.
 
-### 🔊 Enhanced Audio Engine (`SDL_mixer`)
-- Clean 16-channel audio playback with zero DSP buffer wrap.
-- Proximity-based audio: mob pain and natural hazard sounds only play within hearing range.
-
 ### 💾 Multi-Slot Save System & Languages
 - Multiple save slots with SD card persistence.
 - Built-in **Polish (Polski)** and **English** language options.
@@ -66,7 +91,7 @@ Based on the C/SDL reimplementation by [TheBigEye](https://github.com/thebigeye/
 | Action | Wiimote + Nunchuk | Wiimote (Horizontal) | Classic Controller | GameCube Pad |
 |---|---|---|---|---|
 | **Move** | Nunchuk Analog Stick / D-Pad | D-Pad (Up/Down/Left/Right) | Left Stick / D-Pad | Control Stick / D-Pad |
-| **Attack / Mine / Open Door** | Button A / Nunchuk C | Button 2 | Button A / B | Button A / B |
+| **Attack / Mine / Shoot / Open Door** | Button A / Nunchuk C | Button 2 | Button A / B | Button A / B |
 | **Inventory / Crafting Menu** | Button 1 / Minus (-) | Button 1 | Button X / Y | Button X / Y |
 | **Cycle Held Item (Next)** | **Nunchuk Z** / Button B (Trigger) | Button A | **Button R / ZR** | **Trigger R / Z** |
 | **Cycle Held Item (Prev)** | Button Minus (-) | Button Minus (-) | **Button L / ZL** | **Trigger L** |
@@ -108,4 +133,4 @@ This produces `minicraft.dol` inside the `build-wii/` directory.
 - **Markus "Notch" Persson** – Original Minicraft game concept and design.
 - **TheBigEye** – C & SDL reimplementation.
 - **Minicraft Plus Revived Team** – Textures and mechanics reference.
-- **szablewskidex** – Nintendo Wii port, enhanced systems (EXP, Animals, Armors, Doors, Boat, Audio, Controllers, Day/Night).
+- **szablewskidex** – Nintendo Wii port, enhanced systems (Bow/Arrow, Fishing, Animals, Dungeons, Minimap Radar, Rumble, Armors, Doors, Boat, Audio, Controllers, Day/Night).

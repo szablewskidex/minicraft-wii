@@ -20,6 +20,7 @@ extern Resource wood, stone, flower, acorn, dirt, sand, cactusFlower, seeds, whe
 extern Resource coal, ironOre, goldOre, ironIngot, goldIngot;
 extern Resource slime, glass, cloth, cloud, gem, leather, boat;
 extern Resource leatherArmor, ironArmor, goldArmor, gemArmor;
+extern Resource bow, arrow, fishingRod, rawFish, cookedFish, shears, carrot, potato;
 
 
 void init_resources();
