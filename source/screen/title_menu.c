@@ -44,7 +44,7 @@ void titlemenu_render(Screen* screen) {
 		}
 	}
 
-	int count = has_save ? 5 : 4;
+	int count = has_save ? 6 : 5;
 	for (int i = 0; i < count; ++i) {
 		char optBuf[64] = {0};
 		const char* text = "";
@@ -55,11 +55,13 @@ void titlemenu_render(Screen* screen) {
 			else if (i == 2) text = _T(STR_LANGUAGE);
 			else if (i == 3) text = _T(STR_HOW_TO_PLAY);
 			else if (i == 4) text = _T(STR_ABOUT);
+			else if (i == 5) text = _T(STR_EXIT);
 		} else {
 			if (i == 0) text = _T(STR_START_GAME);
 			else if (i == 1) text = _T(STR_LANGUAGE);
 			else if (i == 2) text = _T(STR_HOW_TO_PLAY);
 			else if (i == 3) text = _T(STR_ABOUT);
+			else if (i == 4) text = _T(STR_EXIT);
 		}
 
 		int col = getColor4(0, 222, 222, 222);
@@ -71,17 +73,17 @@ void titlemenu_render(Screen* screen) {
 		}
 
 		int optionLength = strlen(optBuf);
-		font_draw(optBuf, optionLength, screen, (screen->w - optionLength * 8) / 2, (7 + i) * 10, col);
+		font_draw(optBuf, optionLength, screen, (screen->w - optionLength * 8) / 2, (6 + i) * 10, col);
 	}
 
 	const char* help = _T(STR_HELP_MSG);
 	int helpLen = strlen(help);
-	font_draw(help, helpLen, screen, (screen->w - helpLen * 8) / 2, screen->h - 12, getColor4(0, 111, 111, 111));
+	font_draw((char*)help, helpLen, screen, (screen->w - helpLen * 8) / 2, screen->h - 12, getColor4(0, 111, 111, 111));
 }
 
 
 void titlemenu_tick() {
-	int count = has_save ? 5 : 4;
+	int count = has_save ? 6 : 5;
 
 	if (up.clicked) {
 		--titlemenu_selected;
@@ -116,6 +118,8 @@ void titlemenu_tick() {
 			} else if (titlemenu_selected == 4) {
 				menu_parent = mid_TITLE;
 				game_set_menu(mid_ABOUT);
+			} else if (titlemenu_selected == 5) {
+				exit(0);
 			}
 		} else {
 			if (titlemenu_selected == 0) {
@@ -131,6 +135,8 @@ void titlemenu_tick() {
 			} else if (titlemenu_selected == 3) {
 				menu_parent = mid_TITLE;
 				game_set_menu(mid_ABOUT);
+			} else if (titlemenu_selected == 4) {
+				exit(0);
 			}
 		}
 	}

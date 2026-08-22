@@ -24,7 +24,8 @@ static const char* strings[STR_COUNT][LANG_COUNT] = {
     [STR_LOAD_GAME] = { "Wczytaj zapis", "Load Game", "Spiel laden" },
     [STR_QUIT_TITLE] = { "Zapisz i Wyjdz", "Save & Quit", "Speichern & Beenden" },
     [STR_QUIT_NO_SAVE] = { "Wyjdz (Bez zapisu)", "Quit (No Save)", "Beenden (Ohne speichern)" },
-    [STR_SAVED_MSG] = { "* GRA ZAPISANA! *", "* GAME SAVED! *", "* GESPEICHERT! *" }
+    [STR_SAVED_MSG] = { "* GRA ZAPISANA! *", "* GAME SAVED! *", "* GESPEICHERT! *" },
+    [STR_EXIT] = { "Wyjscie", "Exit Game", "Beenden" }
 };
 
 void lang_init(void) {

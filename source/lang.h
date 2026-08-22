@@ -31,6 +31,7 @@ typedef enum {
     STR_QUIT_TITLE,
     STR_QUIT_NO_SAVE,
     STR_SAVED_MSG,
+    STR_EXIT,
     STR_COUNT
 } StringID;
 
