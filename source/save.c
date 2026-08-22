@@ -1,4 +1,4 @@
-﻿#include "save.h"
+#include "save.h"
 #include "gamemode.h"
 #include "lang.h"
 #include <stdio.h>
@@ -75,6 +75,9 @@ static void save_inventory(Inventory* inv, FILE* f) {
 }
 
 static void load_inventory(Inventory* inv, FILE* f) {
+    inventory_free(inv);
+    inventory_create(inv);
+
     int32_t inv_count = 0;
     fread(&inv_count, sizeof(int32_t), 1, f);
     for (int i = 0; i < inv_count; ++i) {
@@ -89,6 +92,7 @@ static void load_inventory(Inventory* inv, FILE* f) {
             if (res_idx >= 0 && (size_t)res_idx < NUM_RESOURCES) {
                 resourceitem_create_cnt(item, resource_list[res_idx], count);
                 inventory_addItem(inv, item);
+            free(item);
             } else {
                 free(item);
             }
@@ -98,6 +102,7 @@ static void load_inventory(Inventory* inv, FILE* f) {
             fread(&t_level, sizeof(int32_t), 1, f);
             toolitem_create(item, (ToolType)t_type, t_level);
             inventory_addItem(inv, item);
+            free(item);
         } else if (item_id == FURNITURE) {
             int32_t f_type = 0;
             fread(&f_type, sizeof(int32_t), 1, f);
@@ -112,9 +117,11 @@ static void load_inventory(Inventory* inv, FILE* f) {
             else workbench_create((Workbench*)furn);
             furnitureitem_create(item, furn);
             inventory_addItem(inv, item);
+            free(item);
         } else if (item_id == POWERGLOVE) {
             powergloveitem_create(item);
             inventory_addItem(inv, item);
+            free(item);
         } else {
             free(item);
         }
@@ -432,7 +439,7 @@ int load_slot(int slot) {
 
     // Set first inventory item as activeItem if available
     if (game_player->inventory.items.size > 0) {
-        game_player->activeItem = (Item*)game_player->inventory.items.elements[0];
+        game_player->activeItem = (Item*)arraylist_removeId(&game_player->inventory.items, 0);
     }
 
     // Read 5 Levels

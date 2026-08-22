@@ -605,34 +605,28 @@ void player_free(Player* player){
 	}
 }
 
+
 void player_cycleNextItem(Player* player) {
 	if (!player || player->inventory.items.size == 0) return;
 
-	int current_idx = -1;
-	for (int i = 0; i < player->inventory.items.size; ++i) {
-		if (player->inventory.items.elements[i] == player->activeItem) {
-			current_idx = i;
-			break;
-		}
+	if (player->activeItem) {
+		arraylist_pushTo(&player->inventory.items, 0, player->activeItem);
+		player->activeItem = 0;
 	}
 
-	int next_idx = (current_idx + 1) % player->inventory.items.size;
-	player->activeItem = (Item*)player->inventory.items.elements[next_idx];
+	player->activeItem = (Item*)arraylist_removeId(&player->inventory.items, 0);
 	sound_play(SND_SELECT);
 }
 
 void player_cyclePrevItem(Player* player) {
 	if (!player || player->inventory.items.size == 0) return;
 
-	int current_idx = 0;
-	for (int i = 0; i < player->inventory.items.size; ++i) {
-		if (player->inventory.items.elements[i] == player->activeItem) {
-			current_idx = i;
-			break;
-		}
+	if (player->activeItem) {
+		arraylist_pushTo(&player->inventory.items, player->inventory.items.size, player->activeItem);
+		player->activeItem = 0;
 	}
 
-	int prev_idx = (current_idx + player->inventory.items.size - 1) % player->inventory.items.size;
-	player->activeItem = (Item*)player->inventory.items.elements[prev_idx];
+	player->activeItem = (Item*)arraylist_removeId(&player->inventory.items, player->inventory.items.size - 1);
 	sound_play(SND_SELECT);
 }
+
