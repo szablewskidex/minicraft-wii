@@ -5,9 +5,11 @@
 #include "../../entity/particle/textparticle.h"
 #include "../../item/item.h"
 #include "../../entity/player.h"
+#include "../../sound.h"
 
 
 void cloudcactustile_hurt_(TileID id, Level* level, int x, int y, int dmg) {
+	sound_play(SND_MONSTERHURT);
 	int damage = level_get_data(level, x, y) + 1;
 
 	SmashParticle* smash = malloc(sizeof(SmashParticle));

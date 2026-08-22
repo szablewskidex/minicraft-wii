@@ -33,12 +33,8 @@ Resource gem;
 
 void init_resource(Resource* resource, char* name, int sprite, int color) {
 	memset(resource->name, 0, sizeof(resource->name));
-
-	if (strlen(name) > 6) {
-        printf("Name '%s' cannot be longer than six characters!\n", name);
-    }
-
-	memcpy(resource->name, name, 6);
+	strncpy(resource->name, name, 6);
+	resource->name[6] = '\0';
 	resource->sprite = sprite;
 	resource->color = color;
 }
@@ -51,11 +47,12 @@ TileID sand_sources[] = {GRASS, DIRT};
 TileID cactus_sources[] = {SAND};
 TileID seeds_sources[] = {FARMLAND};
 TileID cloud_sources[] = {INFINITE_FALL};
+TileID stone_sources[] = {GRASS, DIRT, SAND, FARMLAND, HOLE, WATER, LAVA};
 
 
 void init_resources() {
 	init_resource(&wood, "Wood", 1 + 4 * 32, getColor4(-1, 200, 531, 430));
-	init_resource(&stone, "Stone", 2 + 4 * 32, getColor4(-1, 111, 333, 555));
+	init_plantable_resource(&stone, "Stone", 2 + 4 * 32, getColor4(-1, 111, 333, 555), ROCK, stone_sources, sizeof(stone_sources)/sizeof(TileID));
 
 	init_plantable_resource(&flower, "Flower", 0 + 4 * 32, getColor4(-1, 10, 444, 330), FLOWER, flower_sources, sizeof(flower_sources)/sizeof(TileID));
 	init_plantable_resource(&acorn, "Acorn", 3 + 4 * 32, getColor4(-1, 100, 531, 320), TREE_SAPLING, acorn_sources, sizeof(acorn_sources)/sizeof(TileID));
@@ -79,18 +76,32 @@ void init_resources() {
 	init_resource(&glass, "glass", 12 + 4 * 32, getColor4(-1, 555, 555, 555));
 	init_resource(&cloth, "cloth", 1 + 4 * 32, getColor4(-1, 25, 252, 141));
 
-	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources));
+	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources)/sizeof(TileID));
 
 	init_resource(&gem, "gem", 13 + 4 * 32, getColor4(-1, 101, 404, 545));
 }
 
+#include "../../sound.h"
 
 char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, int yt, Player* player, int attackDir) {
-	// printf("%p %p %d\n", resource, &acorn, resource == &acorn);
-	if (resource == &cloud || resource == &flower || resource == &acorn || resource == &dirt || resource == &sand || resource == &cactusFlower || resource == &seeds) {
+	if (resource == &stone || resource == &cloud || resource == &flower || resource == &acorn || resource == &dirt || resource == &sand || resource == &cactusFlower || resource == &seeds) {
 		for (int i = 0; i < resource->add.plantable.sourceTilesSize; ++i) {
 			if (resource->add.plantable.sourceTiles[i] == tile) {
+				if (resource->add.plantable.targetTile == ROCK) {
+					int px0 = player->mob.entity.x - player->mob.entity.xr;
+					int px1 = player->mob.entity.x + player->mob.entity.xr;
+					int py0 = player->mob.entity.y - player->mob.entity.yr;
+					int py1 = player->mob.entity.y + player->mob.entity.yr;
+					int tx0 = xt * 16;
+					int tx1 = xt * 16 + 15;
+					int ty0 = yt * 16;
+					int ty1 = yt * 16 + 15;
+					if (px1 >= tx0 && px0 <= tx1 && py1 >= ty0 && py0 <= ty1) {
+						return 0;
+					}
+				}
 				level_set_tile(level, xt, yt, resource->add.plantable.targetTile, 0);
+				sound_play(SND_CONFIRM);
 				return 1;
 			}
 		}
@@ -99,6 +110,7 @@ char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, 
 	} else if (resource == &bread || resource == &apple) {
 		if (player->mob.health < player->mob.maxHealth && player_payStamina(player, resource->add.food.staminaCost)) {
 			mob_heal(&player->mob, resource->add.food.heal);
+			sound_play(SND_CONFIRM);
 			return 1;
 		}
 		return 0;

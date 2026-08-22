@@ -6,6 +6,7 @@
 #include "../../gfx/color.h"
 
 #include <stdio.h>
+#include "../../sound.h"
 
 
 void treetile_init(TileID id) {
@@ -15,6 +16,7 @@ void treetile_init(TileID id) {
 
 
 void treetile_hurt2(TileID id, Level* level, int x, int y, int dmg) {
+	sound_play(SND_MONSTERHURT);
 	int count = random_next_int(&tiles[id].random, 10) == 0 ? 1 : 0;
 	Random* random = &tiles[id].random;
 
