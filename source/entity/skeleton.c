@@ -61,29 +61,24 @@ void skeleton_tick(Skeleton* skeleton) {
 }
 
 void skeleton_render(Skeleton* skeleton, Screen* screen) {
-    int xt = 0;
-    int yt = 14;
-    int flip1 = (skeleton->mob.walkDist >> 3) & 1;
-    int flip2 = (skeleton->mob.walkDist >> 3) & 1;
+    int frame = (skeleton->mob.walkDist >> 3) & 3;
+    int xt = 8 + frame * 2; // 8, 10, 12, 14
+    int yt = 34;
 
-    if (skeleton->mob.dir == 1) xt += 2;
-    if (skeleton->mob.dir > 1) {
-        flip1 = 0;
-        flip2 = ((skeleton->mob.walkDist >> 4) & 1);
-        if (skeleton->mob.dir == 2) flip1 = 1;
-        xt += 4 + ((skeleton->mob.walkDist >> 3) & 1) * 2;
-    }
-
+    int flip = (skeleton->mob.dir == 2) ? 1 : 0;
     int xo = skeleton->mob.entity.x - 8;
     int yo = skeleton->mob.entity.y - 11;
-    int col = getColor4(-1, 100, 444, 555); // Bone white
+    int col = getColor4(-1, 000, 333, 555); // Bone / archer
+
+    if (skeleton->lvl == 2) col = getColor4(-1, 100, 421, 555);
+    if (skeleton->lvl == 3) col = getColor4(-1, 110, 541, 555);
 
     if (skeleton->mob.hurtTime > 0) col = getColor4(-1, 555, 555, 555);
 
-    render_screen(screen, xo + 8 * flip1, yo + 0, xt + yt * 32, col, flip1);
-    render_screen(screen, xo + 8 - 8 * flip1, yo + 0, xt + 1 + yt * 32, col, flip1);
-    render_screen(screen, xo + 8 * flip2, yo + 8, xt + (yt + 1) * 32, col, flip2);
-    render_screen(screen, xo + 8 - 8 * flip2, yo + 8, xt + 1 + (yt + 1) * 32, col, flip2);
+    render_screen(screen, xo + 8 * flip, yo + 0, xt + yt * 32, col, flip);
+    render_screen(screen, xo + 8 - 8 * flip, yo + 0, xt + 1 + yt * 32, col, flip);
+    render_screen(screen, xo + 8 * flip, yo + 8, xt + (yt + 1) * 32, col, flip);
+    render_screen(screen, xo + 8 - 8 * flip, yo + 8, xt + 1 + (yt + 1) * 32, col, flip);
 }
 
 void skeleton_touchedBy(Skeleton* skeleton, Entity* entity) {

@@ -53,22 +53,11 @@ void zombie_tick(Zombie* zombie) {
 
 
 void zombie_render(Zombie* zombie, Screen* screen) {
-	int xt = 0;
-	int yt = 14;
+	int frame = (zombie->mob.walkDist >> 3) & 3;
+	int xt = 24 + frame * 2; // 24, 26, 28, 30
+	int yt = 34;
 
-	int flip1 = (zombie->mob.walkDist >> 3) & 1;
-	int flip2 = (zombie->mob.walkDist >> 3) & 1;
-
-	if (zombie->mob.dir == 1) xt += 2;
-	if (zombie->mob.dir > 1) {
-		flip1 = 0;
-		flip2 = ((zombie->mob.walkDist >> 4) & 1);
-		if (zombie->mob.dir == 2) {
-			flip1 = 1;
-		}
-		xt += 4 + ((zombie->mob.walkDist >> 3) & 1) * 2;
-	}
-
+	int flip = (zombie->mob.dir == 2) ? 1 : 0;
 	int xo = zombie->mob.entity.x - 8;
 	int yo = zombie->mob.entity.y - 11;
 
@@ -79,10 +68,10 @@ void zombie_render(Zombie* zombie, Screen* screen) {
 
 	if (zombie->mob.hurtTime > 0) col = getColor4(-1, 555, 555, 555);
 
-	render_screen(screen, xo + 8 * flip1, yo + 0, xt + yt * 32, col, flip1);
-	render_screen(screen, xo + 8 - 8 * flip1, yo + 0, xt + 1 + yt * 32, col, flip1);
-	render_screen(screen, xo + 8 * flip2, yo + 8, xt + (yt + 1) * 32, col, flip2);
-	render_screen(screen, xo + 8 - 8 * flip2, yo + 8, xt + 1 + (yt + 1) * 32, col, flip2);
+	render_screen(screen, xo + 8 * flip, yo + 0, xt + yt * 32, col, flip);
+	render_screen(screen, xo + 8 - 8 * flip, yo + 0, xt + 1 + yt * 32, col, flip);
+	render_screen(screen, xo + 8 * flip, yo + 8, xt + (yt + 1) * 32, col, flip);
+	render_screen(screen, xo + 8 - 8 * flip, yo + 8, xt + 1 + (yt + 1) * 32, col, flip);
 }
 
 
