@@ -68,12 +68,12 @@ void craftingmenu_init(){
 	qsort(crmenu_recipes->elements, crmenu_recipes->size, sizeof(*crmenu_recipes->elements), _cmpRec);
 }
 void craftingmenu_render(Screen* screen){
-	char s1[] = "Have";
-	char s2[] = "Cost";
+	const char* s1 = _T(STR_HAVE);
+	const char* s2 = _T(STR_COST);
 	const char* s3 = _T(STR_CRAFTING);
 	char buf[64] = {0};
-	font_renderFrame(screen, s1, strlen(s1), 12, 1, 19, 3);
-	font_renderFrame(screen, s2, strlen(s2), 12, 4, 19, 11);
+	font_renderFrame(screen, (char*)s1, strlen(s1), 12, 1, 19, 3);
+	font_renderFrame(screen, (char*)s2, strlen(s2), 12, 4, 19, 11);
 	font_renderFrame(screen, (char*)s3, strlen(s3), 0, 1, 11, 11);
 	menu_render_item_list(screen, 0, 1, 11, 11, crmenu_recipes, selected, recipe_renderInventory);
 	if(crmenu_recipes->size > 0){

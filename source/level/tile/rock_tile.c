@@ -6,9 +6,11 @@
 #include "../../item/resource/resource.h"
 #include "../../item/resourceitem.h"
 #include "../../sound.h"
+#include "../../inputhandler.h"
 
 void rocktile_hurt_(TileID id, Level* level, int x, int y, int dmg){
 	sound_play(SND_MONSTERHURT);
+	input_rumble(6);
 	int damage = level_get_data(level, x, y) + dmg;
 
 	SmashParticle* smash = malloc(sizeof(SmashParticle));

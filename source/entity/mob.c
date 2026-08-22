@@ -25,17 +25,22 @@ void mob_create(Mob* mob){
 
 
 #include "../sound.h"
+#include "../inputhandler.h"
 
 void mob_doHurt(Mob* mob, int damage, int attackDir) {
 	if (mob->hurtTime > 0) return;
 
 	if (mob->entity.type == PLAYER) {
 		sound_play(SND_PLAYERHURT);
+		input_rumble(15);
 	} else if (game_player && game_player->mob.entity.level == mob->entity.level) {
 		int xd = game_player->mob.entity.x - mob->entity.x;
 		int yd = game_player->mob.entity.y - mob->entity.y;
 		if (xd * xd + yd * yd < 120 * 120) {
 			sound_play(SND_MONSTERHURT);
+			if (xd * xd + yd * yd < 32 * 32) {
+				input_rumble(6);
+			}
 		}
 	}
 

@@ -9,6 +9,7 @@
 #include "../level.h"
 #include "../../item/resourceitem.h"
 #include "../../sound.h"
+#include "../../inputhandler.h"
 
 
 void oretile_init(TileID id, Resource* toDrop){
@@ -31,6 +32,7 @@ void oretile_render(TileID id, Screen* screen, Level* level, int x, int y){
 
 void oretile_hurt_(TileID id, Level* level, int x, int y, int dmg){
 	sound_play(SND_MONSTERHURT);
+	input_rumble(6);
 	int damage = level_get_data(level, x, y) + 1;
 
 	SmashParticle* smash = malloc(sizeof(SmashParticle));

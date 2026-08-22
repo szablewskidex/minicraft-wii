@@ -11,6 +11,7 @@
 #include "../../entity/particle/textparticle.h"
 #include "../../sound.h"
 #include "../../inputhandler.h"
+#include "../../lang.h"
 
 Resource wood;
 Resource stone;
@@ -182,8 +183,8 @@ char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, 
 
 			TextParticle* text_p = malloc(sizeof(TextParticle));
 			if (text_p) {
-				char msg[16];
-				sprintf(msg, "+%s", catchRes->name);
+				char msg[32];
+				sprintf(msg, "+%s", lang_translate_item(catchRes->name));
 				textparticle_create(text_p, strdup(msg), player->mob.entity.x, player->mob.entity.y - 8, getColor4(-1, 550, 550, 550));
 				level_addEntity(level, &text_p->entity);
 			}

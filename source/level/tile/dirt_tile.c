@@ -6,6 +6,9 @@
 #include "../../item/resourceitem.h"
 #include "../../entity/itementity.h"
 
+#include "../../sound.h"
+#include "../../inputhandler.h"
+
 char dirttile_interact(TileID id, Level* level, int xt, int yt, Player* player, Item* item, int attackDir) {
 	if(item->id == TOOL){
 		if(item->add.tool.type == SHOVEL){
@@ -17,7 +20,8 @@ char dirttile_interact(TileID id, Level* level, int xt, int yt, Player* player, 
 				resourceitem_create(&item, &dirt);
 				itementity_create(entity, item, xt*16 + random_next_int(random, 10) + 3, yt*16 + random_next_int(random, 10) + 3);
 				level_addEntity(level, (Entity *) entity);
-				//TODO sounds Sound.monsterHurt.play();
+				sound_play(SND_MONSTERHURT);
+				input_rumble(5);
 				return 1;
 			}
 		}
@@ -25,7 +29,8 @@ char dirttile_interact(TileID id, Level* level, int xt, int yt, Player* player, 
 		if(item->add.tool.type == HOE){
 			if(player_payStamina(player, 4 - item->add.tool.level)){
 				level_set_tile(level, xt, yt, FARMLAND, 0);
-				//TODO: sounds Sound.monsterHurt.play();
+				sound_play(SND_MONSTERHURT);
+				input_rumble(5);
 				return 1;
 			}
 		}

@@ -7,6 +7,7 @@
 #include "../../item/item.h"
 #include "../../item/resourceitem.h"
 #include "../../sound.h"
+#include "../../inputhandler.h"
 
 
 void hardrocktile_tick(TileID id, Level* level, int xt, int yt) {
@@ -19,6 +20,7 @@ void hardrocktile_tick(TileID id, Level* level, int xt, int yt) {
 
 void hardrocktile_hurt_(TileID id, Level* level, int x, int y, int dmg) {
 	sound_play(SND_MONSTERHURT);
+	input_rumble(6);
 	int damage = level_get_data(level, x, y) + dmg;
 
 	SmashParticle* smash_particle = malloc(sizeof(SmashParticle));

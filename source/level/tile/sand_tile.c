@@ -4,6 +4,9 @@
 #include "../../gfx/color.h"
 #include "../../item/resourceitem.h"
 
+#include "../../sound.h"
+#include "../../inputhandler.h"
+
 void sandtile_init(TileID id){
 	tile_init(id);
 	tiles[id].connectsToSand = 1;
@@ -21,6 +24,8 @@ char sandtile_interact(TileID id, Level* level, int xt, int yt, Player* player, 
 				resourceitem_create(&item, &sand);
 				itementity_create(entity, item, xt*16 + random_next_int(random, 10) + 3, yt*16 + random_next_int(random, 10) + 3);
 				level_addEntity(level, (Entity *) entity);
+				sound_play(SND_MONSTERHURT);
+				input_rumble(5);
 				return 1;
 			}
 		}

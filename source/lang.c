@@ -32,7 +32,9 @@ static const char* strings[STR_COUNT][LANG_COUNT] = {
     [STR_UI_VOLUME] = { "Dzwieki menu", "UI SFX", "UI-SFX" },
     [STR_ASPECT_RATIO] = { "Format", "Aspect", "Format" },
     [STR_ASPECT_4_3] = { "4:3 Standard", "4:3 Standard", "4:3 Standard" },
-    [STR_ASPECT_16_9] = { "16:9 Panorama", "16:9 Widescreen", "16:9 Breitbild" }
+    [STR_ASPECT_16_9] = { "16:9 Panorama", "16:9 Widescreen", "16:9 Breitbild" },
+    [STR_HAVE] = { "Masz", "Have", "Besitz" },
+    [STR_COST] = { "Koszt", "Cost", "Kosten" }
 };
 
 void lang_init(void) {
@@ -45,4 +47,107 @@ void lang_next(void) {
 const char* lang_get(StringID id) {
     if (id < 0 || id >= STR_COUNT) return "";
     return strings[id][g_currentLanguage];
+}
+
+#include <strings.h>
+
+typedef struct {
+    const char* en;
+    const char* pl;
+    const char* de;
+} ItemTranslation;
+
+static const ItemTranslation item_translations[] = {
+    // Resources
+    { "Wood", "Drewno", "Holz" },
+    { "Stone", "Kamien", "Stein" },
+    { "Flower", "Kwiat", "Blume" },
+    { "Acorn", "Zoladz", "Eichel" },
+    { "Dirt", "Ziemia", "Erde" },
+    { "Sand", "Piasek", "Sand" },
+    { "Cactus", "Kaktus", "Kaktus" },
+    { "Seeds", "Nasiona", "Samen" },
+    { "Wheat", "Pszenica", "Weizen" },
+    { "Bread", "Chleb", "Brot" },
+    { "Apple", "Jablko", "Apfel" },
+    { "COAL", "Wegiel", "Kohle" },
+    { "Coal", "Wegiel", "Kohle" },
+    { "I.ORE", "Ruda Zel.", "Eisenerz" },
+    { "G.ORE", "Ruda Zlot", "Golderz" },
+    { "IRON", "Zelazo", "Eisen" },
+    { "Iron", "Zelazo", "Eisen" },
+    { "GOLD", "Zloto", "Gold" },
+    { "Gold", "Zloto", "Gold" },
+    { "SLIME", "Szlam", "Schleim" },
+    { "glass", "Szklo", "Glas" },
+    { "Glass", "Szklo", "Glas" },
+    { "cloth", "Welna", "Wolle" },
+    { "Cloth", "Welna", "Wolle" },
+    { "Hide", "Skora", "Leder" },
+    { "Leather", "Skora", "Leder" },
+    { "gem", "Klejnot", "Edelstein" },
+    { "Gem", "Klejnot", "Edelstein" },
+    { "Boat", "Lodka", "Boot" },
+    { "L.Armor", "Skorz. Zbroja", "Lederrüstung" },
+    { "I.Armor", "Zel. Zbroja", "Eisenrüstung" },
+    { "G.Armor", "Zlot. Zbroja", "Goldrüstung" },
+    { "Gem Armor", "Djam. Zbroja", "Diamantrüstung" },
+    { "Bow", "Luk", "Bogen" },
+    { "Arrow", "Strzala", "Pfeil" },
+    { "Rod", "Wedka", "Angel" },
+    { "Raw Fish", "Sur. Ryba", "Roher Fisch" },
+    { "C.Fish", "Piecz. Ryba", "Gebr. Fisch" },
+    { "Shears", "Nozyce", "Schere" },
+    { "Carrot", "Marchew", "Karotte" },
+    { "Potato", "Ziemniak", "Kartoffel" },
+    // Furniture
+    { "Workbench", "Warsztat", "Werkbank" },
+    { "Chest", "Skrzynia", "Truhe" },
+    { "Anvil", "Kowadlo", "Amboss" },
+    { "Furnace", "Piec Hutn.", "Schmelzofen" },
+    { "Oven", "Piec Kaflowy", "Ofen" },
+    { "Lantern", "Latarnia", "Laterne" },
+    { "Bed", "Lozko", "Bett" },
+    { "Door", "Drzwi", "Tuer" },
+    // Tools
+    { "Wood Axe", "Drewn. Siekiera", "Holzaxt" },
+    { "Rock Axe", "Kam. Siekiera", "Steinaxt" },
+    { "Iron Axe", "Zel. Siekiera", "Eisenaxt" },
+    { "Gold Axe", "Zlot. Siekiera", "Goldaxt" },
+    { "Gem Axe", "Djam. Siekiera", "Diamantaxt" },
+    { "Wood Pick", "Drewn. Kilof", "Holzspitzhacke" },
+    { "Rock Pick", "Kam. Kilof", "Steinspitzhacke" },
+    { "Iron Pick", "Zel. Kilof", "Eisenspitzhacke" },
+    { "Gold Pick", "Zlot. Kilof", "Goldspitzhacke" },
+    { "Gem Pick", "Djam. Kilof", "Diamantspitzhacke" },
+    { "Wood Sword", "Drewn. Miecz", "Holzschwert" },
+    { "Rock Sword", "Kam. Miecz", "Steinschwert" },
+    { "Iron Sword", "Zel. Miecz", "Eisenschwert" },
+    { "Gold Sword", "Zlot. Miecz", "Goldschwert" },
+    { "Gem Sword", "Djam. Miecz", "Diamantschwert" },
+    { "Wood Shovel", "Drewn. Lopata", "Holzschaufel" },
+    { "Rock Shovel", "Kam. Lopata", "Steinschaufel" },
+    { "Iron Shovel", "Zel. Lopata", "Eisenschaufel" },
+    { "Gold Shovel", "Zlot. Lopata", "Goldschaufel" },
+    { "Gem Shovel", "Djam. Lopata", "Diamantschaufel" },
+    { "Wood Hoe", "Drewn. Motyka", "Holzhacke" },
+    { "Rock Hoe", "Kam. Motyka", "Steinhacke" },
+    { "Iron Hoe", "Zel. Motyka", "Eisenhacke" },
+    { "Gold Hoe", "Zlot. Motyka", "Goldhacke" },
+    { "Gem Hoe", "Djam. Motyka", "Diamanthacke" },
+    { NULL, NULL, NULL }
+};
+
+const char* lang_translate_item(const char* name) {
+    if (!name) return "";
+    if (g_currentLanguage == LANG_EN) return name;
+
+    for (int i = 0; item_translations[i].en != NULL; ++i) {
+        if (strcasecmp(name, item_translations[i].en) == 0) {
+            if (g_currentLanguage == LANG_PL) return item_translations[i].pl;
+            if (g_currentLanguage == LANG_DE) return item_translations[i].de;
+            return item_translations[i].en;
+        }
+    }
+    return name;
 }

@@ -20,7 +20,13 @@ int furnitureitem_getColor(Item* item){
 }
 
 
+#include "../lang.h"
+#include "../entity/entityid.h"
+
 int furnitureitem_getSprite(Item* item){
+	if (item->add.furniture.furniture && item->add.furniture.furniture->entity.type == DOOR) {
+		return 4 + 41 * 32;
+	}
 	return item->add.furniture.furniture->sprite + 10 * 32;
 }
 
@@ -32,7 +38,8 @@ void furnitureitem_renderIcon(Item* item, Screen* screen, int x, int y){
 
 void furnitureitem_renderInventory(Item* item, Screen* screen, int x, int y){
 	render_screen(screen, x, y, furnitureitem_getSprite(item), furnitureitem_getColor(item), 0);
-	font_draw(item->add.furniture.furniture->name, strlen(item->add.furniture.furniture->name), screen, x + 8, y, getColor4(-1, 555, 555, 555));
+	const char* tName = lang_translate_item(item->add.furniture.furniture->name);
+	font_draw((char*)tName, strlen(tName), screen, x + 8, y, getColor4(-1, 555, 555, 555));
 }
 
 

@@ -30,9 +30,12 @@ void resourceitem_renderIcon(Item* item, Screen* screen, int x, int y){
 	render_screen(screen, x, y, item->add.resource.resource->sprite, item->add.resource.resource->color, 0);
 }
 
+#include "../lang.h"
+
 void resourceitem_renderInventory(Item* item, Screen* screen, int x, int y){
 	render_screen(screen, x, y, item->add.resource.resource->sprite, item->add.resource.resource->color, 0);
-	font_draw(item->add.resource.resource->name, strlen(item->add.resource.resource->name), screen, x + 32, y, getColor4(-1, 555, 555, 555));
+	const char* tName = lang_translate_item(item->add.resource.resource->name);
+	font_draw((char*)tName, strlen(tName), screen, x + 32, y, getColor4(-1, 555, 555, 555));
 	int cc = item->add.resource.count;
 	if(cc > 999) cc = 999;
 	char num[4] = {0, 0, 0, 0};
@@ -41,7 +44,7 @@ void resourceitem_renderInventory(Item* item, Screen* screen, int x, int y){
 }
 
 char* resourceitem_getName(Item* item){
-	return item->add.resource.resource->name;
+	return (char*)lang_translate_item(item->add.resource.resource->name);
 }
 
 char resourceitem_interactOn(Item* item, TileID tile, Level* level, int xt, int yt, Player* player, int attackDir){

@@ -39,6 +39,8 @@ typedef enum {
     STR_ASPECT_RATIO,
     STR_ASPECT_4_3,
     STR_ASPECT_16_9,
+    STR_HAVE,
+    STR_COST,
     STR_COUNT
 } StringID;
 
@@ -47,6 +49,7 @@ extern Language g_currentLanguage;
 void lang_init(void);
 void lang_next(void);
 const char* lang_get(StringID id);
+const char* lang_translate_item(const char* name);
 
 #define _T(id) lang_get(id)
 

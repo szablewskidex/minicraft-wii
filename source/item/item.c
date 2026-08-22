@@ -124,19 +124,25 @@ uint8_t item_canAttack(Item* item){
 	}
 }
 
+#include "../lang.h"
+
 void item_getName(Item* item, char* buf){
-	char* name;
+	const char* name = "";
 	switch(item->id){
 		case FURNITURE:
-			name = item->add.furniture.furniture->name;
-			strcpy(buf, name);
+			if (item->add.furniture.furniture) {
+				name = item->add.furniture.furniture->name;
+			}
+			strcpy(buf, lang_translate_item(name));
 			break;
 		case POWERGLOVE:
-			strcpy(buf, powergloveitem_getName(item));
+			strcpy(buf, lang_translate_item(powergloveitem_getName(item)));
 			break;
 		case RESOURCE:
-			name = item->add.resource.resource->name;
-			strcpy(buf, name);
+			if (item->add.resource.resource) {
+				name = item->add.resource.resource->name;
+			}
+			strcpy(buf, lang_translate_item(name));
 			break;
 		case TOOL:
 			toolitem_getName(item, buf);

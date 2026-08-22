@@ -51,17 +51,21 @@ void toolitem_renderIcon(Item* item, Screen* screen, int x, int y) {
 }
 
 
+#include "../lang.h"
+
 void toolitem_renderInventory(Item* item, Screen* screen, int x, int y) {
 	render_screen(screen, x, y, toolitem_getSprite(item), toolitem_getColor(item), 0);
-	char* name = malloc(32); //XXX ew
+	char name[64];
 	toolitem_getName(item, name);
 	font_draw(name, strlen(name), screen, x + 8, y, GETCOLOR4(-1, 555, 555, 555));
-	free(name);
 }
 
 
 void toolitem_getName(Item* item, char* buf) {
-	sprintf(buf, "%s %s", LEVEL_NAMES[item->add.tool.level], type_getName(item->add.tool.type));
+	char raw[64];
+	sprintf(raw, "%s %s", LEVEL_NAMES[item->add.tool.level], type_getName(item->add.tool.type));
+	const char* tName = lang_translate_item(raw);
+	strcpy(buf, tName);
 }
 
 

@@ -18,12 +18,16 @@ void grasstile_init(TileID id) {
 }
 
 
+#include "../../sound.h"
+#include "../../inputhandler.h"
+
 char grasstile_interact(TileID id, Level* level, int xt, int yt, Player* player, Item* item, int attackDir) {
 	if (item->id == TOOL) {
 		if (item->add.tool.type == SHOVEL) {
 			if (player_payStamina(player, 4 - item->add.tool.level)) {
 				level_set_tile(level, xt, yt, DIRT, 0);
-				//TODO sounds Sound.monsterHurt.play();
+				sound_play(SND_MONSTERHURT);
+				input_rumble(5);
 				Random* random = &tiles[id].random;
 
 				if (random_next_int(random, 5) == 0) {
@@ -39,7 +43,8 @@ char grasstile_interact(TileID id, Level* level, int xt, int yt, Player* player,
 
 		if (item->add.tool.type == HOE) {
 			if (player_payStamina(player, 4 - item->add.tool.level)) {
-				// TODO sounds Sound.monsterHurt.play();
+				sound_play(SND_MONSTERHURT);
+				input_rumble(5);
 				Random* random = &tiles[id].random;
 
 				if (random_next_int(random, 5) == 0) {
