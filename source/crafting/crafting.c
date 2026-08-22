@@ -216,6 +216,21 @@ void crafting_init() {
 	recipe_addCost(recipe, &gem, 5);
 	arraylist_push(&anvilRecipes, recipe);
 
+	recipe = malloc(sizeof(Recipe));
+	resourcerecipe_create(recipe, &ironArmor);
+	recipe_addCost(recipe, &ironIngot, 5);
+	arraylist_push(&anvilRecipes, recipe);
+
+	recipe = malloc(sizeof(Recipe));
+	resourcerecipe_create(recipe, &goldArmor);
+	recipe_addCost(recipe, &goldIngot, 5);
+	arraylist_push(&anvilRecipes, recipe);
+
+	recipe = malloc(sizeof(Recipe));
+	resourcerecipe_create(recipe, &gemArmor);
+	recipe_addCost(recipe, &gem, 5);
+	arraylist_push(&anvilRecipes, recipe);
+
 
 	recipe = malloc(sizeof(Recipe));
 	resourcerecipe_create(recipe, &ironIngot);

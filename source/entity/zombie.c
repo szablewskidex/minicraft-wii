@@ -82,6 +82,8 @@ void zombie_touchedBy(Zombie* zombie, Entity* entity) {
 }
 
 
+#include "exporb.h"
+
 void zombie_die(Zombie* zombie){
 	mob_die(&zombie->mob);
 
@@ -103,16 +105,16 @@ void zombie_die(Zombie* zombie){
             zombie->mob.entity.y + random_next_int(random, 11) - 5
         );
 
-        // level_addEntity takes ownership of the memory
 		level_addEntity(zombie->mob.entity.level, &item_entity->entity);
 	}
 
-	if (game_player && game_player->mob.entity.level == zombie->mob.entity.level) {
-		int xd = game_player->mob.entity.x - zombie->mob.entity.x;
-		int yd = game_player->mob.entity.y - zombie->mob.entity.y;
-		if (xd * xd + yd * yd < 120 * 120) {
-			game_player->score += 50 * zombie->lvl;
-			player_addExp(game_player, 25 * zombie->lvl);
+	// Drop glowing EXP orbs to pick up!
+	int expCount = random_next_int(random, 2) + 2;
+	for (int i = 0; i < expCount; ++i) {
+		ExpOrb* orb = malloc(sizeof(ExpOrb));
+		if (orb) {
+			exporb_create(orb, zombie->mob.entity.x, zombie->mob.entity.y, 8 * zombie->lvl);
+			level_addEntity(zombie->mob.entity.level, &orb->entity);
 		}
 	}
 }

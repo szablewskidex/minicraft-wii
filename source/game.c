@@ -419,6 +419,14 @@ void game_renderGui() {
             }
         }
 
+        // Equipped Armor display in HUD
+        if (game_player->armor) {
+            render_screen(&game_screen, exp_x + 40, hud_y, game_player->armor->sprite, game_player->armor->color, 0);
+            char def_str[8];
+            sprintf(def_str, "+%d", game_player->armorDefense);
+            font_draw(def_str, strlen(def_str), &game_screen, exp_x + 48, hud_y, getColor4(-1, 333, 444, 555));
+        }
+
         // Active item / tool box on the right side of HUD
         int tool_x = game_screen.w - 96;
         int tool_y = hud_y;
@@ -497,8 +505,21 @@ void game_render() {
 			screen_overlay(&game_screen, &game_lightScreen, xScroll, yScroll);
 		} else if (game_currentLevel == 3) {
 			int dayTime = game_gameTime % 24000;
-			if (dayTime > 12000 && dayTime < 22000) {
-				clear_screen(&game_lightScreen, 0);
+			int ambient = 255;
+
+			if (dayTime >= 10000 && dayTime < 13000) {
+				// Smooth dusk: darkness slowly creeps in from outer edges towards center
+				ambient = 255 * (13000 - dayTime) / 3000;
+			} else if (dayTime >= 13000 && dayTime < 21000) {
+				// Full night
+				ambient = 0;
+			} else if (dayTime >= 21000 && dayTime < 24000) {
+				// Smooth dawn: morning light gradually expands in circle
+				ambient = 255 * (dayTime - 21000) / 3000;
+			}
+
+			if (ambient < 255) {
+				clear_screen(&game_lightScreen, ambient);
 				renderLight(game_level, &game_lightScreen, xScroll, yScroll);
 				screen_overlay(&game_screen, &game_lightScreen, xScroll, yScroll);
 			}

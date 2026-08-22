@@ -26,7 +26,8 @@ typedef enum{
 	SHEEP,
 	CRAB,
 	FROG,
-	DOOR
+	DOOR,
+	EXPORB
 } EntityId;
 
 #endif // ENTITYID_H

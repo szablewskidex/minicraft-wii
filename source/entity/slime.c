@@ -59,7 +59,9 @@ void slime_tick(Slime* slime){
 }
 
 
-void slime_die(Slime* slimee) {
+#include "exporb.h"
+
+void slime_die(Slime* slimee){
 	mob_die(&slimee->mob);
 
 	Random* random = &slimee->mob.entity.random;
@@ -82,6 +84,15 @@ void slime_die(Slime* slimee) {
 
         // level_addEntity takes ownership of the memory
 		level_addEntity(slimee->mob.entity.level, &item_entity->entity);
+	}
+
+	int expCount = random_next_int(random, 2) + 1;
+	for (int i = 0; i < expCount; ++i) {
+		ExpOrb* orb = malloc(sizeof(ExpOrb));
+		if (orb) {
+			exporb_create(orb, slimee->mob.entity.x, slimee->mob.entity.y, 5 * slimee->lvl);
+			level_addEntity(slimee->mob.entity.level, &orb->entity);
+		}
 	}
 
 	if (game_player && game_player->mob.entity.level == slimee->mob.entity.level) {

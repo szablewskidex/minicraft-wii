@@ -7,7 +7,7 @@
 struct _Player;
 
 typedef struct _Resource{
-	char name[7]; //max name len = 6 + 1 \x00
+	char name[16]; // max name len
 	int sprite;
 	int color;
 	union{
@@ -18,7 +18,8 @@ typedef struct _Resource{
 
 extern Resource wood, stone, flower, acorn, dirt, sand, cactusFlower, seeds, wheat, bread, apple;
 extern Resource coal, ironOre, goldOre, ironIngot, goldIngot;
-extern Resource slime, glass, cloth, cloud, gem, leather, boat, leatherArmor;
+extern Resource slime, glass, cloth, cloud, gem, leather, boat;
+extern Resource leatherArmor, ironArmor, goldArmor, gemArmor;
 
 
 void init_resources();

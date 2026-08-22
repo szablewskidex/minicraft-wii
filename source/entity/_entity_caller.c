@@ -29,6 +29,7 @@
 #include "crab.h"
 #include "frog.h"
 #include "door.h"
+#include "exporb.h"
 #include "../item/item.h"
 
 #include <string.h>
@@ -47,6 +48,9 @@ void call_entity_tick(Entity* entity) {
 			break;
 		case ITEMENTITY:
 			itementity_tick((ItemEntity*) entity);
+			break;
+		case EXPORB:
+			exporb_tick((ExpOrb*) entity);
 			break;
 		case ANVIL:
 		case BED:
@@ -116,6 +120,7 @@ uint8_t call_entity_canSwim(Entity* entity) {
 uint8_t call_entity_isBlockableBy(Entity* entity, Mob* mob) {
 	switch (entity->type) {
 		case ITEMENTITY:
+		case EXPORB:
 		case SPARK:
 			return 0;
 		case PLAYER:
@@ -134,6 +139,9 @@ void call_entity_render(Entity* entity, Screen* screen) {
 			break;
 		case ITEMENTITY:
 			itementity_render((ItemEntity*) entity, screen);
+			break;
+		case EXPORB:
+			exporb_render((ExpOrb*) entity, screen);
 			break;
 		case TEXTPARTICLE:
 			textparticle_render((TextParticle*) entity, screen);
@@ -376,9 +384,16 @@ void call_entity_touchedBy(Entity* entity, Entity* e) {
 				call_entity_touchItem(e, (ItemEntity *) entity);
 			}
 			break;
+		case EXPORB:
+			if (e->type == PLAYER) {
+				exporb_touchedBy((ExpOrb*)entity, e);
+			}
+			break;
 		case PLAYER:
 			if (e->type == ITEMENTITY) {
 				call_entity_touchItem(entity, (ItemEntity *) e);
+			} else if (e->type == EXPORB) {
+				exporb_touchedBy((ExpOrb*)e, entity);
 			}
 			break;
 		default:

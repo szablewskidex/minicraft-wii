@@ -51,19 +51,34 @@ void input_tick(){
     s8 stick_x = PAD_StickX(0);
     s8 stick_y = PAD_StickY(0);
 
-    // Support Vertical Wiimote, Horizontal (Sideways) Wiimote, Classic Controller & GameCube Pad
-    char move_up    = (w_held & (WPAD_BUTTON_UP | WPAD_BUTTON_RIGHT | WPAD_CLASSIC_BUTTON_UP)) || (g_held & PAD_BUTTON_UP) || (stick_y > 40);
-    char move_down  = (w_held & (WPAD_BUTTON_DOWN | WPAD_BUTTON_LEFT | WPAD_CLASSIC_BUTTON_DOWN)) || (g_held & PAD_BUTTON_DOWN) || (stick_y < -40);
-    char move_left  = (w_held & (WPAD_BUTTON_LEFT | WPAD_BUTTON_UP | WPAD_CLASSIC_BUTTON_LEFT)) || (g_held & PAD_BUTTON_LEFT) || (stick_x < -40);
-    char move_right = (w_held & (WPAD_BUTTON_RIGHT | WPAD_BUTTON_DOWN | WPAD_CLASSIC_BUTTON_RIGHT)) || (g_held & PAD_BUTTON_RIGHT) || (stick_x > 40);
+    // Movement: D-Pad, Nunchuk stick, Classic stick/D-pad, GameCube stick/D-pad
+    char move_up    = (w_held & (WPAD_BUTTON_UP | WPAD_CLASSIC_BUTTON_UP)) || (g_held & PAD_BUTTON_UP) || (stick_y > 40);
+    char move_down  = (w_held & (WPAD_BUTTON_DOWN | WPAD_CLASSIC_BUTTON_DOWN)) || (g_held & PAD_BUTTON_DOWN) || (stick_y < -40);
+    char move_left  = (w_held & (WPAD_BUTTON_LEFT | WPAD_CLASSIC_BUTTON_LEFT)) || (g_held & PAD_BUTTON_LEFT) || (stick_x < -40);
+    char move_right = (w_held & (WPAD_BUTTON_RIGHT | WPAD_CLASSIC_BUTTON_RIGHT)) || (g_held & PAD_BUTTON_RIGHT) || (stick_x > 40);
 
-    char act_attack = (w_held & (WPAD_BUTTON_2 | WPAD_CLASSIC_BUTTON_A | WPAD_CLASSIC_BUTTON_B)) || (g_held & (PAD_BUTTON_A | PAD_BUTTON_B));
+    // Also support Horizontal (Sideways) Wiimote orientation if player is using 2 as attack and 1 as menu
+    if (w_held & WPAD_BUTTON_2) {
+        if (w_held & WPAD_BUTTON_RIGHT) move_up = 1;
+        if (w_held & WPAD_BUTTON_LEFT)  move_down = 1;
+        if (w_held & WPAD_BUTTON_UP)    move_left = 1;
+        if (w_held & WPAD_BUTTON_DOWN)  move_right = 1;
+    }
+
+    // Action / Attack: Wiimote 2 or A, Nunchuk C, Classic A/B, GC A/B
+    char act_attack = (w_held & (WPAD_BUTTON_2 | WPAD_BUTTON_A | WPAD_NUNCHUK_BUTTON_C | WPAD_CLASSIC_BUTTON_A | WPAD_CLASSIC_BUTTON_B)) || (g_held & (PAD_BUTTON_A | PAD_BUTTON_B));
+
+    // Menu / Inventory: Wiimote 1 or Minus, Classic X/Y, GC X/Y
     char act_menu   = (w_held & (WPAD_BUTTON_1 | WPAD_CLASSIC_BUTTON_X | WPAD_CLASSIC_BUTTON_Y)) || (g_held & (PAD_BUTTON_X | PAD_BUTTON_Y));
+
+    // Pause: Wiimote Plus/Home, Classic Plus/Home, GC Start
     char act_pause  = (w_held & (WPAD_BUTTON_PLUS | WPAD_BUTTON_HOME | WPAD_CLASSIC_BUTTON_PLUS | WPAD_CLASSIC_BUTTON_HOME)) || (g_held & PAD_BUTTON_START);
 
-    // Quick Tool / Item Cycle: Wiimote B (trigger) or Minus, Classic L/R, GC L/R/Z
-    char act_next   = (w_held & (WPAD_BUTTON_B | WPAD_BUTTON_MINUS | WPAD_CLASSIC_BUTTON_FULL_R | WPAD_CLASSIC_BUTTON_ZR)) || (g_held & (PAD_TRIGGER_R | PAD_TRIGGER_Z));
-    char act_prev   = (w_held & (WPAD_BUTTON_A | WPAD_CLASSIC_BUTTON_FULL_L | WPAD_CLASSIC_BUTTON_ZL)) || (g_held & PAD_TRIGGER_L);
+    // Quick Tool / Item Cycle:
+    // Next: Wiimote B (trigger under wiimote), Nunchuk Z, Classic R / ZR, GC R / Z
+    // Prev: Wiimote Minus, Classic L / ZL, GC L
+    char act_next   = (w_held & (WPAD_BUTTON_B | WPAD_NUNCHUK_BUTTON_Z | WPAD_CLASSIC_BUTTON_FULL_R | WPAD_CLASSIC_BUTTON_ZR)) || (g_held & (PAD_TRIGGER_R | PAD_TRIGGER_Z));
+    char act_prev   = (w_held & (WPAD_BUTTON_MINUS | WPAD_CLASSIC_BUTTON_FULL_L | WPAD_CLASSIC_BUTTON_ZL)) || (g_held & PAD_TRIGGER_L);
 
     key_toggle(&up, move_up);
     key_toggle(&down, move_down);

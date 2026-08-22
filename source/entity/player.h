@@ -21,6 +21,8 @@ typedef struct _Player{
 	int exp;
 	int level;
 	int maxExp;
+	struct _Resource* armor;
+	int armorDefense;
 } Player;
 
 void player_create(Player* player);

@@ -5,6 +5,7 @@
 #include "food_resource.h"
 #include "../../gfx/color.h"
 #include "../../entity/player.h"
+#include "../../sound.h"
 
 Resource wood;
 Resource stone;
@@ -32,12 +33,15 @@ Resource gem;
 Resource leather;
 Resource boat;
 Resource leatherArmor;
+Resource ironArmor;
+Resource goldArmor;
+Resource gemArmor;
 
 
 void init_resource(Resource* resource, char* name, int sprite, int color) {
 	memset(resource->name, 0, sizeof(resource->name));
-	strncpy(resource->name, name, 6);
-	resource->name[6] = '\0';
+	strncpy(resource->name, name, 15);
+	resource->name[15] = '\0';
 	resource->sprite = sprite;
 	resource->color = color;
 }
@@ -79,40 +83,29 @@ void init_resources() {
 	init_resource(&glass, "glass", 12 + 4 * 32, getColor4(-1, 555, 555, 555));
 	init_resource(&cloth, "cloth", 1 + 4 * 32, getColor4(-1, 25, 252, 141));
 	init_resource(&leather, "Hide", 6 + 4 * 32, getColor4(-1, 100, 310, 420));
-	init_resource(&boat, "Boat", 8 + 4 * 32, getColor4(-1, 100, 321, 431));
-	init_resource(&leatherArmor, "Armor", 7 + 4 * 32, getColor4(-1, 100, 310, 420));
+	init_resource(&boat, "Boat", 15 + 4 * 32, getColor4(-1, 100, 321, 431));
+
+	// All 4 Armors
+	init_resource(&leatherArmor, "L.Armor", 10 + 4 * 32, getColor4(-1, 100, 321, 431));
+	init_resource(&ironArmor, "I.Armor", 11 + 4 * 32, getColor4(-1, 100, 322, 555));
+	init_resource(&goldArmor, "G.Armor", 12 + 4 * 32, getColor4(-1, 110, 440, 553));
+	init_resource(&gemArmor, "Gem Armor", 13 + 4 * 32, getColor4(-1, 101, 244, 455));
 
 	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources)/sizeof(TileID));
-
 	init_resource(&gem, "gem", 13 + 4 * 32, getColor4(-1, 101, 404, 545));
 }
 
-#include "../../sound.h"
 
 char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, int yt, Player* player, int attackDir) {
-	if (resource == &stone || resource == &cloud || resource == &flower || resource == &acorn || resource == &dirt || resource == &sand || resource == &cactusFlower || resource == &seeds) {
+	if (resource->add.plantable.sourceTiles) {
 		for (int i = 0; i < resource->add.plantable.sourceTilesSize; ++i) {
-			if (resource->add.plantable.sourceTiles[i] == tile) {
-				if (resource->add.plantable.targetTile == ROCK) {
-					int px0 = player->mob.entity.x - player->mob.entity.xr;
-					int px1 = player->mob.entity.x + player->mob.entity.xr;
-					int py0 = player->mob.entity.y - player->mob.entity.yr;
-					int py1 = player->mob.entity.y + player->mob.entity.yr;
-					int tx0 = xt * 16;
-					int tx1 = xt * 16 + 15;
-					int ty0 = yt * 16;
-					int ty1 = yt * 16 + 15;
-					if (px1 >= tx0 && px0 <= tx1 && py1 >= ty0 && py0 <= ty1) {
-						return 0;
-					}
-				}
+			if (tile == resource->add.plantable.sourceTiles[i]) {
 				level_set_tile(level, xt, yt, resource->add.plantable.targetTile, 0);
 				sound_play(SND_CONFIRM);
 				return 1;
 			}
 		}
 		return 0;
-
 	} else if (resource == &bread || resource == &apple) {
 		if (player->mob.health < player->mob.maxHealth && player_payStamina(player, resource->add.food.staminaCost)) {
 			mob_heal(&player->mob, resource->add.food.heal);
@@ -128,6 +121,15 @@ char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, 
 			return 1;
 		}
 		return 0;
+	} else if (resource == &leatherArmor || resource == &ironArmor || resource == &goldArmor || resource == &gemArmor) {
+		player->armor = resource;
+		if (resource == &leatherArmor) player->armorDefense = 1;
+		else if (resource == &ironArmor) player->armorDefense = 2;
+		else if (resource == &goldArmor) player->armorDefense = 3;
+		else if (resource == &gemArmor) player->armorDefense = 4;
+
+		sound_play(SND_CONFIRM);
+		return 1;
 	}
 	return 0;
 }

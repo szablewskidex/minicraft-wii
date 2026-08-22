@@ -87,6 +87,8 @@ void skeleton_touchedBy(Skeleton* skeleton, Entity* entity) {
     }
 }
 
+#include "exporb.h"
+
 void skeleton_die(Skeleton* skeleton){
     mob_die(&skeleton->mob);
     Random* random = &skeleton->mob.entity.random;
@@ -103,12 +105,12 @@ void skeleton_die(Skeleton* skeleton){
         level_addEntity(skeleton->mob.entity.level, &item_entity->entity);
     }
 
-    if (game_player && game_player->mob.entity.level == skeleton->mob.entity.level) {
-        int xd = game_player->mob.entity.x - skeleton->mob.entity.x;
-        int yd = game_player->mob.entity.y - skeleton->mob.entity.y;
-        if (xd * xd + yd * yd < 120 * 120) {
-            game_player->score += 60 * skeleton->lvl;
-            player_addExp(game_player, 30 * skeleton->lvl);
+    int expCount = random_next_int(random, 2) + 2;
+    for (int i = 0; i < expCount; ++i) {
+        ExpOrb* orb = malloc(sizeof(ExpOrb));
+        if (orb) {
+            exporb_create(orb, skeleton->mob.entity.x, skeleton->mob.entity.y, 10 * skeleton->lvl);
+            level_addEntity(skeleton->mob.entity.level, &orb->entity);
         }
     }
 }

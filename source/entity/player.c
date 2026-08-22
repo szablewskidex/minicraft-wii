@@ -37,6 +37,8 @@ void player_create(Player* player) {
 	player->level = 1;
 	player->exp = 0;
 	player->maxExp = 100;
+	player->armor = 0;
+	player->armorDefense = 0;
 	inventory_create(&player->inventory);
 
 	Item iWork;
@@ -257,9 +259,10 @@ void player_doHurt(Player* player, int damage, int attackDir){
         return;
     }
 
-	// Leather armor damage reduction!
-	if (player->activeItem && player->activeItem->id == RESOURCE && player->activeItem->add.resource.resource == &leatherArmor) {
-		if (damage > 1) damage -= 1;
+	// Equipped armor damage reduction!
+	if (player->armorDefense > 0) {
+		damage -= player->armorDefense;
+		if (damage < 1) damage = 1;
 	}
 
     TextParticle* text_particle = malloc(sizeof(TextParticle));
@@ -550,6 +553,15 @@ void player_render(Player* player, Screen* screen){
 	}
 
 	int col = getColor4(-1, 100, 220, 532);
+	if (player->armor == &leatherArmor) {
+		col = getColor4(-1, 100, 310, 420);
+	} else if (player->armor == &ironArmor) {
+		col = getColor4(-1, 100, 322, 555);
+	} else if (player->armor == &goldArmor) {
+		col = getColor4(-1, 110, 440, 553);
+	} else if (player->armor == &gemArmor) {
+		col = getColor4(-1, 101, 244, 455);
+	}
 	if (player->mob.hurtTime > 0) {
         col = getColor4(-1, 555, 555, 555);
     }
@@ -657,26 +669,40 @@ void player_free(Player* player){
 
 
 void player_cycleNextItem(Player* player) {
-	if (!player || player->inventory.items.size == 0) return;
-
-	if (player->activeItem) {
-		arraylist_pushTo(&player->inventory.items, 0, player->activeItem);
-		player->activeItem = 0;
+	if (!player) return;
+	if (player->inventory.items.size == 0) {
+		if (player->activeItem) {
+			arraylist_push(&player->inventory.items, player->activeItem);
+			player->activeItem = 0;
+			sound_play(SND_SELECT);
+		}
+		return;
 	}
 
-	player->activeItem = (Item*)arraylist_removeId(&player->inventory.items, 0);
+	Item* nextItem = (Item*)arraylist_removeId(&player->inventory.items, 0);
+	if (player->activeItem) {
+		arraylist_push(&player->inventory.items, player->activeItem);
+	}
+	player->activeItem = nextItem;
 	sound_play(SND_SELECT);
 }
 
 void player_cyclePrevItem(Player* player) {
-	if (!player || player->inventory.items.size == 0) return;
-
-	if (player->activeItem) {
-		arraylist_pushTo(&player->inventory.items, player->inventory.items.size, player->activeItem);
-		player->activeItem = 0;
+	if (!player) return;
+	if (player->inventory.items.size == 0) {
+		if (player->activeItem) {
+			arraylist_pushTo(&player->inventory.items, 0, player->activeItem);
+			player->activeItem = 0;
+			sound_play(SND_SELECT);
+		}
+		return;
 	}
 
-	player->activeItem = (Item*)arraylist_removeId(&player->inventory.items, player->inventory.items.size - 1);
+	Item* prevItem = (Item*)arraylist_removeId(&player->inventory.items, player->inventory.items.size - 1);
+	if (player->activeItem) {
+		arraylist_pushTo(&player->inventory.items, 0, player->activeItem);
+	}
+	player->activeItem = prevItem;
 	sound_play(SND_SELECT);
 }
 
