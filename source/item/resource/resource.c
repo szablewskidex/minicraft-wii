@@ -98,23 +98,23 @@ void init_resources() {
 	init_resource(&glass, "glass", 12 + 4 * 32, getColor4(-1, 555, 555, 555));
 	init_resource(&cloth, "cloth", 1 + 4 * 32, getColor4(-1, 25, 252, 141));
 	init_resource(&leather, "Hide", 6 + 4 * 32, getColor4(-1, 100, 310, 420));
-	init_resource(&boat, "Boat", 15 + 4 * 32, getColor4(-1, 100, 321, 431));
+	init_resource(&boat, "Boat", 5 + 41 * 32, getColor4(-1, 100, 321, 431));
 
-	// All 4 Armors
-	init_resource(&leatherArmor, "L.Armor", 10 + 4 * 32, getColor4(-1, 100, 321, 431));
-	init_resource(&ironArmor, "I.Armor", 11 + 4 * 32, getColor4(-1, 100, 322, 555));
-	init_resource(&goldArmor, "G.Armor", 12 + 4 * 32, getColor4(-1, 110, 440, 553));
-	init_resource(&gemArmor, "Gem Armor", 13 + 4 * 32, getColor4(-1, 101, 244, 455));
+	// All 4 Armors (Row 41)
+	init_resource(&leatherArmor, "L.Armor", 0 + 41 * 32, getColor4(-1, 100, 321, 431));
+	init_resource(&ironArmor, "I.Armor", 1 + 41 * 32, getColor4(-1, 100, 322, 555));
+	init_resource(&goldArmor, "G.Armor", 2 + 41 * 32, getColor4(-1, 110, 440, 553));
+	init_resource(&gemArmor, "Gem Armor", 3 + 41 * 32, getColor4(-1, 101, 244, 455));
 
-	// New Tools & Items
-	init_resource(&bow, "Bow", 0 + 5 * 32, getColor4(-1, 100, 321, 431));
-	init_resource(&arrow, "Arrow", 1 + 5 * 32, getColor4(-1, 100, 321, 555));
-	init_resource(&fishingRod, "Rod", 2 + 5 * 32, getColor4(-1, 100, 321, 444));
-	init_food_resource(&rawFish, "Raw Fish", 3 + 5 * 32, getColor4(-1, 111, 233, 445), 1, 3);
-	init_food_resource(&cookedFish, "C.Fish", 4 + 5 * 32, getColor4(-1, 100, 321, 432), 4, 10);
-	init_resource(&shears, "Shears", 5 + 5 * 32, getColor4(-1, 100, 333, 555));
-	init_food_resource(&carrot, "Carrot", 6 + 5 * 32, getColor4(-1, 10, 530, 50), 2, 4);
-	init_food_resource(&potato, "Potato", 7 + 5 * 32, getColor4(-1, 100, 431, 542), 2, 4);
+	// New Tools & Items (Row 41)
+	init_resource(&bow, "Bow", 6 + 41 * 32, getColor4(-1, 100, 321, 431));
+	init_resource(&arrow, "Arrow", 7 + 41 * 32, getColor4(-1, 100, 321, 555));
+	init_resource(&fishingRod, "Rod", 8 + 41 * 32, getColor4(-1, 100, 321, 444));
+	init_food_resource(&rawFish, "Raw Fish", 9 + 41 * 32, getColor4(-1, 111, 233, 445), 1, 3);
+	init_food_resource(&cookedFish, "C.Fish", 10 + 41 * 32, getColor4(-1, 100, 321, 432), 4, 10);
+	init_resource(&shears, "Shears", 11 + 41 * 32, getColor4(-1, 100, 333, 555));
+	init_food_resource(&carrot, "Carrot", 12 + 41 * 32, getColor4(-1, 10, 530, 50), 2, 4);
+	init_food_resource(&potato, "Potato", 13 + 41 * 32, getColor4(-1, 100, 431, 542), 2, 4);
 
 	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources)/sizeof(TileID));
 	init_resource(&gem, "gem", 13 + 4 * 32, getColor4(-1, 101, 404, 545));

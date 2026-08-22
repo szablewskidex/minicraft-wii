@@ -528,8 +528,8 @@ void player_render(Player* player, Screen* screen){
 
 	if (call_entity_isSwimming(&player->mob.entity)) {
 		if (hasBoat) {
-			render_screen(screen, xo + 0, yo + 6, 15 + 4 * 32, getColor4(-1, 100, 321, 431), 0);
-			render_screen(screen, xo + 8, yo + 6, 15 + 4 * 32, getColor4(-1, 100, 321, 431), 1);
+			render_screen(screen, xo + 0, yo + 6, 5 + 41 * 32, getColor4(-1, 100, 321, 431), 0);
+			render_screen(screen, xo + 8, yo + 6, 5 + 41 * 32, getColor4(-1, 100, 321, 431), 1);
 		} else {
 			yo += 4;
 

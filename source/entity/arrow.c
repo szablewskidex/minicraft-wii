@@ -1,4 +1,4 @@
-﻿#include "arrow.h"
+#include "arrow.h"
 #include "_entity_caller.h"
 #include "../game.h"
 #include "../gfx/color.h"
@@ -81,8 +81,8 @@ void arrow_render(Arrow* arrow, Screen* screen) {
     int x = arrow->entity.x;
     int y = arrow->entity.y;
     // Arrow directions: 0=Down, 1=Up, 2=Left, 3=Right
-    // Sprites in row 5 at col 8, 9, 10, 11
-    int sprite = (8 + (arrow->dir & 3)) + 5 * 32;
+    // Sprites in row 41 at col 16, 17, 18, 19
+    int sprite = (16 + (arrow->dir & 3)) + 41 * 32;
     int col = getColor4(-1, 100, 321, 555);
 
     render_screen(screen, x - 4, y - 4, sprite, col, 0);

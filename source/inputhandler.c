@@ -46,6 +46,7 @@ static int s_rumbleFrames = 0;
 void input_rumble(int frames) {
     s_rumbleFrames = frames;
     WPAD_Rumble(0, 1);
+    PAD_ControlMotor(0, PAD_MOTOR_RUMBLE);
 }
 #else
 void input_rumble(int frames) { (void)frames; }
@@ -104,6 +105,7 @@ void input_tick(){
         --s_rumbleFrames;
         if (s_rumbleFrames <= 0) {
             WPAD_Rumble(0, 0);
+            PAD_ControlMotor(0, PAD_MOTOR_STOP);
         }
     }
 #endif
