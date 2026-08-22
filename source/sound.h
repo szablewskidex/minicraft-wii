@@ -13,6 +13,9 @@ typedef enum {
     SND_EXPLODE
 } SoundEffect;
 
+extern int g_sfxVolume;
+extern int g_uiVolume;
+
 void sound_init(void);
 void sound_tick(void);
 void sound_play(SoundEffect effect);

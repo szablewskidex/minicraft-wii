@@ -97,6 +97,7 @@ static void set_video_driver_hint(void) {
 
 Screen game_screen;
 Screen game_lightScreen;
+int* prevBuf = NULL;
 
 int g_ticks = 0; //perf measure
 int g_frames = 0; //perf measure
@@ -257,8 +258,10 @@ void game_init(){
 		}
 	}
 
-	create_screen(&game_screen, WIDTH, HEIGHT, &icons_spritesheet);
-	create_screen(&game_lightScreen, WIDTH, HEIGHT, &icons_spritesheet);
+	create_screen(&game_screen, 426, HEIGHT, (SpriteSheet*)&icons_spritesheet);
+	create_screen(&game_lightScreen, 426, HEIGHT, (SpriteSheet*)&icons_spritesheet);
+	game_screen.w = (g_aspectRatio == 1) ? 426 : 320;
+	game_lightScreen.w = game_screen.w;
 
 	game_reset();
 	game_set_menu(mid_TITLE);
@@ -600,7 +603,6 @@ int main(int argc, char** argv) {
 	unsigned long long int now  = 0;
 	int ticks = 0, frames = 0;
 
-	unsigned char* prevBuf = 0;
 	int ret = 0;
 	int winHeight = HEIGHT * SCALE;
 	int winWidth = WIDTH * SCALE;
@@ -746,16 +748,14 @@ int main(int argc, char** argv) {
     #endif
 
 
-	prevBuf = malloc(sizeof(int) * game_screen.h * game_screen.w);
+	prevBuf = malloc(sizeof(int) * 426 * 240);
     if (!prevBuf) {
         printf("Failed to allocate prevBuf memory!\n");
         ret = 1;
         goto QUIT;
     }
 
-	for (int i = 0; i < game_screen.h * game_screen.w; ++i) {
-        prevBuf[i] = 0x000000;
-    }
+	memset(prevBuf, 0xFF, sizeof(int) * 426 * 240);
 
 	game_hasfocus = 1;
 
@@ -826,45 +826,44 @@ int main(int argc, char** argv) {
 		game_render();
 
 		for (int y = 0; y < game_screen.h; ++y) {
-			pixel.y = y * SCALE;
+			int dest_y0 = y * SCALE;
+			int dest_y1 = dest_y0 + SCALE;
 
 			for (int x = 0; x < game_screen.w; ++x) {
-				pixel.x = x * SCALE;
-
 				int index = y * game_screen.w + x;
 				int screen_px = game_screen.pixels[index];
 
-				if(screen_px != prevBuf[index]){
+				if (screen_px != prevBuf[index]) {
 					prevBuf[index] = screen_px;
 					needsFlip = 1;
 
-					int xmin = pixel.x;
-					int xmax = xmin + SCALE;
-					int ymin = pixel.y;
-					int ymax = ymin + SCALE;
+					int dest_x0, dest_x1;
+					if (g_aspectRatio == 1) {
+						dest_x0 = (x * winWidth) / 426;
+						dest_x1 = ((x + 1) * winWidth) / 426;
+					} else {
+						dest_x0 = x * SCALE;
+						dest_x1 = dest_x0 + SCALE;
+					}
 
-					if (xmin < flipXMin) flipXMin = xmin;
-					if (xmax > flipXMax) flipXMax = xmax;
-					if (ymin < flipYMin) flipYMin = ymin;
-					if (ymax > flipYMax) flipYMax = ymax;
+					if (dest_x0 < flipXMin) flipXMin = dest_x0;
+					if (dest_x1 > flipXMax) flipXMax = dest_x1;
+					if (dest_y0 < flipYMin) flipYMin = dest_y0;
+					if (dest_y1 > flipYMax) flipYMax = dest_y1;
 
-					// Convert index pallete to color.
+					// Convert index palette to color.
 					Uint32 mapped_color = SDL_MapRGB(surface->format, sdl_colors[screen_px].r, sdl_colors[screen_px].g, sdl_colors[screen_px].b);
 
 					if (surface->format->BytesPerPixel == 2) {
-						for (int sub_y = 0; sub_y < SCALE; sub_y++){
-							for (int sub_x = 0; sub_x < SCALE; sub_x++){
-								int dest_x = x * SCALE + sub_x;
-								int dest_y = y * SCALE + sub_y;
-								((Uint16*)surface->pixels)[ dest_y * (surface->pitch / 2) + dest_x] = (Uint16)mapped_color;
+						for (int sub_y = dest_y0; sub_y < dest_y1; sub_y++) {
+							for (int sub_x = dest_x0; sub_x < dest_x1; sub_x++) {
+								((Uint16*)surface->pixels)[sub_y * (surface->pitch / 2) + sub_x] = (Uint16)mapped_color;
 							}
 						}
 					} else {
-						for (int sub_y = 0; sub_y < SCALE; sub_y++){
-							for (int sub_x = 0; sub_x < SCALE; sub_x++){
-								int dest_x = x * SCALE + sub_x;
-								int dest_y = y * SCALE + sub_y;
-								((Uint32*)surface->pixels)[ dest_y * (surface->pitch / 4) + dest_x] = mapped_color;
+						for (int sub_y = dest_y0; sub_y < dest_y1; sub_y++) {
+							for (int sub_x = dest_x0; sub_x < dest_x1; sub_x++) {
+								((Uint32*)surface->pixels)[sub_y * (surface->pitch / 4) + sub_x] = mapped_color;
 							}
 						}
 					}

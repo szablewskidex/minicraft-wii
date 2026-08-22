@@ -12,6 +12,10 @@
 #define SCALE 3
 #endif
 
+extern Screen game_screen;
+extern Screen game_lightScreen;
+extern int* prevBuf;
+
 extern Player* game_player;
 extern int game_gameTime;
 extern int game_pendingLevelChange;

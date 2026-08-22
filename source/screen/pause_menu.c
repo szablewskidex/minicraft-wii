@@ -36,9 +36,9 @@ void pausemenu_render(Screen* screen) {
 
     const char* options[6];
     options[0] = _T(STR_RESUME);
-    options[1] = _T(STR_SAVE_GAME);
-    options[2] = _T(STR_LOAD_GAME);
-    options[3] = _T(STR_LANGUAGE);
+    options[1] = _T(STR_OPTIONS);
+    options[2] = _T(STR_SAVE_GAME);
+    options[3] = _T(STR_LOAD_GAME);
     options[4] = _T(STR_QUIT_TITLE);
     options[5] = _T(STR_QUIT_NO_SAVE);
 
@@ -95,15 +95,16 @@ void pausemenu_tick(void) {
             // Resume
             game_set_menu(0);
         } else if (pause_selected == 1) {
+            // Options
+            menu_parent = mid_PAUSE;
+            game_set_menu(mid_OPTIONS);
+        } else if (pause_selected == 2) {
             // Save Game
             save_game(NULL);
             save_notification_timer = 90; // Show notification for 1.5 seconds
-        } else if (pause_selected == 2) {
+        } else if (pause_selected == 3) {
             // Load Game
             load_game(NULL);
-        } else if (pause_selected == 3) {
-            // Change Language
-            lang_next();
         } else if (pause_selected == 4) {
             // Save & Quit to Title
             save_game(NULL);

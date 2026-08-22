@@ -52,13 +52,13 @@ void titlemenu_render(Screen* screen) {
 		if (has_save) {
 			if (i == 0) text = _T(STR_CONTINUE);
 			else if (i == 1) text = _T(STR_NEW_GAME);
-			else if (i == 2) text = _T(STR_LANGUAGE);
+			else if (i == 2) text = _T(STR_OPTIONS);
 			else if (i == 3) text = _T(STR_HOW_TO_PLAY);
 			else if (i == 4) text = _T(STR_ABOUT);
 			else if (i == 5) text = _T(STR_EXIT);
 		} else {
 			if (i == 0) text = _T(STR_START_GAME);
-			else if (i == 1) text = _T(STR_LANGUAGE);
+			else if (i == 1) text = _T(STR_OPTIONS);
 			else if (i == 2) text = _T(STR_HOW_TO_PLAY);
 			else if (i == 3) text = _T(STR_ABOUT);
 			else if (i == 4) text = _T(STR_EXIT);
@@ -110,8 +110,9 @@ void titlemenu_tick() {
 				slotmenu_mode = 1;
 				game_set_menu(mid_SLOT_SELECT);
 			} else if (titlemenu_selected == 2) {
-				// Switch Language
-				lang_next();
+				// Options
+				menu_parent = mid_TITLE;
+				game_set_menu(mid_OPTIONS);
 			} else if (titlemenu_selected == 3) {
 				menu_parent = mid_TITLE;
 				game_set_menu(mid_INSTRUCTIONS);
@@ -127,8 +128,9 @@ void titlemenu_tick() {
 				slotmenu_mode = 1;
 				game_set_menu(mid_SLOT_SELECT);
 			} else if (titlemenu_selected == 1) {
-				// Switch Language
-				lang_next();
+				// Options
+				menu_parent = mid_TITLE;
+				game_set_menu(mid_OPTIONS);
 			} else if (titlemenu_selected == 2) {
 				menu_parent = mid_TITLE;
 				game_set_menu(mid_INSTRUCTIONS);

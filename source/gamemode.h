@@ -1,4 +1,4 @@
-﻿#ifndef GAMEMODE_H
+#ifndef GAMEMODE_H
 #define GAMEMODE_H
 
 typedef enum {
@@ -18,6 +18,7 @@ typedef enum {
 extern GameMode g_gameMode;
 extern WorldSize g_worldSize;
 extern int g_currentSlot;
+extern int g_aspectRatio;
 
 const char* gamemode_get_name(GameMode mode);
 const char* worldsize_get_name(WorldSize size);

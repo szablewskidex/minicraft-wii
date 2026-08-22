@@ -23,6 +23,9 @@ static const size_t sound_sizes[9] = {
     sound_playerhurt_size, sound_monsterhurt_size, sound_death_size, sound_bossdeath_size, sound_explode_size
 };
 
+int g_sfxVolume = 10; // 0..10
+int g_uiVolume = 10;  // 0..10
+
 static int sound_ready = 0;
 
 void sound_init(void) {
@@ -55,7 +58,17 @@ void sound_play(SoundEffect effect) {
     }
     sound_last_played[effect] = sound_frame_counter;
 
+    int vol = 128;
+    if (effect == SND_SELECT || effect == SND_CONFIRM) {
+        if (g_uiVolume <= 0) return;
+        vol = (g_uiVolume * 128) / 10;
+    } else {
+        if (g_sfxVolume <= 0) return;
+        vol = (g_sfxVolume * 128) / 10;
+    }
+
     if (chunks[effect]) {
+        Mix_VolumeChunk(chunks[effect], vol);
         Mix_PlayChannel(-1, chunks[effect], 0);
     }
 }

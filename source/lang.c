@@ -25,7 +25,14 @@ static const char* strings[STR_COUNT][LANG_COUNT] = {
     [STR_QUIT_TITLE] = { "Zapisz i Wyjdz", "Save & Quit", "Speichern & Beenden" },
     [STR_QUIT_NO_SAVE] = { "Wyjdz (Bez zapisu)", "Quit (No Save)", "Beenden (Ohne speichern)" },
     [STR_SAVED_MSG] = { "* GRA ZAPISANA! *", "* GAME SAVED! *", "* GESPEICHERT! *" },
-    [STR_EXIT] = { "Wyjscie", "Exit Game", "Beenden" }
+    [STR_EXIT] = { "Wyjscie", "Exit Game", "Beenden" },
+    [STR_OPTIONS] = { "Opcje", "Options", "Optionen" },
+    [STR_BACK] = { "Powrot", "Back", "Zurueck" },
+    [STR_SFX_VOLUME] = { "Dzwieki gry", "Game SFX", "Spiel-SFX" },
+    [STR_UI_VOLUME] = { "Dzwieki menu", "UI SFX", "UI-SFX" },
+    [STR_ASPECT_RATIO] = { "Format", "Aspect", "Format" },
+    [STR_ASPECT_4_3] = { "4:3 Standard", "4:3 Standard", "4:3 Standard" },
+    [STR_ASPECT_16_9] = { "16:9 Panorama", "16:9 Widescreen", "16:9 Breitbild" }
 };
 
 void lang_init(void) {

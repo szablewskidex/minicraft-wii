@@ -32,6 +32,13 @@ typedef enum {
     STR_QUIT_NO_SAVE,
     STR_SAVED_MSG,
     STR_EXIT,
+    STR_OPTIONS,
+    STR_BACK,
+    STR_SFX_VOLUME,
+    STR_UI_VOLUME,
+    STR_ASPECT_RATIO,
+    STR_ASPECT_4_3,
+    STR_ASPECT_16_9,
     STR_COUNT
 } StringID;
 

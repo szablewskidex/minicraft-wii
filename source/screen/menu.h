@@ -24,7 +24,8 @@ enum menu_id{
 	mid_INVENTORY,
 	mid_PAUSE,
 	mid_SLOT_SELECT,
-	mid_NEW_GAME
+	mid_NEW_GAME,
+	mid_OPTIONS
 };
 
 void init_menus();

@@ -1,9 +1,10 @@
-﻿#include "gamemode.h"
+#include "gamemode.h"
 #include "lang.h"
 
 GameMode g_gameMode = MODE_SURVIVAL;
 WorldSize g_worldSize = WORLD_NORMAL;
 int g_currentSlot = 1;
+int g_aspectRatio = 1; // 0 = 4:3, 1 = 16:9 Widescreen
 
 const char* gamemode_get_name(GameMode mode) {
     if (g_currentLanguage == LANG_PL) {
