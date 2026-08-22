@@ -374,12 +374,6 @@ void game_renderGui() {
 	int hud_x = 12;
 	int hud_y = game_screen.h - 22;
 
-	for (int y = 0; y < 2; ++y) {
-		for (int x = 0; x < 38; ++x) {
-			render_screen(&game_screen, x * 8, hud_y + (y * 8), 0 + 12 * 32, getColor4(0, 0, 0, 0), 0);
-		}
-	}
-
 	if (isingame){
         /// RENDER THE HUD with safe margins
 		for (int i = 0; i < 10; ++i) {
