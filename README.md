@@ -31,7 +31,7 @@ Based on the C/SDL reimplementation by [TheBigEye](https://github.com/thebigeye/
 
 ## 📥 Installation on Nintendo Wii
 
-1. Download `boot.dol` and `meta.xml` from the [Releases](https://github.com/szablewskidex/minicraft-wii/releases) page.
+1. Download `boot.dol` and `meta.xml` from the apps/minicraft folder 
 2. Create a folder on your SD card or USB drive:
    ```text
    SD:/apps/minicraft/
