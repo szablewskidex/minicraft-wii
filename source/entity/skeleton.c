@@ -104,7 +104,11 @@ void skeleton_die(Skeleton* skeleton){
     }
 
     if (game_player && game_player->mob.entity.level == skeleton->mob.entity.level) {
-        game_player->score += 60 * skeleton->lvl;
-        player_addExp(game_player, 30 * skeleton->lvl);
+        int xd = game_player->mob.entity.x - skeleton->mob.entity.x;
+        int yd = game_player->mob.entity.y - skeleton->mob.entity.y;
+        if (xd * xd + yd * yd < 120 * 120) {
+            game_player->score += 60 * skeleton->lvl;
+            player_addExp(game_player, 30 * skeleton->lvl);
+        }
     }
 }

@@ -120,6 +120,14 @@ char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, 
 			return 1;
 		}
 		return 0;
+	} else if (resource == &boat) {
+		if (tile == WATER) {
+			player->mob.entity.x = xt * 16 + 8;
+			player->mob.entity.y = yt * 16 + 8;
+			sound_play(SND_CONFIRM);
+			return 1;
+		}
+		return 0;
 	}
 	return 0;
 }

@@ -108,7 +108,11 @@ void zombie_die(Zombie* zombie){
 	}
 
 	if (game_player && game_player->mob.entity.level == zombie->mob.entity.level) {
-		game_player->score += 50 * zombie->lvl;
-		player_addExp(game_player, 25 * zombie->lvl);
+		int xd = game_player->mob.entity.x - zombie->mob.entity.x;
+		int yd = game_player->mob.entity.y - zombie->mob.entity.y;
+		if (xd * xd + yd * yd < 120 * 120) {
+			game_player->score += 50 * zombie->lvl;
+			player_addExp(game_player, 25 * zombie->lvl);
+		}
 	}
 }

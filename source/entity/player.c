@@ -159,10 +159,16 @@ char player_interact(Player* player, int x0, int y0, int x1, int y1) {
 }
 
 
+char player_use_(Player* player);
+
 void player_attack(Player* player){
 	player->mob.walkDist += 8;
 	player->attackDir = player->mob.dir;
 	player->attackItem = player->activeItem;
+
+	if (player_use_(player)) {
+		return;
+	}
 
 	uint8_t done = 0;
 
@@ -515,16 +521,23 @@ void player_render(Player* player, Screen* screen){
 	int xo = player->mob.entity.x - 8;
 	int yo = player->mob.entity.y - 11;
 
+	int hasBoat = (player->activeItem && player->activeItem->id == RESOURCE && player->activeItem->add.resource.resource == &boat);
+
 	if (call_entity_isSwimming(&player->mob.entity)) {
-		yo += 4;
+		if (hasBoat) {
+			render_screen(screen, xo + 0, yo + 6, 15 + 4 * 32, getColor4(-1, 100, 321, 431), 0);
+			render_screen(screen, xo + 8, yo + 6, 15 + 4 * 32, getColor4(-1, 100, 321, 431), 1);
+		} else {
+			yo += 4;
 
-		int waterColor = getColor4(-1, -1, 115, 335);
-		if (player->mob.tickTime / 8 % 2 == 0) {
-			waterColor = getColor4(-1, 335, 5, 115);
+			int waterColor = getColor4(-1, -1, 115, 335);
+			if (player->mob.tickTime / 8 % 2 == 0) {
+				waterColor = getColor4(-1, 335, 5, 115);
+			}
+
+			render_screen(screen, xo + 0, yo + 3, 5 + 13 * 32, waterColor, 0);
+			render_screen(screen, xo + 8, yo + 3, 5 + 13 * 32, waterColor, 1);
 		}
-
-		render_screen(screen, xo + 0, yo + 3, 5 + 13 * 32, waterColor, 0);
-		render_screen(screen, xo + 8, yo + 3, 5 + 13 * 32, waterColor, 1);
 	}
 
 	if (player->attackTime > 0 && player->attackDir == 1) {

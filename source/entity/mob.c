@@ -1,4 +1,6 @@
 #include "mob.h"
+#include "player.h"
+#include "../item/resource/resource.h"
 #include "../game.h"
 #include "../gfx/color.h"
 #include "../level/tile/tileids.h"
@@ -29,8 +31,12 @@ void mob_doHurt(Mob* mob, int damage, int attackDir) {
 
 	if (mob->entity.type == PLAYER) {
 		sound_play(SND_PLAYERHURT);
-	} else {
-		sound_play(SND_MONSTERHURT);
+	} else if (game_player && game_player->mob.entity.level == mob->entity.level) {
+		int xd = game_player->mob.entity.x - mob->entity.x;
+		int yd = game_player->mob.entity.y - mob->entity.y;
+		if (xd * xd + yd * yd < 120 * 120) {
+			sound_play(SND_MONSTERHURT);
+		}
 	}
 
 	TextParticle* text_particle = malloc(sizeof(TextParticle));
@@ -149,7 +155,13 @@ void mob_heal(Mob* mob, int heal){
 
 uint8_t mob_move(Mob* mob, int xa, int ya) {
 	if (call_entity_isSwimming(&mob->entity)) {
-		if (mob->swimTimer++ % 2 == 0) {
+		if (mob->entity.type == PLAYER) {
+			Player* p = (Player*)mob;
+			int hasBoat = (p->activeItem && p->activeItem->id == RESOURCE && p->activeItem->add.resource.resource == &boat);
+			if (!hasBoat && mob->swimTimer++ % 2 == 0) {
+				return 1;
+			}
+		} else if (mob->swimTimer++ % 2 == 0) {
             return 1;
         }
 	}
