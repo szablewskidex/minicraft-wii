@@ -25,5 +25,7 @@ char entity_ismob(Entity* entity);
 
 void call_entity_doHurt(Entity* entity, int damage, int attackDir);
 char entity_isfurniture(Entity* entity);
+char entity_isAnimal(Entity* entity);
+Mob* entity_createAnimal(EntityId id);
 
 #endif // _ENTITY_CALLER_H

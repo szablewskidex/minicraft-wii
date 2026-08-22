@@ -538,6 +538,65 @@ char entity_isfurniture(Entity* entity) {
 	}
 }
 
+char entity_isAnimal(Entity* entity) {
+	switch (entity->type) {
+		case COW:
+		case CHICKEN:
+		case PIG:
+		case SHEEP:
+		case CRAB:
+		case FROG:
+			return 1;
+		default:
+			return 0;
+	}
+}
+
+Mob* entity_createAnimal(EntityId id) {
+	Mob* mob = NULL;
+	switch (id) {
+		case COW: {
+			Cow* cow = malloc(sizeof(Cow));
+			cow_create(cow);
+			mob = (Mob*)cow;
+			break;
+		}
+		case CHICKEN: {
+			Chicken* chk = malloc(sizeof(Chicken));
+			chicken_create(chk);
+			mob = (Mob*)chk;
+			break;
+		}
+		case PIG: {
+			Pig* pig = malloc(sizeof(Pig));
+			pig_create(pig);
+			mob = (Mob*)pig;
+			break;
+		}
+		case SHEEP: {
+			Sheep* sheep = malloc(sizeof(Sheep));
+			sheep_create(sheep);
+			mob = (Mob*)sheep;
+			break;
+		}
+		case CRAB: {
+			Crab* crab = malloc(sizeof(Crab));
+			crab_create(crab);
+			mob = (Mob*)crab;
+			break;
+		}
+		case FROG: {
+			Frog* frog = malloc(sizeof(Frog));
+			frog_create(frog);
+			mob = (Mob*)frog;
+			break;
+		}
+		default:
+			break;
+	}
+	return mob;
+}
+
 static inline int item_getLightRadius_safe(Item* item) {
 	if (!item) return 0;
 	if (item->id == FURNITURE && item->add.furniture.furniture) {

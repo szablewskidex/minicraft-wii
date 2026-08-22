@@ -1,4 +1,4 @@
-#include "save.h"
+﻿#include "save.h"
 #include "gamemode.h"
 #include "lang.h"
 #include <stdio.h>
@@ -19,21 +19,33 @@
 #include "entity/chest.h"
 #include "entity/lantern.h"
 #include "entity/bed.h"
+#include "entity/door.h"
+#include "entity/cow.h"
+#include "entity/chicken.h"
+#include "entity/pig.h"
+#include "entity/sheep.h"
+#include "entity/crab.h"
+#include "entity/frog.h"
 #include "entity/_entity_caller.h"
 
 #define SAVE_MAGIC_V1 0x4D435749 // "MCWI"
 #define SAVE_MAGIC_V2 0x4D435732 // "MCW2"
+#define SAVE_MAGIC_V3 0x4D435733 // "MCW3"
 #define SAVE_VERSION_1 1
 #define SAVE_VERSION_2 2
+#define SAVE_VERSION_3 3
 
 static Resource* resource_list[] = {
     &wood, &stone, &flower, &acorn, &dirt, &sand, &cactusFlower, &seeds,
     &wheat, &bread, &apple, &coal, &ironOre, &goldOre, &ironIngot, &goldIngot,
-    &slime, &glass, &cloth, &cloud, &gem
+    &slime, &glass, &cloth, &cloud, &gem, &leather, &boat,
+    &leatherArmor, &ironArmor, &goldArmor, &gemArmor,
+    &bow, &arrow, &fishingRod, &rawFish, &cookedFish, &shears, &carrot, &potato
 };
 #define NUM_RESOURCES (sizeof(resource_list) / sizeof(Resource*))
 
 static int get_resource_index(Resource* res) {
+    if (!res) return -1;
     for (size_t i = 0; i < NUM_RESOURCES; ++i) {
         if (resource_list[i] == res) return (int)i;
     }
@@ -48,7 +60,6 @@ static void get_slot_path(int slot, char* buf, size_t buflen) {
     snprintf(buf, buflen, "save_slot%d.dat", slot);
 #endif
 }
-
 
 static void save_inventory(Inventory* inv, FILE* f) {
     int32_t inv_count = inv->items.size;
@@ -79,10 +90,10 @@ static void load_inventory(Inventory* inv, FILE* f) {
     inventory_create(inv);
 
     int32_t inv_count = 0;
-    fread(&inv_count, sizeof(int32_t), 1, f);
+    if (fread(&inv_count, sizeof(int32_t), 1, f) != 1) return;
     for (int i = 0; i < inv_count; ++i) {
         uint8_t item_id = 0;
-        fread(&item_id, sizeof(uint8_t), 1, f);
+        if (fread(&item_id, sizeof(uint8_t), 1, f) != 1) break;
         Item* item = (Item*)malloc(sizeof(Item));
         memset(item, 0, sizeof(Item));
         if (item_id == RESOURCE) {
@@ -92,10 +103,8 @@ static void load_inventory(Inventory* inv, FILE* f) {
             if (res_idx >= 0 && (size_t)res_idx < NUM_RESOURCES) {
                 resourceitem_create_cnt(item, resource_list[res_idx], count);
                 inventory_addItem(inv, item);
-            free(item);
-            } else {
-                free(item);
             }
+            free(item);
         } else if (item_id == TOOL) {
             int32_t t_type = 0, t_level = 0;
             fread(&t_type, sizeof(int32_t), 1, f);
@@ -114,6 +123,7 @@ static void load_inventory(Inventory* inv, FILE* f) {
             else if (f_type == CHEST) chest_create((Chest*)furn);
             else if (f_type == LANTERN) lantern_create((Lantern*)furn);
             else if (f_type == BED) bed_create((Bed*)furn);
+            else if (f_type == DOOR) door_create((Door*)furn);
             else workbench_create((Workbench*)furn);
             furnitureitem_create(item, furn);
             inventory_addItem(inv, item);
@@ -161,7 +171,8 @@ int slot_exists(int slot) {
         return 0;
     }
     fclose(f);
-    return ((magic == SAVE_MAGIC_V2 && version == SAVE_VERSION_2) ||
+    return ((magic == SAVE_MAGIC_V3 && version == SAVE_VERSION_3) ||
+            (magic == SAVE_MAGIC_V2 && version == SAVE_VERSION_2) ||
             (magic == SAVE_MAGIC_V1 && version == SAVE_VERSION_1));
 }
 
@@ -177,7 +188,8 @@ int get_slot_info(int slot, SlotInfo* info) {
         return 0;
     }
 
-    if (version == SAVE_VERSION_2 && magic == SAVE_MAGIC_V2) {
+    if ((version == SAVE_VERSION_3 && magic == SAVE_MAGIC_V3) ||
+        (version == SAVE_VERSION_2 && magic == SAVE_MAGIC_V2)) {
         int32_t mode = 0, wsize = 128, gTime = 0, score = 0;
         fread(&mode, sizeof(int32_t), 1, f);
         fread(&wsize, sizeof(int32_t), 1, f);
@@ -247,9 +259,9 @@ int save_slot(int slot) {
         if (!f) return 0;
     }
 
-    // 1. Header (Format V2)
-    uint32_t magic = SAVE_MAGIC_V2;
-    uint32_t version = SAVE_VERSION_2;
+    // 1. Header (Format V3)
+    uint32_t magic = SAVE_MAGIC_V3;
+    uint32_t version = SAVE_VERSION_3;
     fwrite(&magic, sizeof(uint32_t), 1, f);
     fwrite(&version, sizeof(uint32_t), 1, f);
 
@@ -270,7 +282,7 @@ int save_slot(int slot) {
     fwrite(&wTimer, sizeof(int32_t), 1, f);
     fwrite(&sLang, sizeof(int32_t), 1, f);
 
-    // 3. Player state
+    // 3. Player state + EXP + Level + Armor
     int32_t px = game_player->mob.entity.x;
     int32_t py = game_player->mob.entity.y;
     int32_t phealth = game_player->mob.health;
@@ -279,6 +291,11 @@ int save_slot(int slot) {
     int32_t pstamina = game_player->stamina;
     int32_t pmaxStamina = game_player->maxStamina;
     int32_t pscore = game_player->score;
+    int32_t pexp = game_player->exp;
+    int32_t plevel = game_player->level;
+    int32_t pmaxExp = game_player->maxExp;
+    int32_t parmorIdx = get_resource_index(game_player->armor);
+    int32_t parmorDef = game_player->armorDefense;
 
     fwrite(&px, sizeof(int32_t), 1, f);
     fwrite(&py, sizeof(int32_t), 1, f);
@@ -288,9 +305,21 @@ int save_slot(int slot) {
     fwrite(&pstamina, sizeof(int32_t), 1, f);
     fwrite(&pmaxStamina, sizeof(int32_t), 1, f);
     fwrite(&pscore, sizeof(int32_t), 1, f);
+    fwrite(&pexp, sizeof(int32_t), 1, f);
+    fwrite(&plevel, sizeof(int32_t), 1, f);
+    fwrite(&pmaxExp, sizeof(int32_t), 1, f);
+    fwrite(&parmorIdx, sizeof(int32_t), 1, f);
+    fwrite(&parmorDef, sizeof(int32_t), 1, f);
 
-    // 4. Inventory
+    // 4. Inventory (Safely includes activeItem in hand!)
+    Item* heldItem = game_player->activeItem;
+    if (heldItem) {
+        arraylist_pushTo(&game_player->inventory.items, 0, heldItem);
+    }
     save_inventory(&game_player->inventory, f);
+    if (heldItem) {
+        arraylist_removeId(&game_player->inventory.items, 0);
+    }
 
     // 5. Levels (5 levels: 0 to 4)
     for (int lvl = 0; lvl < 5; ++lvl) {
@@ -314,33 +343,47 @@ int save_slot(int slot) {
         fwrite(l->tiles, sizeof(unsigned char), w * h, f);
         fwrite(l->data, sizeof(unsigned char), w * h, f);
 
-        // Save furniture and chests
+        // Save furniture, chests, AND farm animals!
         int32_t num_entities = 0;
         for (int i = 0; i < l->entities.size; ++i) {
             Entity* e = l->entities.elements[i];
-            if (entity_isfurniture(e)) num_entities++;
+            if (entity_isfurniture(e) || entity_isAnimal(e)) num_entities++;
         }
         fwrite(&num_entities, sizeof(int32_t), 1, f);
 
         for (int i = 0; i < l->entities.size; ++i) {
             Entity* e = l->entities.elements[i];
             if (entity_isfurniture(e)) {
+                int32_t kind = 1; // 1 = Furniture
                 int32_t type = (int32_t)e->type;
                 int32_t ex = e->x, ey = e->y;
+                int32_t health = 0;
+                fwrite(&kind, sizeof(int32_t), 1, f);
                 fwrite(&type, sizeof(int32_t), 1, f);
                 fwrite(&ex, sizeof(int32_t), 1, f);
                 fwrite(&ey, sizeof(int32_t), 1, f);
+                fwrite(&health, sizeof(int32_t), 1, f);
 
                 if (e->type == CHEST) {
                     Chest* chest = (Chest*)e;
                     save_inventory(&chest->inventory, f);
                 }
+            } else if (entity_isAnimal(e)) {
+                int32_t kind = 2; // 2 = Animal
+                int32_t type = (int32_t)e->type;
+                int32_t ex = e->x, ey = e->y;
+                int32_t health = ((Mob*)e)->health;
+                fwrite(&kind, sizeof(int32_t), 1, f);
+                fwrite(&type, sizeof(int32_t), 1, f);
+                fwrite(&ex, sizeof(int32_t), 1, f);
+                fwrite(&ey, sizeof(int32_t), 1, f);
+                fwrite(&health, sizeof(int32_t), 1, f);
             }
         }
     }
 
     fclose(f);
-    printf("Game saved to Slot %d!\n", slot);
+    printf("Game saved to Slot %d (V3)!\n", slot);
     return 1;
 }
 
@@ -357,7 +400,8 @@ int load_slot(int slot) {
         return 0;
     }
 
-    if (!((magic == SAVE_MAGIC_V2 && version == SAVE_VERSION_2) ||
+    if (!((magic == SAVE_MAGIC_V3 && version == SAVE_VERSION_3) ||
+          (magic == SAVE_MAGIC_V2 && version == SAVE_VERSION_2) ||
           (magic == SAVE_MAGIC_V1 && version == SAVE_VERSION_1))) {
         fclose(f);
         return 0;
@@ -375,7 +419,7 @@ int load_slot(int slot) {
 
     int32_t sMode = 0, sWSize = 128, gTime = 0, cLevel = 3, hWon = 0, wTimer = 0, sLang = 0;
 
-    if (version == SAVE_VERSION_2) {
+    if (version == SAVE_VERSION_3 || version == SAVE_VERSION_2) {
         fread(&sMode, sizeof(int32_t), 1, f);
         fread(&sWSize, sizeof(int32_t), 1, f);
         fread(&gTime, sizeof(int32_t), 1, f);
@@ -413,6 +457,8 @@ int load_slot(int slot) {
     // Read player state
     int32_t px = 0, py = 0, phealth = 10, pmaxHealth = 10, pdir = 0;
     int32_t pstamina = 10, pmaxStamina = 10, pscore = 0;
+    int32_t pexp = 0, plevel = 1, pmaxExp = 50, parmorIdx = -1, parmorDef = 0;
+
     fread(&px, sizeof(int32_t), 1, f);
     fread(&py, sizeof(int32_t), 1, f);
     fread(&phealth, sizeof(int32_t), 1, f);
@@ -421,6 +467,14 @@ int load_slot(int slot) {
     fread(&pstamina, sizeof(int32_t), 1, f);
     fread(&pmaxStamina, sizeof(int32_t), 1, f);
     fread(&pscore, sizeof(int32_t), 1, f);
+
+    if (version == SAVE_VERSION_3) {
+        fread(&pexp, sizeof(int32_t), 1, f);
+        fread(&plevel, sizeof(int32_t), 1, f);
+        fread(&pmaxExp, sizeof(int32_t), 1, f);
+        fread(&parmorIdx, sizeof(int32_t), 1, f);
+        fread(&parmorDef, sizeof(int32_t), 1, f);
+    }
 
     // Create player
     game_player = (Player*)malloc(sizeof(Player));
@@ -433,6 +487,17 @@ int load_slot(int slot) {
     game_player->stamina = pstamina;
     game_player->maxStamina = pmaxStamina;
     game_player->score = pscore;
+    game_player->exp = pexp;
+    game_player->level = plevel > 0 ? plevel : 1;
+    game_player->maxExp = pmaxExp > 0 ? pmaxExp : (game_player->level * 50 + 50);
+
+    if (parmorIdx >= 0 && (size_t)parmorIdx < NUM_RESOURCES) {
+        game_player->armor = resource_list[parmorIdx];
+        game_player->armorDefense = parmorDef;
+    } else {
+        game_player->armor = NULL;
+        game_player->armorDefense = 0;
+    }
 
     // Read inventory
     load_inventory(&game_player->inventory, f);
@@ -478,7 +543,42 @@ int load_slot(int slot) {
             create_arraylist(l->entitiesInTiles + i);
         }
 
-        if (version == SAVE_VERSION_2) {
+        if (version == SAVE_VERSION_3) {
+            int32_t num_entities = 0;
+            if (fread(&num_entities, sizeof(int32_t), 1, f) == 1) {
+                for (int i = 0; i < num_entities; ++i) {
+                    int32_t kind = 0, type = 0, ex = 0, ey = 0, health = 0;
+                    fread(&kind, sizeof(int32_t), 1, f);
+                    fread(&type, sizeof(int32_t), 1, f);
+                    fread(&ex, sizeof(int32_t), 1, f);
+                    fread(&ey, sizeof(int32_t), 1, f);
+                    fread(&health, sizeof(int32_t), 1, f);
+
+                    if (kind == 1) {
+                        // Furniture
+                        Furniture* furn = entity_createFurniture((EntityId)type);
+                        if (furn) {
+                            furn->entity.x = ex;
+                            furn->entity.y = ey;
+                            if (type == CHEST) {
+                                Chest* chest = (Chest*)furn;
+                                load_inventory(&chest->inventory, f);
+                            }
+                            level_addEntity(l, &furn->entity);
+                        }
+                    } else if (kind == 2) {
+                        // Farm Animal
+                        Mob* animal = entity_createAnimal((EntityId)type);
+                        if (animal) {
+                            animal->entity.x = ex;
+                            animal->entity.y = ey;
+                            if (health > 0) animal->health = health;
+                            level_addEntity(l, &animal->entity);
+                        }
+                    }
+                }
+            }
+        } else if (version == SAVE_VERSION_2) {
             int32_t num_entities = 0;
             if (fread(&num_entities, sizeof(int32_t), 1, f) == 1) {
                 for (int i = 0; i < num_entities; ++i) {
@@ -501,7 +601,9 @@ int load_slot(int slot) {
             }
         }
 
-        level_trySpawn(l, 3000);
+        if (lvl != 3) {
+            level_trySpawn(l, 2000);
+        }
     }
 
     if (game_currentLevel < 0 || game_currentLevel > 4) game_currentLevel = 3;
@@ -512,7 +614,7 @@ int load_slot(int slot) {
     game_set_menu(0);
 
     fclose(f);
-    printf("Game loaded from Slot %d!\n", slot);
+    printf("Game loaded from Slot %d (V3)!\n", slot);
     return 1;
 }
 
