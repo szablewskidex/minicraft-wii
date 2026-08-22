@@ -34,6 +34,9 @@ void player_create(Player* player) {
 	player->mob.entity.x = 24;
 	player->mob.entity.y = 24;
 	player->stamina = player->maxStamina = 10;
+	player->level = 1;
+	player->exp = 0;
+	player->maxExp = 100;
 	inventory_create(&player->inventory);
 
 	Item iWork;
@@ -248,7 +251,10 @@ void player_doHurt(Player* player, int damage, int attackDir){
         return;
     }
 
-	// TODO: Sound.playerHurt.play();
+	// Leather armor damage reduction!
+	if (player->activeItem && player->activeItem->id == RESOURCE && player->activeItem->add.resource.resource == &leatherArmor) {
+		if (damage > 1) damage -= 1;
+	}
 
     TextParticle* text_particle = malloc(sizeof(TextParticle));
 	char* text = malloc(16);
@@ -393,7 +399,9 @@ void player_tick(Player* player){
 	if (left.down) --xa;
 	if (right.down) ++xa;
 
-	if (call_entity_isSwimming(&player->mob.entity) && player->mob.tickTime % 60 == 0) {
+	int hasBoat = (player->activeItem && player->activeItem->id == RESOURCE && player->activeItem->add.resource.resource == &boat);
+
+	if (call_entity_isSwimming(&player->mob.entity) && !hasBoat && player->mob.tickTime % 60 == 0) {
 		if (player->stamina > 0) {
             --player->stamina;
         } else {
@@ -444,12 +452,41 @@ void player_tick(Player* player){
 
 char player_payStamina(Player* player, int cost){
 	if (g_gameMode == MODE_CREATIVE) return 1;
+
+	// Higher level reduces stamina cost of tools and actions!
+	if (player->level > 1 && cost > 1) {
+		int reduction = (player->level - 1) / 2;
+		cost -= reduction;
+		if (cost < 1) cost = 1;
+	}
+
 	if (cost > player->stamina) {
         return 0;
     }
 
 	player->stamina -= cost;
 	return 1;
+}
+
+void player_addExp(Player* player, int exp) {
+	if (!player) return;
+	player->exp += exp;
+	while (player->exp >= player->maxExp) {
+		player->exp -= player->maxExp;
+		player->level++;
+		player->maxExp = player->level * 50 + 50;
+		player->mob.maxHealth += 1;
+		player->maxStamina += 1;
+		player->mob.health = player->mob.maxHealth;
+		player->stamina = player->maxStamina;
+
+		TextParticle* tp = malloc(sizeof(TextParticle));
+		if (tp) {
+			textparticle_create(tp, "LEVEL UP!", player->mob.entity.x, player->mob.entity.y - 12, getColor4(-1, 550, 550, 550));
+			level_addEntity(player->mob.entity.level, &tp->entity);
+		}
+		sound_play(SND_CONFIRM);
+	}
 }
 
 

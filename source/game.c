@@ -404,6 +404,21 @@ void game_renderGui() {
 			}
 		}
 
+        // Player Level & EXP Bar in center of HUD
+        int exp_x = hud_x + 92;
+        char lvl_str[16];
+        sprintf(lvl_str, "LV%d", game_player->level);
+        font_draw(lvl_str, strlen(lvl_str), &game_screen, exp_x, hud_y, getColor4(-1, 550, 550, 550));
+
+        int exp_pct = (game_player->maxExp > 0) ? (game_player->exp * 8 / game_player->maxExp) : 0;
+        for (int e = 0; e < 8; ++e) {
+            if (e < exp_pct) {
+                render_screen(&game_screen, exp_x + e * 8, hud_y + 8, 2 + 12 * 32, getColor4(000, 050, 252, 050), 0);
+            } else {
+                render_screen(&game_screen, exp_x + e * 8, hud_y + 8, 2 + 12 * 32, getColor4(000, 020, 020, 020), 0);
+            }
+        }
+
         // Active item / tool box on the right side of HUD
         int tool_x = game_screen.w - 96;
         int tool_y = hud_y;

@@ -29,6 +29,9 @@ Resource glass;
 Resource cloth;
 Resource cloud;
 Resource gem;
+Resource leather;
+Resource boat;
+Resource leatherArmor;
 
 
 void init_resource(Resource* resource, char* name, int sprite, int color) {
@@ -75,6 +78,9 @@ void init_resources() {
 	init_resource(&slime, "SLIME", 10 + 4 * 32, getColor4(-1, 10, 30, 50));
 	init_resource(&glass, "glass", 12 + 4 * 32, getColor4(-1, 555, 555, 555));
 	init_resource(&cloth, "cloth", 1 + 4 * 32, getColor4(-1, 25, 252, 141));
+	init_resource(&leather, "Hide", 6 + 4 * 32, getColor4(-1, 100, 310, 420));
+	init_resource(&boat, "Boat", 8 + 4 * 32, getColor4(-1, 100, 321, 431));
+	init_resource(&leatherArmor, "Armor", 7 + 4 * 32, getColor4(-1, 100, 310, 420));
 
 	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources)/sizeof(TileID));
 

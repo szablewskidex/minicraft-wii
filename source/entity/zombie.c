@@ -107,7 +107,8 @@ void zombie_die(Zombie* zombie){
 		level_addEntity(zombie->mob.entity.level, &item_entity->entity);
 	}
 
-	if (game_player->mob.entity.level == zombie->mob.entity.level) {
+	if (game_player && game_player->mob.entity.level == zombie->mob.entity.level) {
 		game_player->score += 50 * zombie->lvl;
+		player_addExp(game_player, 25 * zombie->lvl);
 	}
 }

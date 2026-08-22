@@ -28,6 +28,7 @@
 #include "sheep.h"
 #include "crab.h"
 #include "frog.h"
+#include "door.h"
 #include "../item/item.h"
 
 #include <string.h>
@@ -54,6 +55,7 @@ void call_entity_tick(Entity* entity) {
 		case LANTERN:
 		case OVEN:
 		case WORKBENCH:
+		case DOOR:
 			furniture_tick((Furniture*)entity);
 			break;
 		case SLIME:
@@ -168,6 +170,9 @@ void call_entity_render(Entity* entity, Screen* screen) {
 			break;
 		case FROG:
 			frog_render((Frog *) entity, screen);
+			break;
+		case DOOR:
+			door_render((Door *) entity, screen);
 			break;
 		case ANVIL:
 		case BED:
@@ -330,6 +335,7 @@ void call_entity_touchedBy(Entity* entity, Entity* e) {
 		case LANTERN:
 		case OVEN:
 		case WORKBENCH:
+		case DOOR:
 			furniture_touchedBy((Furniture *) entity, e);
 			break;
 		case SLIME:
@@ -388,12 +394,17 @@ char call_entity_use(Entity* entity, Player* player, int attackDir) {
 		case FURNACE: return furnace_use((Furnace *) entity, player, attackDir);
 		case OVEN: return oven_use((Oven *) entity, player, attackDir);
 		case WORKBENCH: return workbench_use((Workbench *) entity, player, attackDir);
+		case DOOR: return door_use((Door *) entity, player, attackDir);
 		default: return 0;
 	}
 }
 
 char call_entity_blocks(Entity* entity, Entity* e) {
 	switch (entity->type) {
+		case DOOR: {
+			Door* d = (Door*)entity;
+			return !d->isOpen;
+		}
 		case ANVIL:
 		case BED:
 		case CHEST:
@@ -473,6 +484,10 @@ Furniture* entity_createFurniture(EntityId id) {
 			furn = malloc(sizeof(Workbench));
 			workbench_create((Workbench *) furn);
 			break;
+		case DOOR:
+			furn = malloc(sizeof(Door));
+			door_create((Door *) furn);
+			break;
 		default:
 			break;
 	}
@@ -488,6 +503,7 @@ char entity_isfurniture(Entity* entity) {
 		case LANTERN:
 		case OVEN:
 		case WORKBENCH:
+		case DOOR:
 			return 1;
 		default:
 			return 0;

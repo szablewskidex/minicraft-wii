@@ -18,6 +18,9 @@ typedef struct _Player{
 	int maxStamina;
 	int onStairDelay;
 	int invulnerableTime;
+	int exp;
+	int level;
+	int maxExp;
 } Player;
 
 void player_create(Player* player);
@@ -31,6 +34,7 @@ int player_getAttackDamage(Player* player, Entity* entity);
 void player_render(Player* player, Screen* screen);
 char player_findStartPos(Player* player, Level* level);
 char player_payStamina(Player* player, int cost);
+void player_addExp(Player* player, int exp);
 void player_die(Player *player);
 
 void player_doHurt(Player* player, int damage, int attackDir);

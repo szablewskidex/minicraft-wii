@@ -105,5 +105,6 @@ void skeleton_die(Skeleton* skeleton){
 
     if (game_player && game_player->mob.entity.level == skeleton->mob.entity.level) {
         game_player->score += 60 * skeleton->lvl;
+        player_addExp(game_player, 30 * skeleton->lvl);
     }
 }

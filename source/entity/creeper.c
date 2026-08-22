@@ -1,4 +1,4 @@
-﻿#include "creeper.h"
+#include "creeper.h"
 #include "../gfx/screen.h"
 #include "_entity_caller.h"
 #include "itementity.h"
@@ -144,5 +144,6 @@ void creeper_die(Creeper* creeper){
 
     if (game_player && game_player->mob.entity.level == creeper->mob.entity.level) {
         game_player->score += 75 * creeper->lvl;
+        player_addExp(game_player, 35 * creeper->lvl);
     }
 }

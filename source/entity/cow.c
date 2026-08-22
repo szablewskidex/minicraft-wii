@@ -1,4 +1,4 @@
-﻿#include "cow.h"
+#include "cow.h"
 #include "../gfx/screen.h"
 #include "_entity_caller.h"
 #include "itementity.h"
@@ -71,10 +71,19 @@ void cow_die(Cow* cow){
         ItemEntity* item_entity = malloc(sizeof(ItemEntity));
         if (!item_entity) continue;
         Item resource;
-        resourceitem_create(&resource, &cloth); // Leather/cloth
+        resourceitem_create(&resource, &leather); // Drops leather!
         itementity_create(item_entity, resource,
             cow->mob.entity.x + random_next_int(random, 11) - 5,
             cow->mob.entity.y + random_next_int(random, 11) - 5);
         level_addEntity(cow->mob.entity.level, &item_entity->entity);
+    }
+
+    ItemEntity* beef_entity = malloc(sizeof(ItemEntity));
+    if (beef_entity) {
+        Item beef;
+        resourceitem_create(&beef, &apple); // Food / beef drop
+        itementity_create(beef_entity, beef,
+            cow->mob.entity.x, cow->mob.entity.y);
+        level_addEntity(cow->mob.entity.level, &beef_entity->entity);
     }
 }

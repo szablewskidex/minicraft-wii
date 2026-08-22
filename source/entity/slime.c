@@ -84,8 +84,9 @@ void slime_die(Slime* slimee) {
 		level_addEntity(slimee->mob.entity.level, &item_entity->entity);
 	}
 
-	if (game_player->mob.entity.level == slimee->mob.entity.level) {
+	if (game_player && game_player->mob.entity.level == slimee->mob.entity.level) {
 		game_player->score += 25 * slimee->lvl;
+		player_addExp(game_player, 15 * slimee->lvl);
 	}
 }
 

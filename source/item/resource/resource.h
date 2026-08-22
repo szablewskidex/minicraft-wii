@@ -18,7 +18,7 @@ typedef struct _Resource{
 
 extern Resource wood, stone, flower, acorn, dirt, sand, cactusFlower, seeds, wheat, bread, apple;
 extern Resource coal, ironOre, goldOre, ironIngot, goldIngot;
-extern Resource slime, glass, cloth, cloud, gem;
+extern Resource slime, glass, cloth, cloud, gem, leather, boat, leatherArmor;
 
 
 void init_resources();
