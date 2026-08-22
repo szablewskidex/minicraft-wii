@@ -23,6 +23,11 @@
 #include "creeper.h"
 #include "knight.h"
 #include "cow.h"
+#include "chicken.h"
+#include "pig.h"
+#include "sheep.h"
+#include "crab.h"
+#include "frog.h"
 #include "../item/item.h"
 
 #include <string.h>
@@ -69,6 +74,21 @@ void call_entity_tick(Entity* entity) {
 		case COW:
 			cow_tick((Cow *) entity);
 			break;
+		case CHICKEN:
+			chicken_tick((Chicken *) entity);
+			break;
+		case PIG:
+			pig_tick((Pig *) entity);
+			break;
+		case SHEEP:
+			sheep_tick((Sheep *) entity);
+			break;
+		case CRAB:
+			crab_tick((Crab *) entity);
+			break;
+		case FROG:
+			frog_tick((Frog *) entity);
+			break;
 		case AIRWIZARD:
 			airwizard_tick((AirWizard *) entity);
 			break;
@@ -83,6 +103,8 @@ void call_entity_tick(Entity* entity) {
 uint8_t call_entity_canSwim(Entity* entity) {
 	switch (entity->type) {
 		case PLAYER:
+		case CRAB:
+		case FROG:
 			return 1;
 		default:
 			return 0;
@@ -131,6 +153,21 @@ void call_entity_render(Entity* entity, Screen* screen) {
 			break;
 		case COW:
 			cow_render((Cow *) entity, screen);
+			break;
+		case CHICKEN:
+			chicken_render((Chicken *) entity, screen);
+			break;
+		case PIG:
+			pig_render((Pig *) entity, screen);
+			break;
+		case SHEEP:
+			sheep_render((Sheep *) entity, screen);
+			break;
+		case CRAB:
+			crab_render((Crab *) entity, screen);
+			break;
+		case FROG:
+			frog_render((Frog *) entity, screen);
 			break;
 		case ANVIL:
 		case BED:
@@ -188,6 +225,21 @@ void call_entity_die(Entity* entity) {
 		case COW:
 			cow_die((Cow *) entity);
 			break;
+		case CHICKEN:
+			chicken_die((Chicken *) entity);
+			break;
+		case PIG:
+			pig_die((Pig *) entity);
+			break;
+		case SHEEP:
+			sheep_die((Sheep *) entity);
+			break;
+		case CRAB:
+			crab_die((Crab *) entity);
+			break;
+		case FROG:
+			frog_die((Frog *) entity);
+			break;
 		case AIRWIZARD:
 			airwizard_die((AirWizard *) entity);
 			break;
@@ -210,6 +262,11 @@ void call_entity_doHurt(Entity* entity, int damage, int attackDir) {
 		case CREEPER:
 		case KNIGHT:
 		case COW:
+		case CHICKEN:
+		case PIG:
+		case SHEEP:
+		case CRAB:
+		case FROG:
 			mob_doHurt((Mob *) entity, damage, attackDir);
 			break;
 		default:
@@ -225,6 +282,11 @@ void call_entity_hurtTile(Entity* entity, TileID tile, int x, int y, int damage)
 		case CREEPER:
 		case KNIGHT:
 		case COW:
+		case CHICKEN:
+		case PIG:
+		case SHEEP:
+		case CRAB:
+		case FROG:
 		case AIRWIZARD:
 		case PLAYER:
 			mob_hurtTile((Mob *) entity, tile, x, y, damage);
@@ -242,6 +304,11 @@ void call_entity_hurt(Entity* entity, Mob* mob, int damage, int attackDir) {
 		case CREEPER:
 		case KNIGHT:
 		case COW:
+		case CHICKEN:
+		case PIG:
+		case SHEEP:
+		case CRAB:
+		case FROG:
 		case AIRWIZARD:
 		case PLAYER:
 			mob_hurt((Mob *) entity, mob, damage, attackDir);
@@ -282,6 +349,21 @@ void call_entity_touchedBy(Entity* entity, Entity* e) {
 			break;
 		case COW:
 			cow_touchedBy((Cow *) entity, e);
+			break;
+		case CHICKEN:
+			chicken_touchedBy((Chicken *) entity, e);
+			break;
+		case PIG:
+			pig_touchedBy((Pig *) entity, e);
+			break;
+		case SHEEP:
+			sheep_touchedBy((Sheep *) entity, e);
+			break;
+		case CRAB:
+			crab_touchedBy((Crab *) entity, e);
+			break;
+		case FROG:
+			frog_touchedBy((Frog *) entity, e);
 			break;
 		case ITEMENTITY:
 			if (e->type == PLAYER) {
@@ -326,6 +408,11 @@ char call_entity_blocks(Entity* entity, Entity* e) {
 		case CREEPER:
 		case KNIGHT:
 		case COW:
+		case CHICKEN:
+		case PIG:
+		case SHEEP:
+		case CRAB:
+		case FROG:
 		case AIRWIZARD:
 		case PLAYER:
 			return call_entity_isBlockableBy(e, (Mob *) entity);
@@ -342,6 +429,11 @@ char entity_ismob(Entity* entity) {
 		case CREEPER:
 		case KNIGHT:
 		case COW:
+		case CHICKEN:
+		case PIG:
+		case SHEEP:
+		case CRAB:
+		case FROG:
 		case AIRWIZARD:
 		case PLAYER:
 			return 1;

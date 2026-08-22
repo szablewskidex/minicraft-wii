@@ -122,6 +122,11 @@ void level_sortAndRender(Level* level, Screen* screen, ArrayList* list) {
 #include "../entity/creeper.h"
 #include "../entity/knight.h"
 #include "../entity/cow.h"
+#include "../entity/chicken.h"
+#include "../entity/pig.h"
+#include "../entity/sheep.h"
+#include "../entity/crab.h"
+#include "../entity/frog.h"
 #include "../game.h"
 
 void level_trySpawn(Level* level, int count){
@@ -145,10 +150,25 @@ void level_trySpawn(Level* level, int count){
 			int isNight = (dayTime > 12000 && dayTime < 22000);
 
 			if (!isNight) {
-				if (choice < 50) {
+				if (choice < 15) {
 					mob = malloc(sizeof(Cow));
 					cow_create((Cow *) mob);
-				} else if (choice < 80) {
+				} else if (choice < 30) {
+					mob = malloc(sizeof(Chicken));
+					chicken_create((Chicken *) mob);
+				} else if (choice < 45) {
+					mob = malloc(sizeof(Pig));
+					pig_create((Pig *) mob);
+				} else if (choice < 60) {
+					mob = malloc(sizeof(Sheep));
+					sheep_create((Sheep *) mob);
+				} else if (choice < 75) {
+					mob = malloc(sizeof(Crab));
+					crab_create((Crab *) mob);
+				} else if (choice < 88) {
+					mob = malloc(sizeof(Frog));
+					frog_create((Frog *) mob);
+				} else if (choice < 95) {
 					mob = malloc(sizeof(Slime));
 					slime_create((Slime *) mob, lvl);
 				} else {

@@ -20,7 +20,12 @@ typedef enum{
 	SKELETON,
 	CREEPER,
 	KNIGHT,
-	COW
+	COW,
+	CHICKEN,
+	PIG,
+	SHEEP,
+	CRAB,
+	FROG
 } EntityId;
 
 #endif // ENTITYID_H
