@@ -1,7 +1,7 @@
 CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj: \
- /src/source/screen/crafting_menu.c /src/source/screen/../gfx/font.h \
- /src/source/screen/../gfx/screen.h \
- /src/source/screen/../gfx/spritesheet.h \
+ /work/source/screen/crafting_menu.c /work/source/screen/../gfx/font.h \
+ /work/source/screen/../gfx/screen.h \
+ /work/source/screen/../gfx/spritesheet.h \
  /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
@@ -23,60 +23,61 @@ CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj: \
  /usr/local/pspdev/psp/include/stdio.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdarg.h \
  /usr/local/pspdev/psp/include/sys/stdio.h \
- /src/source/screen/../gfx/color.h /src/source/screen/crafting_menu.h \
- /src/source/screen/menu.h /src/source/screen/../gfx/screen.h \
- /src/source/screen/../utils/arraylist.h \
- /src/source/screen/../crafting/recipe.h \
+ /work/source/screen/../gfx/color.h /work/source/screen/crafting_menu.h \
+ /work/source/screen/menu.h /work/source/screen/../gfx/screen.h \
+ /work/source/screen/../utils/arraylist.h \
+ /work/source/screen/../crafting/recipe.h \
  /usr/local/pspdev/psp/include/string.h \
  /usr/local/pspdev/psp/include/strings.h \
  /usr/local/pspdev/psp/include/sys/string.h \
- /src/source/screen/../crafting/../item/item.h \
- /src/source/screen/../crafting/../item/../utils/javarandom.h \
- /src/source/screen/../crafting/../item/../gfx/screen.h \
+ /work/source/screen/../crafting/../item/item.h \
+ /work/source/screen/../crafting/../item/../utils/javarandom.h \
+ /work/source/screen/../crafting/../item/../gfx/screen.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdint.h \
  /usr/local/pspdev/psp/include/stdint.h \
  /usr/local/pspdev/psp/include/sys/_intsup.h \
  /usr/local/pspdev/psp/include/sys/_stdint.h \
- /src/source/screen/../crafting/../item/../entity/entity.h \
- /src/source/screen/../crafting/../item/../entity/entityid.h \
- /src/source/screen/../crafting/../item/../entity/../gfx/screen.h \
- /src/source/screen/../crafting/../item/../entity/../utils/javarandom.h \
- /src/source/screen/../crafting/../item/../entity/../utils/utils.h \
- /src/source/screen/../crafting/../item/../level/tile/tileids.h \
- /src/source/screen/../crafting/../item/../level/level.h \
- /src/source/screen/../crafting/../item/../level/../entity/entity.h \
- /src/source/screen/../crafting/../item/../level/../gfx/screen.h \
- /src/source/screen/../crafting/../item/../level/../utils/arraylist.h \
- /src/source/screen/../crafting/../item/../level/../utils/javarandom.h \
- /src/source/screen/../crafting/../item/itemids.h \
- /src/source/screen/../crafting/../item/resource/resource.h \
- /src/source/screen/../crafting/../item/resource/food_resource.h \
- /src/source/screen/../crafting/../item/resource/plantable_resource.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/tile.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/../../utils/javarandom.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/stairs_tile.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/tile.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/../level.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/../../gfx/screen.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/sapling_tile.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/tileids.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/ore_tile.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/../../entity/mob.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/../../entity/../level/tile/tileids.h \
- /src/source/screen/../crafting/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/screen/../crafting/../item/../entity/player.h \
- /src/source/screen/../crafting/../item/../entity/inventory.h \
- /src/source/screen/../crafting/../item/../entity/../utils/arraylist.h \
- /src/source/screen/../crafting/../item/../entity/../item/resource/resource.h \
- /src/source/screen/../crafting/../item/../entity/mob.h \
- /src/source/screen/../crafting/../item/../entity/../level/level.h \
- /src/source/screen/../crafting/../item/tooltype.h \
- /src/source/screen/../crafting/../utils/arraylist.h \
- /src/source/screen/../crafting/recipeids.h /src/source/screen/../game.h \
- /src/source/screen/../gfx/spritesheet.h \
- /src/source/screen/../entity/player.h \
- /src/source/screen/../screen/menu.h /src/source/screen/../inputhandler.h \
+ /work/source/screen/../crafting/../item/../entity/entity.h \
+ /work/source/screen/../crafting/../item/../entity/entityid.h \
+ /work/source/screen/../crafting/../item/../entity/../gfx/screen.h \
+ /work/source/screen/../crafting/../item/../entity/../utils/javarandom.h \
+ /work/source/screen/../crafting/../item/../entity/../utils/utils.h \
+ /work/source/screen/../crafting/../item/../level/tile/tileids.h \
+ /work/source/screen/../crafting/../item/../level/level.h \
+ /work/source/screen/../crafting/../item/../level/../entity/entity.h \
+ /work/source/screen/../crafting/../item/../level/../gfx/screen.h \
+ /work/source/screen/../crafting/../item/../level/../utils/arraylist.h \
+ /work/source/screen/../crafting/../item/../level/../utils/javarandom.h \
+ /work/source/screen/../crafting/../item/itemids.h \
+ /work/source/screen/../crafting/../item/resource/resource.h \
+ /work/source/screen/../crafting/../item/resource/food_resource.h \
+ /work/source/screen/../crafting/../item/resource/plantable_resource.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/tile.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/../../utils/javarandom.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/stairs_tile.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/tile.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/../level.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/../../gfx/screen.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/sapling_tile.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/tileids.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/ore_tile.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/../../entity/mob.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/../../entity/../level/tile/tileids.h \
+ /work/source/screen/../crafting/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/screen/../crafting/../item/../entity/player.h \
+ /work/source/screen/../crafting/../item/../entity/inventory.h \
+ /work/source/screen/../crafting/../item/../entity/../utils/arraylist.h \
+ /work/source/screen/../crafting/../item/../entity/../item/resource/resource.h \
+ /work/source/screen/../crafting/../item/../entity/mob.h \
+ /work/source/screen/../crafting/../item/../entity/../level/level.h \
+ /work/source/screen/../crafting/../item/tooltype.h \
+ /work/source/screen/../crafting/../utils/arraylist.h \
+ /work/source/screen/../crafting/recipeids.h \
+ /work/source/screen/../game.h /work/source/screen/../gfx/spritesheet.h \
+ /work/source/screen/../entity/player.h \
+ /work/source/screen/../screen/menu.h \
+ /work/source/screen/../inputhandler.h \
  /usr/local/pspdev/psp/include/SDL/SDL.h \
  /usr/local/pspdev/psp/include/SDL/SDL_main.h \
  /usr/local/pspdev/psp/include/SDL/SDL_stdinc.h \
@@ -123,4 +124,4 @@ CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj: \
  /usr/local/pspdev/psp/include/SDL/SDL_loadso.h \
  /usr/local/pspdev/psp/include/SDL/SDL_timer.h \
  /usr/local/pspdev/psp/include/SDL/SDL_version.h \
- /src/source/screen/../sound.h /src/source/screen/../lang.h
+ /work/source/screen/../sound.h /work/source/screen/../lang.h

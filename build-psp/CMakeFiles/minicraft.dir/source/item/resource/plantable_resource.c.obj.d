@@ -1,14 +1,14 @@
 CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj: \
- /src/source/item/resource/plantable_resource.c \
- /src/source/item/resource/resource.h \
- /src/source/item/resource/food_resource.h \
- /src/source/item/resource/plantable_resource.h \
- /src/source/item/resource/../../level/tile/tile.h \
- /src/source/item/resource/../../level/tile/../../utils/javarandom.h \
- /src/source/item/resource/../../level/tile/stairs_tile.h \
- /src/source/item/resource/../../level/tile/tile.h \
- /src/source/item/resource/../../level/tile/../level.h \
- /src/source/item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/item/resource/plantable_resource.c \
+ /work/source/item/resource/resource.h \
+ /work/source/item/resource/food_resource.h \
+ /work/source/item/resource/plantable_resource.h \
+ /work/source/item/resource/../../level/tile/tile.h \
+ /work/source/item/resource/../../level/tile/../../utils/javarandom.h \
+ /work/source/item/resource/../../level/tile/stairs_tile.h \
+ /work/source/item/resource/../../level/tile/tile.h \
+ /work/source/item/resource/../../level/tile/../level.h \
+ /work/source/item/resource/../../level/tile/../../entity/entity.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdint.h \
  /usr/local/pspdev/psp/include/stdint.h \
  /usr/local/pspdev/psp/include/machine/_default_types.h \
@@ -16,9 +16,9 @@ CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj: \
  /usr/local/pspdev/psp/include/_newlib_version.h \
  /usr/local/pspdev/psp/include/sys/_intsup.h \
  /usr/local/pspdev/psp/include/sys/_stdint.h \
- /src/source/item/resource/../../level/tile/../../entity/entityid.h \
- /src/source/item/resource/../../level/tile/../../entity/../gfx/screen.h \
- /src/source/item/resource/../../level/tile/../../entity/../gfx/spritesheet.h \
+ /work/source/item/resource/../../level/tile/../../entity/entityid.h \
+ /work/source/item/resource/../../level/tile/../../entity/../gfx/screen.h \
+ /work/source/item/resource/../../level/tile/../../entity/../gfx/spritesheet.h \
  /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
@@ -37,16 +37,16 @@ CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj: \
  /usr/local/pspdev/psp/include/stdio.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdarg.h \
  /usr/local/pspdev/psp/include/sys/stdio.h \
- /src/source/item/resource/../../level/tile/../../entity/../utils/javarandom.h \
- /src/source/item/resource/../../level/tile/../../entity/../utils/utils.h \
- /src/source/item/resource/../../level/tile/../../gfx/screen.h \
- /src/source/item/resource/../../level/tile/../../utils/arraylist.h \
- /src/source/item/resource/../../level/tile/../../utils/javarandom.h \
- /src/source/item/resource/../../level/tile/../../gfx/screen.h \
- /src/source/item/resource/../../level/tile/sapling_tile.h \
- /src/source/item/resource/../../level/tile/tileids.h \
- /src/source/item/resource/../../level/tile/ore_tile.h \
- /src/source/item/resource/../../level/tile/../../entity/mob.h \
- /src/source/item/resource/../../level/tile/../../entity/entity.h \
- /src/source/item/resource/../../level/tile/../../entity/../level/tile/tileids.h \
- /src/source/item/resource/../../level/tile/../../entity/entity.h
+ /work/source/item/resource/../../level/tile/../../entity/../utils/javarandom.h \
+ /work/source/item/resource/../../level/tile/../../entity/../utils/utils.h \
+ /work/source/item/resource/../../level/tile/../../gfx/screen.h \
+ /work/source/item/resource/../../level/tile/../../utils/arraylist.h \
+ /work/source/item/resource/../../level/tile/../../utils/javarandom.h \
+ /work/source/item/resource/../../level/tile/../../gfx/screen.h \
+ /work/source/item/resource/../../level/tile/sapling_tile.h \
+ /work/source/item/resource/../../level/tile/tileids.h \
+ /work/source/item/resource/../../level/tile/ore_tile.h \
+ /work/source/item/resource/../../level/tile/../../entity/mob.h \
+ /work/source/item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/item/resource/../../level/tile/../../entity/../level/tile/tileids.h \
+ /work/source/item/resource/../../level/tile/../../entity/entity.h

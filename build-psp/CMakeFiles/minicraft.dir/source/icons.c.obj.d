@@ -1,5 +1,5 @@
-CMakeFiles/minicraft.dir/source/icons.c.obj: /src/source/icons.c \
- /src/source/gfx/spritesheet.h /usr/local/pspdev/psp/include/stdlib.h \
+CMakeFiles/minicraft.dir/source/icons.c.obj: /work/source/icons.c \
+ /work/source/gfx/spritesheet.h /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
  /usr/local/pspdev/psp/include/newlib.h \

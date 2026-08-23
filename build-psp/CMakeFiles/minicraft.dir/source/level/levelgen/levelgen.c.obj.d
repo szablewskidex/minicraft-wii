@@ -1,5 +1,5 @@
 CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj: \
- /src/source/level/levelgen/levelgen.c \
+ /work/source/level/levelgen/levelgen.c \
  /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
@@ -18,10 +18,10 @@ CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj: \
  /usr/local/pspdev/psp/include/machine/stdlib.h \
  /usr/local/pspdev/psp/include/alloca.h \
  /usr/local/pspdev/psp/include/sys/_locale.h \
- /src/source/level/levelgen/../../utils/javarandom.h \
- /src/source/level/levelgen/levelgen.h \
- /src/source/level/levelgen/../../utils/utils.h \
- /src/source/level/levelgen/../tile/tileids.h \
+ /work/source/level/levelgen/../../utils/javarandom.h \
+ /work/source/level/levelgen/levelgen.h \
+ /work/source/level/levelgen/../../utils/utils.h \
+ /work/source/level/levelgen/../tile/tileids.h \
  /usr/local/pspdev/psp/include/string.h \
  /usr/local/pspdev/psp/include/strings.h \
  /usr/local/pspdev/psp/include/sys/string.h \

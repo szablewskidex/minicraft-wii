@@ -1,7 +1,7 @@
 CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj: \
- /src/source/screen/newgame_menu.c /src/source/screen/newgame_menu.h \
- /src/source/screen/../gfx/screen.h \
- /src/source/screen/../gfx/spritesheet.h \
+ /work/source/screen/newgame_menu.c /work/source/screen/newgame_menu.h \
+ /work/source/screen/../gfx/screen.h \
+ /work/source/screen/../gfx/spritesheet.h \
  /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
@@ -22,9 +22,9 @@ CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj: \
  /usr/local/pspdev/psp/include/sys/_locale.h \
  /usr/local/pspdev/psp/include/stdio.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdarg.h \
- /usr/local/pspdev/psp/include/sys/stdio.h /src/source/screen/menu.h \
- /src/source/screen/../utils/arraylist.h \
- /src/source/screen/../inputhandler.h \
+ /usr/local/pspdev/psp/include/sys/stdio.h /work/source/screen/menu.h \
+ /work/source/screen/../utils/arraylist.h \
+ /work/source/screen/../inputhandler.h \
  /usr/local/pspdev/psp/include/SDL/SDL.h \
  /usr/local/pspdev/psp/include/SDL/SDL_main.h \
  /usr/local/pspdev/psp/include/SDL/SDL_stdinc.h \
@@ -78,39 +78,39 @@ CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj: \
  /usr/local/pspdev/psp/include/SDL/SDL_loadso.h \
  /usr/local/pspdev/psp/include/SDL/SDL_timer.h \
  /usr/local/pspdev/psp/include/SDL/SDL_version.h \
- /src/source/screen/../gfx/color.h /src/source/screen/../gfx/font.h \
- /src/source/screen/../gfx/screen.h /src/source/screen/../game.h \
- /src/source/screen/../gfx/spritesheet.h \
- /src/source/screen/../entity/player.h \
- /src/source/screen/../entity/inventory.h \
- /src/source/screen/../entity/../utils/arraylist.h \
- /src/source/screen/../entity/../item/resource/resource.h \
- /src/source/screen/../entity/../item/resource/food_resource.h \
- /src/source/screen/../entity/../item/resource/plantable_resource.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/tile.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../utils/javarandom.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/stairs_tile.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/tile.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../level.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../entity/entityid.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../entity/../gfx/screen.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../entity/../utils/javarandom.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../entity/../utils/utils.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../gfx/screen.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../utils/arraylist.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../utils/javarandom.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../gfx/screen.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/sapling_tile.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/tileids.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/ore_tile.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../entity/mob.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../entity/../level/tile/tileids.h \
- /src/source/screen/../entity/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/screen/../entity/mob.h \
- /src/source/screen/../entity/../level/level.h \
- /src/source/screen/../screen/menu.h /src/source/screen/../save.h \
- /src/source/screen/../game.h /src/source/screen/../gamemode.h \
- /src/source/screen/../sound.h /src/source/screen/../lang.h \
- /src/source/screen/../gamemode.h
+ /work/source/screen/../gfx/color.h /work/source/screen/../gfx/font.h \
+ /work/source/screen/../gfx/screen.h /work/source/screen/../game.h \
+ /work/source/screen/../gfx/spritesheet.h \
+ /work/source/screen/../entity/player.h \
+ /work/source/screen/../entity/inventory.h \
+ /work/source/screen/../entity/../utils/arraylist.h \
+ /work/source/screen/../entity/../item/resource/resource.h \
+ /work/source/screen/../entity/../item/resource/food_resource.h \
+ /work/source/screen/../entity/../item/resource/plantable_resource.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/tile.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../utils/javarandom.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/stairs_tile.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/tile.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../level.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../entity/entityid.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../entity/../gfx/screen.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../entity/../utils/javarandom.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../entity/../utils/utils.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../gfx/screen.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../utils/arraylist.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../utils/javarandom.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../gfx/screen.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/sapling_tile.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/tileids.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/ore_tile.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../entity/mob.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../entity/../level/tile/tileids.h \
+ /work/source/screen/../entity/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/screen/../entity/mob.h \
+ /work/source/screen/../entity/../level/level.h \
+ /work/source/screen/../screen/menu.h /work/source/screen/../save.h \
+ /work/source/screen/../game.h /work/source/screen/../gamemode.h \
+ /work/source/screen/../sound.h /work/source/screen/../lang.h \
+ /work/source/screen/../gamemode.h

@@ -1,5 +1,5 @@
 CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj: \
- /src/source/gfx/spritesheet.c /src/source/gfx/spritesheet.h \
+ /work/source/gfx/spritesheet.c /work/source/gfx/spritesheet.h \
  /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \

@@ -1,6 +1,6 @@
-CMakeFiles/minicraft.dir/source/gfx/font.c.obj: /src/source/gfx/font.c \
- /src/source/gfx/font.h /src/source/gfx/screen.h \
- /src/source/gfx/spritesheet.h /usr/local/pspdev/psp/include/stdlib.h \
+CMakeFiles/minicraft.dir/source/gfx/font.c.obj: /work/source/gfx/font.c \
+ /work/source/gfx/font.h /work/source/gfx/screen.h \
+ /work/source/gfx/spritesheet.h /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
  /usr/local/pspdev/psp/include/newlib.h \
@@ -21,6 +21,6 @@ CMakeFiles/minicraft.dir/source/gfx/font.c.obj: /src/source/gfx/font.c \
  /usr/local/pspdev/psp/include/stdio.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdarg.h \
  /usr/local/pspdev/psp/include/sys/stdio.h \
- /src/source/gfx/../utils/utils.h /usr/local/pspdev/psp/include/string.h \
+ /work/source/gfx/../utils/utils.h /usr/local/pspdev/psp/include/string.h \
  /usr/local/pspdev/psp/include/strings.h \
- /usr/local/pspdev/psp/include/sys/string.h /src/source/gfx/color.h
+ /usr/local/pspdev/psp/include/sys/string.h /work/source/gfx/color.h

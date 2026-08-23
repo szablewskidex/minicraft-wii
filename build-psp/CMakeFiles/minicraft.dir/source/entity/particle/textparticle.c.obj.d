@@ -1,7 +1,7 @@
 CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj: \
- /src/source/entity/particle/textparticle.c \
- /src/source/entity/particle/textparticle.h \
- /src/source/entity/particle/../entity.h \
+ /work/source/entity/particle/textparticle.c \
+ /work/source/entity/particle/textparticle.h \
+ /work/source/entity/particle/../entity.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdint.h \
  /usr/local/pspdev/psp/include/stdint.h \
  /usr/local/pspdev/psp/include/machine/_default_types.h \
@@ -9,9 +9,9 @@ CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj: \
  /usr/local/pspdev/psp/include/_newlib_version.h \
  /usr/local/pspdev/psp/include/sys/_intsup.h \
  /usr/local/pspdev/psp/include/sys/_stdint.h \
- /src/source/entity/particle/../entityid.h \
- /src/source/entity/particle/../../gfx/screen.h \
- /src/source/entity/particle/../../gfx/spritesheet.h \
+ /work/source/entity/particle/../entityid.h \
+ /work/source/entity/particle/../../gfx/screen.h \
+ /work/source/entity/particle/../../gfx/spritesheet.h \
  /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
@@ -30,12 +30,12 @@ CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj: \
  /usr/local/pspdev/psp/include/stdio.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdarg.h \
  /usr/local/pspdev/psp/include/sys/stdio.h \
- /src/source/entity/particle/../../utils/javarandom.h \
- /src/source/entity/particle/../../utils/utils.h \
- /src/source/entity/particle/../../gfx/screen.h \
- /src/source/entity/particle/../../gfx/font.h \
- /src/source/entity/particle/../../gfx/screen.h \
- /src/source/entity/particle/../../gfx/color.h \
+ /work/source/entity/particle/../../utils/javarandom.h \
+ /work/source/entity/particle/../../utils/utils.h \
+ /work/source/entity/particle/../../gfx/screen.h \
+ /work/source/entity/particle/../../gfx/font.h \
+ /work/source/entity/particle/../../gfx/screen.h \
+ /work/source/entity/particle/../../gfx/color.h \
  /usr/local/pspdev/psp/include/string.h \
  /usr/local/pspdev/psp/include/strings.h \
  /usr/local/pspdev/psp/include/sys/string.h

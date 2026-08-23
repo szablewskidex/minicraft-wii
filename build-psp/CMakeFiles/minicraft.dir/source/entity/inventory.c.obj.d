@@ -1,5 +1,5 @@
 CMakeFiles/minicraft.dir/source/entity/inventory.c.obj: \
- /src/source/entity/inventory.c /src/source/entity/inventory.h \
+ /work/source/entity/inventory.c /work/source/entity/inventory.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdint.h \
  /usr/local/pspdev/psp/include/stdint.h \
  /usr/local/pspdev/psp/include/machine/_default_types.h \
@@ -7,19 +7,19 @@ CMakeFiles/minicraft.dir/source/entity/inventory.c.obj: \
  /usr/local/pspdev/psp/include/_newlib_version.h \
  /usr/local/pspdev/psp/include/sys/_intsup.h \
  /usr/local/pspdev/psp/include/sys/_stdint.h \
- /src/source/entity/../utils/arraylist.h \
- /src/source/entity/../item/resource/resource.h \
- /src/source/entity/../item/resource/food_resource.h \
- /src/source/entity/../item/resource/plantable_resource.h \
- /src/source/entity/../item/resource/../../level/tile/tile.h \
- /src/source/entity/../item/resource/../../level/tile/../../utils/javarandom.h \
- /src/source/entity/../item/resource/../../level/tile/stairs_tile.h \
- /src/source/entity/../item/resource/../../level/tile/tile.h \
- /src/source/entity/../item/resource/../../level/tile/../level.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/entityid.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../gfx/screen.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../gfx/spritesheet.h \
+ /work/source/entity/../utils/arraylist.h \
+ /work/source/entity/../item/resource/resource.h \
+ /work/source/entity/../item/resource/food_resource.h \
+ /work/source/entity/../item/resource/plantable_resource.h \
+ /work/source/entity/../item/resource/../../level/tile/tile.h \
+ /work/source/entity/../item/resource/../../level/tile/../../utils/javarandom.h \
+ /work/source/entity/../item/resource/../../level/tile/stairs_tile.h \
+ /work/source/entity/../item/resource/../../level/tile/tile.h \
+ /work/source/entity/../item/resource/../../level/tile/../level.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/entityid.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../gfx/screen.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../gfx/spritesheet.h \
  /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
@@ -38,30 +38,30 @@ CMakeFiles/minicraft.dir/source/entity/inventory.c.obj: \
  /usr/local/pspdev/psp/include/stdio.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdarg.h \
  /usr/local/pspdev/psp/include/sys/stdio.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../utils/javarandom.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../utils/utils.h \
- /src/source/entity/../item/resource/../../level/tile/../../gfx/screen.h \
- /src/source/entity/../item/resource/../../level/tile/../../utils/arraylist.h \
- /src/source/entity/../item/resource/../../level/tile/../../utils/javarandom.h \
- /src/source/entity/../item/resource/../../level/tile/../../gfx/screen.h \
- /src/source/entity/../item/resource/../../level/tile/sapling_tile.h \
- /src/source/entity/../item/resource/../../level/tile/tileids.h \
- /src/source/entity/../item/resource/../../level/tile/ore_tile.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/mob.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../level/tile/tileids.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/entity/../item/item.h \
- /src/source/entity/../item/../utils/javarandom.h \
- /src/source/entity/../item/../gfx/screen.h \
- /src/source/entity/../item/../entity/entity.h \
- /src/source/entity/../item/../level/tile/tileids.h \
- /src/source/entity/../item/../level/level.h \
- /src/source/entity/../item/itemids.h \
- /src/source/entity/../item/resource/resource.h \
- /src/source/entity/../item/../entity/player.h \
- /src/source/entity/../item/../entity/inventory.h \
- /src/source/entity/../item/../entity/mob.h \
- /src/source/entity/../item/../entity/../level/level.h \
- /src/source/entity/../item/tooltype.h \
- /src/source/entity/../item/itemids.h
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../utils/javarandom.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../utils/utils.h \
+ /work/source/entity/../item/resource/../../level/tile/../../gfx/screen.h \
+ /work/source/entity/../item/resource/../../level/tile/../../utils/arraylist.h \
+ /work/source/entity/../item/resource/../../level/tile/../../utils/javarandom.h \
+ /work/source/entity/../item/resource/../../level/tile/../../gfx/screen.h \
+ /work/source/entity/../item/resource/../../level/tile/sapling_tile.h \
+ /work/source/entity/../item/resource/../../level/tile/tileids.h \
+ /work/source/entity/../item/resource/../../level/tile/ore_tile.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/mob.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../level/tile/tileids.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/entity/../item/item.h \
+ /work/source/entity/../item/../utils/javarandom.h \
+ /work/source/entity/../item/../gfx/screen.h \
+ /work/source/entity/../item/../entity/entity.h \
+ /work/source/entity/../item/../level/tile/tileids.h \
+ /work/source/entity/../item/../level/level.h \
+ /work/source/entity/../item/itemids.h \
+ /work/source/entity/../item/resource/resource.h \
+ /work/source/entity/../item/../entity/player.h \
+ /work/source/entity/../item/../entity/inventory.h \
+ /work/source/entity/../item/../entity/mob.h \
+ /work/source/entity/../item/../entity/../level/level.h \
+ /work/source/entity/../item/tooltype.h \
+ /work/source/entity/../item/itemids.h

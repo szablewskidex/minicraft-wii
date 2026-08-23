@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /src
+CMAKE_SOURCE_DIR = /work
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /src/build-psp
+CMAKE_BINARY_DIR = /work/build-psp
 
 # Include any dependencies generated for this target.
 include CMakeFiles/minicraft.dir/depend.make
@@ -73,1530 +73,1530 @@ CMakeFiles/minicraft.dir/codegen:
 .PHONY : CMakeFiles/minicraft.dir/codegen
 
 CMakeFiles/minicraft.dir/source/crafting/crafting.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/crafting/crafting.c.obj: /src/source/crafting/crafting.c
+CMakeFiles/minicraft.dir/source/crafting/crafting.c.obj: /work/source/crafting/crafting.c
 CMakeFiles/minicraft.dir/source/crafting/crafting.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/minicraft.dir/source/crafting/crafting.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/crafting/crafting.c.obj -MF CMakeFiles/minicraft.dir/source/crafting/crafting.c.obj.d -o CMakeFiles/minicraft.dir/source/crafting/crafting.c.obj -c /src/source/crafting/crafting.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/minicraft.dir/source/crafting/crafting.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/crafting/crafting.c.obj -MF CMakeFiles/minicraft.dir/source/crafting/crafting.c.obj.d -o CMakeFiles/minicraft.dir/source/crafting/crafting.c.obj -c /work/source/crafting/crafting.c
 
 CMakeFiles/minicraft.dir/source/crafting/crafting.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/crafting/crafting.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/crafting/crafting.c > CMakeFiles/minicraft.dir/source/crafting/crafting.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/crafting/crafting.c > CMakeFiles/minicraft.dir/source/crafting/crafting.c.i
 
 CMakeFiles/minicraft.dir/source/crafting/crafting.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/crafting/crafting.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/crafting/crafting.c -o CMakeFiles/minicraft.dir/source/crafting/crafting.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/crafting/crafting.c -o CMakeFiles/minicraft.dir/source/crafting/crafting.c.s
 
 CMakeFiles/minicraft.dir/source/crafting/recipe.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/crafting/recipe.c.obj: /src/source/crafting/recipe.c
+CMakeFiles/minicraft.dir/source/crafting/recipe.c.obj: /work/source/crafting/recipe.c
 CMakeFiles/minicraft.dir/source/crafting/recipe.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/minicraft.dir/source/crafting/recipe.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/crafting/recipe.c.obj -MF CMakeFiles/minicraft.dir/source/crafting/recipe.c.obj.d -o CMakeFiles/minicraft.dir/source/crafting/recipe.c.obj -c /src/source/crafting/recipe.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/minicraft.dir/source/crafting/recipe.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/crafting/recipe.c.obj -MF CMakeFiles/minicraft.dir/source/crafting/recipe.c.obj.d -o CMakeFiles/minicraft.dir/source/crafting/recipe.c.obj -c /work/source/crafting/recipe.c
 
 CMakeFiles/minicraft.dir/source/crafting/recipe.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/crafting/recipe.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/crafting/recipe.c > CMakeFiles/minicraft.dir/source/crafting/recipe.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/crafting/recipe.c > CMakeFiles/minicraft.dir/source/crafting/recipe.c.i
 
 CMakeFiles/minicraft.dir/source/crafting/recipe.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/crafting/recipe.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/crafting/recipe.c -o CMakeFiles/minicraft.dir/source/crafting/recipe.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/crafting/recipe.c -o CMakeFiles/minicraft.dir/source/crafting/recipe.c.s
 
 CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.obj: /src/source/entity/_entity_caller.c
+CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.obj: /work/source/entity/_entity_caller.c
 CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.obj -MF CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.obj -c /src/source/entity/_entity_caller.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.obj -MF CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.obj -c /work/source/entity/_entity_caller.c
 
 CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/_entity_caller.c > CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/_entity_caller.c > CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.i
 
 CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/_entity_caller.c -o CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/_entity_caller.c -o CMakeFiles/minicraft.dir/source/entity/_entity_caller.c.s
 
 CMakeFiles/minicraft.dir/source/entity/airwizard.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/airwizard.c.obj: /src/source/entity/airwizard.c
+CMakeFiles/minicraft.dir/source/entity/airwizard.c.obj: /work/source/entity/airwizard.c
 CMakeFiles/minicraft.dir/source/entity/airwizard.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/minicraft.dir/source/entity/airwizard.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/airwizard.c.obj -MF CMakeFiles/minicraft.dir/source/entity/airwizard.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/airwizard.c.obj -c /src/source/entity/airwizard.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/minicraft.dir/source/entity/airwizard.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/airwizard.c.obj -MF CMakeFiles/minicraft.dir/source/entity/airwizard.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/airwizard.c.obj -c /work/source/entity/airwizard.c
 
 CMakeFiles/minicraft.dir/source/entity/airwizard.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/airwizard.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/airwizard.c > CMakeFiles/minicraft.dir/source/entity/airwizard.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/airwizard.c > CMakeFiles/minicraft.dir/source/entity/airwizard.c.i
 
 CMakeFiles/minicraft.dir/source/entity/airwizard.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/airwizard.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/airwizard.c -o CMakeFiles/minicraft.dir/source/entity/airwizard.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/airwizard.c -o CMakeFiles/minicraft.dir/source/entity/airwizard.c.s
 
 CMakeFiles/minicraft.dir/source/entity/anvil.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/anvil.c.obj: /src/source/entity/anvil.c
+CMakeFiles/minicraft.dir/source/entity/anvil.c.obj: /work/source/entity/anvil.c
 CMakeFiles/minicraft.dir/source/entity/anvil.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/minicraft.dir/source/entity/anvil.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/anvil.c.obj -MF CMakeFiles/minicraft.dir/source/entity/anvil.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/anvil.c.obj -c /src/source/entity/anvil.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/minicraft.dir/source/entity/anvil.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/anvil.c.obj -MF CMakeFiles/minicraft.dir/source/entity/anvil.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/anvil.c.obj -c /work/source/entity/anvil.c
 
 CMakeFiles/minicraft.dir/source/entity/anvil.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/anvil.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/anvil.c > CMakeFiles/minicraft.dir/source/entity/anvil.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/anvil.c > CMakeFiles/minicraft.dir/source/entity/anvil.c.i
 
 CMakeFiles/minicraft.dir/source/entity/anvil.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/anvil.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/anvil.c -o CMakeFiles/minicraft.dir/source/entity/anvil.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/anvil.c -o CMakeFiles/minicraft.dir/source/entity/anvil.c.s
 
 CMakeFiles/minicraft.dir/source/entity/arrow.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/arrow.c.obj: /src/source/entity/arrow.c
+CMakeFiles/minicraft.dir/source/entity/arrow.c.obj: /work/source/entity/arrow.c
 CMakeFiles/minicraft.dir/source/entity/arrow.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/minicraft.dir/source/entity/arrow.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/arrow.c.obj -MF CMakeFiles/minicraft.dir/source/entity/arrow.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/arrow.c.obj -c /src/source/entity/arrow.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/minicraft.dir/source/entity/arrow.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/arrow.c.obj -MF CMakeFiles/minicraft.dir/source/entity/arrow.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/arrow.c.obj -c /work/source/entity/arrow.c
 
 CMakeFiles/minicraft.dir/source/entity/arrow.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/arrow.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/arrow.c > CMakeFiles/minicraft.dir/source/entity/arrow.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/arrow.c > CMakeFiles/minicraft.dir/source/entity/arrow.c.i
 
 CMakeFiles/minicraft.dir/source/entity/arrow.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/arrow.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/arrow.c -o CMakeFiles/minicraft.dir/source/entity/arrow.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/arrow.c -o CMakeFiles/minicraft.dir/source/entity/arrow.c.s
 
 CMakeFiles/minicraft.dir/source/entity/barrel.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/barrel.c.obj: /src/source/entity/barrel.c
+CMakeFiles/minicraft.dir/source/entity/barrel.c.obj: /work/source/entity/barrel.c
 CMakeFiles/minicraft.dir/source/entity/barrel.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/minicraft.dir/source/entity/barrel.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/barrel.c.obj -MF CMakeFiles/minicraft.dir/source/entity/barrel.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/barrel.c.obj -c /src/source/entity/barrel.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/minicraft.dir/source/entity/barrel.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/barrel.c.obj -MF CMakeFiles/minicraft.dir/source/entity/barrel.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/barrel.c.obj -c /work/source/entity/barrel.c
 
 CMakeFiles/minicraft.dir/source/entity/barrel.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/barrel.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/barrel.c > CMakeFiles/minicraft.dir/source/entity/barrel.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/barrel.c > CMakeFiles/minicraft.dir/source/entity/barrel.c.i
 
 CMakeFiles/minicraft.dir/source/entity/barrel.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/barrel.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/barrel.c -o CMakeFiles/minicraft.dir/source/entity/barrel.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/barrel.c -o CMakeFiles/minicraft.dir/source/entity/barrel.c.s
 
 CMakeFiles/minicraft.dir/source/entity/bat.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/bat.c.obj: /src/source/entity/bat.c
+CMakeFiles/minicraft.dir/source/entity/bat.c.obj: /work/source/entity/bat.c
 CMakeFiles/minicraft.dir/source/entity/bat.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/minicraft.dir/source/entity/bat.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/bat.c.obj -MF CMakeFiles/minicraft.dir/source/entity/bat.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/bat.c.obj -c /src/source/entity/bat.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/minicraft.dir/source/entity/bat.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/bat.c.obj -MF CMakeFiles/minicraft.dir/source/entity/bat.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/bat.c.obj -c /work/source/entity/bat.c
 
 CMakeFiles/minicraft.dir/source/entity/bat.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/bat.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/bat.c > CMakeFiles/minicraft.dir/source/entity/bat.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/bat.c > CMakeFiles/minicraft.dir/source/entity/bat.c.i
 
 CMakeFiles/minicraft.dir/source/entity/bat.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/bat.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/bat.c -o CMakeFiles/minicraft.dir/source/entity/bat.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/bat.c -o CMakeFiles/minicraft.dir/source/entity/bat.c.s
 
 CMakeFiles/minicraft.dir/source/entity/bed.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/bed.c.obj: /src/source/entity/bed.c
+CMakeFiles/minicraft.dir/source/entity/bed.c.obj: /work/source/entity/bed.c
 CMakeFiles/minicraft.dir/source/entity/bed.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/minicraft.dir/source/entity/bed.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/bed.c.obj -MF CMakeFiles/minicraft.dir/source/entity/bed.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/bed.c.obj -c /src/source/entity/bed.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/minicraft.dir/source/entity/bed.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/bed.c.obj -MF CMakeFiles/minicraft.dir/source/entity/bed.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/bed.c.obj -c /work/source/entity/bed.c
 
 CMakeFiles/minicraft.dir/source/entity/bed.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/bed.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/bed.c > CMakeFiles/minicraft.dir/source/entity/bed.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/bed.c > CMakeFiles/minicraft.dir/source/entity/bed.c.i
 
 CMakeFiles/minicraft.dir/source/entity/bed.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/bed.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/bed.c -o CMakeFiles/minicraft.dir/source/entity/bed.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/bed.c -o CMakeFiles/minicraft.dir/source/entity/bed.c.s
 
 CMakeFiles/minicraft.dir/source/entity/chest.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/chest.c.obj: /src/source/entity/chest.c
+CMakeFiles/minicraft.dir/source/entity/chest.c.obj: /work/source/entity/chest.c
 CMakeFiles/minicraft.dir/source/entity/chest.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/minicraft.dir/source/entity/chest.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/chest.c.obj -MF CMakeFiles/minicraft.dir/source/entity/chest.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/chest.c.obj -c /src/source/entity/chest.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/minicraft.dir/source/entity/chest.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/chest.c.obj -MF CMakeFiles/minicraft.dir/source/entity/chest.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/chest.c.obj -c /work/source/entity/chest.c
 
 CMakeFiles/minicraft.dir/source/entity/chest.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/chest.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/chest.c > CMakeFiles/minicraft.dir/source/entity/chest.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/chest.c > CMakeFiles/minicraft.dir/source/entity/chest.c.i
 
 CMakeFiles/minicraft.dir/source/entity/chest.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/chest.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/chest.c -o CMakeFiles/minicraft.dir/source/entity/chest.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/chest.c -o CMakeFiles/minicraft.dir/source/entity/chest.c.s
 
 CMakeFiles/minicraft.dir/source/entity/chicken.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/chicken.c.obj: /src/source/entity/chicken.c
+CMakeFiles/minicraft.dir/source/entity/chicken.c.obj: /work/source/entity/chicken.c
 CMakeFiles/minicraft.dir/source/entity/chicken.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/minicraft.dir/source/entity/chicken.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/chicken.c.obj -MF CMakeFiles/minicraft.dir/source/entity/chicken.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/chicken.c.obj -c /src/source/entity/chicken.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/minicraft.dir/source/entity/chicken.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/chicken.c.obj -MF CMakeFiles/minicraft.dir/source/entity/chicken.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/chicken.c.obj -c /work/source/entity/chicken.c
 
 CMakeFiles/minicraft.dir/source/entity/chicken.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/chicken.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/chicken.c > CMakeFiles/minicraft.dir/source/entity/chicken.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/chicken.c > CMakeFiles/minicraft.dir/source/entity/chicken.c.i
 
 CMakeFiles/minicraft.dir/source/entity/chicken.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/chicken.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/chicken.c -o CMakeFiles/minicraft.dir/source/entity/chicken.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/chicken.c -o CMakeFiles/minicraft.dir/source/entity/chicken.c.s
 
 CMakeFiles/minicraft.dir/source/entity/cow.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/cow.c.obj: /src/source/entity/cow.c
+CMakeFiles/minicraft.dir/source/entity/cow.c.obj: /work/source/entity/cow.c
 CMakeFiles/minicraft.dir/source/entity/cow.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/minicraft.dir/source/entity/cow.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/cow.c.obj -MF CMakeFiles/minicraft.dir/source/entity/cow.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/cow.c.obj -c /src/source/entity/cow.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/minicraft.dir/source/entity/cow.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/cow.c.obj -MF CMakeFiles/minicraft.dir/source/entity/cow.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/cow.c.obj -c /work/source/entity/cow.c
 
 CMakeFiles/minicraft.dir/source/entity/cow.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/cow.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/cow.c > CMakeFiles/minicraft.dir/source/entity/cow.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/cow.c > CMakeFiles/minicraft.dir/source/entity/cow.c.i
 
 CMakeFiles/minicraft.dir/source/entity/cow.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/cow.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/cow.c -o CMakeFiles/minicraft.dir/source/entity/cow.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/cow.c -o CMakeFiles/minicraft.dir/source/entity/cow.c.s
 
 CMakeFiles/minicraft.dir/source/entity/crab.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/crab.c.obj: /src/source/entity/crab.c
+CMakeFiles/minicraft.dir/source/entity/crab.c.obj: /work/source/entity/crab.c
 CMakeFiles/minicraft.dir/source/entity/crab.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/minicraft.dir/source/entity/crab.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/crab.c.obj -MF CMakeFiles/minicraft.dir/source/entity/crab.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/crab.c.obj -c /src/source/entity/crab.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/minicraft.dir/source/entity/crab.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/crab.c.obj -MF CMakeFiles/minicraft.dir/source/entity/crab.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/crab.c.obj -c /work/source/entity/crab.c
 
 CMakeFiles/minicraft.dir/source/entity/crab.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/crab.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/crab.c > CMakeFiles/minicraft.dir/source/entity/crab.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/crab.c > CMakeFiles/minicraft.dir/source/entity/crab.c.i
 
 CMakeFiles/minicraft.dir/source/entity/crab.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/crab.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/crab.c -o CMakeFiles/minicraft.dir/source/entity/crab.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/crab.c -o CMakeFiles/minicraft.dir/source/entity/crab.c.s
 
 CMakeFiles/minicraft.dir/source/entity/creeper.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/creeper.c.obj: /src/source/entity/creeper.c
+CMakeFiles/minicraft.dir/source/entity/creeper.c.obj: /work/source/entity/creeper.c
 CMakeFiles/minicraft.dir/source/entity/creeper.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/minicraft.dir/source/entity/creeper.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/creeper.c.obj -MF CMakeFiles/minicraft.dir/source/entity/creeper.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/creeper.c.obj -c /src/source/entity/creeper.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/minicraft.dir/source/entity/creeper.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/creeper.c.obj -MF CMakeFiles/minicraft.dir/source/entity/creeper.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/creeper.c.obj -c /work/source/entity/creeper.c
 
 CMakeFiles/minicraft.dir/source/entity/creeper.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/creeper.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/creeper.c > CMakeFiles/minicraft.dir/source/entity/creeper.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/creeper.c > CMakeFiles/minicraft.dir/source/entity/creeper.c.i
 
 CMakeFiles/minicraft.dir/source/entity/creeper.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/creeper.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/creeper.c -o CMakeFiles/minicraft.dir/source/entity/creeper.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/creeper.c -o CMakeFiles/minicraft.dir/source/entity/creeper.c.s
 
 CMakeFiles/minicraft.dir/source/entity/door.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/door.c.obj: /src/source/entity/door.c
+CMakeFiles/minicraft.dir/source/entity/door.c.obj: /work/source/entity/door.c
 CMakeFiles/minicraft.dir/source/entity/door.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/minicraft.dir/source/entity/door.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/door.c.obj -MF CMakeFiles/minicraft.dir/source/entity/door.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/door.c.obj -c /src/source/entity/door.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/minicraft.dir/source/entity/door.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/door.c.obj -MF CMakeFiles/minicraft.dir/source/entity/door.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/door.c.obj -c /work/source/entity/door.c
 
 CMakeFiles/minicraft.dir/source/entity/door.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/door.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/door.c > CMakeFiles/minicraft.dir/source/entity/door.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/door.c > CMakeFiles/minicraft.dir/source/entity/door.c.i
 
 CMakeFiles/minicraft.dir/source/entity/door.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/door.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/door.c -o CMakeFiles/minicraft.dir/source/entity/door.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/door.c -o CMakeFiles/minicraft.dir/source/entity/door.c.s
 
 CMakeFiles/minicraft.dir/source/entity/entity.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/entity.c.obj: /src/source/entity/entity.c
+CMakeFiles/minicraft.dir/source/entity/entity.c.obj: /work/source/entity/entity.c
 CMakeFiles/minicraft.dir/source/entity/entity.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/minicraft.dir/source/entity/entity.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/entity.c.obj -MF CMakeFiles/minicraft.dir/source/entity/entity.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/entity.c.obj -c /src/source/entity/entity.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/minicraft.dir/source/entity/entity.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/entity.c.obj -MF CMakeFiles/minicraft.dir/source/entity/entity.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/entity.c.obj -c /work/source/entity/entity.c
 
 CMakeFiles/minicraft.dir/source/entity/entity.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/entity.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/entity.c > CMakeFiles/minicraft.dir/source/entity/entity.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/entity.c > CMakeFiles/minicraft.dir/source/entity/entity.c.i
 
 CMakeFiles/minicraft.dir/source/entity/entity.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/entity.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/entity.c -o CMakeFiles/minicraft.dir/source/entity/entity.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/entity.c -o CMakeFiles/minicraft.dir/source/entity/entity.c.s
 
 CMakeFiles/minicraft.dir/source/entity/exporb.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/exporb.c.obj: /src/source/entity/exporb.c
+CMakeFiles/minicraft.dir/source/entity/exporb.c.obj: /work/source/entity/exporb.c
 CMakeFiles/minicraft.dir/source/entity/exporb.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/minicraft.dir/source/entity/exporb.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/exporb.c.obj -MF CMakeFiles/minicraft.dir/source/entity/exporb.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/exporb.c.obj -c /src/source/entity/exporb.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/minicraft.dir/source/entity/exporb.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/exporb.c.obj -MF CMakeFiles/minicraft.dir/source/entity/exporb.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/exporb.c.obj -c /work/source/entity/exporb.c
 
 CMakeFiles/minicraft.dir/source/entity/exporb.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/exporb.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/exporb.c > CMakeFiles/minicraft.dir/source/entity/exporb.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/exporb.c > CMakeFiles/minicraft.dir/source/entity/exporb.c.i
 
 CMakeFiles/minicraft.dir/source/entity/exporb.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/exporb.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/exporb.c -o CMakeFiles/minicraft.dir/source/entity/exporb.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/exporb.c -o CMakeFiles/minicraft.dir/source/entity/exporb.c.s
 
 CMakeFiles/minicraft.dir/source/entity/frog.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/frog.c.obj: /src/source/entity/frog.c
+CMakeFiles/minicraft.dir/source/entity/frog.c.obj: /work/source/entity/frog.c
 CMakeFiles/minicraft.dir/source/entity/frog.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/minicraft.dir/source/entity/frog.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/frog.c.obj -MF CMakeFiles/minicraft.dir/source/entity/frog.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/frog.c.obj -c /src/source/entity/frog.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/minicraft.dir/source/entity/frog.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/frog.c.obj -MF CMakeFiles/minicraft.dir/source/entity/frog.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/frog.c.obj -c /work/source/entity/frog.c
 
 CMakeFiles/minicraft.dir/source/entity/frog.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/frog.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/frog.c > CMakeFiles/minicraft.dir/source/entity/frog.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/frog.c > CMakeFiles/minicraft.dir/source/entity/frog.c.i
 
 CMakeFiles/minicraft.dir/source/entity/frog.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/frog.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/frog.c -o CMakeFiles/minicraft.dir/source/entity/frog.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/frog.c -o CMakeFiles/minicraft.dir/source/entity/frog.c.s
 
 CMakeFiles/minicraft.dir/source/entity/furnace.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/furnace.c.obj: /src/source/entity/furnace.c
+CMakeFiles/minicraft.dir/source/entity/furnace.c.obj: /work/source/entity/furnace.c
 CMakeFiles/minicraft.dir/source/entity/furnace.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/minicraft.dir/source/entity/furnace.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/furnace.c.obj -MF CMakeFiles/minicraft.dir/source/entity/furnace.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/furnace.c.obj -c /src/source/entity/furnace.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/minicraft.dir/source/entity/furnace.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/furnace.c.obj -MF CMakeFiles/minicraft.dir/source/entity/furnace.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/furnace.c.obj -c /work/source/entity/furnace.c
 
 CMakeFiles/minicraft.dir/source/entity/furnace.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/furnace.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/furnace.c > CMakeFiles/minicraft.dir/source/entity/furnace.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/furnace.c > CMakeFiles/minicraft.dir/source/entity/furnace.c.i
 
 CMakeFiles/minicraft.dir/source/entity/furnace.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/furnace.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/furnace.c -o CMakeFiles/minicraft.dir/source/entity/furnace.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/furnace.c -o CMakeFiles/minicraft.dir/source/entity/furnace.c.s
 
 CMakeFiles/minicraft.dir/source/entity/furniture.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/furniture.c.obj: /src/source/entity/furniture.c
+CMakeFiles/minicraft.dir/source/entity/furniture.c.obj: /work/source/entity/furniture.c
 CMakeFiles/minicraft.dir/source/entity/furniture.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/minicraft.dir/source/entity/furniture.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/furniture.c.obj -MF CMakeFiles/minicraft.dir/source/entity/furniture.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/furniture.c.obj -c /src/source/entity/furniture.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/minicraft.dir/source/entity/furniture.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/furniture.c.obj -MF CMakeFiles/minicraft.dir/source/entity/furniture.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/furniture.c.obj -c /work/source/entity/furniture.c
 
 CMakeFiles/minicraft.dir/source/entity/furniture.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/furniture.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/furniture.c > CMakeFiles/minicraft.dir/source/entity/furniture.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/furniture.c > CMakeFiles/minicraft.dir/source/entity/furniture.c.i
 
 CMakeFiles/minicraft.dir/source/entity/furniture.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/furniture.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/furniture.c -o CMakeFiles/minicraft.dir/source/entity/furniture.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/furniture.c -o CMakeFiles/minicraft.dir/source/entity/furniture.c.s
 
 CMakeFiles/minicraft.dir/source/entity/inventory.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/inventory.c.obj: /src/source/entity/inventory.c
+CMakeFiles/minicraft.dir/source/entity/inventory.c.obj: /work/source/entity/inventory.c
 CMakeFiles/minicraft.dir/source/entity/inventory.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/minicraft.dir/source/entity/inventory.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/inventory.c.obj -MF CMakeFiles/minicraft.dir/source/entity/inventory.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/inventory.c.obj -c /src/source/entity/inventory.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/minicraft.dir/source/entity/inventory.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/inventory.c.obj -MF CMakeFiles/minicraft.dir/source/entity/inventory.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/inventory.c.obj -c /work/source/entity/inventory.c
 
 CMakeFiles/minicraft.dir/source/entity/inventory.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/inventory.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/inventory.c > CMakeFiles/minicraft.dir/source/entity/inventory.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/inventory.c > CMakeFiles/minicraft.dir/source/entity/inventory.c.i
 
 CMakeFiles/minicraft.dir/source/entity/inventory.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/inventory.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/inventory.c -o CMakeFiles/minicraft.dir/source/entity/inventory.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/inventory.c -o CMakeFiles/minicraft.dir/source/entity/inventory.c.s
 
 CMakeFiles/minicraft.dir/source/entity/itementity.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/itementity.c.obj: /src/source/entity/itementity.c
+CMakeFiles/minicraft.dir/source/entity/itementity.c.obj: /work/source/entity/itementity.c
 CMakeFiles/minicraft.dir/source/entity/itementity.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/minicraft.dir/source/entity/itementity.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/itementity.c.obj -MF CMakeFiles/minicraft.dir/source/entity/itementity.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/itementity.c.obj -c /src/source/entity/itementity.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/minicraft.dir/source/entity/itementity.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/itementity.c.obj -MF CMakeFiles/minicraft.dir/source/entity/itementity.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/itementity.c.obj -c /work/source/entity/itementity.c
 
 CMakeFiles/minicraft.dir/source/entity/itementity.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/itementity.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/itementity.c > CMakeFiles/minicraft.dir/source/entity/itementity.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/itementity.c > CMakeFiles/minicraft.dir/source/entity/itementity.c.i
 
 CMakeFiles/minicraft.dir/source/entity/itementity.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/itementity.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/itementity.c -o CMakeFiles/minicraft.dir/source/entity/itementity.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/itementity.c -o CMakeFiles/minicraft.dir/source/entity/itementity.c.s
 
 CMakeFiles/minicraft.dir/source/entity/knight.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/knight.c.obj: /src/source/entity/knight.c
+CMakeFiles/minicraft.dir/source/entity/knight.c.obj: /work/source/entity/knight.c
 CMakeFiles/minicraft.dir/source/entity/knight.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/minicraft.dir/source/entity/knight.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/knight.c.obj -MF CMakeFiles/minicraft.dir/source/entity/knight.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/knight.c.obj -c /src/source/entity/knight.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/minicraft.dir/source/entity/knight.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/knight.c.obj -MF CMakeFiles/minicraft.dir/source/entity/knight.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/knight.c.obj -c /work/source/entity/knight.c
 
 CMakeFiles/minicraft.dir/source/entity/knight.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/knight.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/knight.c > CMakeFiles/minicraft.dir/source/entity/knight.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/knight.c > CMakeFiles/minicraft.dir/source/entity/knight.c.i
 
 CMakeFiles/minicraft.dir/source/entity/knight.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/knight.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/knight.c -o CMakeFiles/minicraft.dir/source/entity/knight.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/knight.c -o CMakeFiles/minicraft.dir/source/entity/knight.c.s
 
 CMakeFiles/minicraft.dir/source/entity/lantern.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/lantern.c.obj: /src/source/entity/lantern.c
+CMakeFiles/minicraft.dir/source/entity/lantern.c.obj: /work/source/entity/lantern.c
 CMakeFiles/minicraft.dir/source/entity/lantern.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/minicraft.dir/source/entity/lantern.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/lantern.c.obj -MF CMakeFiles/minicraft.dir/source/entity/lantern.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/lantern.c.obj -c /src/source/entity/lantern.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/minicraft.dir/source/entity/lantern.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/lantern.c.obj -MF CMakeFiles/minicraft.dir/source/entity/lantern.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/lantern.c.obj -c /work/source/entity/lantern.c
 
 CMakeFiles/minicraft.dir/source/entity/lantern.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/lantern.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/lantern.c > CMakeFiles/minicraft.dir/source/entity/lantern.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/lantern.c > CMakeFiles/minicraft.dir/source/entity/lantern.c.i
 
 CMakeFiles/minicraft.dir/source/entity/lantern.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/lantern.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/lantern.c -o CMakeFiles/minicraft.dir/source/entity/lantern.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/lantern.c -o CMakeFiles/minicraft.dir/source/entity/lantern.c.s
 
 CMakeFiles/minicraft.dir/source/entity/mob.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/mob.c.obj: /src/source/entity/mob.c
+CMakeFiles/minicraft.dir/source/entity/mob.c.obj: /work/source/entity/mob.c
 CMakeFiles/minicraft.dir/source/entity/mob.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/minicraft.dir/source/entity/mob.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/mob.c.obj -MF CMakeFiles/minicraft.dir/source/entity/mob.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/mob.c.obj -c /src/source/entity/mob.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/minicraft.dir/source/entity/mob.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/mob.c.obj -MF CMakeFiles/minicraft.dir/source/entity/mob.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/mob.c.obj -c /work/source/entity/mob.c
 
 CMakeFiles/minicraft.dir/source/entity/mob.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/mob.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/mob.c > CMakeFiles/minicraft.dir/source/entity/mob.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/mob.c > CMakeFiles/minicraft.dir/source/entity/mob.c.i
 
 CMakeFiles/minicraft.dir/source/entity/mob.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/mob.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/mob.c -o CMakeFiles/minicraft.dir/source/entity/mob.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/mob.c -o CMakeFiles/minicraft.dir/source/entity/mob.c.s
 
 CMakeFiles/minicraft.dir/source/entity/oven.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/oven.c.obj: /src/source/entity/oven.c
+CMakeFiles/minicraft.dir/source/entity/oven.c.obj: /work/source/entity/oven.c
 CMakeFiles/minicraft.dir/source/entity/oven.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/minicraft.dir/source/entity/oven.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/oven.c.obj -MF CMakeFiles/minicraft.dir/source/entity/oven.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/oven.c.obj -c /src/source/entity/oven.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/minicraft.dir/source/entity/oven.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/oven.c.obj -MF CMakeFiles/minicraft.dir/source/entity/oven.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/oven.c.obj -c /work/source/entity/oven.c
 
 CMakeFiles/minicraft.dir/source/entity/oven.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/oven.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/oven.c > CMakeFiles/minicraft.dir/source/entity/oven.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/oven.c > CMakeFiles/minicraft.dir/source/entity/oven.c.i
 
 CMakeFiles/minicraft.dir/source/entity/oven.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/oven.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/oven.c -o CMakeFiles/minicraft.dir/source/entity/oven.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/oven.c -o CMakeFiles/minicraft.dir/source/entity/oven.c.s
 
 CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.obj: /src/source/entity/particle/smashparticle.c
+CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.obj: /work/source/entity/particle/smashparticle.c
 CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.obj -MF CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.obj -c /src/source/entity/particle/smashparticle.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.obj -MF CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.obj -c /work/source/entity/particle/smashparticle.c
 
 CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/particle/smashparticle.c > CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/particle/smashparticle.c > CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.i
 
 CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/particle/smashparticle.c -o CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/particle/smashparticle.c -o CMakeFiles/minicraft.dir/source/entity/particle/smashparticle.c.s
 
 CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj: /src/source/entity/particle/textparticle.c
+CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj: /work/source/entity/particle/textparticle.c
 CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj -MF CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj -c /src/source/entity/particle/textparticle.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj -MF CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.obj -c /work/source/entity/particle/textparticle.c
 
 CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/particle/textparticle.c > CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/particle/textparticle.c > CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.i
 
 CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/particle/textparticle.c -o CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/particle/textparticle.c -o CMakeFiles/minicraft.dir/source/entity/particle/textparticle.c.s
 
 CMakeFiles/minicraft.dir/source/entity/pig.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/pig.c.obj: /src/source/entity/pig.c
+CMakeFiles/minicraft.dir/source/entity/pig.c.obj: /work/source/entity/pig.c
 CMakeFiles/minicraft.dir/source/entity/pig.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/minicraft.dir/source/entity/pig.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/pig.c.obj -MF CMakeFiles/minicraft.dir/source/entity/pig.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/pig.c.obj -c /src/source/entity/pig.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/minicraft.dir/source/entity/pig.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/pig.c.obj -MF CMakeFiles/minicraft.dir/source/entity/pig.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/pig.c.obj -c /work/source/entity/pig.c
 
 CMakeFiles/minicraft.dir/source/entity/pig.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/pig.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/pig.c > CMakeFiles/minicraft.dir/source/entity/pig.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/pig.c > CMakeFiles/minicraft.dir/source/entity/pig.c.i
 
 CMakeFiles/minicraft.dir/source/entity/pig.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/pig.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/pig.c -o CMakeFiles/minicraft.dir/source/entity/pig.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/pig.c -o CMakeFiles/minicraft.dir/source/entity/pig.c.s
 
 CMakeFiles/minicraft.dir/source/entity/player.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/player.c.obj: /src/source/entity/player.c
+CMakeFiles/minicraft.dir/source/entity/player.c.obj: /work/source/entity/player.c
 CMakeFiles/minicraft.dir/source/entity/player.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/minicraft.dir/source/entity/player.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/player.c.obj -MF CMakeFiles/minicraft.dir/source/entity/player.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/player.c.obj -c /src/source/entity/player.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/minicraft.dir/source/entity/player.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/player.c.obj -MF CMakeFiles/minicraft.dir/source/entity/player.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/player.c.obj -c /work/source/entity/player.c
 
 CMakeFiles/minicraft.dir/source/entity/player.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/player.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/player.c > CMakeFiles/minicraft.dir/source/entity/player.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/player.c > CMakeFiles/minicraft.dir/source/entity/player.c.i
 
 CMakeFiles/minicraft.dir/source/entity/player.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/player.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/player.c -o CMakeFiles/minicraft.dir/source/entity/player.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/player.c -o CMakeFiles/minicraft.dir/source/entity/player.c.s
 
 CMakeFiles/minicraft.dir/source/entity/sheep.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/sheep.c.obj: /src/source/entity/sheep.c
+CMakeFiles/minicraft.dir/source/entity/sheep.c.obj: /work/source/entity/sheep.c
 CMakeFiles/minicraft.dir/source/entity/sheep.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/minicraft.dir/source/entity/sheep.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/sheep.c.obj -MF CMakeFiles/minicraft.dir/source/entity/sheep.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/sheep.c.obj -c /src/source/entity/sheep.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/minicraft.dir/source/entity/sheep.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/sheep.c.obj -MF CMakeFiles/minicraft.dir/source/entity/sheep.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/sheep.c.obj -c /work/source/entity/sheep.c
 
 CMakeFiles/minicraft.dir/source/entity/sheep.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/sheep.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/sheep.c > CMakeFiles/minicraft.dir/source/entity/sheep.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/sheep.c > CMakeFiles/minicraft.dir/source/entity/sheep.c.i
 
 CMakeFiles/minicraft.dir/source/entity/sheep.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/sheep.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/sheep.c -o CMakeFiles/minicraft.dir/source/entity/sheep.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/sheep.c -o CMakeFiles/minicraft.dir/source/entity/sheep.c.s
 
 CMakeFiles/minicraft.dir/source/entity/sign.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/sign.c.obj: /src/source/entity/sign.c
+CMakeFiles/minicraft.dir/source/entity/sign.c.obj: /work/source/entity/sign.c
 CMakeFiles/minicraft.dir/source/entity/sign.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/minicraft.dir/source/entity/sign.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/sign.c.obj -MF CMakeFiles/minicraft.dir/source/entity/sign.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/sign.c.obj -c /src/source/entity/sign.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/minicraft.dir/source/entity/sign.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/sign.c.obj -MF CMakeFiles/minicraft.dir/source/entity/sign.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/sign.c.obj -c /work/source/entity/sign.c
 
 CMakeFiles/minicraft.dir/source/entity/sign.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/sign.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/sign.c > CMakeFiles/minicraft.dir/source/entity/sign.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/sign.c > CMakeFiles/minicraft.dir/source/entity/sign.c.i
 
 CMakeFiles/minicraft.dir/source/entity/sign.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/sign.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/sign.c -o CMakeFiles/minicraft.dir/source/entity/sign.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/sign.c -o CMakeFiles/minicraft.dir/source/entity/sign.c.s
 
 CMakeFiles/minicraft.dir/source/entity/skeleton.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/skeleton.c.obj: /src/source/entity/skeleton.c
+CMakeFiles/minicraft.dir/source/entity/skeleton.c.obj: /work/source/entity/skeleton.c
 CMakeFiles/minicraft.dir/source/entity/skeleton.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/minicraft.dir/source/entity/skeleton.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/skeleton.c.obj -MF CMakeFiles/minicraft.dir/source/entity/skeleton.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/skeleton.c.obj -c /src/source/entity/skeleton.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/minicraft.dir/source/entity/skeleton.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/skeleton.c.obj -MF CMakeFiles/minicraft.dir/source/entity/skeleton.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/skeleton.c.obj -c /work/source/entity/skeleton.c
 
 CMakeFiles/minicraft.dir/source/entity/skeleton.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/skeleton.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/skeleton.c > CMakeFiles/minicraft.dir/source/entity/skeleton.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/skeleton.c > CMakeFiles/minicraft.dir/source/entity/skeleton.c.i
 
 CMakeFiles/minicraft.dir/source/entity/skeleton.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/skeleton.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/skeleton.c -o CMakeFiles/minicraft.dir/source/entity/skeleton.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/skeleton.c -o CMakeFiles/minicraft.dir/source/entity/skeleton.c.s
 
 CMakeFiles/minicraft.dir/source/entity/slime.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/slime.c.obj: /src/source/entity/slime.c
+CMakeFiles/minicraft.dir/source/entity/slime.c.obj: /work/source/entity/slime.c
 CMakeFiles/minicraft.dir/source/entity/slime.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/minicraft.dir/source/entity/slime.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/slime.c.obj -MF CMakeFiles/minicraft.dir/source/entity/slime.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/slime.c.obj -c /src/source/entity/slime.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/minicraft.dir/source/entity/slime.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/slime.c.obj -MF CMakeFiles/minicraft.dir/source/entity/slime.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/slime.c.obj -c /work/source/entity/slime.c
 
 CMakeFiles/minicraft.dir/source/entity/slime.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/slime.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/slime.c > CMakeFiles/minicraft.dir/source/entity/slime.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/slime.c > CMakeFiles/minicraft.dir/source/entity/slime.c.i
 
 CMakeFiles/minicraft.dir/source/entity/slime.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/slime.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/slime.c -o CMakeFiles/minicraft.dir/source/entity/slime.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/slime.c -o CMakeFiles/minicraft.dir/source/entity/slime.c.s
 
 CMakeFiles/minicraft.dir/source/entity/spark.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/spark.c.obj: /src/source/entity/spark.c
+CMakeFiles/minicraft.dir/source/entity/spark.c.obj: /work/source/entity/spark.c
 CMakeFiles/minicraft.dir/source/entity/spark.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/minicraft.dir/source/entity/spark.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/spark.c.obj -MF CMakeFiles/minicraft.dir/source/entity/spark.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/spark.c.obj -c /src/source/entity/spark.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/minicraft.dir/source/entity/spark.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/spark.c.obj -MF CMakeFiles/minicraft.dir/source/entity/spark.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/spark.c.obj -c /work/source/entity/spark.c
 
 CMakeFiles/minicraft.dir/source/entity/spark.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/spark.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/spark.c > CMakeFiles/minicraft.dir/source/entity/spark.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/spark.c > CMakeFiles/minicraft.dir/source/entity/spark.c.i
 
 CMakeFiles/minicraft.dir/source/entity/spark.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/spark.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/spark.c -o CMakeFiles/minicraft.dir/source/entity/spark.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/spark.c -o CMakeFiles/minicraft.dir/source/entity/spark.c.s
 
 CMakeFiles/minicraft.dir/source/entity/workbench.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/workbench.c.obj: /src/source/entity/workbench.c
+CMakeFiles/minicraft.dir/source/entity/workbench.c.obj: /work/source/entity/workbench.c
 CMakeFiles/minicraft.dir/source/entity/workbench.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/minicraft.dir/source/entity/workbench.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/workbench.c.obj -MF CMakeFiles/minicraft.dir/source/entity/workbench.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/workbench.c.obj -c /src/source/entity/workbench.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/minicraft.dir/source/entity/workbench.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/workbench.c.obj -MF CMakeFiles/minicraft.dir/source/entity/workbench.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/workbench.c.obj -c /work/source/entity/workbench.c
 
 CMakeFiles/minicraft.dir/source/entity/workbench.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/workbench.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/workbench.c > CMakeFiles/minicraft.dir/source/entity/workbench.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/workbench.c > CMakeFiles/minicraft.dir/source/entity/workbench.c.i
 
 CMakeFiles/minicraft.dir/source/entity/workbench.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/workbench.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/workbench.c -o CMakeFiles/minicraft.dir/source/entity/workbench.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/workbench.c -o CMakeFiles/minicraft.dir/source/entity/workbench.c.s
 
 CMakeFiles/minicraft.dir/source/entity/zombie.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/entity/zombie.c.obj: /src/source/entity/zombie.c
+CMakeFiles/minicraft.dir/source/entity/zombie.c.obj: /work/source/entity/zombie.c
 CMakeFiles/minicraft.dir/source/entity/zombie.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/minicraft.dir/source/entity/zombie.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/zombie.c.obj -MF CMakeFiles/minicraft.dir/source/entity/zombie.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/zombie.c.obj -c /src/source/entity/zombie.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/minicraft.dir/source/entity/zombie.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/entity/zombie.c.obj -MF CMakeFiles/minicraft.dir/source/entity/zombie.c.obj.d -o CMakeFiles/minicraft.dir/source/entity/zombie.c.obj -c /work/source/entity/zombie.c
 
 CMakeFiles/minicraft.dir/source/entity/zombie.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/entity/zombie.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/entity/zombie.c > CMakeFiles/minicraft.dir/source/entity/zombie.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/entity/zombie.c > CMakeFiles/minicraft.dir/source/entity/zombie.c.i
 
 CMakeFiles/minicraft.dir/source/entity/zombie.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/entity/zombie.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/entity/zombie.c -o CMakeFiles/minicraft.dir/source/entity/zombie.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/entity/zombie.c -o CMakeFiles/minicraft.dir/source/entity/zombie.c.s
 
 CMakeFiles/minicraft.dir/source/game.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/game.c.obj: /src/source/game.c
+CMakeFiles/minicraft.dir/source/game.c.obj: /work/source/game.c
 CMakeFiles/minicraft.dir/source/game.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/minicraft.dir/source/game.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/game.c.obj -MF CMakeFiles/minicraft.dir/source/game.c.obj.d -o CMakeFiles/minicraft.dir/source/game.c.obj -c /src/source/game.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/minicraft.dir/source/game.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/game.c.obj -MF CMakeFiles/minicraft.dir/source/game.c.obj.d -o CMakeFiles/minicraft.dir/source/game.c.obj -c /work/source/game.c
 
 CMakeFiles/minicraft.dir/source/game.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/game.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/game.c > CMakeFiles/minicraft.dir/source/game.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/game.c > CMakeFiles/minicraft.dir/source/game.c.i
 
 CMakeFiles/minicraft.dir/source/game.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/game.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/game.c -o CMakeFiles/minicraft.dir/source/game.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/game.c -o CMakeFiles/minicraft.dir/source/game.c.s
 
 CMakeFiles/minicraft.dir/source/gamemode.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/gamemode.c.obj: /src/source/gamemode.c
+CMakeFiles/minicraft.dir/source/gamemode.c.obj: /work/source/gamemode.c
 CMakeFiles/minicraft.dir/source/gamemode.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/minicraft.dir/source/gamemode.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/gamemode.c.obj -MF CMakeFiles/minicraft.dir/source/gamemode.c.obj.d -o CMakeFiles/minicraft.dir/source/gamemode.c.obj -c /src/source/gamemode.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/minicraft.dir/source/gamemode.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/gamemode.c.obj -MF CMakeFiles/minicraft.dir/source/gamemode.c.obj.d -o CMakeFiles/minicraft.dir/source/gamemode.c.obj -c /work/source/gamemode.c
 
 CMakeFiles/minicraft.dir/source/gamemode.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/gamemode.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/gamemode.c > CMakeFiles/minicraft.dir/source/gamemode.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/gamemode.c > CMakeFiles/minicraft.dir/source/gamemode.c.i
 
 CMakeFiles/minicraft.dir/source/gamemode.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/gamemode.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/gamemode.c -o CMakeFiles/minicraft.dir/source/gamemode.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/gamemode.c -o CMakeFiles/minicraft.dir/source/gamemode.c.s
 
 CMakeFiles/minicraft.dir/source/gfx/color.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/gfx/color.c.obj: /src/source/gfx/color.c
+CMakeFiles/minicraft.dir/source/gfx/color.c.obj: /work/source/gfx/color.c
 CMakeFiles/minicraft.dir/source/gfx/color.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/minicraft.dir/source/gfx/color.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/gfx/color.c.obj -MF CMakeFiles/minicraft.dir/source/gfx/color.c.obj.d -o CMakeFiles/minicraft.dir/source/gfx/color.c.obj -c /src/source/gfx/color.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/minicraft.dir/source/gfx/color.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/gfx/color.c.obj -MF CMakeFiles/minicraft.dir/source/gfx/color.c.obj.d -o CMakeFiles/minicraft.dir/source/gfx/color.c.obj -c /work/source/gfx/color.c
 
 CMakeFiles/minicraft.dir/source/gfx/color.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/gfx/color.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/gfx/color.c > CMakeFiles/minicraft.dir/source/gfx/color.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/gfx/color.c > CMakeFiles/minicraft.dir/source/gfx/color.c.i
 
 CMakeFiles/minicraft.dir/source/gfx/color.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/gfx/color.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/gfx/color.c -o CMakeFiles/minicraft.dir/source/gfx/color.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/gfx/color.c -o CMakeFiles/minicraft.dir/source/gfx/color.c.s
 
 CMakeFiles/minicraft.dir/source/gfx/font.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/gfx/font.c.obj: /src/source/gfx/font.c
+CMakeFiles/minicraft.dir/source/gfx/font.c.obj: /work/source/gfx/font.c
 CMakeFiles/minicraft.dir/source/gfx/font.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/minicraft.dir/source/gfx/font.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/gfx/font.c.obj -MF CMakeFiles/minicraft.dir/source/gfx/font.c.obj.d -o CMakeFiles/minicraft.dir/source/gfx/font.c.obj -c /src/source/gfx/font.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/minicraft.dir/source/gfx/font.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/gfx/font.c.obj -MF CMakeFiles/minicraft.dir/source/gfx/font.c.obj.d -o CMakeFiles/minicraft.dir/source/gfx/font.c.obj -c /work/source/gfx/font.c
 
 CMakeFiles/minicraft.dir/source/gfx/font.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/gfx/font.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/gfx/font.c > CMakeFiles/minicraft.dir/source/gfx/font.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/gfx/font.c > CMakeFiles/minicraft.dir/source/gfx/font.c.i
 
 CMakeFiles/minicraft.dir/source/gfx/font.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/gfx/font.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/gfx/font.c -o CMakeFiles/minicraft.dir/source/gfx/font.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/gfx/font.c -o CMakeFiles/minicraft.dir/source/gfx/font.c.s
 
 CMakeFiles/minicraft.dir/source/gfx/screen.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/gfx/screen.c.obj: /src/source/gfx/screen.c
+CMakeFiles/minicraft.dir/source/gfx/screen.c.obj: /work/source/gfx/screen.c
 CMakeFiles/minicraft.dir/source/gfx/screen.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/minicraft.dir/source/gfx/screen.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/gfx/screen.c.obj -MF CMakeFiles/minicraft.dir/source/gfx/screen.c.obj.d -o CMakeFiles/minicraft.dir/source/gfx/screen.c.obj -c /src/source/gfx/screen.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/minicraft.dir/source/gfx/screen.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/gfx/screen.c.obj -MF CMakeFiles/minicraft.dir/source/gfx/screen.c.obj.d -o CMakeFiles/minicraft.dir/source/gfx/screen.c.obj -c /work/source/gfx/screen.c
 
 CMakeFiles/minicraft.dir/source/gfx/screen.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/gfx/screen.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/gfx/screen.c > CMakeFiles/minicraft.dir/source/gfx/screen.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/gfx/screen.c > CMakeFiles/minicraft.dir/source/gfx/screen.c.i
 
 CMakeFiles/minicraft.dir/source/gfx/screen.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/gfx/screen.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/gfx/screen.c -o CMakeFiles/minicraft.dir/source/gfx/screen.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/gfx/screen.c -o CMakeFiles/minicraft.dir/source/gfx/screen.c.s
 
 CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj: /src/source/gfx/spritesheet.c
+CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj: /work/source/gfx/spritesheet.c
 CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj -MF CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj.d -o CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj -c /src/source/gfx/spritesheet.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj -MF CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj.d -o CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.obj -c /work/source/gfx/spritesheet.c
 
 CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/gfx/spritesheet.c > CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/gfx/spritesheet.c > CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.i
 
 CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/gfx/spritesheet.c -o CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/gfx/spritesheet.c -o CMakeFiles/minicraft.dir/source/gfx/spritesheet.c.s
 
 CMakeFiles/minicraft.dir/source/icons.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/icons.c.obj: /src/source/icons.c
+CMakeFiles/minicraft.dir/source/icons.c.obj: /work/source/icons.c
 CMakeFiles/minicraft.dir/source/icons.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/minicraft.dir/source/icons.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/icons.c.obj -MF CMakeFiles/minicraft.dir/source/icons.c.obj.d -o CMakeFiles/minicraft.dir/source/icons.c.obj -c /src/source/icons.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/minicraft.dir/source/icons.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/icons.c.obj -MF CMakeFiles/minicraft.dir/source/icons.c.obj.d -o CMakeFiles/minicraft.dir/source/icons.c.obj -c /work/source/icons.c
 
 CMakeFiles/minicraft.dir/source/icons.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/icons.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/icons.c > CMakeFiles/minicraft.dir/source/icons.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/icons.c > CMakeFiles/minicraft.dir/source/icons.c.i
 
 CMakeFiles/minicraft.dir/source/icons.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/icons.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/icons.c -o CMakeFiles/minicraft.dir/source/icons.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/icons.c -o CMakeFiles/minicraft.dir/source/icons.c.s
 
 CMakeFiles/minicraft.dir/source/inputhandler.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/inputhandler.c.obj: /src/source/inputhandler.c
+CMakeFiles/minicraft.dir/source/inputhandler.c.obj: /work/source/inputhandler.c
 CMakeFiles/minicraft.dir/source/inputhandler.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/minicraft.dir/source/inputhandler.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/inputhandler.c.obj -MF CMakeFiles/minicraft.dir/source/inputhandler.c.obj.d -o CMakeFiles/minicraft.dir/source/inputhandler.c.obj -c /src/source/inputhandler.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/minicraft.dir/source/inputhandler.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/inputhandler.c.obj -MF CMakeFiles/minicraft.dir/source/inputhandler.c.obj.d -o CMakeFiles/minicraft.dir/source/inputhandler.c.obj -c /work/source/inputhandler.c
 
 CMakeFiles/minicraft.dir/source/inputhandler.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/inputhandler.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/inputhandler.c > CMakeFiles/minicraft.dir/source/inputhandler.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/inputhandler.c > CMakeFiles/minicraft.dir/source/inputhandler.c.i
 
 CMakeFiles/minicraft.dir/source/inputhandler.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/inputhandler.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/inputhandler.c -o CMakeFiles/minicraft.dir/source/inputhandler.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/inputhandler.c -o CMakeFiles/minicraft.dir/source/inputhandler.c.s
 
 CMakeFiles/minicraft.dir/source/item/furniture_item.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/item/furniture_item.c.obj: /src/source/item/furniture_item.c
+CMakeFiles/minicraft.dir/source/item/furniture_item.c.obj: /work/source/item/furniture_item.c
 CMakeFiles/minicraft.dir/source/item/furniture_item.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/minicraft.dir/source/item/furniture_item.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/furniture_item.c.obj -MF CMakeFiles/minicraft.dir/source/item/furniture_item.c.obj.d -o CMakeFiles/minicraft.dir/source/item/furniture_item.c.obj -c /src/source/item/furniture_item.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/minicraft.dir/source/item/furniture_item.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/furniture_item.c.obj -MF CMakeFiles/minicraft.dir/source/item/furniture_item.c.obj.d -o CMakeFiles/minicraft.dir/source/item/furniture_item.c.obj -c /work/source/item/furniture_item.c
 
 CMakeFiles/minicraft.dir/source/item/furniture_item.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/item/furniture_item.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/item/furniture_item.c > CMakeFiles/minicraft.dir/source/item/furniture_item.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/item/furniture_item.c > CMakeFiles/minicraft.dir/source/item/furniture_item.c.i
 
 CMakeFiles/minicraft.dir/source/item/furniture_item.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/item/furniture_item.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/item/furniture_item.c -o CMakeFiles/minicraft.dir/source/item/furniture_item.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/item/furniture_item.c -o CMakeFiles/minicraft.dir/source/item/furniture_item.c.s
 
 CMakeFiles/minicraft.dir/source/item/item.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/item/item.c.obj: /src/source/item/item.c
+CMakeFiles/minicraft.dir/source/item/item.c.obj: /work/source/item/item.c
 CMakeFiles/minicraft.dir/source/item/item.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/minicraft.dir/source/item/item.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/item.c.obj -MF CMakeFiles/minicraft.dir/source/item/item.c.obj.d -o CMakeFiles/minicraft.dir/source/item/item.c.obj -c /src/source/item/item.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/minicraft.dir/source/item/item.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/item.c.obj -MF CMakeFiles/minicraft.dir/source/item/item.c.obj.d -o CMakeFiles/minicraft.dir/source/item/item.c.obj -c /work/source/item/item.c
 
 CMakeFiles/minicraft.dir/source/item/item.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/item/item.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/item/item.c > CMakeFiles/minicraft.dir/source/item/item.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/item/item.c > CMakeFiles/minicraft.dir/source/item/item.c.i
 
 CMakeFiles/minicraft.dir/source/item/item.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/item/item.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/item/item.c -o CMakeFiles/minicraft.dir/source/item/item.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/item/item.c -o CMakeFiles/minicraft.dir/source/item/item.c.s
 
 CMakeFiles/minicraft.dir/source/item/powergloveitem.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/item/powergloveitem.c.obj: /src/source/item/powergloveitem.c
+CMakeFiles/minicraft.dir/source/item/powergloveitem.c.obj: /work/source/item/powergloveitem.c
 CMakeFiles/minicraft.dir/source/item/powergloveitem.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/minicraft.dir/source/item/powergloveitem.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/powergloveitem.c.obj -MF CMakeFiles/minicraft.dir/source/item/powergloveitem.c.obj.d -o CMakeFiles/minicraft.dir/source/item/powergloveitem.c.obj -c /src/source/item/powergloveitem.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/minicraft.dir/source/item/powergloveitem.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/powergloveitem.c.obj -MF CMakeFiles/minicraft.dir/source/item/powergloveitem.c.obj.d -o CMakeFiles/minicraft.dir/source/item/powergloveitem.c.obj -c /work/source/item/powergloveitem.c
 
 CMakeFiles/minicraft.dir/source/item/powergloveitem.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/item/powergloveitem.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/item/powergloveitem.c > CMakeFiles/minicraft.dir/source/item/powergloveitem.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/item/powergloveitem.c > CMakeFiles/minicraft.dir/source/item/powergloveitem.c.i
 
 CMakeFiles/minicraft.dir/source/item/powergloveitem.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/item/powergloveitem.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/item/powergloveitem.c -o CMakeFiles/minicraft.dir/source/item/powergloveitem.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/item/powergloveitem.c -o CMakeFiles/minicraft.dir/source/item/powergloveitem.c.s
 
 CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.obj: /src/source/item/resource/food_resource.c
+CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.obj: /work/source/item/resource/food_resource.c
 CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.obj -MF CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.obj.d -o CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.obj -c /src/source/item/resource/food_resource.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.obj -MF CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.obj.d -o CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.obj -c /work/source/item/resource/food_resource.c
 
 CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/item/resource/food_resource.c > CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/item/resource/food_resource.c > CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.i
 
 CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/item/resource/food_resource.c -o CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/item/resource/food_resource.c -o CMakeFiles/minicraft.dir/source/item/resource/food_resource.c.s
 
 CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj: /src/source/item/resource/plantable_resource.c
+CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj: /work/source/item/resource/plantable_resource.c
 CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj -MF CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj.d -o CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj -c /src/source/item/resource/plantable_resource.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj -MF CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj.d -o CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.obj -c /work/source/item/resource/plantable_resource.c
 
 CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/item/resource/plantable_resource.c > CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/item/resource/plantable_resource.c > CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.i
 
 CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/item/resource/plantable_resource.c -o CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/item/resource/plantable_resource.c -o CMakeFiles/minicraft.dir/source/item/resource/plantable_resource.c.s
 
 CMakeFiles/minicraft.dir/source/item/resource/resource.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/item/resource/resource.c.obj: /src/source/item/resource/resource.c
+CMakeFiles/minicraft.dir/source/item/resource/resource.c.obj: /work/source/item/resource/resource.c
 CMakeFiles/minicraft.dir/source/item/resource/resource.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/minicraft.dir/source/item/resource/resource.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/resource/resource.c.obj -MF CMakeFiles/minicraft.dir/source/item/resource/resource.c.obj.d -o CMakeFiles/minicraft.dir/source/item/resource/resource.c.obj -c /src/source/item/resource/resource.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/minicraft.dir/source/item/resource/resource.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/resource/resource.c.obj -MF CMakeFiles/minicraft.dir/source/item/resource/resource.c.obj.d -o CMakeFiles/minicraft.dir/source/item/resource/resource.c.obj -c /work/source/item/resource/resource.c
 
 CMakeFiles/minicraft.dir/source/item/resource/resource.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/item/resource/resource.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/item/resource/resource.c > CMakeFiles/minicraft.dir/source/item/resource/resource.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/item/resource/resource.c > CMakeFiles/minicraft.dir/source/item/resource/resource.c.i
 
 CMakeFiles/minicraft.dir/source/item/resource/resource.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/item/resource/resource.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/item/resource/resource.c -o CMakeFiles/minicraft.dir/source/item/resource/resource.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/item/resource/resource.c -o CMakeFiles/minicraft.dir/source/item/resource/resource.c.s
 
 CMakeFiles/minicraft.dir/source/item/resourceitem.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/item/resourceitem.c.obj: /src/source/item/resourceitem.c
+CMakeFiles/minicraft.dir/source/item/resourceitem.c.obj: /work/source/item/resourceitem.c
 CMakeFiles/minicraft.dir/source/item/resourceitem.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/minicraft.dir/source/item/resourceitem.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/resourceitem.c.obj -MF CMakeFiles/minicraft.dir/source/item/resourceitem.c.obj.d -o CMakeFiles/minicraft.dir/source/item/resourceitem.c.obj -c /src/source/item/resourceitem.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/minicraft.dir/source/item/resourceitem.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/resourceitem.c.obj -MF CMakeFiles/minicraft.dir/source/item/resourceitem.c.obj.d -o CMakeFiles/minicraft.dir/source/item/resourceitem.c.obj -c /work/source/item/resourceitem.c
 
 CMakeFiles/minicraft.dir/source/item/resourceitem.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/item/resourceitem.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/item/resourceitem.c > CMakeFiles/minicraft.dir/source/item/resourceitem.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/item/resourceitem.c > CMakeFiles/minicraft.dir/source/item/resourceitem.c.i
 
 CMakeFiles/minicraft.dir/source/item/resourceitem.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/item/resourceitem.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/item/resourceitem.c -o CMakeFiles/minicraft.dir/source/item/resourceitem.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/item/resourceitem.c -o CMakeFiles/minicraft.dir/source/item/resourceitem.c.s
 
 CMakeFiles/minicraft.dir/source/item/tool_item.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/item/tool_item.c.obj: /src/source/item/tool_item.c
+CMakeFiles/minicraft.dir/source/item/tool_item.c.obj: /work/source/item/tool_item.c
 CMakeFiles/minicraft.dir/source/item/tool_item.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/minicraft.dir/source/item/tool_item.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/tool_item.c.obj -MF CMakeFiles/minicraft.dir/source/item/tool_item.c.obj.d -o CMakeFiles/minicraft.dir/source/item/tool_item.c.obj -c /src/source/item/tool_item.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/minicraft.dir/source/item/tool_item.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/tool_item.c.obj -MF CMakeFiles/minicraft.dir/source/item/tool_item.c.obj.d -o CMakeFiles/minicraft.dir/source/item/tool_item.c.obj -c /work/source/item/tool_item.c
 
 CMakeFiles/minicraft.dir/source/item/tool_item.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/item/tool_item.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/item/tool_item.c > CMakeFiles/minicraft.dir/source/item/tool_item.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/item/tool_item.c > CMakeFiles/minicraft.dir/source/item/tool_item.c.i
 
 CMakeFiles/minicraft.dir/source/item/tool_item.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/item/tool_item.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/item/tool_item.c -o CMakeFiles/minicraft.dir/source/item/tool_item.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/item/tool_item.c -o CMakeFiles/minicraft.dir/source/item/tool_item.c.s
 
 CMakeFiles/minicraft.dir/source/item/tooltype.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/item/tooltype.c.obj: /src/source/item/tooltype.c
+CMakeFiles/minicraft.dir/source/item/tooltype.c.obj: /work/source/item/tooltype.c
 CMakeFiles/minicraft.dir/source/item/tooltype.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/minicraft.dir/source/item/tooltype.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/tooltype.c.obj -MF CMakeFiles/minicraft.dir/source/item/tooltype.c.obj.d -o CMakeFiles/minicraft.dir/source/item/tooltype.c.obj -c /src/source/item/tooltype.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/minicraft.dir/source/item/tooltype.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/item/tooltype.c.obj -MF CMakeFiles/minicraft.dir/source/item/tooltype.c.obj.d -o CMakeFiles/minicraft.dir/source/item/tooltype.c.obj -c /work/source/item/tooltype.c
 
 CMakeFiles/minicraft.dir/source/item/tooltype.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/item/tooltype.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/item/tooltype.c > CMakeFiles/minicraft.dir/source/item/tooltype.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/item/tooltype.c > CMakeFiles/minicraft.dir/source/item/tooltype.c.i
 
 CMakeFiles/minicraft.dir/source/item/tooltype.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/item/tooltype.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/item/tooltype.c -o CMakeFiles/minicraft.dir/source/item/tooltype.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/item/tooltype.c -o CMakeFiles/minicraft.dir/source/item/tooltype.c.s
 
 CMakeFiles/minicraft.dir/source/lang.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/lang.c.obj: /src/source/lang.c
+CMakeFiles/minicraft.dir/source/lang.c.obj: /work/source/lang.c
 CMakeFiles/minicraft.dir/source/lang.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/minicraft.dir/source/lang.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/lang.c.obj -MF CMakeFiles/minicraft.dir/source/lang.c.obj.d -o CMakeFiles/minicraft.dir/source/lang.c.obj -c /src/source/lang.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/minicraft.dir/source/lang.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/lang.c.obj -MF CMakeFiles/minicraft.dir/source/lang.c.obj.d -o CMakeFiles/minicraft.dir/source/lang.c.obj -c /work/source/lang.c
 
 CMakeFiles/minicraft.dir/source/lang.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/lang.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/lang.c > CMakeFiles/minicraft.dir/source/lang.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/lang.c > CMakeFiles/minicraft.dir/source/lang.c.i
 
 CMakeFiles/minicraft.dir/source/lang.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/lang.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/lang.c -o CMakeFiles/minicraft.dir/source/lang.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/lang.c -o CMakeFiles/minicraft.dir/source/lang.c.s
 
 CMakeFiles/minicraft.dir/source/level/level.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/level.c.obj: /src/source/level/level.c
+CMakeFiles/minicraft.dir/source/level/level.c.obj: /work/source/level/level.c
 CMakeFiles/minicraft.dir/source/level/level.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/minicraft.dir/source/level/level.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/level.c.obj -MF CMakeFiles/minicraft.dir/source/level/level.c.obj.d -o CMakeFiles/minicraft.dir/source/level/level.c.obj -c /src/source/level/level.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/minicraft.dir/source/level/level.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/level.c.obj -MF CMakeFiles/minicraft.dir/source/level/level.c.obj.d -o CMakeFiles/minicraft.dir/source/level/level.c.obj -c /work/source/level/level.c
 
 CMakeFiles/minicraft.dir/source/level/level.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/level.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/level.c > CMakeFiles/minicraft.dir/source/level/level.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/level.c > CMakeFiles/minicraft.dir/source/level/level.c.i
 
 CMakeFiles/minicraft.dir/source/level/level.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/level.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/level.c -o CMakeFiles/minicraft.dir/source/level/level.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/level.c -o CMakeFiles/minicraft.dir/source/level/level.c.s
 
 CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj: /src/source/level/levelgen/levelgen.c
+CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj: /work/source/level/levelgen/levelgen.c
 CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj -MF CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj.d -o CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj -c /src/source/level/levelgen/levelgen.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj -MF CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj.d -o CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.obj -c /work/source/level/levelgen/levelgen.c
 
 CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/levelgen/levelgen.c > CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/levelgen/levelgen.c > CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.i
 
 CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/levelgen/levelgen.c -o CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/levelgen/levelgen.c -o CMakeFiles/minicraft.dir/source/level/levelgen/levelgen.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.obj: /src/source/level/tile/cactus_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.obj: /work/source/level/tile/cactus_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.obj -c /src/source/level/tile/cactus_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.obj -c /work/source/level/tile/cactus_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/cactus_tile.c > CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/cactus_tile.c > CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/cactus_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/cactus_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/cactus_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.obj: /src/source/level/tile/cloud_cactus_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.obj: /work/source/level/tile/cloud_cactus_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.obj -c /src/source/level/tile/cloud_cactus_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.obj -c /work/source/level/tile/cloud_cactus_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/cloud_cactus_tile.c > CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/cloud_cactus_tile.c > CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/cloud_cactus_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/cloud_cactus_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/cloud_cactus_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.obj: /src/source/level/tile/cloud_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.obj: /work/source/level/tile/cloud_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.obj -c /src/source/level/tile/cloud_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.obj -c /work/source/level/tile/cloud_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/cloud_tile.c > CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/cloud_tile.c > CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/cloud_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/cloud_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/cloud_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.obj: /src/source/level/tile/dirt_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.obj: /work/source/level/tile/dirt_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.obj -c /src/source/level/tile/dirt_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.obj -c /work/source/level/tile/dirt_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/dirt_tile.c > CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/dirt_tile.c > CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/dirt_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/dirt_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/dirt_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/farmland.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/farmland.c.obj: /src/source/level/tile/farmland.c
+CMakeFiles/minicraft.dir/source/level/tile/farmland.c.obj: /work/source/level/tile/farmland.c
 CMakeFiles/minicraft.dir/source/level/tile/farmland.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/minicraft.dir/source/level/tile/farmland.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/farmland.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/farmland.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/farmland.c.obj -c /src/source/level/tile/farmland.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/minicraft.dir/source/level/tile/farmland.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/farmland.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/farmland.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/farmland.c.obj -c /work/source/level/tile/farmland.c
 
 CMakeFiles/minicraft.dir/source/level/tile/farmland.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/farmland.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/farmland.c > CMakeFiles/minicraft.dir/source/level/tile/farmland.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/farmland.c > CMakeFiles/minicraft.dir/source/level/tile/farmland.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/farmland.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/farmland.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/farmland.c -o CMakeFiles/minicraft.dir/source/level/tile/farmland.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/farmland.c -o CMakeFiles/minicraft.dir/source/level/tile/farmland.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.obj: /src/source/level/tile/fence_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.obj: /work/source/level/tile/fence_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.obj -c /src/source/level/tile/fence_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.obj -c /work/source/level/tile/fence_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/fence_tile.c > CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/fence_tile.c > CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/fence_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/fence_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/fence_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.obj: /src/source/level/tile/flower_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.obj: /work/source/level/tile/flower_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.obj -c /src/source/level/tile/flower_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.obj -c /work/source/level/tile/flower_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/flower_tile.c > CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/flower_tile.c > CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/flower_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/flower_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/flower_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.obj: /src/source/level/tile/glass_wall_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.obj: /work/source/level/tile/glass_wall_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.obj -c /src/source/level/tile/glass_wall_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.obj -c /work/source/level/tile/glass_wall_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/glass_wall_tile.c > CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/glass_wall_tile.c > CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/glass_wall_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/glass_wall_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/glass_wall_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.obj: /src/source/level/tile/grass_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.obj: /work/source/level/tile/grass_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.obj -c /src/source/level/tile/grass_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.obj -c /work/source/level/tile/grass_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/grass_tile.c > CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/grass_tile.c > CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/grass_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/grass_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/grass_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.obj: /src/source/level/tile/hard_rock_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.obj: /work/source/level/tile/hard_rock_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.obj -c /src/source/level/tile/hard_rock_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.obj -c /work/source/level/tile/hard_rock_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/hard_rock_tile.c > CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/hard_rock_tile.c > CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/hard_rock_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/hard_rock_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/hard_rock_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.obj: /src/source/level/tile/hole_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.obj: /work/source/level/tile/hole_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.obj -c /src/source/level/tile/hole_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.obj -c /work/source/level/tile/hole_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/hole_tile.c > CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/hole_tile.c > CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/hole_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/hole_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/hole_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.obj: /src/source/level/tile/infinite_fall_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.obj: /work/source/level/tile/infinite_fall_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.obj -c /src/source/level/tile/infinite_fall_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.obj -c /work/source/level/tile/infinite_fall_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/infinite_fall_tile.c > CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/infinite_fall_tile.c > CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/infinite_fall_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/infinite_fall_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/infinite_fall_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.obj: /src/source/level/tile/ladder_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.obj: /work/source/level/tile/ladder_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.obj -c /src/source/level/tile/ladder_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.obj -c /work/source/level/tile/ladder_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/ladder_tile.c > CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/ladder_tile.c > CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/ladder_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/ladder_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/ladder_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.obj: /src/source/level/tile/lava_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.obj: /work/source/level/tile/lava_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.obj -c /src/source/level/tile/lava_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.obj -c /work/source/level/tile/lava_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/lava_tile.c > CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/lava_tile.c > CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/lava_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/lava_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/lava_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.obj: /src/source/level/tile/ore_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.obj: /work/source/level/tile/ore_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.obj -c /src/source/level/tile/ore_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.obj -c /work/source/level/tile/ore_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/ore_tile.c > CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/ore_tile.c > CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/ore_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/ore_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/ore_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.obj: /src/source/level/tile/path_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.obj: /work/source/level/tile/path_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.obj -c /src/source/level/tile/path_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.obj -c /work/source/level/tile/path_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/path_tile.c > CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/path_tile.c > CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/path_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/path_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/path_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.obj: /src/source/level/tile/pot_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.obj: /work/source/level/tile/pot_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.obj -c /src/source/level/tile/pot_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.obj -c /work/source/level/tile/pot_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/pot_tile.c > CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/pot_tile.c > CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/pot_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/pot_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/pot_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.obj: /src/source/level/tile/rock_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.obj: /work/source/level/tile/rock_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.obj -c /src/source/level/tile/rock_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.obj -c /work/source/level/tile/rock_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/rock_tile.c > CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/rock_tile.c > CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/rock_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/rock_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/rock_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.obj: /src/source/level/tile/sand_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.obj: /work/source/level/tile/sand_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.obj -c /src/source/level/tile/sand_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.obj -c /work/source/level/tile/sand_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/sand_tile.c > CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/sand_tile.c > CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/sand_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/sand_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/sand_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj: /src/source/level/tile/sapling_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj: /work/source/level/tile/sapling_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj -c /src/source/level/tile/sapling_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj -c /work/source/level/tile/sapling_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/sapling_tile.c > CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/sapling_tile.c > CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/sapling_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/sapling_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.obj: /src/source/level/tile/stairs_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.obj: /work/source/level/tile/stairs_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.obj -c /src/source/level/tile/stairs_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.obj -c /work/source/level/tile/stairs_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/stairs_tile.c > CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/stairs_tile.c > CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/stairs_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/stairs_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/stairs_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.obj: /src/source/level/tile/stone_floor_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.obj: /work/source/level/tile/stone_floor_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.obj -c /src/source/level/tile/stone_floor_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.obj -c /work/source/level/tile/stone_floor_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/stone_floor_tile.c > CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/stone_floor_tile.c > CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/stone_floor_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/stone_floor_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/stone_floor_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.obj: /src/source/level/tile/stone_wall_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.obj: /work/source/level/tile/stone_wall_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.obj -c /src/source/level/tile/stone_wall_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.obj -c /work/source/level/tile/stone_wall_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/stone_wall_tile.c > CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/stone_wall_tile.c > CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/stone_wall_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/stone_wall_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/stone_wall_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/tile.c.obj: /src/source/level/tile/tile.c
+CMakeFiles/minicraft.dir/source/level/tile/tile.c.obj: /work/source/level/tile/tile.c
 CMakeFiles/minicraft.dir/source/level/tile/tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/minicraft.dir/source/level/tile/tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/tile.c.obj -c /src/source/level/tile/tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/minicraft.dir/source/level/tile/tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/tile.c.obj -c /work/source/level/tile/tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/tile.c > CMakeFiles/minicraft.dir/source/level/tile/tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/tile.c > CMakeFiles/minicraft.dir/source/level/tile/tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/tile.c -o CMakeFiles/minicraft.dir/source/level/tile/tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/tile.c -o CMakeFiles/minicraft.dir/source/level/tile/tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.obj: /src/source/level/tile/tombstone_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.obj: /work/source/level/tile/tombstone_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.obj -c /src/source/level/tile/tombstone_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.obj -c /work/source/level/tile/tombstone_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/tombstone_tile.c > CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/tombstone_tile.c > CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/tombstone_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/tombstone_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/tombstone_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.obj: /src/source/level/tile/torch_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.obj: /work/source/level/tile/torch_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.obj -c /src/source/level/tile/torch_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.obj -c /work/source/level/tile/torch_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/torch_tile.c > CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/torch_tile.c > CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/torch_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/torch_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/torch_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.obj: /src/source/level/tile/tree_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.obj: /work/source/level/tile/tree_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.obj -c /src/source/level/tile/tree_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.obj -c /work/source/level/tile/tree_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/tree_tile.c > CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/tree_tile.c > CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/tree_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/tree_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/tree_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.obj: /src/source/level/tile/water_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.obj: /work/source/level/tile/water_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.obj -c /src/source/level/tile/water_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.obj -c /work/source/level/tile/water_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/water_tile.c > CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/water_tile.c > CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/water_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/water_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/water_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.obj: /src/source/level/tile/wheat_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.obj: /work/source/level/tile/wheat_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.obj -c /src/source/level/tile/wheat_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.obj -c /work/source/level/tile/wheat_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/wheat_tile.c > CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/wheat_tile.c > CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/wheat_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/wheat_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/wheat_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.obj: /src/source/level/tile/wildflower_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.obj: /work/source/level/tile/wildflower_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.obj -c /src/source/level/tile/wildflower_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.obj -c /work/source/level/tile/wildflower_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/wildflower_tile.c > CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/wildflower_tile.c > CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/wildflower_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/wildflower_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/wildflower_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.obj: /src/source/level/tile/wood_floor_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.obj: /work/source/level/tile/wood_floor_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.obj -c /src/source/level/tile/wood_floor_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.obj -c /work/source/level/tile/wood_floor_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/wood_floor_tile.c > CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/wood_floor_tile.c > CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/wood_floor_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/wood_floor_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/wood_floor_tile.c.s
 
 CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.obj: /src/source/level/tile/wood_wall_tile.c
+CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.obj: /work/source/level/tile/wood_wall_tile.c
 CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.obj -c /src/source/level/tile/wood_wall_tile.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.obj -MF CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.obj.d -o CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.obj -c /work/source/level/tile/wood_wall_tile.c
 
 CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/level/tile/wood_wall_tile.c > CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/level/tile/wood_wall_tile.c > CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.i
 
 CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/level/tile/wood_wall_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/level/tile/wood_wall_tile.c -o CMakeFiles/minicraft.dir/source/level/tile/wood_wall_tile.c.s
 
 CMakeFiles/minicraft.dir/source/save.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/save.c.obj: /src/source/save.c
+CMakeFiles/minicraft.dir/source/save.c.obj: /work/source/save.c
 CMakeFiles/minicraft.dir/source/save.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/minicraft.dir/source/save.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/save.c.obj -MF CMakeFiles/minicraft.dir/source/save.c.obj.d -o CMakeFiles/minicraft.dir/source/save.c.obj -c /src/source/save.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/minicraft.dir/source/save.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/save.c.obj -MF CMakeFiles/minicraft.dir/source/save.c.obj.d -o CMakeFiles/minicraft.dir/source/save.c.obj -c /work/source/save.c
 
 CMakeFiles/minicraft.dir/source/save.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/save.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/save.c > CMakeFiles/minicraft.dir/source/save.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/save.c > CMakeFiles/minicraft.dir/source/save.c.i
 
 CMakeFiles/minicraft.dir/source/save.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/save.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/save.c -o CMakeFiles/minicraft.dir/source/save.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/save.c -o CMakeFiles/minicraft.dir/source/save.c.s
 
 CMakeFiles/minicraft.dir/source/screen/about_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/about_menu.c.obj: /src/source/screen/about_menu.c
+CMakeFiles/minicraft.dir/source/screen/about_menu.c.obj: /work/source/screen/about_menu.c
 CMakeFiles/minicraft.dir/source/screen/about_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/minicraft.dir/source/screen/about_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/about_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/about_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/about_menu.c.obj -c /src/source/screen/about_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/minicraft.dir/source/screen/about_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/about_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/about_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/about_menu.c.obj -c /work/source/screen/about_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/about_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/about_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/about_menu.c > CMakeFiles/minicraft.dir/source/screen/about_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/about_menu.c > CMakeFiles/minicraft.dir/source/screen/about_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/about_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/about_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/about_menu.c -o CMakeFiles/minicraft.dir/source/screen/about_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/about_menu.c -o CMakeFiles/minicraft.dir/source/screen/about_menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/container_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/container_menu.c.obj: /src/source/screen/container_menu.c
+CMakeFiles/minicraft.dir/source/screen/container_menu.c.obj: /work/source/screen/container_menu.c
 CMakeFiles/minicraft.dir/source/screen/container_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/minicraft.dir/source/screen/container_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/container_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/container_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/container_menu.c.obj -c /src/source/screen/container_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/minicraft.dir/source/screen/container_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/container_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/container_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/container_menu.c.obj -c /work/source/screen/container_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/container_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/container_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/container_menu.c > CMakeFiles/minicraft.dir/source/screen/container_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/container_menu.c > CMakeFiles/minicraft.dir/source/screen/container_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/container_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/container_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/container_menu.c -o CMakeFiles/minicraft.dir/source/screen/container_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/container_menu.c -o CMakeFiles/minicraft.dir/source/screen/container_menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj: /src/source/screen/crafting_menu.c
+CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj: /work/source/screen/crafting_menu.c
 CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj -c /src/source/screen/crafting_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.obj -c /work/source/screen/crafting_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/crafting_menu.c > CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/crafting_menu.c > CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/crafting_menu.c -o CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/crafting_menu.c -o CMakeFiles/minicraft.dir/source/screen/crafting_menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/dead_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/dead_menu.c.obj: /src/source/screen/dead_menu.c
+CMakeFiles/minicraft.dir/source/screen/dead_menu.c.obj: /work/source/screen/dead_menu.c
 CMakeFiles/minicraft.dir/source/screen/dead_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/minicraft.dir/source/screen/dead_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/dead_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/dead_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/dead_menu.c.obj -c /src/source/screen/dead_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/minicraft.dir/source/screen/dead_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/dead_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/dead_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/dead_menu.c.obj -c /work/source/screen/dead_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/dead_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/dead_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/dead_menu.c > CMakeFiles/minicraft.dir/source/screen/dead_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/dead_menu.c > CMakeFiles/minicraft.dir/source/screen/dead_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/dead_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/dead_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/dead_menu.c -o CMakeFiles/minicraft.dir/source/screen/dead_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/dead_menu.c -o CMakeFiles/minicraft.dir/source/screen/dead_menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.obj: /src/source/screen/instructions_menu.c
+CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.obj: /work/source/screen/instructions_menu.c
 CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.obj -c /src/source/screen/instructions_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.obj -c /work/source/screen/instructions_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/instructions_menu.c > CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/instructions_menu.c > CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/instructions_menu.c -o CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/instructions_menu.c -o CMakeFiles/minicraft.dir/source/screen/instructions_menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.obj: /src/source/screen/inventory_menu.c
+CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.obj: /work/source/screen/inventory_menu.c
 CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.obj -c /src/source/screen/inventory_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.obj -c /work/source/screen/inventory_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/inventory_menu.c > CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/inventory_menu.c > CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/inventory_menu.c -o CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/inventory_menu.c -o CMakeFiles/minicraft.dir/source/screen/inventory_menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.obj: /src/source/screen/level_transition_menu.c
+CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.obj: /work/source/screen/level_transition_menu.c
 CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.obj -c /src/source/screen/level_transition_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.obj -c /work/source/screen/level_transition_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/level_transition_menu.c > CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/level_transition_menu.c > CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/level_transition_menu.c -o CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/level_transition_menu.c -o CMakeFiles/minicraft.dir/source/screen/level_transition_menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/menu.c.obj: /src/source/screen/menu.c
+CMakeFiles/minicraft.dir/source/screen/menu.c.obj: /work/source/screen/menu.c
 CMakeFiles/minicraft.dir/source/screen/menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/minicraft.dir/source/screen/menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/menu.c.obj -c /src/source/screen/menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/minicraft.dir/source/screen/menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/menu.c.obj -c /work/source/screen/menu.c
 
 CMakeFiles/minicraft.dir/source/screen/menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/menu.c > CMakeFiles/minicraft.dir/source/screen/menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/menu.c > CMakeFiles/minicraft.dir/source/screen/menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/menu.c -o CMakeFiles/minicraft.dir/source/screen/menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/menu.c -o CMakeFiles/minicraft.dir/source/screen/menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj: /src/source/screen/newgame_menu.c
+CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj: /work/source/screen/newgame_menu.c
 CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj -c /src/source/screen/newgame_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.obj -c /work/source/screen/newgame_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/newgame_menu.c > CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/newgame_menu.c > CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/newgame_menu.c -o CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/newgame_menu.c -o CMakeFiles/minicraft.dir/source/screen/newgame_menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/options_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/options_menu.c.obj: /src/source/screen/options_menu.c
+CMakeFiles/minicraft.dir/source/screen/options_menu.c.obj: /work/source/screen/options_menu.c
 CMakeFiles/minicraft.dir/source/screen/options_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/minicraft.dir/source/screen/options_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/options_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/options_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/options_menu.c.obj -c /src/source/screen/options_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/minicraft.dir/source/screen/options_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/options_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/options_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/options_menu.c.obj -c /work/source/screen/options_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/options_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/options_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/options_menu.c > CMakeFiles/minicraft.dir/source/screen/options_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/options_menu.c > CMakeFiles/minicraft.dir/source/screen/options_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/options_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/options_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/options_menu.c -o CMakeFiles/minicraft.dir/source/screen/options_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/options_menu.c -o CMakeFiles/minicraft.dir/source/screen/options_menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/pause_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/pause_menu.c.obj: /src/source/screen/pause_menu.c
+CMakeFiles/minicraft.dir/source/screen/pause_menu.c.obj: /work/source/screen/pause_menu.c
 CMakeFiles/minicraft.dir/source/screen/pause_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/minicraft.dir/source/screen/pause_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/pause_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/pause_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/pause_menu.c.obj -c /src/source/screen/pause_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/minicraft.dir/source/screen/pause_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/pause_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/pause_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/pause_menu.c.obj -c /work/source/screen/pause_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/pause_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/pause_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/pause_menu.c > CMakeFiles/minicraft.dir/source/screen/pause_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/pause_menu.c > CMakeFiles/minicraft.dir/source/screen/pause_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/pause_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/pause_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/pause_menu.c -o CMakeFiles/minicraft.dir/source/screen/pause_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/pause_menu.c -o CMakeFiles/minicraft.dir/source/screen/pause_menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/slot_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/slot_menu.c.obj: /src/source/screen/slot_menu.c
+CMakeFiles/minicraft.dir/source/screen/slot_menu.c.obj: /work/source/screen/slot_menu.c
 CMakeFiles/minicraft.dir/source/screen/slot_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building C object CMakeFiles/minicraft.dir/source/screen/slot_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/slot_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/slot_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/slot_menu.c.obj -c /src/source/screen/slot_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building C object CMakeFiles/minicraft.dir/source/screen/slot_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/slot_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/slot_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/slot_menu.c.obj -c /work/source/screen/slot_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/slot_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/slot_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/slot_menu.c > CMakeFiles/minicraft.dir/source/screen/slot_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/slot_menu.c > CMakeFiles/minicraft.dir/source/screen/slot_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/slot_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/slot_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/slot_menu.c -o CMakeFiles/minicraft.dir/source/screen/slot_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/slot_menu.c -o CMakeFiles/minicraft.dir/source/screen/slot_menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/title_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/title_menu.c.obj: /src/source/screen/title_menu.c
+CMakeFiles/minicraft.dir/source/screen/title_menu.c.obj: /work/source/screen/title_menu.c
 CMakeFiles/minicraft.dir/source/screen/title_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/minicraft.dir/source/screen/title_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/title_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/title_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/title_menu.c.obj -c /src/source/screen/title_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/minicraft.dir/source/screen/title_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/title_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/title_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/title_menu.c.obj -c /work/source/screen/title_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/title_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/title_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/title_menu.c > CMakeFiles/minicraft.dir/source/screen/title_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/title_menu.c > CMakeFiles/minicraft.dir/source/screen/title_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/title_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/title_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/title_menu.c -o CMakeFiles/minicraft.dir/source/screen/title_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/title_menu.c -o CMakeFiles/minicraft.dir/source/screen/title_menu.c.s
 
 CMakeFiles/minicraft.dir/source/screen/won_menu.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/screen/won_menu.c.obj: /src/source/screen/won_menu.c
+CMakeFiles/minicraft.dir/source/screen/won_menu.c.obj: /work/source/screen/won_menu.c
 CMakeFiles/minicraft.dir/source/screen/won_menu.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/minicraft.dir/source/screen/won_menu.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/won_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/won_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/won_menu.c.obj -c /src/source/screen/won_menu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/minicraft.dir/source/screen/won_menu.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/screen/won_menu.c.obj -MF CMakeFiles/minicraft.dir/source/screen/won_menu.c.obj.d -o CMakeFiles/minicraft.dir/source/screen/won_menu.c.obj -c /work/source/screen/won_menu.c
 
 CMakeFiles/minicraft.dir/source/screen/won_menu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/screen/won_menu.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/screen/won_menu.c > CMakeFiles/minicraft.dir/source/screen/won_menu.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/screen/won_menu.c > CMakeFiles/minicraft.dir/source/screen/won_menu.c.i
 
 CMakeFiles/minicraft.dir/source/screen/won_menu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/screen/won_menu.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/screen/won_menu.c -o CMakeFiles/minicraft.dir/source/screen/won_menu.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/screen/won_menu.c -o CMakeFiles/minicraft.dir/source/screen/won_menu.c.s
 
 CMakeFiles/minicraft.dir/source/sound.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/sound.c.obj: /src/source/sound.c
+CMakeFiles/minicraft.dir/source/sound.c.obj: /work/source/sound.c
 CMakeFiles/minicraft.dir/source/sound.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/minicraft.dir/source/sound.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/sound.c.obj -MF CMakeFiles/minicraft.dir/source/sound.c.obj.d -o CMakeFiles/minicraft.dir/source/sound.c.obj -c /src/source/sound.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/minicraft.dir/source/sound.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/sound.c.obj -MF CMakeFiles/minicraft.dir/source/sound.c.obj.d -o CMakeFiles/minicraft.dir/source/sound.c.obj -c /work/source/sound.c
 
 CMakeFiles/minicraft.dir/source/sound.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/sound.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/sound.c > CMakeFiles/minicraft.dir/source/sound.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/sound.c > CMakeFiles/minicraft.dir/source/sound.c.i
 
 CMakeFiles/minicraft.dir/source/sound.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/sound.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/sound.c -o CMakeFiles/minicraft.dir/source/sound.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/sound.c -o CMakeFiles/minicraft.dir/source/sound.c.s
 
 CMakeFiles/minicraft.dir/source/sound_music.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/sound_music.c.obj: /src/source/sound_music.c
+CMakeFiles/minicraft.dir/source/sound_music.c.obj: /work/source/sound_music.c
 CMakeFiles/minicraft.dir/source/sound_music.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/minicraft.dir/source/sound_music.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/sound_music.c.obj -MF CMakeFiles/minicraft.dir/source/sound_music.c.obj.d -o CMakeFiles/minicraft.dir/source/sound_music.c.obj -c /src/source/sound_music.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/minicraft.dir/source/sound_music.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/sound_music.c.obj -MF CMakeFiles/minicraft.dir/source/sound_music.c.obj.d -o CMakeFiles/minicraft.dir/source/sound_music.c.obj -c /work/source/sound_music.c
 
 CMakeFiles/minicraft.dir/source/sound_music.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/sound_music.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/sound_music.c > CMakeFiles/minicraft.dir/source/sound_music.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/sound_music.c > CMakeFiles/minicraft.dir/source/sound_music.c.i
 
 CMakeFiles/minicraft.dir/source/sound_music.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/sound_music.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/sound_music.c -o CMakeFiles/minicraft.dir/source/sound_music.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/sound_music.c -o CMakeFiles/minicraft.dir/source/sound_music.c.s
 
 CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj: /src/source/utils/arraylist.c
+CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj: /work/source/utils/arraylist.c
 CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj -MF CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj.d -o CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj -c /src/source/utils/arraylist.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj -MF CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj.d -o CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj -c /work/source/utils/arraylist.c
 
 CMakeFiles/minicraft.dir/source/utils/arraylist.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/utils/arraylist.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/utils/arraylist.c > CMakeFiles/minicraft.dir/source/utils/arraylist.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/utils/arraylist.c > CMakeFiles/minicraft.dir/source/utils/arraylist.c.i
 
 CMakeFiles/minicraft.dir/source/utils/arraylist.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/utils/arraylist.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/utils/arraylist.c -o CMakeFiles/minicraft.dir/source/utils/arraylist.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/utils/arraylist.c -o CMakeFiles/minicraft.dir/source/utils/arraylist.c.s
 
 CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj: /src/source/utils/javarandom.c
+CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj: /work/source/utils/javarandom.c
 CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj -MF CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj.d -o CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj -c /src/source/utils/javarandom.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj -MF CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj.d -o CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj -c /work/source/utils/javarandom.c
 
 CMakeFiles/minicraft.dir/source/utils/javarandom.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/utils/javarandom.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/utils/javarandom.c > CMakeFiles/minicraft.dir/source/utils/javarandom.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/utils/javarandom.c > CMakeFiles/minicraft.dir/source/utils/javarandom.c.i
 
 CMakeFiles/minicraft.dir/source/utils/javarandom.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/utils/javarandom.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/utils/javarandom.c -o CMakeFiles/minicraft.dir/source/utils/javarandom.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/utils/javarandom.c -o CMakeFiles/minicraft.dir/source/utils/javarandom.c.s
 
 CMakeFiles/minicraft.dir/source/utils/utils.c.obj: CMakeFiles/minicraft.dir/flags.make
-CMakeFiles/minicraft.dir/source/utils/utils.c.obj: /src/source/utils/utils.c
+CMakeFiles/minicraft.dir/source/utils/utils.c.obj: /work/source/utils/utils.c
 CMakeFiles/minicraft.dir/source/utils/utils.c.obj: CMakeFiles/minicraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/minicraft.dir/source/utils/utils.c.obj"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/utils/utils.c.obj -MF CMakeFiles/minicraft.dir/source/utils/utils.c.obj.d -o CMakeFiles/minicraft.dir/source/utils/utils.c.obj -c /src/source/utils/utils.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/minicraft.dir/source/utils/utils.c.obj"
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/minicraft.dir/source/utils/utils.c.obj -MF CMakeFiles/minicraft.dir/source/utils/utils.c.obj.d -o CMakeFiles/minicraft.dir/source/utils/utils.c.obj -c /work/source/utils/utils.c
 
 CMakeFiles/minicraft.dir/source/utils/utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/minicraft.dir/source/utils/utils.c.i"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /src/source/utils/utils.c > CMakeFiles/minicraft.dir/source/utils/utils.c.i
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /work/source/utils/utils.c > CMakeFiles/minicraft.dir/source/utils/utils.c.i
 
 CMakeFiles/minicraft.dir/source/utils/utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/minicraft.dir/source/utils/utils.c.s"
-	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /src/source/utils/utils.c -o CMakeFiles/minicraft.dir/source/utils/utils.c.s
+	/usr/local/pspdev/bin/psp-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /work/source/utils/utils.c -o CMakeFiles/minicraft.dir/source/utils/utils.c.s
 
 # Object files for target minicraft
 minicraft_OBJECTS = \
@@ -1824,20 +1824,20 @@ minicraft: CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj
 minicraft: CMakeFiles/minicraft.dir/source/utils/utils.c.obj
 minicraft: CMakeFiles/minicraft.dir/build.make
 minicraft: CMakeFiles/minicraft.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/src/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Linking C executable minicraft"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/work/build-psp/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Linking C executable minicraft"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/minicraft.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/cmake -E cmake_echo_color --cyan Not\ stripping\ binary\ for\ target\ minicraft\ because\ building\ PRX.
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Calling psp-fixup-imports for target minicraft"
-	/usr/local/pspdev/bin/psp-fixup-imports /src/build-psp/minicraft
+	/usr/local/pspdev/bin/psp-fixup-imports /work/build-psp/minicraft
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Calling prxgen for target minicraft"
-	/usr/local/pspdev/bin/psp-prxgen /src/build-psp/minicraft /src/build-psp/minicraft.prx
+	/usr/local/pspdev/bin/psp-prxgen /work/build-psp/minicraft /work/build-psp/minicraft.prx
 	/usr/bin/cmake -E cmake_echo_color --cyan Not\ encrypting\ PRX\ for\ target\ minicraft,\ use\ ENC_PRX\ flag\ if\ you\ need\ to.
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Calling mksfoex for target minicraft"
-	/usr/local/pspdev/bin/mksfoex  -d MEMSIZE=2 -s APP_VER= Minicraft\ PSP /src/build-psp/PARAM.SFO
+	/usr/local/pspdev/bin/mksfoex  -d MEMSIZE=2 -s APP_VER= Minicraft\ PSP /work/build-psp/PARAM.SFO
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Calling pack-pbp with PRX file for target minicraft"
-	/usr/local/pspdev/bin/pack-pbp /src/build-psp/EBOOT.PBP /src/build-psp/PARAM.SFO /src/ICON0.PNG NULL NULL /src/PIC1.PNG NULL /src/build-psp/minicraft.prx NULL
+	/usr/local/pspdev/bin/pack-pbp /work/build-psp/EBOOT.PBP /work/build-psp/PARAM.SFO /work/ICON0.PNG NULL NULL /work/PIC1.PNG NULL /work/build-psp/minicraft.prx NULL
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Cleaning up PARAM.SFO for target minicraft"
-	/usr/bin/cmake -E remove /src/build-psp/PARAM.SFO
+	/usr/bin/cmake -E remove /work/build-psp/PARAM.SFO
 	/usr/bin/cmake -E cmake_echo_color --cyan EBOOT.PBP\ file\ created\ for\ target\ minicraft.
 
 # Rule to build all files generated by this target.
@@ -1849,6 +1849,6 @@ CMakeFiles/minicraft.dir/clean:
 .PHONY : CMakeFiles/minicraft.dir/clean
 
 CMakeFiles/minicraft.dir/depend:
-	cd /src/build-psp && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /src /src /src/build-psp /src/build-psp /src/build-psp/CMakeFiles/minicraft.dir/DependInfo.cmake "--color=$(COLOR)" minicraft
+	cd /work/build-psp && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /work /work /work/build-psp /work/build-psp /work/build-psp/CMakeFiles/minicraft.dir/DependInfo.cmake "--color=$(COLOR)" minicraft
 .PHONY : CMakeFiles/minicraft.dir/depend
 

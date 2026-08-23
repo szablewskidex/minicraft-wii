@@ -1,8 +1,8 @@
 CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj: \
- /src/source/level/tile/sapling_tile.c /src/source/level/tile/tile.h \
- /src/source/level/tile/../../utils/javarandom.h \
- /src/source/level/tile/stairs_tile.h /src/source/level/tile/../level.h \
- /src/source/level/tile/../../entity/entity.h \
+ /work/source/level/tile/sapling_tile.c /work/source/level/tile/tile.h \
+ /work/source/level/tile/../../utils/javarandom.h \
+ /work/source/level/tile/stairs_tile.h /work/source/level/tile/../level.h \
+ /work/source/level/tile/../../entity/entity.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdint.h \
  /usr/local/pspdev/psp/include/stdint.h \
  /usr/local/pspdev/psp/include/machine/_default_types.h \
@@ -10,9 +10,9 @@ CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj: \
  /usr/local/pspdev/psp/include/_newlib_version.h \
  /usr/local/pspdev/psp/include/sys/_intsup.h \
  /usr/local/pspdev/psp/include/sys/_stdint.h \
- /src/source/level/tile/../../entity/entityid.h \
- /src/source/level/tile/../../entity/../gfx/screen.h \
- /src/source/level/tile/../../entity/../gfx/spritesheet.h \
+ /work/source/level/tile/../../entity/entityid.h \
+ /work/source/level/tile/../../entity/../gfx/screen.h \
+ /work/source/level/tile/../../entity/../gfx/spritesheet.h \
  /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
@@ -31,17 +31,17 @@ CMakeFiles/minicraft.dir/source/level/tile/sapling_tile.c.obj: \
  /usr/local/pspdev/psp/include/stdio.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdarg.h \
  /usr/local/pspdev/psp/include/sys/stdio.h \
- /src/source/level/tile/../../entity/../utils/javarandom.h \
- /src/source/level/tile/../../entity/../utils/utils.h \
- /src/source/level/tile/../../gfx/screen.h \
- /src/source/level/tile/../../utils/arraylist.h \
- /src/source/level/tile/../../utils/javarandom.h \
- /src/source/level/tile/../../gfx/screen.h \
- /src/source/level/tile/sapling_tile.h /src/source/level/tile/tileids.h \
- /src/source/level/tile/ore_tile.h \
- /src/source/level/tile/../../entity/mob.h \
- /src/source/level/tile/../../entity/entity.h \
- /src/source/level/tile/../../entity/../level/tile/tileids.h \
- /src/source/level/tile/../../entity/entity.h \
- /src/source/level/tile/../../level/level.h \
- /src/source/level/tile/../../gfx/color.h
+ /work/source/level/tile/../../entity/../utils/javarandom.h \
+ /work/source/level/tile/../../entity/../utils/utils.h \
+ /work/source/level/tile/../../gfx/screen.h \
+ /work/source/level/tile/../../utils/arraylist.h \
+ /work/source/level/tile/../../utils/javarandom.h \
+ /work/source/level/tile/../../gfx/screen.h \
+ /work/source/level/tile/sapling_tile.h /work/source/level/tile/tileids.h \
+ /work/source/level/tile/ore_tile.h \
+ /work/source/level/tile/../../entity/mob.h \
+ /work/source/level/tile/../../entity/entity.h \
+ /work/source/level/tile/../../entity/../level/tile/tileids.h \
+ /work/source/level/tile/../../entity/entity.h \
+ /work/source/level/tile/../../level/level.h \
+ /work/source/level/tile/../../gfx/color.h

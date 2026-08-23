@@ -1,7 +1,7 @@
 CMakeFiles/minicraft.dir/source/screen/menu.c.obj: \
- /src/source/screen/menu.c /src/source/screen/menu.h \
- /src/source/screen/../gfx/screen.h \
- /src/source/screen/../gfx/spritesheet.h \
+ /work/source/screen/menu.c /work/source/screen/menu.h \
+ /work/source/screen/../gfx/screen.h \
+ /work/source/screen/../gfx/spritesheet.h \
  /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
@@ -23,15 +23,16 @@ CMakeFiles/minicraft.dir/source/screen/menu.c.obj: \
  /usr/local/pspdev/psp/include/stdio.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdarg.h \
  /usr/local/pspdev/psp/include/sys/stdio.h \
- /src/source/screen/../utils/arraylist.h /src/source/screen/list_item.h \
- /src/source/screen/../gfx/font.h /src/source/screen/../gfx/screen.h \
- /src/source/screen/../gfx/color.h /src/source/screen/title_menu.h \
- /src/source/screen/about_menu.h /src/source/screen/instructions_menu.h \
- /src/source/screen/inventory_menu.h /src/source/screen/dead_menu.h \
- /src/source/screen/level_transition_menu.h \
- /src/source/screen/crafting_menu.h /src/source/screen/container_menu.h \
- /src/source/screen/won_menu.h /src/source/screen/pause_menu.h \
- /src/source/screen/slot_menu.h /src/source/screen/newgame_menu.h \
- /src/source/screen/options_menu.h /usr/local/pspdev/psp/include/string.h \
+ /work/source/screen/../utils/arraylist.h /work/source/screen/list_item.h \
+ /work/source/screen/../gfx/font.h /work/source/screen/../gfx/screen.h \
+ /work/source/screen/../gfx/color.h /work/source/screen/title_menu.h \
+ /work/source/screen/about_menu.h /work/source/screen/instructions_menu.h \
+ /work/source/screen/inventory_menu.h /work/source/screen/dead_menu.h \
+ /work/source/screen/level_transition_menu.h \
+ /work/source/screen/crafting_menu.h /work/source/screen/container_menu.h \
+ /work/source/screen/won_menu.h /work/source/screen/pause_menu.h \
+ /work/source/screen/slot_menu.h /work/source/screen/newgame_menu.h \
+ /work/source/screen/options_menu.h \
+ /usr/local/pspdev/psp/include/string.h \
  /usr/local/pspdev/psp/include/strings.h \
  /usr/local/pspdev/psp/include/sys/string.h

@@ -1,5 +1,5 @@
 CMakeFiles/minicraft.dir/source/utils/javarandom.c.obj: \
- /src/source/utils/javarandom.c /src/source/utils/javarandom.h \
+ /work/source/utils/javarandom.c /work/source/utils/javarandom.h \
  /usr/local/pspdev/psp/include/math.h \
  /usr/local/pspdev/psp/include/sys/reent.h \
  /usr/local/pspdev/psp/include/_ansi.h \

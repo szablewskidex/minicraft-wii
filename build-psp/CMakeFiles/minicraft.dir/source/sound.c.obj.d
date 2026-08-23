@@ -1,5 +1,5 @@
-CMakeFiles/minicraft.dir/source/sound.c.obj: /src/source/sound.c \
- /src/source/sound.h /src/source/sound_data.h \
+CMakeFiles/minicraft.dir/source/sound.c.obj: /work/source/sound.c \
+ /work/source/sound.h /work/source/sound_data.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stddef.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdint.h \
  /usr/local/pspdev/psp/include/stdint.h \

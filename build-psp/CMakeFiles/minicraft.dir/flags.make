@@ -4,7 +4,7 @@
 # compile C with /usr/local/pspdev/bin/psp-gcc
 C_DEFINES = -DPSP -DUSE_SDL1 -D_GNU_SOURCE=1 -D_PSP_FW_VERSION=600 -D__PSP__
 
-C_INCLUDES = -I/src/source -I/usr/local/pspdev/psp/include/SDL
+C_INCLUDES = -I/work/source -I/usr/local/pspdev/psp/include/SDL
 
 C_FLAGS = -I/usr/local/pspdev/psp/include -I/usr/local/pspdev/psp/sdk/include -DPSP -std=gnu11
 

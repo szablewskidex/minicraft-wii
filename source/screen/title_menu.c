@@ -33,7 +33,7 @@ void titlemenu_render(Screen* screen) {
 
 	int h = 2;
 	int w = 16;
-    int yo = 20;
+    int yo = (screen->h <= 140) ? 8 : 20;
     int xo = (screen->w - w * 8) / 2;
     
 	int titleColor = getColor4(0, 10, 131, 551);
@@ -73,12 +73,14 @@ void titlemenu_render(Screen* screen) {
 		}
 
 		int optionLength = strlen(optBuf);
-		font_draw(optBuf, optionLength, screen, (screen->w - optionLength * 8) / 2, (6 + i) * 10, col);
+		int optY = (screen->h <= 140) ? (32 + i * 14) : ((6 + i) * 10);
+		font_draw(optBuf, optionLength, screen, (screen->w - optionLength * 8) / 2, optY, col);
 	}
 
 	const char* help = _T(STR_HELP_MSG);
 	int helpLen = strlen(help);
-	font_draw((char*)help, helpLen, screen, (screen->w - helpLen * 8) / 2, screen->h - 12, getColor4(0, 111, 111, 111));
+	int helpY = (screen->h <= 140) ? (screen->h - 10) : (screen->h - 12);
+	font_draw((char*)help, helpLen, screen, (screen->w - helpLen * 8) / 2, helpY, getColor4(0, 111, 111, 111));
 }
 
 

@@ -1,6 +1,6 @@
 CMakeFiles/minicraft.dir/source/entity/lantern.c.obj: \
- /src/source/entity/lantern.c /src/source/entity/lantern.h \
- /src/source/entity/furniture.h /src/source/entity/entity.h \
+ /work/source/entity/lantern.c /work/source/entity/lantern.h \
+ /work/source/entity/furniture.h /work/source/entity/entity.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdint.h \
  /usr/local/pspdev/psp/include/stdint.h \
  /usr/local/pspdev/psp/include/machine/_default_types.h \
@@ -8,8 +8,8 @@ CMakeFiles/minicraft.dir/source/entity/lantern.c.obj: \
  /usr/local/pspdev/psp/include/_newlib_version.h \
  /usr/local/pspdev/psp/include/sys/_intsup.h \
  /usr/local/pspdev/psp/include/sys/_stdint.h \
- /src/source/entity/entityid.h /src/source/entity/../gfx/screen.h \
- /src/source/entity/../gfx/spritesheet.h \
+ /work/source/entity/entityid.h /work/source/entity/../gfx/screen.h \
+ /work/source/entity/../gfx/spritesheet.h \
  /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
@@ -28,8 +28,8 @@ CMakeFiles/minicraft.dir/source/entity/lantern.c.obj: \
  /usr/local/pspdev/psp/include/stdio.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdarg.h \
  /usr/local/pspdev/psp/include/sys/stdio.h \
- /src/source/entity/../utils/javarandom.h \
- /src/source/entity/../utils/utils.h /src/source/entity/../gfx/color.h \
+ /work/source/entity/../utils/javarandom.h \
+ /work/source/entity/../utils/utils.h /work/source/entity/../gfx/color.h \
  /usr/local/pspdev/psp/include/string.h \
  /usr/local/pspdev/psp/include/strings.h \
  /usr/local/pspdev/psp/include/sys/string.h

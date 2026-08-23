@@ -1,7 +1,7 @@
-CMakeFiles/minicraft.dir/source/game.c.obj: /src/source/game.c \
- /src/source/crafting/crafting.h \
- /src/source/crafting/../utils/arraylist.h /src/source/gfx/spritesheet.h \
- /usr/local/pspdev/psp/include/stdlib.h \
+CMakeFiles/minicraft.dir/source/game.c.obj: /work/source/game.c \
+ /work/source/crafting/crafting.h \
+ /work/source/crafting/../utils/arraylist.h \
+ /work/source/gfx/spritesheet.h /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
  /usr/local/pspdev/psp/include/newlib.h \
@@ -21,8 +21,8 @@ CMakeFiles/minicraft.dir/source/game.c.obj: /src/source/game.c \
  /usr/local/pspdev/psp/include/sys/_locale.h \
  /usr/local/pspdev/psp/include/stdio.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdarg.h \
- /usr/local/pspdev/psp/include/sys/stdio.h /src/source/gfx/font.h \
- /src/source/gfx/screen.h /src/source/gfx/spritesheet.h \
+ /usr/local/pspdev/psp/include/sys/stdio.h /work/source/gfx/font.h \
+ /work/source/gfx/screen.h /work/source/gfx/spritesheet.h \
  /usr/local/pspdev/psp/include/SDL/SDL.h \
  /usr/local/pspdev/psp/include/SDL/SDL_main.h \
  /usr/local/pspdev/psp/include/SDL/SDL_stdinc.h \
@@ -75,56 +75,57 @@ CMakeFiles/minicraft.dir/source/game.c.obj: /src/source/game.c \
  /usr/local/pspdev/psp/include/SDL/SDL_quit.h \
  /usr/local/pspdev/psp/include/SDL/SDL_loadso.h \
  /usr/local/pspdev/psp/include/SDL/SDL_timer.h \
- /usr/local/pspdev/psp/include/SDL/SDL_version.h /src/source/game.h \
- /src/source/entity/player.h /src/source/entity/inventory.h \
- /src/source/entity/../utils/arraylist.h \
- /src/source/entity/../item/resource/resource.h \
- /src/source/entity/../item/resource/food_resource.h \
- /src/source/entity/../item/resource/plantable_resource.h \
- /src/source/entity/../item/resource/../../level/tile/tile.h \
- /src/source/entity/../item/resource/../../level/tile/../../utils/javarandom.h \
- /src/source/entity/../item/resource/../../level/tile/stairs_tile.h \
- /src/source/entity/../item/resource/../../level/tile/tile.h \
- /src/source/entity/../item/resource/../../level/tile/../level.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/entityid.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../gfx/screen.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../utils/javarandom.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../utils/utils.h \
- /src/source/entity/../item/resource/../../level/tile/../../gfx/screen.h \
- /src/source/entity/../item/resource/../../level/tile/../../utils/arraylist.h \
- /src/source/entity/../item/resource/../../level/tile/../../utils/javarandom.h \
- /src/source/entity/../item/resource/../../level/tile/../../gfx/screen.h \
- /src/source/entity/../item/resource/../../level/tile/sapling_tile.h \
- /src/source/entity/../item/resource/../../level/tile/tileids.h \
- /src/source/entity/../item/resource/../../level/tile/ore_tile.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/mob.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../level/tile/tileids.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/entity/mob.h /src/source/entity/../level/level.h \
- /src/source/screen/menu.h /src/source/screen/../gfx/screen.h \
- /src/source/screen/../utils/arraylist.h /src/source/inputhandler.h \
- /src/source/utils/arraylist.h /src/source/utils/utils.h \
- /src/source/level/tile/tile.h /src/source/item/resource/resource.h \
- /src/source/level/level.h /src/source/level/levelgen/levelgen.h \
- /src/source/gfx/color.h /src/source/entity/_entity_caller.h \
- /src/source/entity/entity.h /src/source/entity/itementity.h \
- /src/source/entity/../item/item.h \
- /src/source/entity/../item/../utils/javarandom.h \
- /src/source/entity/../item/../gfx/screen.h \
- /src/source/entity/../item/../entity/entity.h \
- /src/source/entity/../item/../level/tile/tileids.h \
- /src/source/entity/../item/../level/level.h \
- /src/source/entity/../item/itemids.h \
- /src/source/entity/../item/resource/resource.h \
- /src/source/entity/../item/../entity/player.h \
- /src/source/entity/../item/tooltype.h /src/source/entity/../gfx/screen.h \
- /src/source/item/item.h /src/source/item/tool_item.h \
- /src/source/item/resourceitem.h /src/source/item/item.h \
- /src/source/item/resource/resource.h /src/source/icons.h \
- /src/source/save.h /src/source/gamemode.h /src/source/sound.h \
- /src/source/lang.h /usr/local/pspdev/psp/sdk/include/pspkernel.h \
+ /usr/local/pspdev/psp/include/SDL/SDL_version.h /work/source/game.h \
+ /work/source/entity/player.h /work/source/entity/inventory.h \
+ /work/source/entity/../utils/arraylist.h \
+ /work/source/entity/../item/resource/resource.h \
+ /work/source/entity/../item/resource/food_resource.h \
+ /work/source/entity/../item/resource/plantable_resource.h \
+ /work/source/entity/../item/resource/../../level/tile/tile.h \
+ /work/source/entity/../item/resource/../../level/tile/../../utils/javarandom.h \
+ /work/source/entity/../item/resource/../../level/tile/stairs_tile.h \
+ /work/source/entity/../item/resource/../../level/tile/tile.h \
+ /work/source/entity/../item/resource/../../level/tile/../level.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/entityid.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../gfx/screen.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../utils/javarandom.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../utils/utils.h \
+ /work/source/entity/../item/resource/../../level/tile/../../gfx/screen.h \
+ /work/source/entity/../item/resource/../../level/tile/../../utils/arraylist.h \
+ /work/source/entity/../item/resource/../../level/tile/../../utils/javarandom.h \
+ /work/source/entity/../item/resource/../../level/tile/../../gfx/screen.h \
+ /work/source/entity/../item/resource/../../level/tile/sapling_tile.h \
+ /work/source/entity/../item/resource/../../level/tile/tileids.h \
+ /work/source/entity/../item/resource/../../level/tile/ore_tile.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/mob.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../level/tile/tileids.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/entity/mob.h /work/source/entity/../level/level.h \
+ /work/source/screen/menu.h /work/source/screen/../gfx/screen.h \
+ /work/source/screen/../utils/arraylist.h /work/source/inputhandler.h \
+ /work/source/utils/arraylist.h /work/source/utils/utils.h \
+ /work/source/level/tile/tile.h /work/source/item/resource/resource.h \
+ /work/source/level/level.h /work/source/level/levelgen/levelgen.h \
+ /work/source/gfx/color.h /work/source/entity/_entity_caller.h \
+ /work/source/entity/entity.h /work/source/entity/itementity.h \
+ /work/source/entity/../item/item.h \
+ /work/source/entity/../item/../utils/javarandom.h \
+ /work/source/entity/../item/../gfx/screen.h \
+ /work/source/entity/../item/../entity/entity.h \
+ /work/source/entity/../item/../level/tile/tileids.h \
+ /work/source/entity/../item/../level/level.h \
+ /work/source/entity/../item/itemids.h \
+ /work/source/entity/../item/resource/resource.h \
+ /work/source/entity/../item/../entity/player.h \
+ /work/source/entity/../item/tooltype.h \
+ /work/source/entity/../gfx/screen.h /work/source/item/item.h \
+ /work/source/item/tool_item.h /work/source/item/resourceitem.h \
+ /work/source/item/item.h /work/source/item/resource/resource.h \
+ /work/source/icons.h /work/source/save.h /work/source/gamemode.h \
+ /work/source/sound.h /work/source/lang.h \
+ /usr/local/pspdev/psp/sdk/include/pspkernel.h \
  /usr/local/pspdev/psp/sdk/include/pspuser.h \
  /usr/local/pspdev/psp/sdk/include/psptypes.h \
  /usr/local/pspdev/psp/sdk/include/pspkerneltypes.h \

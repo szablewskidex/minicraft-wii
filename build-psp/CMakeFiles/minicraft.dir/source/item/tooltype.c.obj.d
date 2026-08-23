@@ -1,5 +1,5 @@
 CMakeFiles/minicraft.dir/source/item/tooltype.c.obj: \
- /src/source/item/tooltype.c /src/source/item/tooltype.h \
+ /work/source/item/tooltype.c /work/source/item/tooltype.h \
  /usr/local/pspdev/psp/include/stdio.h \
  /usr/local/pspdev/psp/include/_ansi.h \
  /usr/local/pspdev/psp/include/newlib.h \

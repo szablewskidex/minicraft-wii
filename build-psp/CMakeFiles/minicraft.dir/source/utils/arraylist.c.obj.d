@@ -1,5 +1,5 @@
 CMakeFiles/minicraft.dir/source/utils/arraylist.c.obj: \
- /src/source/utils/arraylist.c /src/source/utils/arraylist.h \
+ /work/source/utils/arraylist.c /work/source/utils/arraylist.h \
  /usr/local/pspdev/psp/include/string.h \
  /usr/local/pspdev/psp/include/_ansi.h \
  /usr/local/pspdev/psp/include/newlib.h \

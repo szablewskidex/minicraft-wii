@@ -1,5 +1,5 @@
 CMakeFiles/minicraft.dir/source/inputhandler.c.obj: \
- /src/source/inputhandler.c /src/source/inputhandler.h \
+ /work/source/inputhandler.c /work/source/inputhandler.h \
  /usr/local/pspdev/psp/include/SDL/SDL.h \
  /usr/local/pspdev/psp/include/SDL/SDL_main.h \
  /usr/local/pspdev/psp/include/SDL/SDL_stdinc.h \
@@ -73,5 +73,5 @@ CMakeFiles/minicraft.dir/source/inputhandler.c.obj: \
  /usr/local/pspdev/psp/include/SDL/SDL_quit.h \
  /usr/local/pspdev/psp/include/SDL/SDL_loadso.h \
  /usr/local/pspdev/psp/include/SDL/SDL_timer.h \
- /usr/local/pspdev/psp/include/SDL/SDL_version.h /src/source/gamemode.h \
+ /usr/local/pspdev/psp/include/SDL/SDL_version.h /work/source/gamemode.h \
  /usr/local/pspdev/psp/sdk/include/pspctrl.h

@@ -1,6 +1,6 @@
 CMakeFiles/minicraft.dir/source/gfx/screen.c.obj: \
- /src/source/gfx/screen.c /src/source/gfx/screen.h \
- /src/source/gfx/spritesheet.h /usr/local/pspdev/psp/include/stdlib.h \
+ /work/source/gfx/screen.c /work/source/gfx/screen.h \
+ /work/source/gfx/spritesheet.h /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
  /usr/local/pspdev/psp/include/newlib.h \

@@ -1,5 +1,5 @@
 CMakeFiles/minicraft.dir/source/utils/utils.c.obj: \
- /src/source/utils/utils.c /src/source/utils/utils.h \
+ /work/source/utils/utils.c /work/source/utils/utils.h \
  /usr/local/pspdev/psp/include/sys/time.h \
  /usr/local/pspdev/psp/include/_ansi.h \
  /usr/local/pspdev/psp/include/newlib.h \

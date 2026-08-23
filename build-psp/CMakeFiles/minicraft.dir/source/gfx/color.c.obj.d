@@ -1,2 +1,2 @@
-CMakeFiles/minicraft.dir/source/gfx/color.c.obj: /src/source/gfx/color.c \
- /src/source/gfx/color.h
+CMakeFiles/minicraft.dir/source/gfx/color.c.obj: /work/source/gfx/color.c \
+ /work/source/gfx/color.h

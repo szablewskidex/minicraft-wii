@@ -301,10 +301,23 @@ void game_init(){
 		}
 	}
 
-	create_screen(&game_screen, 426, HEIGHT, (SpriteSheet*)&icons_spritesheet);
-	create_screen(&game_lightScreen, 426, HEIGHT, (SpriteSheet*)&icons_spritesheet);
-	game_screen.w = (g_aspectRatio == 1) ? 426 : 320;
-	game_lightScreen.w = game_screen.w;
+#if defined(__PSP__)
+	int screen_w = 240;
+	int screen_h = 136;
+#elif defined(__wii__)
+	int screen_w = (g_aspectRatio == 1) ? 426 : 320;
+	int screen_h = HEIGHT;
+#else
+	int screen_w = WIDTH;
+	int screen_h = HEIGHT;
+#endif
+
+	create_screen(&game_screen, screen_w, screen_h, (SpriteSheet*)&icons_spritesheet);
+	create_screen(&game_lightScreen, screen_w, screen_h, (SpriteSheet*)&icons_spritesheet);
+	game_screen.w = screen_w;
+	game_screen.h = screen_h;
+	game_lightScreen.w = screen_w;
+	game_lightScreen.h = screen_h;
 
 	game_reset();
 	game_set_menu(mid_TITLE);
@@ -1032,38 +1045,30 @@ int main(int argc, char** argv) {
 				int index = y * game_screen.w + x;
 				int screen_px = game_screen.pixels[index];
 
-				if (screen_px != prevBuf[index]) {
-					prevBuf[index] = screen_px;
-					needsFlip = 1;
+				int dest_x0, dest_x1;
+				if (g_aspectRatio == 1) {
+					dest_x0 = (x * winWidth) / 426;
+					dest_x1 = ((x + 1) * winWidth) / 426;
+				} else {
+					dest_x0 = x * SCALE;
+					dest_x1 = dest_x0 + SCALE;
+				}
 
-					int dest_x0, dest_x1;
-					if (g_aspectRatio == 1) {
-						dest_x0 = (x * winWidth) / 426;
-						dest_x1 = ((x + 1) * winWidth) / 426;
-					} else {
-						dest_x0 = x * SCALE;
-						dest_x1 = dest_x0 + SCALE;
-					}
+				// Convert index palette to color.
+				Uint32 mapped_color = SDL_MapRGB(surface->format, sdl_colors[screen_px].r, sdl_colors[screen_px].g, sdl_colors[screen_px].b);
 
-					if (dest_x0 < flipXMin) flipXMin = dest_x0;
-					if (dest_x1 > flipXMax) flipXMax = dest_x1;
-					if (dest_y0 < flipYMin) flipYMin = dest_y0;
-					if (dest_y1 > flipYMax) flipYMax = dest_y1;
-
-					// Convert index palette to color.
-					Uint32 mapped_color = SDL_MapRGB(surface->format, sdl_colors[screen_px].r, sdl_colors[screen_px].g, sdl_colors[screen_px].b);
-
-					if (surface->format->BytesPerPixel == 2) {
-						for (int sub_y = dest_y0; sub_y < dest_y1; sub_y++) {
-							for (int sub_x = dest_x0; sub_x < dest_x1; sub_x++) {
-								((Uint16*)surface->pixels)[sub_y * (surface->pitch / 2) + sub_x] = (Uint16)mapped_color;
-							}
+				if (surface->format->BytesPerPixel == 2) {
+					for (int sub_y = dest_y0; sub_y < dest_y1; sub_y++) {
+						Uint16* row = (Uint16*)((Uint8*)surface->pixels + sub_y * surface->pitch);
+						for (int sub_x = dest_x0; sub_x < dest_x1; sub_x++) {
+							row[sub_x] = (Uint16)mapped_color;
 						}
-					} else {
-						for (int sub_y = dest_y0; sub_y < dest_y1; sub_y++) {
-							for (int sub_x = dest_x0; sub_x < dest_x1; sub_x++) {
-								((Uint32*)surface->pixels)[sub_y * (surface->pitch / 4) + sub_x] = mapped_color;
-							}
+					}
+				} else {
+					for (int sub_y = dest_y0; sub_y < dest_y1; sub_y++) {
+						Uint32* row = (Uint32*)((Uint8*)surface->pixels + sub_y * surface->pitch);
+						for (int sub_x = dest_x0; sub_x < dest_x1; sub_x++) {
+							row[sub_x] = mapped_color;
 						}
 					}
 				}
@@ -1071,19 +1076,11 @@ int main(int argc, char** argv) {
 		}
 
 	SKIP_RENDER:
-		// Update the window surface partially ...
-		if (needsFlip) {
-			// printf("RENDERING %d %d %d %d\n", flipXMin, flipXMax, flipYMin, flipYMax);
-            SDL_Rect updateRect = { flipXMin, flipYMin, flipXMax - flipXMin, flipYMax - flipYMin };
-
 #ifdef USE_SDL1
-			/* SDL1: update whole surface or use dirty rects */
-			SDL_Flip(surface);                 /* simple double buffer flip */
-			/* Alternative for performance: SDL_UpdateRect(surface, flipXMin, flipYMin, ...); */
+		SDL_Flip(surface);
 #else
-			SDL_UpdateWindowSurfaceRects(window, &updateRect, 1);
+		SDL_UpdateWindowSurface(window);
 #endif
-		}
 
 		if (now - lastPrinted > 1000000) {
 			printf("%d ticks, %d fps\n", ticks, frames);

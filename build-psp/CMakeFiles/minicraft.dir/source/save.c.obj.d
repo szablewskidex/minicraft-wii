@@ -1,5 +1,5 @@
-CMakeFiles/minicraft.dir/source/save.c.obj: /src/source/save.c \
- /src/source/save.h /src/source/game.h /src/source/gfx/spritesheet.h \
+CMakeFiles/minicraft.dir/source/save.c.obj: /work/source/save.c \
+ /work/source/save.h /work/source/game.h /work/source/gfx/spritesheet.h \
  /usr/local/pspdev/psp/include/stdlib.h \
  /usr/local/pspdev/psp/include/machine/ieeefp.h \
  /usr/local/pspdev/psp/include/_ansi.h \
@@ -20,61 +20,61 @@ CMakeFiles/minicraft.dir/source/save.c.obj: /src/source/save.c \
  /usr/local/pspdev/psp/include/sys/_locale.h \
  /usr/local/pspdev/psp/include/stdio.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdarg.h \
- /usr/local/pspdev/psp/include/sys/stdio.h /src/source/entity/player.h \
- /src/source/entity/inventory.h \
+ /usr/local/pspdev/psp/include/sys/stdio.h /work/source/entity/player.h \
+ /work/source/entity/inventory.h \
  /usr/local/pspdev/lib/gcc/psp/15.2.0/include/stdint.h \
  /usr/local/pspdev/psp/include/stdint.h \
  /usr/local/pspdev/psp/include/sys/_intsup.h \
  /usr/local/pspdev/psp/include/sys/_stdint.h \
- /src/source/entity/../utils/arraylist.h \
- /src/source/entity/../item/resource/resource.h \
- /src/source/entity/../item/resource/food_resource.h \
- /src/source/entity/../item/resource/plantable_resource.h \
- /src/source/entity/../item/resource/../../level/tile/tile.h \
- /src/source/entity/../item/resource/../../level/tile/../../utils/javarandom.h \
- /src/source/entity/../item/resource/../../level/tile/stairs_tile.h \
- /src/source/entity/../item/resource/../../level/tile/tile.h \
- /src/source/entity/../item/resource/../../level/tile/../level.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/entityid.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../gfx/screen.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../gfx/spritesheet.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../utils/javarandom.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../utils/utils.h \
- /src/source/entity/../item/resource/../../level/tile/../../gfx/screen.h \
- /src/source/entity/../item/resource/../../level/tile/../../utils/arraylist.h \
- /src/source/entity/../item/resource/../../level/tile/../../utils/javarandom.h \
- /src/source/entity/../item/resource/../../level/tile/../../gfx/screen.h \
- /src/source/entity/../item/resource/../../level/tile/sapling_tile.h \
- /src/source/entity/../item/resource/../../level/tile/tileids.h \
- /src/source/entity/../item/resource/../../level/tile/ore_tile.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/mob.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/../level/tile/tileids.h \
- /src/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
- /src/source/entity/mob.h /src/source/entity/../level/level.h \
- /src/source/screen/menu.h /src/source/screen/../gfx/screen.h \
- /src/source/screen/../utils/arraylist.h /src/source/gamemode.h \
- /src/source/lang.h /usr/local/pspdev/psp/include/string.h \
+ /work/source/entity/../utils/arraylist.h \
+ /work/source/entity/../item/resource/resource.h \
+ /work/source/entity/../item/resource/food_resource.h \
+ /work/source/entity/../item/resource/plantable_resource.h \
+ /work/source/entity/../item/resource/../../level/tile/tile.h \
+ /work/source/entity/../item/resource/../../level/tile/../../utils/javarandom.h \
+ /work/source/entity/../item/resource/../../level/tile/stairs_tile.h \
+ /work/source/entity/../item/resource/../../level/tile/tile.h \
+ /work/source/entity/../item/resource/../../level/tile/../level.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/entityid.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../gfx/screen.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../gfx/spritesheet.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../utils/javarandom.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../utils/utils.h \
+ /work/source/entity/../item/resource/../../level/tile/../../gfx/screen.h \
+ /work/source/entity/../item/resource/../../level/tile/../../utils/arraylist.h \
+ /work/source/entity/../item/resource/../../level/tile/../../utils/javarandom.h \
+ /work/source/entity/../item/resource/../../level/tile/../../gfx/screen.h \
+ /work/source/entity/../item/resource/../../level/tile/sapling_tile.h \
+ /work/source/entity/../item/resource/../../level/tile/tileids.h \
+ /work/source/entity/../item/resource/../../level/tile/ore_tile.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/mob.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/../level/tile/tileids.h \
+ /work/source/entity/../item/resource/../../level/tile/../../entity/entity.h \
+ /work/source/entity/mob.h /work/source/entity/../level/level.h \
+ /work/source/screen/menu.h /work/source/screen/../gfx/screen.h \
+ /work/source/screen/../utils/arraylist.h /work/source/gamemode.h \
+ /work/source/lang.h /usr/local/pspdev/psp/include/string.h \
  /usr/local/pspdev/psp/include/strings.h \
- /usr/local/pspdev/psp/include/sys/string.h /src/source/item/item.h \
- /src/source/item/../utils/javarandom.h /src/source/item/../gfx/screen.h \
- /src/source/item/../entity/entity.h \
- /src/source/item/../level/tile/tileids.h \
- /src/source/item/../level/level.h /src/source/item/itemids.h \
- /src/source/item/resource/resource.h /src/source/item/../entity/player.h \
- /src/source/item/tooltype.h /src/source/item/resource/resource.h \
- /src/source/item/resourceitem.h /src/source/item/item.h \
- /src/source/item/tool_item.h /src/source/item/furniture_item.h \
- /src/source/item/powergloveitem.h /src/source/entity/workbench.h \
- /src/source/entity/furniture.h /src/source/entity/entity.h \
- /src/source/entity/furnace.h /src/source/entity/oven.h \
- /src/source/entity/anvil.h /src/source/entity/chest.h \
- /src/source/entity/lantern.h /src/source/entity/bed.h \
- /src/source/entity/door.h /src/source/entity/cow.h \
- /src/source/entity/chicken.h /src/source/entity/pig.h \
- /src/source/entity/sheep.h /src/source/entity/crab.h \
- /src/source/entity/frog.h /src/source/entity/_entity_caller.h \
- /src/source/entity/itementity.h /src/source/entity/../item/item.h \
- /src/source/entity/../gfx/screen.h /src/source/entity/barrel.h \
- /src/source/entity/sign.h
+ /usr/local/pspdev/psp/include/sys/string.h /work/source/item/item.h \
+ /work/source/item/../utils/javarandom.h \
+ /work/source/item/../gfx/screen.h /work/source/item/../entity/entity.h \
+ /work/source/item/../level/tile/tileids.h \
+ /work/source/item/../level/level.h /work/source/item/itemids.h \
+ /work/source/item/resource/resource.h \
+ /work/source/item/../entity/player.h /work/source/item/tooltype.h \
+ /work/source/item/resource/resource.h /work/source/item/resourceitem.h \
+ /work/source/item/item.h /work/source/item/tool_item.h \
+ /work/source/item/furniture_item.h /work/source/item/powergloveitem.h \
+ /work/source/entity/workbench.h /work/source/entity/furniture.h \
+ /work/source/entity/entity.h /work/source/entity/furnace.h \
+ /work/source/entity/oven.h /work/source/entity/anvil.h \
+ /work/source/entity/chest.h /work/source/entity/lantern.h \
+ /work/source/entity/bed.h /work/source/entity/door.h \
+ /work/source/entity/cow.h /work/source/entity/chicken.h \
+ /work/source/entity/pig.h /work/source/entity/sheep.h \
+ /work/source/entity/crab.h /work/source/entity/frog.h \
+ /work/source/entity/_entity_caller.h /work/source/entity/itementity.h \
+ /work/source/entity/../item/item.h /work/source/entity/../gfx/screen.h \
+ /work/source/entity/barrel.h /work/source/entity/sign.h
