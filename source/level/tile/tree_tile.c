@@ -84,6 +84,8 @@ void treetile_hurt(TileID id, Level* level, int x, int y, Mob* source, int dmg, 
 }
 
 
+#define IS_TREE(t) ((t) == TREE || (t) == BIRCH_TREE || (t) == SPRUCE_TREE)
+
 void treetile_render(TileID id, Screen* screen, Level* level, int x, int y) {
 	int col = getColor4(10, 30, 151, level->grassColor);
 	int barkCol1 = getColor4(10, 30, 430, level->grassColor);
@@ -91,23 +93,23 @@ void treetile_render(TileID id, Screen* screen, Level* level, int x, int y) {
 
 	if (id == BIRCH_TREE) {
 		col = getColor4(10, 40, 252, level->grassColor);
-		barkCol1 = getColor4(10, 555, 555, level->grassColor);
-		barkCol2 = getColor4(10, 444, 111, level->grassColor);
+		barkCol1 = getColor4(10, 40, 555, level->grassColor);
+		barkCol2 = getColor4(10, 40, 444, level->grassColor);
 	} else if (id == SPRUCE_TREE) {
 		col = getColor4(10, 20, 131, level->grassColor);
-		barkCol1 = getColor4(10, 210, 320, level->grassColor);
-		barkCol2 = getColor4(10, 100, 210, level->grassColor);
+		barkCol1 = getColor4(10, 20, 210, level->grassColor);
+		barkCol2 = getColor4(10, 20, 100, level->grassColor);
 	}
 
-	char u = level_get_tile(level, x, y - 1) == id;
-	char l = level_get_tile(level, x - 1, y) == id;
-	char r = level_get_tile(level, x + 1, y) == id;
-	char d = level_get_tile(level, x, y + 1) == id;
+	char u = IS_TREE(level_get_tile(level, x, y - 1));
+	char l = IS_TREE(level_get_tile(level, x - 1, y));
+	char r = IS_TREE(level_get_tile(level, x + 1, y));
+	char d = IS_TREE(level_get_tile(level, x, y + 1));
 
-	char ul = level_get_tile(level, x - 1, y - 1) == id;
-	char ur = level_get_tile(level, x + 1, y - 1) == id;
-	char dl = level_get_tile(level, x - 1, y + 1) == id;
-	char dr = level_get_tile(level, x + 1, y + 1) == id;
+	char ul = IS_TREE(level_get_tile(level, x - 1, y - 1));
+	char ur = IS_TREE(level_get_tile(level, x + 1, y - 1));
+	char dl = IS_TREE(level_get_tile(level, x - 1, y + 1));
+	char dr = IS_TREE(level_get_tile(level, x + 1, y + 1));
 
 	if (u && ul && l) {
         render_screen(screen, (x * 16) + 0, (y * 16) + 0, 10 + 1 * 32, col, 0);

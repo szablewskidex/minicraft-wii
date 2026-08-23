@@ -355,9 +355,10 @@ void createTopMap(unsigned char** map_r, unsigned char** data_r, int w, int h) {
 		int x = random_next_int(&lg_random, w);
 		int y = random_next_int(&lg_random, h);
 		TileID treeType = TREE;
-		int tr = random_next_int(&lg_random, 3);
-		if (tr == 1) treeType = BIRCH_TREE;
-		else if (tr == 2) treeType = SPRUCE_TREE;
+		int tr = random_next_int(&lg_random, 10);
+		if (tr < 6) treeType = TREE;
+		else if (tr < 8) treeType = BIRCH_TREE;
+		else treeType = SPRUCE_TREE;
 
 		for (int j = 0; j < 200; ++j) {
 			int xx = x + random_next_int(&lg_random, 15) - random_next_int(&lg_random, 15);

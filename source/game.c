@@ -434,19 +434,19 @@ void game_renderGui() {
             font_draw(def_str, strlen(def_str), &game_screen, exp_x + 48, hud_y, getColor4(-1, 333, 444, 555));
         }
 
-        // Active item / tool box on the right side of HUD
+        // Active item / tool box on the right side of HUD (lowered for clean alignment)
         int tool_x = game_screen.w - 96;
-        int tool_y = hud_y;
+        int tool_y = hud_y + 8;
         if (game_player->activeItem) {
             item_renderInventory(game_player->activeItem, &game_screen, tool_x, tool_y);
         } else {
             const char* no_item = (g_currentLanguage == LANG_PL) ? "[Reka]" : "[Hand]";
-            font_draw((char*)no_item, strlen(no_item), &game_screen, tool_x + 8, tool_y + 4, getColor4(-1, 333, 333, 333));
+            font_draw((char*)no_item, strlen(no_item), &game_screen, tool_x + 8, tool_y, getColor4(-1, 333, 333, 333));
         }
 
-        // Top-right Minimap Radar
-        int map_w = 40;
-        int map_h = 32;
+        // Top-right Minimap Radar (Enlarged to 54x42)
+        int map_w = 54;
+        int map_h = 42;
         int map_x = game_screen.w - map_w - 6;
         int map_y = 6;
         int p_tx = game_player->mob.entity.x >> 4;
@@ -454,11 +454,16 @@ void game_renderGui() {
 
         for (int my = 0; my < map_h; ++my) {
             for (int mx = 0; mx < map_w; ++mx) {
-                int world_tx = p_tx - (map_w / 2) + mx;
-                int world_ty = p_ty - (map_h / 2) + my;
-
                 int sx = map_x + mx;
                 int sy = map_y + my;
+
+                if (mx == 0 || mx == map_w - 1 || my == 0 || my == map_h - 1) {
+                    game_screen.pixels[sx + sy * game_screen.w] = getColor(111); // Sleek dark border
+                    continue;
+                }
+
+                int world_tx = p_tx - (map_w / 2) + mx;
+                int world_ty = p_ty - (map_h / 2) + my;
 
                 if (world_tx < 0 || world_ty < 0 || world_tx >= game_level->w || world_ty >= game_level->h) {
                     game_screen.pixels[sx + sy * game_screen.w] = getColor(000);

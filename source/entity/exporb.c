@@ -1,4 +1,4 @@
-﻿#include "exporb.h"
+#include "exporb.h"
 #include "player.h"
 #include "../game.h"
 #include "../gfx/color.h"
@@ -83,20 +83,25 @@ void exporb_render(ExpOrb* orb, Screen* screen) {
         if ((orb->time / 6) % 2 == 0) return;
     }
 
-    int x = orb->entity.x;
-    int y = orb->entity.y;
+    int xp = orb->entity.x - screen->xOffset;
+    int yp = orb->entity.y - (int)orb->zz - screen->yOffset;
 
-    // Glowing flashing colors (green, cyan, yellow, bright white)
-    int phase = (orb->time / 4) % 4;
-    int col = getColor4(-1, 050, 252, 555);
-    if (phase == 1) col = getColor4(-1, 055, 255, 555);
-    if (phase == 2) col = getColor4(-1, 550, 552, 555);
-    if (phase == 3) col = getColor4(-1, 525, 545, 555);
+    // Glowing vibrant Minecraft EXP colors: emerald green, lime, yellow, cyan
+    int phase = (orb->time / 3) % 4;
+    int coreCol = getColor(555); // Bright white core
+    int edgeCol = getColor(050); // Vibrant green
+    if (phase == 1) edgeCol = getColor(250); // Lime green
+    if (phase == 2) edgeCol = getColor(550); // Yellow
+    if (phase == 3) edgeCol = getColor(055); // Cyan
 
-    // Drop shadow on ground
-    render_screen(screen, x - 4, y - 4, 2 + 12 * 32, getColor4(-1, 000, 000, 000), 0);
-    // Glowing bouncing orb
-    render_screen(screen, x - 4, y - 4 - (int)orb->zz, 2 + 12 * 32, col, 0);
+    // Render a small, glowing 3x3 diamond orb
+    if (xp >= 1 && xp < screen->w - 1 && yp >= 1 && yp < screen->h - 1) {
+        screen->pixels[xp + (yp - 1) * screen->w] = edgeCol;
+        screen->pixels[(xp - 1) + yp * screen->w] = edgeCol;
+        screen->pixels[xp + yp * screen->w] = coreCol;
+        screen->pixels[(xp + 1) + yp * screen->w] = edgeCol;
+        screen->pixels[xp + (yp + 1) * screen->w] = edgeCol;
+    }
 }
 
 void exporb_touchedBy(ExpOrb* orb, Entity* entity) {
