@@ -15,6 +15,8 @@ void cow_create(Cow* cow){
     cow->mob.health = cow->mob.maxHealth = 8;
     cow->randomWalkTime = 0;
     cow->xa = cow->ya = 0;
+    cow->loveTime = 0;
+    cow->breedCooldown = 0;
 }
 
 void cow_tick(Cow* cow) {
@@ -29,6 +31,8 @@ void cow_tick(Cow* cow) {
         cow->ya = (random_next_int(random, 3) - 1);
     }
     if (cow->randomWalkTime > 0) --cow->randomWalkTime;
+
+    animal_tickBreeding((Entity*)cow, &cow->loveTime, &cow->breedCooldown, &cow->xa, &cow->ya);
 }
 
 void cow_render(Cow* cow, Screen* screen) {

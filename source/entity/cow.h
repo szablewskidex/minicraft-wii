@@ -1,4 +1,4 @@
-﻿#ifndef COW_H
+#ifndef COW_H
 #define COW_H
 
 #include "mob.h"
@@ -7,6 +7,8 @@ typedef struct _Cow {
     Mob mob;
     int xa, ya;
     int randomWalkTime;
+    int loveTime;
+    int breedCooldown;
 } Cow;
 
 void cow_create(Cow* cow);

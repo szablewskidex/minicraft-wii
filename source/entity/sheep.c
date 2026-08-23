@@ -1,4 +1,4 @@
-﻿#include "sheep.h"
+#include "sheep.h"
 #include "../gfx/screen.h"
 #include "_entity_caller.h"
 #include "itementity.h"
@@ -15,6 +15,10 @@ void sheep_create(Sheep* sheep) {
     sheep->mob.health = sheep->mob.maxHealth = 8;
     sheep->randomWalkTime = 0;
     sheep->xa = sheep->ya = 0;
+    sheep->hasWool = 1;
+    sheep->regrowTimer = 0;
+    sheep->loveTime = 0;
+    sheep->breedCooldown = 0;
 }
 
 void sheep_tick(Sheep* sheep) {
@@ -23,11 +27,21 @@ void sheep_tick(Sheep* sheep) {
 
     int speed = sheep->mob.tickTime & 1;
     if (!mob_move(&sheep->mob, sheep->xa * speed, sheep->ya * speed) || random_next_int(random, 90) == 0) {
-        sheep->randomWalkTime = 50;
+        sheep->randomWalkTime = 45;
         sheep->xa = (random_next_int(random, 3) - 1);
         sheep->ya = (random_next_int(random, 3) - 1);
     }
     if (sheep->randomWalkTime > 0) --sheep->randomWalkTime;
+
+    if (!sheep->hasWool) {
+        if (sheep->regrowTimer > 0) {
+            --sheep->regrowTimer;
+        } else {
+            sheep->hasWool = 1;
+        }
+    }
+
+    animal_tickBreeding((Entity*)sheep, &sheep->loveTime, &sheep->breedCooldown, &sheep->xa, &sheep->ya);
 }
 
 void sheep_render(Sheep* sheep, Screen* screen) {

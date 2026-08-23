@@ -27,5 +27,7 @@ void call_entity_doHurt(Entity* entity, int damage, int attackDir);
 char entity_isfurniture(Entity* entity);
 char entity_isAnimal(Entity* entity);
 Mob* entity_createAnimal(EntityId id);
+char animal_feedAndBreed(Entity* entity, Player* player);
+void animal_tickBreeding(Entity* entity, int* loveTime, int* breedCooldown, int* xa, int* ya);
 
 #endif // _ENTITY_CALLER_H

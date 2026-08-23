@@ -9,8 +9,8 @@ void door_create(Door* door){
     door->furniture.col = getColor4(-1, 100, 321, 431); // Wooden door colors
     door->furniture.sprite = 5;
     door->furniture.entity.type = DOOR;
-    door->furniture.entity.xr = 3;
-    door->furniture.entity.yr = 3;
+    door->furniture.entity.xr = 7;
+    door->furniture.entity.yr = 7;
 }
 
 char door_use(Door* door, struct _Player* player, int attackDir){
@@ -21,8 +21,8 @@ char door_use(Door* door, struct _Player* player, int attackDir){
         door->furniture.entity.xr = 0;
         door->furniture.entity.yr = 0;
     } else {
-        door->furniture.entity.xr = 3;
-        door->furniture.entity.yr = 3;
+        door->furniture.entity.xr = 7;
+        door->furniture.entity.yr = 7;
     }
     sound_play(SND_CONFIRM);
     return 1;

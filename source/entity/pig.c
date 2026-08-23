@@ -15,6 +15,8 @@ void pig_create(Pig* pig) {
     pig->mob.health = pig->mob.maxHealth = 8;
     pig->randomWalkTime = 0;
     pig->xa = pig->ya = 0;
+    pig->loveTime = 0;
+    pig->breedCooldown = 0;
 }
 
 void pig_tick(Pig* pig) {
@@ -28,6 +30,8 @@ void pig_tick(Pig* pig) {
         pig->ya = (random_next_int(random, 3) - 1);
     }
     if (pig->randomWalkTime > 0) --pig->randomWalkTime;
+
+    animal_tickBreeding((Entity*)pig, &pig->loveTime, &pig->breedCooldown, &pig->xa, &pig->ya);
 }
 
 void pig_render(Pig* pig, Screen* screen) {

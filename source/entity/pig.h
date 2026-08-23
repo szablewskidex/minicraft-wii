@@ -1,4 +1,4 @@
-﻿#ifndef PIG_H
+#ifndef PIG_H
 #define PIG_H
 
 #include "mob.h"
@@ -7,6 +7,8 @@ typedef struct _Pig {
     Mob mob;
     int xa, ya;
     int randomWalkTime;
+    int loveTime;
+    int breedCooldown;
 } Pig;
 
 void pig_create(Pig* pig);

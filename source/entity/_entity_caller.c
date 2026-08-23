@@ -422,6 +422,162 @@ void call_entity_touchedBy(Entity* entity, Entity* e) {
 	}
 }
 
+#include "../sound.h"
+#include "../item/resource/resource.h"
+#include "../gfx/color.h"
+#include <stdlib.h>
+extern void input_rumble(int frames);
+Mob* entity_createAnimal(EntityId id);
+
+char animal_feedAndBreed(Entity* entity, Player* player) {
+	if (!player || !player->activeItem || player->activeItem->id != RESOURCE) return 0;
+	Resource* res = player->activeItem->add.resource.resource;
+
+	int validFood = 0;
+	if (entity->type == COW && res == &wheat) validFood = 1;
+	if (entity->type == SHEEP && res == &wheat) validFood = 1;
+	if (entity->type == PIG && (res == &carrot || res == &potato || res == &wheat || res == &apple)) validFood = 1;
+	if (entity->type == CHICKEN && res == &seeds) validFood = 1;
+
+	if (!validFood) return 0;
+
+	int* loveTime = NULL;
+	int* breedCooldown = NULL;
+	if (entity->type == COW) {
+		loveTime = &((Cow*)entity)->loveTime;
+		breedCooldown = &((Cow*)entity)->breedCooldown;
+	} else if (entity->type == PIG) {
+		loveTime = &((Pig*)entity)->loveTime;
+		breedCooldown = &((Pig*)entity)->breedCooldown;
+	} else if (entity->type == SHEEP) {
+		loveTime = &((Sheep*)entity)->loveTime;
+		breedCooldown = &((Sheep*)entity)->breedCooldown;
+	} else if (entity->type == CHICKEN) {
+		loveTime = &((Chicken*)entity)->loveTime;
+		breedCooldown = &((Chicken*)entity)->breedCooldown;
+	}
+
+	if (!loveTime || !breedCooldown) return 0;
+	if (*loveTime > 0 || *breedCooldown > 0) return 0;
+
+	// Pay 1 food item
+	if (player->activeItem->add.resource.count > 1) {
+		player->activeItem->add.resource.count--;
+	} else {
+		arraylist_removeElement(&player->inventory.items, player->activeItem);
+		item_free(player->activeItem);
+		free(player->activeItem);
+		player->activeItem = 0;
+	}
+
+	*loveTime = 600; // 10 seconds of love mode
+
+	TextParticle* tp = malloc(sizeof(TextParticle));
+	if (tp) {
+		textparticle_create(tp, "<3", entity->x, entity->y - 8, getColor4(-1, 500, 500, 555));
+		level_addEntity(entity->level, &tp->entity);
+	}
+
+	sound_play(SND_CONFIRM);
+	input_rumble(5);
+	return 1;
+}
+
+void animal_tickBreeding(Entity* entity, int* loveTime, int* breedCooldown, int* xa, int* ya) {
+	if (*breedCooldown > 0) {
+		(*breedCooldown)--;
+	}
+
+	if (*loveTime > 0) {
+		(*loveTime)--;
+
+		if (*loveTime % 40 == 0) {
+			TextParticle* tp = malloc(sizeof(TextParticle));
+			if (tp) {
+				textparticle_create(tp, "<3", entity->x, entity->y - 8, getColor4(-1, 500, 500, 555));
+				level_addEntity(entity->level, &tp->entity);
+			}
+		}
+
+		// Search nearby for same species partner in love within 80 pixels!
+		ArrayList nearby;
+		create_arraylist(&nearby);
+		int r = 80;
+		level_getEntities(entity->level, &nearby, entity->x - r, entity->y - r, entity->x + r, entity->y + r);
+
+		Entity* partner = NULL;
+		int bestDist = 999999;
+
+		for (int i = 0; i < nearby.size; ++i) {
+			Entity* other = nearby.elements[i];
+			if (other == entity || other->type != entity->type) continue;
+
+			int otherLove = 0;
+			if (other->type == COW) otherLove = ((Cow*)other)->loveTime;
+			else if (other->type == PIG) otherLove = ((Pig*)other)->loveTime;
+			else if (other->type == SHEEP) otherLove = ((Sheep*)other)->loveTime;
+			else if (other->type == CHICKEN) otherLove = ((Chicken*)other)->loveTime;
+
+			if (otherLove > 0) {
+				int dx = other->x - entity->x;
+				int dy = other->y - entity->y;
+				int d2 = dx * dx + dy * dy;
+				if (d2 < bestDist) {
+					bestDist = d2;
+					partner = other;
+				}
+			}
+		}
+
+		arraylist_remove(&nearby);
+
+		if (partner) {
+			int dx = partner->x - entity->x;
+			int dy = partner->y - entity->y;
+
+			// Walk towards partner
+			*xa = (dx > 0) ? 1 : ((dx < 0) ? -1 : 0);
+			*ya = (dy > 0) ? 1 : ((dy < 0) ? -1 : 0);
+
+			// If close enough (within 16 pixels) -> BREED!
+			if (abs(dx) <= 16 && abs(dy) <= 16) {
+				*loveTime = 0;
+				*breedCooldown = 1800; // 30s cooldown
+
+				if (partner->type == COW) { ((Cow*)partner)->loveTime = 0; ((Cow*)partner)->breedCooldown = 1800; }
+				else if (partner->type == PIG) { ((Pig*)partner)->loveTime = 0; ((Pig*)partner)->breedCooldown = 1800; }
+				else if (partner->type == SHEEP) { ((Sheep*)partner)->loveTime = 0; ((Sheep*)partner)->breedCooldown = 1800; }
+				else if (partner->type == CHICKEN) { ((Chicken*)partner)->loveTime = 0; ((Chicken*)partner)->breedCooldown = 1800; }
+
+				// Spawn Baby!
+				Mob* baby = entity_createAnimal(entity->type);
+				if (baby) {
+					baby->entity.x = (entity->x + partner->x) / 2;
+					baby->entity.y = (entity->y + partner->y) / 2;
+					level_addEntity(entity->level, (Entity*)baby);
+				}
+
+				// Spawn Exp Orb
+				ExpOrb* exp = malloc(sizeof(ExpOrb));
+				if (exp) {
+					exporb_create(exp, (entity->x + partner->x) / 2, (entity->y + partner->y) / 2, 5);
+					level_addEntity(entity->level, (Entity*)exp);
+				}
+
+				// Love explosion!
+				TextParticle* tp = malloc(sizeof(TextParticle));
+				if (tp) {
+					textparticle_create(tp, "<3 <3", (entity->x + partner->x) / 2, (entity->y + partner->y) / 2 - 12, getColor4(-1, 500, 500, 555));
+					level_addEntity(entity->level, &tp->entity);
+				}
+
+				sound_play(SND_CONFIRM);
+				input_rumble(8);
+			}
+		}
+	}
+}
+
 char call_entity_use(Entity* entity, Player* player, int attackDir) {
 	switch (entity->type) {
 		case ANVIL: return anvil_use((Anvil *) entity, player, attackDir);
@@ -433,6 +589,11 @@ char call_entity_use(Entity* entity, Player* player, int attackDir) {
 		case DOOR: return door_use((Door *) entity, player, attackDir);
 		case BARREL: return barrel_use((Barrel *) entity, player, attackDir);
 		case SIGN: return sign_use((Sign *) entity, player, attackDir);
+		case COW:
+		case PIG:
+		case SHEEP:
+		case CHICKEN:
+			return animal_feedAndBreed(entity, player);
 		default: return 0;
 	}
 }

@@ -8,6 +8,8 @@ typedef struct _Chicken {
     int xa, ya;
     int randomWalkTime;
     int eggLayTimer;
+    int loveTime;
+    int breedCooldown;
 } Chicken;
 
 void chicken_create(Chicken* chicken);

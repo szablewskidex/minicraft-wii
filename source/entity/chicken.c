@@ -17,6 +17,8 @@ void chicken_create(Chicken* chicken) {
     chicken->randomWalkTime = 0;
     chicken->xa = chicken->ya = 0;
     chicken->eggLayTimer = random_next_int(&chicken->mob.entity.random, 3600) + 3600; // 1-2 minutes
+    chicken->loveTime = 0;
+    chicken->breedCooldown = 0;
 }
 
 void chicken_tick(Chicken* chicken) {
@@ -45,6 +47,8 @@ void chicken_tick(Chicken* chicken) {
             }
         }
     }
+
+    animal_tickBreeding((Entity*)chicken, &chicken->loveTime, &chicken->breedCooldown, &chicken->xa, &chicken->ya);
 }
 
 void chicken_render(Chicken* chicken, Screen* screen) {
