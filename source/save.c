@@ -1,4 +1,4 @@
-﻿#include "save.h"
+#include "save.h"
 #include "gamemode.h"
 #include "lang.h"
 #include <stdio.h>
@@ -40,7 +40,8 @@ static Resource* resource_list[] = {
     &wheat, &bread, &apple, &coal, &ironOre, &goldOre, &ironIngot, &goldIngot,
     &slime, &glass, &cloth, &cloud, &gem, &leather, &boat,
     &leatherArmor, &ironArmor, &goldArmor, &gemArmor,
-    &bow, &arrow, &fishingRod, &rawFish, &cookedFish, &shears, &carrot, &potato
+    &bow, &arrow, &fishingRod, &rawFish, &cookedFish, &shears, &carrot, &potato,
+    &rawBeef, &cookedSteak, &rawPork, &cookedPork, &woodPlank, &woodWallItem
 };
 #define NUM_RESOURCES (sizeof(resource_list) / sizeof(Resource*))
 

@@ -24,7 +24,11 @@ typedef enum tileid_{
 	IRON_ORE,
 	GOLD_ORE,
 	GEM_ORE,
-	CLOUD_CACTUS
+	CLOUD_CACTUS,
+	WOOD_FLOOR,
+	WOOD_WALL,
+	BIRCH_TREE,
+	SPRUCE_TREE
 } TileID;
 
 #endif /* LEVEL_TILE_TILEIDS_H_ */

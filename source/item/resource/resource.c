@@ -51,6 +51,12 @@ Resource cookedFish;
 Resource shears;
 Resource carrot;
 Resource potato;
+Resource rawBeef;
+Resource cookedSteak;
+Resource rawPork;
+Resource cookedPork;
+Resource woodPlank;
+Resource woodWallItem;
 
 
 void init_resource(Resource* resource, char* name, int sprite, int color) {
@@ -116,6 +122,12 @@ void init_resources() {
 	init_resource(&shears, "Shears", 11 + 41 * 32, getColor4(-1, 100, 333, 555));
 	init_food_resource(&carrot, "Carrot", 12 + 41 * 32, getColor4(-1, 10, 530, 50), 2, 4);
 	init_food_resource(&potato, "Potato", 13 + 41 * 32, getColor4(-1, 100, 431, 542), 2, 4);
+	init_food_resource(&rawBeef, "Raw Beef", 14 + 41 * 32, getColor4(-1, 100, 400, 533), 2, 4);
+	init_food_resource(&cookedSteak, "Steak", 15 + 41 * 32, getColor4(-1, 100, 310, 421), 6, 12);
+	init_food_resource(&rawPork, "Raw Pork", 20 + 41 * 32, getColor4(-1, 211, 422, 544), 2, 4);
+	init_food_resource(&cookedPork, "C.Pork", 21 + 41 * 32, getColor4(-1, 100, 320, 542), 5, 10);
+	init_resource(&woodPlank, "Plank", 22 + 41 * 32, getColor4(-1, 100, 321, 431));
+	init_resource(&woodWallItem, "Wood Wall", 23 + 41 * 32, getColor4(-1, 100, 321, 431));
 
 	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources)/sizeof(TileID));
 	init_resource(&gem, "gem", 13 + 4 * 32, getColor4(-1, 101, 404, 545));
@@ -132,10 +144,26 @@ char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, 
 			}
 		}
 		return 0;
-	} else if (resource == &bread || resource == &apple || resource == &rawFish || resource == &cookedFish || resource == &carrot || resource == &potato) {
+	} else if (resource == &bread || resource == &apple || resource == &rawFish || resource == &cookedFish || resource == &carrot || resource == &potato || resource == &rawBeef || resource == &cookedSteak || resource == &rawPork || resource == &cookedPork) {
 		if (player->mob.health < player->mob.maxHealth && player_payStamina(player, resource->add.food.staminaCost)) {
 			mob_heal(&player->mob, resource->add.food.heal);
 			sound_play(SND_CONFIRM);
+			return 1;
+		}
+		return 0;
+	} else if (resource == &woodPlank) {
+		if (tile == DIRT || tile == HOLE || tile == GRASS || tile == SAND) {
+			level_set_tile(level, xt, yt, WOOD_FLOOR, 0);
+			sound_play(SND_CONFIRM);
+			input_rumble(4);
+			return 1;
+		}
+		return 0;
+	} else if (resource == &woodWallItem) {
+		if (tile == DIRT || tile == GRASS || tile == SAND || tile == WOOD_FLOOR || tile == HOLE) {
+			level_set_tile(level, xt, yt, WOOD_WALL, 0);
+			sound_play(SND_CONFIRM);
+			input_rumble(4);
 			return 1;
 		}
 		return 0;

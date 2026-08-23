@@ -1,4 +1,4 @@
-﻿#include "pig.h"
+#include "pig.h"
 #include "../gfx/screen.h"
 #include "_entity_caller.h"
 #include "itementity.h"
@@ -62,7 +62,7 @@ void pig_die(Pig* pig) {
         ItemEntity* item_entity = malloc(sizeof(ItemEntity));
         if (!item_entity) continue;
         Item resource;
-        resourceitem_create(&resource, &apple); // Food / meat drop
+        resourceitem_create(&resource, &rawPork); // Raw pork drop!
         itementity_create(item_entity, resource,
             pig->mob.entity.x + random_next_int(random, 11) - 5,
             pig->mob.entity.y + random_next_int(random, 11) - 5);

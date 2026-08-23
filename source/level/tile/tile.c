@@ -19,6 +19,8 @@
 #include "cloud_cactus_tile.h"
 #include "cloud_tile.h"
 #include "farmland.h"
+#include "wood_floor_tile.h"
+#include "wood_wall_tile.h"
 
 #include "../../gfx/screen.h"
 #include "../../item/resource/resource.h"
@@ -44,6 +46,8 @@ void init_tiles(){
 	watertile_init(WATER);
 	flowertile_init(FLOWER);
 	treetile_init(TREE);
+	treetile_init(BIRCH_TREE);
+	treetile_init(SPRUCE_TREE);
 	tile_init(DIRT);
 	sandtile_init(SAND);
 	cactustile_init(CACTUS);
@@ -62,6 +66,8 @@ void init_tiles(){
 	oretile_init(GOLD_ORE, &goldOre);
 	oretile_init(GEM_ORE, &gem);
 	tile_init(CLOUD_CACTUS);
+	woodfloortile_init(WOOD_FLOOR);
+	woodwalltile_init(WOOD_WALL);
 }
 
 void tile_init(TileID id){
@@ -125,7 +131,15 @@ void tile_render(TileID id, Screen* screen, Level* level, int x, int y){
 		//
 		//	break;
 		case TREE:
+		case BIRCH_TREE:
+		case SPRUCE_TREE:
 			treetile_render(id, screen, level, x, y);
+			break;
+		case WOOD_FLOOR:
+			woodfloortile_render(id, screen, level, x, y);
+			break;
+		case WOOD_WALL:
+			woodwalltile_render(id, screen, level, x, y);
 			break;
 		case WATER:
 			watertile_render(id, screen, level, x, y);
@@ -158,6 +172,9 @@ char tile_mayPass(TileID id, Level* level, int x, int y, Entity* e){
 		case ROCK:
 		// XXX unused case STONE:
 		case TREE:
+		case BIRCH_TREE:
+		case SPRUCE_TREE:
+		case WOOD_WALL:
 			return 0;
 		case CLOUD_CACTUS:
 		case INFINITE_FALL:
@@ -169,6 +186,7 @@ char tile_mayPass(TileID id, Level* level, int x, int y, Entity* e){
 		case LAVA:
 		case WATER:
 			return call_entity_canSwim(e);
+		case WOOD_FLOOR:
 		case CLOUD:
 		default:
 			return 1;
@@ -215,7 +233,12 @@ void tile_hurt(TileID id, Level* level, int x, int y, Mob* source, int dmg, int 
 			saplingtile_hurt(id, level, x, y, source, dmg, attackDir);
 			break;
 		case TREE:
+		case BIRCH_TREE:
+		case SPRUCE_TREE:
 			treetile_hurt(id, level, x, y, source, dmg, attackDir);
+			break;
+		case WOOD_WALL:
+			woodwalltile_hurt(id, level, x, y, source, dmg, attackDir);
 			break;
 		case WHEAT:
 			wheattile_hurt(id, level, x, y, source, dmg, attackDir);
@@ -272,6 +295,8 @@ void tile_tick(TileID id, Level* level, int xt, int yt) {
 			saplingtile_tick(id, level, xt, yt);
 			break;
 		case TREE:
+		case BIRCH_TREE:
+		case SPRUCE_TREE:
 			treetile_tick(id, level, xt, yt);
 			break;
 		case WATER:
@@ -290,7 +315,7 @@ void tile_tick(TileID id, Level* level, int xt, int yt) {
 void tile_steppedOn(TileID id, Level* level, int x, int y, Entity* entity){
 	switch(id){
 		case SAND:
-			if(entity_ismob(entity)) level_set_data(level, x, y, 10);
+			if(entity_ismob(entity)) level_set_data(level, x, y, 120);
 			break;
 		case FARMLAND:
 			if(random_next_int(&tiles[id].random, 60) != 0) return;
@@ -328,7 +353,13 @@ char tile_interact(TileID id, Level* level, int xt, int yt, struct _Player* play
 		case SAND:
 			return sandtile_interact(id, level, xt, yt, player, item, attackDir);
 		case TREE:
+		case BIRCH_TREE:
+		case SPRUCE_TREE:
 			return treetile_interact(id, level, xt, yt, player, item, attackDir);
+		case WOOD_FLOOR:
+			return woodfloortile_interact(id, level, xt, yt, player, item, attackDir);
+		case WOOD_WALL:
+			return woodwalltile_interact(id, level, xt, yt, player, item, attackDir);
 		case WHEAT:
 			return wheattile_interact(id, level, xt, yt, player, item, attackDir);
 		case FLOWER:

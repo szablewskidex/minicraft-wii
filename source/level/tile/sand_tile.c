@@ -48,10 +48,8 @@ void sandtile_render(TileID id, Screen* screen, Level* level, int x, int y){
 	char r = !tiles[level_get_tile(level, x + 1, y)].connectsToSand;
 	char steppedOn = level_get_data(level, x, y) > 0;
 
-	if (!u && !l){
-		if (!steppedOn) render_screen(screen, x * 16 + 0, y * 16 + 0, 0, col, 0);
-		else render_screen(screen, x * 16 + 0, y * 16 + 0, 3 + 1 * 32, col, 0);
-	} else render_screen(screen, x * 16 + 0, y * 16 + 0, (l ? 11 : 12) + (u ? 0 : 1) * 32, transitionColor, 0);
+	if (!u && !l) render_screen(screen, x * 16 + 0, y * 16 + 0, 0, col, 0);
+	else render_screen(screen, x * 16 + 0, y * 16 + 0, (l ? 11 : 12) + (u ? 0 : 1) * 32, transitionColor, 0);
 
 	if (!u && !r) render_screen(screen, x * 16 + 8, y * 16 + 0, 1, col, 0);
 	else render_screen(screen, x * 16 + 8, y * 16 + 0, (r ? 13 : 12) + (u ? 0 : 1) * 32, transitionColor, 0);
@@ -59,8 +57,11 @@ void sandtile_render(TileID id, Screen* screen, Level* level, int x, int y){
 	if (!d && !l) render_screen(screen, x * 16 + 0, y * 16 + 8, 2, col, 0);
 	else render_screen(screen, x * 16 + 0, y * 16 + 8, (l ? 11 : 12) + (d ? 2 : 1) * 32, transitionColor, 0);
 
-	if (!d && !r){
-		if (!steppedOn) render_screen(screen, x * 16 + 8, y * 16 + 8, 3, col, 0);
-		else render_screen(screen, x * 16 + 8, y * 16 + 8, 3 + 1 * 32, col, 0);
-	}else render_screen(screen, x * 16 + 8, y * 16 + 8, (r ? 13 : 12) + (d ? 2 : 1) * 32, transitionColor, 0);
+	if (!d && !r) render_screen(screen, x * 16 + 8, y * 16 + 8, 3, col, 0);
+	else render_screen(screen, x * 16 + 8, y * 16 + 8, (r ? 13 : 12) + (d ? 2 : 1) * 32, transitionColor, 0);
+
+	if (steppedOn) {
+		int footCol = getColor4(-1, level->sandColor - 110, level->sandColor + 2, 555);
+		render_screen(screen, x * 16 + 4, y * 16 + 4, 4 + 42 * 32, footCol, 0);
+	}
 }

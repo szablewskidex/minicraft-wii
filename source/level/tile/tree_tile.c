@@ -89,6 +89,16 @@ void treetile_render(TileID id, Screen* screen, Level* level, int x, int y) {
 	int barkCol1 = getColor4(10, 30, 430, level->grassColor);
 	int barkCol2 = getColor4(10, 30, 320, level->grassColor);
 
+	if (id == BIRCH_TREE) {
+		col = getColor4(10, 40, 252, level->grassColor);
+		barkCol1 = getColor4(10, 555, 555, level->grassColor);
+		barkCol2 = getColor4(10, 444, 111, level->grassColor);
+	} else if (id == SPRUCE_TREE) {
+		col = getColor4(10, 20, 131, level->grassColor);
+		barkCol1 = getColor4(10, 210, 320, level->grassColor);
+		barkCol2 = getColor4(10, 100, 210, level->grassColor);
+	}
+
 	char u = level_get_tile(level, x, y - 1) == id;
 	char l = level_get_tile(level, x - 1, y) == id;
 	char r = level_get_tile(level, x + 1, y) == id;

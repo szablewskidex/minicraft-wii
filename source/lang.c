@@ -100,6 +100,12 @@ static const ItemTranslation item_translations[] = {
     { "Shears", "Nozyce", "Schere" },
     { "Carrot", "Marchew", "Karotte" },
     { "Potato", "Ziemniak", "Kartoffel" },
+    { "Raw Beef", "Sur. Wolowina", "Rohes Rindfleisch" },
+    { "Steak", "Stek", "Steak" },
+    { "Raw Pork", "Sur. Wieprzow.", "Rohes Schwein" },
+    { "C.Pork", "Pieczen", "Braten" },
+    { "Plank", "Deska", "Holzplanke" },
+    { "Wood Wall", "Drewn. Sciana", "Holzwand" },
     // Furniture
     { "Workbench", "Warsztat", "Werkbank" },
     { "Chest", "Skrzynia", "Truhe" },

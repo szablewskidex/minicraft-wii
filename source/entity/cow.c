@@ -81,7 +81,7 @@ void cow_die(Cow* cow){
     ItemEntity* beef_entity = malloc(sizeof(ItemEntity));
     if (beef_entity) {
         Item beef;
-        resourceitem_create(&beef, &apple); // Food / beef drop
+        resourceitem_create(&beef, &rawBeef); // Raw beef drop!
         itementity_create(beef_entity, beef,
             cow->mob.entity.x, cow->mob.entity.y);
         level_addEntity(cow->mob.entity.level, &beef_entity->entity);
