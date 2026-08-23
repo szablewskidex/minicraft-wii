@@ -65,12 +65,26 @@ void containermenu_tick(){
 void containermenu_init(){
 	window = oSelected = selected = 0;
 }
+#include "../lang.h"
+
 void containermenu_render(Screen* screen){
-	if(window == 1) screen_set_offset(screen, 6*8, 0);
-	font_renderFrame(screen, contmenu_title, strlen(contmenu_title), 1, 1, 12, 11);
-	menu_render_item_list(screen, 1, 1, 12, 11, &contmenu_container->items, window == 0 ? selected : -oSelected - 1, item_renderInventory);
-	char s[] = "inventory";
-	font_renderFrame(screen, s, strlen(s), 13, 1, 13+11, 11);
-	menu_render_item_list(screen, 13, 1, 13+11, 11, &game_player->inventory.items, window == 1 ? selected : -oSelected - 1, item_renderInventory);
-	screen_set_offset(screen, 0, 0);
+	int box_w = (screen->w >= 400) ? 19 : 16;
+	int box_h = 16;
+	int x_margin = (screen->w >= 400) ? ((screen->w / 8 - (box_w * 2 + 2)) / 2) : 1;
+	if (x_margin < 1) x_margin = 1;
+
+	int box1_x0 = x_margin;
+	int box1_x1 = box1_x0 + box_w;
+	int box2_x0 = box1_x1 + 1;
+	int box2_x1 = box2_x0 + box_w;
+
+	const char* t_title = lang_translate_item(contmenu_title);
+	if (!t_title || strlen(t_title) == 0) t_title = contmenu_title;
+
+	font_renderFrame(screen, (char*)t_title, strlen(t_title), box1_x0, 1, box1_x1, box_h);
+	menu_render_item_list(screen, box1_x0, 1, box1_x1, box_h, &contmenu_container->items, window == 0 ? selected : -oSelected - 1, item_renderInventory);
+
+	const char* s = _T(STR_INVENTORY);
+	font_renderFrame(screen, (char*)s, strlen(s), box2_x0, 1, box2_x1, box_h);
+	menu_render_item_list(screen, box2_x0, 1, box2_x1, box_h, &game_player->inventory.items, window == 1 ? selected : -oSelected - 1, item_renderInventory);
 }

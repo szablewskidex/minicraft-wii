@@ -62,6 +62,12 @@ void inventorymenu_init() {
 
 void inventorymenu_render(Screen* screen) {
 	const char* inv = _T(STR_INVENTORY);
-	font_renderFrame(screen, (char*)inv, strlen(inv), 1, 1, 12, 11);
-	menu_render_item_list(screen, 1, 1, 12, 11, &game_player->inventory.items, inventorymenu_selected, item_renderInventory);
+	int box_w = (screen->w >= 400) ? 22 : 18;
+	int box_h = 16;
+	int x0 = (screen->w / 8 - box_w) / 2;
+	if (x0 < 1) x0 = 1;
+	int x1 = x0 + box_w;
+
+	font_renderFrame(screen, (char*)inv, strlen(inv), x0, 1, x1, box_h);
+	menu_render_item_list(screen, x0, 1, x1, box_h, &game_player->inventory.items, inventorymenu_selected, item_renderInventory);
 }

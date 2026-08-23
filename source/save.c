@@ -428,11 +428,7 @@ int load_slot(int slot) {
         fread(&cLevel, sizeof(int32_t), 1, f);
         fread(&hWon, sizeof(int32_t), 1, f);
         fread(&wTimer, sizeof(int32_t), 1, f);
-        if (fread(&sLang, sizeof(int32_t), 1, f) == 1) {
-            if (sLang >= 0 && sLang < LANG_COUNT) {
-                g_currentLanguage = (Language)sLang;
-            }
-        }
+        fread(&sLang, sizeof(int32_t), 1, f); // Read language for stream offset, keep user's global language setting
     } else {
         // Version 1 format
         sMode = (int32_t)MODE_SURVIVAL;
@@ -441,11 +437,7 @@ int load_slot(int slot) {
         fread(&cLevel, sizeof(int32_t), 1, f);
         fread(&hWon, sizeof(int32_t), 1, f);
         fread(&wTimer, sizeof(int32_t), 1, f);
-        if (fread(&sLang, sizeof(int32_t), 1, f) == 1) {
-            if (sLang >= 0 && sLang < LANG_COUNT) {
-                g_currentLanguage = (Language)sLang;
-            }
-        }
+        fread(&sLang, sizeof(int32_t), 1, f); // Read language for stream offset, keep user's global language setting
     }
 
     g_gameMode = (GameMode)sMode;
