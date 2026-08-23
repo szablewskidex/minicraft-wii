@@ -32,7 +32,7 @@ void titlemenu_render(Screen* screen) {
 	clear_screen(screen, 0);
 
 	int h = 2;
-	int w = 13;
+	int w = 16;
     int yo = 20;
     int xo = (screen->w - w * 8) / 2;
     
