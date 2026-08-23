@@ -16,7 +16,9 @@ void torchtile_init(TileID id) {
 }
 
 void torchtile_render(TileID id, Screen* screen, Level* level, int x, int y) {
-    tile_render((level->depth < 0) ? DIRT : GRASS, screen, level, x, y);
+    TileID baseTile = (TileID)level_get_data(level, x, y);
+    if (baseTile == 0) baseTile = (level->depth < 0) ? DIRT : GRASS;
+    tile_render(baseTile, screen, level, x, y);
 
     int frame = ((tile_tickCount / 10) % 2 == 0) ? 6 : 8;
     int torchCol = getColor4(-1, 100, 520, 550);
@@ -35,7 +37,8 @@ void torchtile_hurt(TileID id, Level* level, int x, int y, Mob* source, int dmg,
     level_addEntity(level, &item_entity->entity);
 
     sound_play(SND_MONSTERHURT);
-    TileID baseTile = (level->depth < 0) ? DIRT : GRASS;
+    TileID baseTile = (TileID)level_get_data(level, x, y);
+    if (baseTile == 0) baseTile = (level->depth < 0) ? DIRT : GRASS;
     level_set_tile(level, x, y, baseTile, 0);
 }
 

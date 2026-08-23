@@ -5,9 +5,10 @@
 #include "../item/resourceitem.h"
 #include "../item/resource/resource.h"
 #include "../game.h"
+#include "arrow.h"
 #include "../gfx/color.h"
-#include "spark.h"
-#include "airwizard.h"
+#include "../sound.h"
+#include <stdlib.h>
 
 void skeleton_create(Skeleton* skeleton, int lvl){
     mob_create(&skeleton->mob);
@@ -30,23 +31,37 @@ void skeleton_tick(Skeleton* skeleton) {
         int yd = game_player->mob.entity.y - skeleton->mob.entity.y;
         int dist2 = (xd * xd) + (yd * yd);
 
-        if (dist2 < (70 * 70)) {
-            // Keep distance / shoot
-            if (dist2 < (40 * 40)) {
-                // Back away slightly
+        if (dist2 < (90 * 90)) {
+            // Keep tactical distance & aim
+            if (dist2 < (35 * 35)) {
+                // Back away slightly if player gets too close
                 skeleton->xa = (xd > 0) ? -1 : 1;
                 skeleton->ya = (yd > 0) ? -1 : 1;
+            } else if (dist2 > (65 * 65)) {
+                // Approach player slightly
+                skeleton->xa = (xd > 0) ? 1 : -1;
+                skeleton->ya = (yd > 0) ? 1 : -1;
             } else {
                 skeleton->xa = skeleton->ya = 0;
             }
 
             if (--skeleton->shootDelay <= 0) {
                 skeleton->shootDelay = 80;
-                Spark* spark = malloc(sizeof(Spark));
-                spark_create(spark, (AirWizard*)skeleton, (xd > 0 ? 1 : -1) * 2, (yd > 0 ? 1 : -1) * 2);
-                spark->entity.x = skeleton->mob.entity.x;
-                spark->entity.y = skeleton->mob.entity.y;
-                level_addEntity(skeleton->mob.entity.level, &spark->entity);
+
+                int dir = 0;
+                if (abs(xd) > abs(yd)) {
+                    dir = (xd > 0) ? 3 : 2; // Right or Left
+                } else {
+                    dir = (yd > 0) ? 0 : 1; // Down or Up
+                }
+                skeleton->mob.dir = dir;
+
+                Arrow* arrow = malloc(sizeof(Arrow));
+                if (arrow) {
+                    arrow_create(arrow, &skeleton->mob, skeleton->mob.entity.x, skeleton->mob.entity.y, dir, skeleton->lvl + 1);
+                    level_addEntity(skeleton->mob.entity.level, &arrow->entity);
+                    sound_play(SND_MONSTERHURT);
+                }
             }
         }
     }

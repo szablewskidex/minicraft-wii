@@ -25,7 +25,7 @@ void sheep_tick(Sheep* sheep) {
     mob_tick(&sheep->mob);
     Random* random = &sheep->mob.entity.random;
 
-    int speed = sheep->mob.tickTime & 1;
+    int speed = (sheep->breedCooldown > 0) ? (sheep->mob.tickTime % 4 == 0) : (sheep->mob.tickTime & 1);
     if (!mob_move(&sheep->mob, sheep->xa * speed, sheep->ya * speed) || random_next_int(random, 90) == 0) {
         sheep->randomWalkTime = 45;
         sheep->xa = (random_next_int(random, 3) - 1);

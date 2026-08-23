@@ -16,7 +16,9 @@ void tombstonetile_init(TileID id) {
 }
 
 void tombstonetile_render(TileID id, Screen* screen, Level* level, int x, int y) {
-    tile_render((level->depth < 0) ? DIRT : GRASS, screen, level, x, y);
+    TileID baseTile = (TileID)level_get_data(level, x, y);
+    if (baseTile == 0) baseTile = (level->depth < 0) ? DIRT : GRASS;
+    tile_render(baseTile, screen, level, x, y);
 
     int col = getColor4(-1, 111, 333, 555); // Aged stone cross/grave
 
@@ -47,7 +49,9 @@ void tombstonetile_hurt(TileID id, Level* level, int x, int y, Mob* source, int 
         level_addEntity(level, &item_entity->entity);
     }
 
-    level_set_tile(level, x, y, DIRT, 0);
+    TileID baseTile = (TileID)level_get_data(level, x, y);
+    if (baseTile == 0) baseTile = (level->depth < 0) ? DIRT : GRASS;
+    level_set_tile(level, x, y, baseTile, 0);
 }
 
 char tombstonetile_interact(TileID id, Level* level, int xt, int yt, struct _Player* player, struct _Item* item, int attackDir) {

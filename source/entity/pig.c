@@ -23,7 +23,7 @@ void pig_tick(Pig* pig) {
     mob_tick(&pig->mob);
     Random* random = &pig->mob.entity.random;
 
-    int speed = pig->mob.tickTime & 1;
+    int speed = (pig->breedCooldown > 0) ? (pig->mob.tickTime % 4 == 0) : (pig->mob.tickTime & 1);
     if (!mob_move(&pig->mob, pig->xa * speed, pig->ya * speed) || random_next_int(random, 80) == 0) {
         pig->randomWalkTime = 40;
         pig->xa = (random_next_int(random, 3) - 1);

@@ -171,7 +171,7 @@ char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, 
 	if (resource->type == RES_TYPE_PLANTABLE && resource->plantable.sourceTiles) {
 		for (int i = 0; i < resource->plantable.sourceTilesSize; ++i) {
 			if (tile == resource->plantable.sourceTiles[i]) {
-				level_set_tile(level, xt, yt, resource->plantable.targetTile, 0);
+				level_set_tile(level, xt, yt, resource->plantable.targetTile, (int)tile);
 				sound_play(SND_CONFIRM);
 				return 1;
 			}

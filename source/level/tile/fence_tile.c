@@ -16,7 +16,9 @@ void fencetile_init(TileID id) {
 }
 
 void fencetile_render(TileID id, Screen* screen, Level* level, int x, int y) {
-    tile_render((level->depth < 0) ? DIRT : GRASS, screen, level, x, y);
+    TileID baseTile = (TileID)level_get_data(level, x, y);
+    if (baseTile == 0) baseTile = (level->depth < 0) ? DIRT : GRASS;
+    tile_render(baseTile, screen, level, x, y);
 
     int col = getColor4(-1, 100, 321, 431); // Rustic wooden fence
 
@@ -34,7 +36,8 @@ void fencetile_hurt(TileID id, Level* level, int x, int y, Mob* source, int dmg,
     level_addEntity(level, &item_entity->entity);
 
     sound_play(SND_MONSTERHURT);
-    TileID baseTile = (level->depth < 0) ? DIRT : GRASS;
+    TileID baseTile = (TileID)level_get_data(level, x, y);
+    if (baseTile == 0) baseTile = (level->depth < 0) ? DIRT : GRASS;
     level_set_tile(level, x, y, baseTile, 0);
 }
 

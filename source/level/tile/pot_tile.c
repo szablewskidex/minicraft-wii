@@ -16,7 +16,9 @@ void pottile_init(TileID id) {
 }
 
 void pottile_render(TileID id, Screen* screen, Level* level, int x, int y) {
-    tile_render((level->depth < 0) ? DIRT : GRASS, screen, level, x, y);
+    TileID baseTile = (TileID)level_get_data(level, x, y);
+    if (baseTile == 0) baseTile = (level->depth < 0) ? DIRT : GRASS;
+    tile_render(baseTile, screen, level, x, y);
 
     int col = getColor4(-1, 210, 420, 542); // Terracotta clay pot colors
 
@@ -53,7 +55,8 @@ void pottile_hurt(TileID id, Level* level, int x, int y, Mob* source, int dmg, i
     itementity_create(item_entity, item, (x * 16) + 8, (y * 16) + 8);
     level_addEntity(level, &item_entity->entity);
 
-    TileID baseTile = (level->depth < 0) ? DIRT : GRASS;
+    TileID baseTile = (TileID)level_get_data(level, x, y);
+    if (baseTile == 0) baseTile = (level->depth < 0) ? DIRT : GRASS;
     level_set_tile(level, x, y, baseTile, 0);
 }
 

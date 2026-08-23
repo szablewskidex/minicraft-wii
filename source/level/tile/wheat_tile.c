@@ -98,8 +98,9 @@ void wheattile_tick(TileID id, Level* level, int xt, int yt){
 	int isWatered = (data & 64) != 0;
 	int age = data & 63;
 
-	// Watered crops grow faster!
-	if (!isWatered && random_next_int(&trandom, 2) == 0) return;
+	// Unwatered crops grow slowly; watered crops grow 3x faster!
+	int chance = isWatered ? 2 : 6;
+	if (random_next_int(&trandom, chance) != 0) return;
 
 	if(age < 50) level_set_data(level, xt, yt, (age + 1) | (isWatered ? 64 : 0));
 }

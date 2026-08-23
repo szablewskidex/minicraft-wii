@@ -25,7 +25,7 @@ void chicken_tick(Chicken* chicken) {
     mob_tick(&chicken->mob);
     Random* random = &chicken->mob.entity.random;
 
-    int speed = 1;
+    int speed = (chicken->breedCooldown > 0) ? (chicken->mob.tickTime & 1) : 1;
     if (!mob_move(&chicken->mob, chicken->xa * speed, chicken->ya * speed) || random_next_int(random, 60) == 0) {
         chicken->randomWalkTime = 30;
         chicken->xa = (random_next_int(random, 3) - 1);

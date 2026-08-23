@@ -23,8 +23,8 @@ void cow_tick(Cow* cow) {
     mob_tick(&cow->mob);
     Random* random = &cow->mob.entity.random;
 
-    // Peaceful wander
-    int speed = cow->mob.tickTime & 1;
+    // Peaceful wander - slower if full/fed
+    int speed = (cow->breedCooldown > 0) ? (cow->mob.tickTime % 4 == 0) : (cow->mob.tickTime & 1);
     if (!mob_move(&cow->mob, cow->xa * speed, cow->ya * speed) || random_next_int(random, 100) == 0) {
         cow->randomWalkTime = 50;
         cow->xa = (random_next_int(random, 3) - 1);
