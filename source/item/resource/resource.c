@@ -147,28 +147,28 @@ void init_resources() {
 	init_food_resource(&egg, "Egg", 14 + 4 * 32, getColor4(-1, 310, 542, 555), 1, 2);
 
 	// Torch item (Row 41 col 24)
-	static TileID torch_sources[] = {GRASS, DIRT, SAND, FARMLAND, WOOD_FLOOR, STONE_FLOOR, DIRT_PATH};
+	static TileID torch_sources[] = {GRASS, DIRT, SAND, FARMLAND, WOOD_FLOOR, STONE_FLOOR, DIRT_PATH, ROCK, HARD_ROCK};
 	init_plantable_resource(&torchItem, "Torch", 24 + 41 * 32, getColor4(-1, 000, 520, 550), TORCH_TILE, torch_sources, sizeof(torch_sources)/sizeof(TileID));
 
-	static TileID stonewall_sources[] = {DIRT, GRASS, SAND, WOOD_FLOOR, STONE_FLOOR, HOLE, DIRT_PATH};
+	static TileID stonewall_sources[] = {DIRT, GRASS, SAND, WOOD_FLOOR, STONE_FLOOR, HOLE, DIRT_PATH, ROCK, HARD_ROCK};
 	init_plantable_resource(&stoneWallItem, "Stone Wall", 25 + 41 * 32, getColor4(-1, 111, 333, 555), STONE_WALL, stonewall_sources, sizeof(stonewall_sources)/sizeof(TileID));
 
-	static TileID pot_sources[] = {DIRT, GRASS, SAND, WOOD_FLOOR, STONE_FLOOR, DIRT_PATH};
+	static TileID pot_sources[] = {DIRT, GRASS, SAND, WOOD_FLOOR, STONE_FLOOR, DIRT_PATH, ROCK, HARD_ROCK};
 	init_plantable_resource(&potItem, "Clay Pot", 26 + 41 * 32, getColor4(-1, 210, 420, 542), POT_TILE, pot_sources, sizeof(pot_sources)/sizeof(TileID));
 
-	static TileID tombstone_sources[] = {DIRT, GRASS, SAND, DIRT_PATH};
+	static TileID tombstone_sources[] = {DIRT, GRASS, SAND, DIRT_PATH, ROCK, HARD_ROCK};
 	init_plantable_resource(&tombstoneItem, "Tombstone", 27 + 41 * 32, getColor4(-1, 111, 333, 555), TOMBSTONE_TILE, tombstone_sources, sizeof(tombstone_sources)/sizeof(TileID));
 
-	static TileID fence_sources[] = {DIRT, GRASS, SAND, WOOD_FLOOR, STONE_FLOOR, DIRT_PATH};
+	static TileID fence_sources[] = {DIRT, GRASS, SAND, WOOD_FLOOR, STONE_FLOOR, DIRT_PATH, ROCK, HARD_ROCK};
 	init_plantable_resource(&fenceItem, "Fence", 28 + 41 * 32, getColor4(-1, 100, 321, 431), FENCE_TILE, fence_sources, sizeof(fence_sources)/sizeof(TileID));
 
-	static TileID stonefloor_sources[] = {DIRT, GRASS, SAND, HOLE, DIRT_PATH, WOOD_FLOOR};
+	static TileID stonefloor_sources[] = {DIRT, GRASS, SAND, HOLE, DIRT_PATH, WOOD_FLOOR, ROCK, HARD_ROCK};
 	init_plantable_resource(&stoneFloor, "Stone Floor", 19 + 41 * 32, getColor4(-1, 111, 222, 444), STONE_FLOOR, stonefloor_sources, sizeof(stonefloor_sources)/sizeof(TileID));
 
-	static TileID glasswall_sources[] = {DIRT, GRASS, SAND, HOLE, DIRT_PATH, WOOD_FLOOR, STONE_FLOOR};
+	static TileID glasswall_sources[] = {DIRT, GRASS, SAND, HOLE, DIRT_PATH, WOOD_FLOOR, STONE_FLOOR, ROCK, HARD_ROCK};
 	init_plantable_resource(&glassWallItem, "Glass Window", 31 + 41 * 32, getColor4(-1, 100, 321, 555), GLASS_WALL, glasswall_sources, sizeof(glasswall_sources)/sizeof(TileID));
 
-	static TileID ladder_sources[] = {DIRT, GRASS, SAND, DIRT_PATH, WOOD_FLOOR, STONE_FLOOR, ROCK, HARD_ROCK};
+	static TileID ladder_sources[] = {DIRT, GRASS, SAND, DIRT_PATH, WOOD_FLOOR, STONE_FLOOR, ROCK, HARD_ROCK, STONE_WALL, WOOD_WALL};
 	init_plantable_resource(&ladderItem, "Ladder", 0 + 40 * 32, getColor4(-1, 100, 321, 431), LADDER_TILE, ladder_sources, sizeof(ladder_sources)/sizeof(TileID));
 
 	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources)/sizeof(TileID));

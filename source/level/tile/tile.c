@@ -38,6 +38,7 @@
 
 #include "../../entity/entity.h"
 #include "../../entity/mob.h"
+#include "../../entity/player.h"
 #include "../../entity/_entity_caller.h"
 
 #include <string.h>
@@ -214,12 +215,16 @@ char tile_mayPass(TileID id, Level* level, int x, int y, Entity* e){
     #endif
 
 	switch (id) {
-		case CACTUS:
 		case HARD_ROCK:
+		case ROCK:
+			if (e->type == PLAYER && ((Player*)e)->onMountain) {
+				return 1;
+			}
+			return 0;
+		case CACTUS:
 		case GEM_ORE:
 		case GOLD_ORE:
 		case IRON_ORE:
-		case ROCK:
 		// XXX unused case STONE:
 		case TREE:
 		case BIRCH_TREE:

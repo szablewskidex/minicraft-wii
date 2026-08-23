@@ -27,6 +27,7 @@ typedef struct _Player{
 	int fishTimer;
 	int fishBiteWindow;
 	int fishBobberX, fishBobberY;
+	int onMountain;
 } Player;
 
 void player_create(Player* player);

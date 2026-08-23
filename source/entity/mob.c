@@ -74,33 +74,49 @@ void mob_hurtTile(Mob* mob, TileID tile, int x, int y, int damage) {
 
 char mob_findStartPos(Mob* mob, Level* level) {
 	Random* random = &mob->entity.random;
-	int x = random_next_int(random, level->w);
-	int y = random_next_int(random, level->h);
 
-	int xx = (x * 16) + 8;
-	int yy = (y * 16) + 8;
+	for (int tries = 0; tries < 20; ++tries) {
+		int x, y;
+		if (game_player && game_player->mob.entity.level == level && random_next_int(random, 3) != 0) {
+			// Spawn in active region around player (between 5 and 22 tiles away)
+			int px = game_player->mob.entity.x >> 4;
+			int py = game_player->mob.entity.y >> 4;
+			int dx = (random_next_int(random, 45) - 22);
+			int dy = (random_next_int(random, 45) - 22);
+			x = px + dx;
+			y = py + dy;
+			if (x < 1 || y < 1 || x >= level->w - 1 || y >= level->h - 1) continue;
+		} else {
+			x = random_next_int(random, level->w);
+			y = random_next_int(random, level->h);
+		}
 
-	if (game_player->mob.entity.level == mob->entity.level) {
-		int xd = game_player->mob.entity.x - xx;
-		int yd = game_player->mob.entity.y - yy;
+		int xx = (x * 16) + 8;
+		int yy = (y * 16) + 8;
 
-		if (((xd * xd) + (yd * yd)) < 80 * 80) {
-            return 0;
-        }
-	}
+		if (game_player && game_player->mob.entity.level == level) {
+			int xd = game_player->mob.entity.x - xx;
+			int yd = game_player->mob.entity.y - yy;
+			if (((xd * xd) + (yd * yd)) < 64 * 64) {
+				continue; // Don't spawn right on top of player
+			}
+		}
 
-	int r = level->monsterDensity * 16;
+		TileID id = level_get_tile(level, x, y);
+		if (!tile_mayPass(id, level, x, y, &mob->entity)) continue;
 
-	ArrayList ents;
-	create_arraylist(&ents);
+		int r = (level->depth < 0) ? 20 : (level->monsterDensity * 8);
+		ArrayList ents;
+		create_arraylist(&ents);
+		level_getEntities(level, &ents, xx - r, yy - r, xx + r, yy + r);
+		int sz = 0;
+		for (int e_i = 0; e_i < ents.size; ++e_i) {
+			Entity* e = (Entity*)ents.elements[e_i];
+			if (e && !e->removed && entity_ismob(e)) sz++;
+		}
+		arraylist_remove(&ents);
+		if (sz > 0) continue;
 
-	level_getEntities(level, &ents, xx - r, yy - r, xx + r, yy + r);
-	int sz = ents.size;
-	arraylist_remove(&ents);
-	if (sz > 0) return 0;
-
-	TileID id = level_get_tile(level, x, y);
-	if (tile_mayPass(id, level, x, y, &mob->entity)) {
 		mob->entity.x = xx;
 		mob->entity.y = yy;
 		return 1;
