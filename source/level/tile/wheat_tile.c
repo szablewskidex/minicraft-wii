@@ -27,11 +27,16 @@ char wheattile_interact(TileID id, Level* level, int xt, int yt, struct _Player*
 }
 
 void wheattile_harvest(TileID id, Level* level, int x, int y) {
-	int age = level_get_data(level, x, y);
+	int data = level_get_data(level, x, y);
+	int isWatered = (data & 64) != 0;
+	int age = data & 63;
 	Random* random = &tiles[id].random;
-	int count = random_next_int(random, 2);
 
-	for(int i = 0; i < count; ++i){
+	// Drop seeds: 1-2 seeds (watered: 2-3 seeds)
+	int seedCount = random_next_int(random, 2) + 1;
+	if (isWatered) seedCount += 1;
+
+	for(int i = 0; i < seedCount; ++i){
 		ItemEntity* ent = malloc(sizeof(ItemEntity));
 		Item res;
 		resourceitem_create(&res, &seeds);
@@ -41,14 +46,16 @@ void wheattile_harvest(TileID id, Level* level, int x, int y) {
 		level_addEntity(level, (Entity *) ent);
 	}
 
-	count = 0;
-	if(age == 50){
-		count = random_next_int(random, 3) + 2;
-	}else if(age >= 40){
-		count = random_next_int(random, 2) + 1;
+	// Drop wheat: 1 to 3 wheat randomly (watered: DOUBLED -> 2 to 6 wheat!)
+	int wheatCount = 0;
+	if(age >= 40){
+		wheatCount = random_next_int(random, 3) + 1; // 1, 2, or 3 wheat!
+		if (isWatered) {
+			wheatCount *= 2; // Doubled yield when watered! (2, 4, or 6 wheat!)
+		}
 	}
 
-	for(int i = 0; i < count; ++i){
+	for(int i = 0; i < wheatCount; ++i){
 		ItemEntity* ent = malloc(sizeof(ItemEntity));
 		Item res;
 		resourceitem_create(&res, &wheat);
@@ -57,7 +64,9 @@ void wheattile_harvest(TileID id, Level* level, int x, int y) {
 		itementity_create(ent, res, xx, yy);
 		level_addEntity(level, (Entity *) ent);
 	}
-	level_set_tile(level, x, y, DIRT, 0);
+
+	// Preserve prepared FARMLAND (zaorane pole) ready for immediate planting!
+	level_set_tile(level, x, y, FARMLAND, 0);
 }
 
 void wheattile_hurt(TileID id, Level* level, int x, int y, Mob* source, int dmg, int attackDir){
@@ -65,8 +74,11 @@ void wheattile_hurt(TileID id, Level* level, int x, int y, Mob* source, int dmg,
 }
 
 void wheattile_render(TileID id, Screen* screen, Level* level, int x, int y){
-	int age = level_get_data(level, x, y);
-	int col = getColor4(level->dirtColor - 121, level->dirtColor - 11, level->dirtColor, 50);
+	int data = level_get_data(level, x, y);
+	int isWatered = (data & 64) != 0;
+	int age = data & 63;
+	int col = isWatered ? getColor4(level->dirtColor - 141, level->dirtColor - 31, level->dirtColor - 21, 50)
+	                    : getColor4(level->dirtColor - 121, level->dirtColor - 11, level->dirtColor, 50);
 	int icon = age / 10;
 	if (icon >= 3){
 		col = getColor4(level->dirtColor - 121, level->dirtColor - 11, 50 + (icon) * 100, 40 + (icon - 3) * 2 * 100);
@@ -82,8 +94,12 @@ void wheattile_render(TileID id, Screen* screen, Level* level, int x, int y){
 
 
 void wheattile_tick(TileID id, Level* level, int xt, int yt){
-	if(random_next_int(&trandom, 2) == 0) return;
+	int data = level_get_data(level, xt, yt);
+	int isWatered = (data & 64) != 0;
+	int age = data & 63;
 
-	int age = level_get_data(level, xt, yt);
-	if(age < 50) level_set_data(level, xt, yt, age + 1);
+	// Watered crops grow faster!
+	if (!isWatered && random_next_int(&trandom, 2) == 0) return;
+
+	if(age < 50) level_set_data(level, xt, yt, (age + 1) | (isWatered ? 64 : 0));
 }

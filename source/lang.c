@@ -167,6 +167,9 @@ static const ItemTranslation item_translations[] = {
     { "Fence", "Plot", "Zaun" },
     { "Barrel", "Beczka", "Fass" },
     { "Sign", "Tabliczka", "Schild" },
+    { "Bucket", "Wiadro", "Eimer" },
+    { "W.Bucket", "Wiadro Woda", "Wassereimer" },
+    { "Water Bucket", "Wiadro Woda", "Wassereimer" },
     { NULL, NULL, NULL }
 };
 

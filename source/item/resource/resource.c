@@ -63,6 +63,8 @@ Resource stoneWallItem;
 Resource potItem;
 Resource tombstoneItem;
 Resource fenceItem;
+Resource bucket;
+Resource waterBucket;
 
 
 void init_resource(Resource* resource, char* name, int sprite, int color) {
@@ -159,6 +161,9 @@ void init_resources() {
 
 	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources)/sizeof(TileID));
 	init_resource(&gem, "gem", 13 + 4 * 32, getColor4(-1, 101, 404, 545));
+
+	init_resource(&bucket, "Bucket", 17 + 41 * 32, getColor4(-1, 100, 321, 444));
+	init_resource(&waterBucket, "W.Bucket", 18 + 41 * 32, getColor4(-1, 100, 321, 115));
 }
 
 
@@ -176,6 +181,56 @@ char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, 
 		if (player->mob.health < player->mob.maxHealth && player_payStamina(player, resource->food.staminaCost)) {
 			mob_heal(&player->mob, resource->food.heal);
 			sound_play(SND_CONFIRM);
+			return 1;
+		}
+		return 0;
+	} else if (resource == &bucket) {
+		if (tile == WATER) {
+			// Fill bucket with water!
+			Item* current = player->activeItem;
+			if (current && current->id == RESOURCE && current->add.resource.resource == &bucket) {
+				if (current->add.resource.count > 1) {
+					current->add.resource.count--;
+					Item waterB;
+					resourceitem_create(&waterB, &waterBucket);
+					inventory_addItem(&player->inventory, &waterB);
+				} else {
+					current->add.resource.resource = &waterBucket;
+					current->add.resource.count = 1;
+				}
+			}
+			sound_play(SND_CONFIRM);
+			input_rumble(3);
+			return 1;
+		}
+		return 0;
+	} else if (resource == &waterBucket) {
+		if (tile == FARMLAND || tile == WHEAT) {
+			// Water the soil / crop to double yield and speed up growth!
+			int data = level_get_data(level, xt, yt);
+			level_set_data(level, xt, yt, data | 64); // mark watered bit
+
+			TextParticle* tp = malloc(sizeof(TextParticle));
+			if (tp) {
+				textparticle_create(tp, "~Watered~", xt * 16 + 8, yt * 16 + 8, getColor4(-1, 115, 225, 335));
+				level_addEntity(level, &tp->entity);
+			}
+
+			// Empty the bucket back to normal bucket
+			Item* current = player->activeItem;
+			if (current && current->id == RESOURCE && current->add.resource.resource == &waterBucket) {
+				if (current->add.resource.count > 1) {
+					current->add.resource.count--;
+					Item emptyB;
+					resourceitem_create(&emptyB, &bucket);
+					inventory_addItem(&player->inventory, &emptyB);
+				} else {
+					current->add.resource.resource = &bucket;
+					current->add.resource.count = 1;
+				}
+			}
+			sound_play(SND_CONFIRM);
+			input_rumble(4);
 			return 1;
 		}
 		return 0;

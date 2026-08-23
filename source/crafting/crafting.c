@@ -103,6 +103,11 @@ void crafting_init() {
 	arraylist_push(&workbenchRecipes, recipe);
 
 	recipe = malloc(sizeof(Recipe));
+	resourcerecipe_create(recipe, &bucket);
+	recipe_addCost(recipe, &wood, 5);
+	arraylist_push(&workbenchRecipes, recipe);
+
+	recipe = malloc(sizeof(Recipe));
 	resourcerecipe_create(recipe, &stoneWallItem);
 	recipe_addCost(recipe, &stone, 2);
 	arraylist_push(&workbenchRecipes, recipe);

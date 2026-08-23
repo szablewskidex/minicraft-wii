@@ -45,7 +45,8 @@ static Resource* resource_list[] = {
     &leatherArmor, &ironArmor, &goldArmor, &gemArmor,
     &bow, &arrow, &fishingRod, &rawFish, &cookedFish, &shears, &carrot, &potato,
     &rawBeef, &cookedSteak, &rawPork, &cookedPork, &woodPlank, &woodWallItem,
-    &egg, &torchItem, &stoneWallItem, &potItem, &tombstoneItem, &fenceItem
+    &egg, &torchItem, &stoneWallItem, &potItem, &tombstoneItem, &fenceItem,
+    &bucket, &waterBucket
 };
 #define NUM_RESOURCES (sizeof(resource_list) / sizeof(Resource*))
 
