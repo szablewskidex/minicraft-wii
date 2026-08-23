@@ -106,6 +106,7 @@ static const ItemTranslation item_translations[] = {
     { "C.Pork", "Pieczen", "Braten" },
     { "Plank", "Deska", "Holzplanke" },
     { "Wood Wall", "Drewn. Sciana", "Holzwand" },
+    { "Egg", "Jajko", "Ei" },
     // Furniture
     { "Workbench", "Warsztat", "Werkbank" },
     { "Chest", "Skrzynia", "Truhe" },

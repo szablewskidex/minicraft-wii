@@ -1,4 +1,4 @@
-﻿#ifndef CHICKEN_H
+#ifndef CHICKEN_H
 #define CHICKEN_H
 
 #include "mob.h"
@@ -7,6 +7,7 @@ typedef struct _Chicken {
     Mob mob;
     int xa, ya;
     int randomWalkTime;
+    int eggLayTimer;
 } Chicken;
 
 void chicken_create(Chicken* chicken);

@@ -57,6 +57,7 @@ Resource rawPork;
 Resource cookedPork;
 Resource woodPlank;
 Resource woodWallItem;
+Resource egg;
 
 
 void init_resource(Resource* resource, char* name, int sprite, int color) {
@@ -129,6 +130,9 @@ void init_resources() {
 	init_resource(&woodPlank, "Plank", 22 + 41 * 32, getColor4(-1, 100, 321, 431));
 	init_resource(&woodWallItem, "Wood Wall", 23 + 41 * 32, getColor4(-1, 100, 321, 431));
 
+	// Egg in row 4 col 14 (Exact user selection!)
+	init_food_resource(&egg, "Egg", 14 + 4 * 32, getColor4(-1, 310, 542, 555), 1, 2);
+
 	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources)/sizeof(TileID));
 	init_resource(&gem, "gem", 13 + 4 * 32, getColor4(-1, 101, 404, 545));
 }
@@ -144,7 +148,7 @@ char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, 
 			}
 		}
 		return 0;
-	} else if (resource == &bread || resource == &apple || resource == &rawFish || resource == &cookedFish || resource == &carrot || resource == &potato || resource == &rawBeef || resource == &cookedSteak || resource == &rawPork || resource == &cookedPork) {
+	} else if (resource == &bread || resource == &apple || resource == &rawFish || resource == &cookedFish || resource == &carrot || resource == &potato || resource == &rawBeef || resource == &cookedSteak || resource == &rawPork || resource == &cookedPork || resource == &egg) {
 		if (player->mob.health < player->mob.maxHealth && player_payStamina(player, resource->add.food.staminaCost)) {
 			mob_heal(&player->mob, resource->add.food.heal);
 			sound_play(SND_CONFIRM);

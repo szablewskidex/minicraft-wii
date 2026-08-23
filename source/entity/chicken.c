@@ -1,4 +1,4 @@
-﻿#include "chicken.h"
+#include "chicken.h"
 #include "../gfx/screen.h"
 #include "_entity_caller.h"
 #include "itementity.h"
@@ -6,6 +6,7 @@
 #include "../item/resource/resource.h"
 #include "../game.h"
 #include "../gfx/color.h"
+#include "../sound.h"
 
 void chicken_create(Chicken* chicken) {
     mob_create(&chicken->mob);
@@ -15,6 +16,7 @@ void chicken_create(Chicken* chicken) {
     chicken->mob.health = chicken->mob.maxHealth = 4;
     chicken->randomWalkTime = 0;
     chicken->xa = chicken->ya = 0;
+    chicken->eggLayTimer = random_next_int(&chicken->mob.entity.random, 3600) + 3600; // 1-2 minutes
 }
 
 void chicken_tick(Chicken* chicken) {
@@ -28,6 +30,21 @@ void chicken_tick(Chicken* chicken) {
         chicken->ya = (random_next_int(random, 3) - 1);
     }
     if (chicken->randomWalkTime > 0) --chicken->randomWalkTime;
+
+    // Lay an egg periodically!
+    if (--chicken->eggLayTimer <= 0) {
+        chicken->eggLayTimer = random_next_int(random, 3600) + 3600;
+        if (chicken->mob.entity.level) {
+            ItemEntity* item_entity = malloc(sizeof(ItemEntity));
+            if (item_entity) {
+                Item item;
+                resourceitem_create(&item, &egg);
+                itementity_create(item_entity, item, chicken->mob.entity.x, chicken->mob.entity.y);
+                level_addEntity(chicken->mob.entity.level, &item_entity->entity);
+                sound_play(SND_CONFIRM);
+            }
+        }
+    }
 }
 
 void chicken_render(Chicken* chicken, Screen* screen) {
@@ -67,5 +84,13 @@ void chicken_die(Chicken* chicken) {
             chicken->mob.entity.x + random_next_int(random, 11) - 5,
             chicken->mob.entity.y + random_next_int(random, 11) - 5);
         level_addEntity(chicken->mob.entity.level, &item_entity->entity);
+    }
+
+    ItemEntity* egg_entity = malloc(sizeof(ItemEntity));
+    if (egg_entity) {
+        Item egg_item;
+        resourceitem_create(&egg_item, &egg);
+        itementity_create(egg_entity, egg_item, chicken->mob.entity.x, chicken->mob.entity.y);
+        level_addEntity(chicken->mob.entity.level, &egg_entity->entity);
     }
 }
