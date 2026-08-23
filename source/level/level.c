@@ -259,9 +259,9 @@ void level_trySpawn(Level* level, int count){
 			int isNight = (dayTime > 12000 && dayTime < 22000);
 
 			if (!isNight) {
-				// Day: Cap passive animals at 20 max!
+				// Day: Cap passive animals at 55 max!
 				int passiveCount = countLivingEntities(level, 0);
-				if (passiveCount >= 20) return;
+				if (passiveCount >= 55) return;
 
 				if (choice < 20) {
 					mob = malloc(sizeof(Cow));
@@ -283,9 +283,9 @@ void level_trySpawn(Level* level, int count){
 					frog_create((Frog *) mob);
 				}
 			} else {
-				// Night: Cap hostile night monsters at 18 max!
+				// Night: Cap hostile night monsters at 45 max!
 				int monsterCount = countLivingEntities(level, 1);
-				if (monsterCount >= 18) return;
+				if (monsterCount >= 45) return;
 
 				if (choice < 35) {
 					mob = malloc(sizeof(Zombie));
@@ -302,9 +302,9 @@ void level_trySpawn(Level* level, int count){
 				}
 			}
 		} else if (level->depth < 0) {
-			// Underground Caves: Cap monsters at 20 max!
+			// Underground Caves: Cap monsters at 50 max!
 			int caveMonsterCount = countLivingEntities(level, 1);
-			if (caveMonsterCount >= 20) return;
+			if (caveMonsterCount >= 50) return;
 
 			if (choice < 25) {
 				mob = malloc(sizeof(Slime));
@@ -324,7 +324,7 @@ void level_trySpawn(Level* level, int count){
 			}
 		} else {
 			int skyMonsterCount = countLivingEntities(level, 1);
-			if (skyMonsterCount >= 12) return;
+			if (skyMonsterCount >= 30) return;
 
 			mob = malloc(sizeof(Slime));
 			slime_create((Slime *) mob, lvl);

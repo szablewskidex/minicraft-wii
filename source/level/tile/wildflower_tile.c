@@ -1,4 +1,4 @@
-﻿#include "wildflower_tile.h"
+#include "wildflower_tile.h"
 #include "../level.h"
 #include "../../entity/itementity.h"
 #include "../../item/resourceitem.h"
@@ -13,8 +13,9 @@ void wildflowertile_init(TileID id) {
 }
 
 void wildflowertile_render(TileID id, Screen* screen, Level* level, int x, int y) {
-    // 16x16 Wildflower patch at sprite offset x=10, y=42
-    int col = getColor4(10, 30, 440, 550); // Dark foliage, green stem, warm orange & yellow blossoms
+    tile_render(GRASS, screen, level, x, y);
+
+    int col = getColor4(-1, 10, 550, 555); // Transparent background, green stem, warm orange & yellow/white blossoms
 
     render_screen(screen, (x * 16) + 0, (y * 16) + 0, (10 + 0) + 42 * 32, col, 0);
     render_screen(screen, (x * 16) + 8, (y * 16) + 0, (10 + 1) + 42 * 32, col, 0);

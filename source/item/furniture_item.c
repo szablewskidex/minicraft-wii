@@ -24,8 +24,10 @@ int furnitureitem_getColor(Item* item){
 #include "../entity/entityid.h"
 
 int furnitureitem_getSprite(Item* item){
-	if (item->add.furniture.furniture && item->add.furniture.furniture->entity.type == DOOR) {
-		return 4 + 41 * 32;
+	if (item->add.furniture.furniture) {
+		if (item->add.furniture.furniture->entity.type == DOOR) return 4 + 41 * 32;
+		if (item->add.furniture.furniture->entity.type == BARREL) return 29 + 41 * 32;
+		if (item->add.furniture.furniture->entity.type == SIGN) return 30 + 41 * 32;
 	}
 	return item->add.furniture.furniture->sprite + 10 * 32;
 }
