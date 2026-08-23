@@ -348,6 +348,7 @@ void call_entity_hurt(Entity* entity, Mob* mob, int damage, int attackDir) {
 		case SHEEP:
 		case CRAB:
 		case FROG:
+		case BAT:
 		case AIRWIZARD:
 		case PLAYER:
 			mob_hurt((Mob *) entity, mob, damage, attackDir);
