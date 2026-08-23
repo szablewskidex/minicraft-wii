@@ -10,6 +10,7 @@ typedef struct _Chicken {
     int eggLayTimer;
     int loveTime;
     int breedCooldown;
+    int babyTime;
 } Chicken;
 
 void chicken_create(Chicken* chicken);

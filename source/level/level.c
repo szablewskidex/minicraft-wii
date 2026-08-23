@@ -220,6 +220,7 @@ void level_sortAndRender(Level* level, Screen* screen, ArrayList* list) {
 #include "../entity/sheep.h"
 #include "../entity/crab.h"
 #include "../entity/frog.h"
+#include "../entity/bat.h"
 #include "../game.h"
 
 static int countLivingEntities(Level* level, int hostileOnly) {
@@ -230,7 +231,7 @@ static int countLivingEntities(Level* level, int hostileOnly) {
 		if (e->type == PLAYER || e->type == ITEMENTITY || e->type == EXPORB || e->type == ARROW) continue;
 		if (e->type == CHEST || e->type == WORKBENCH || e->type == FURNACE || e->type == OVEN || e->type == ANVIL || e->type == BED || e->type == LANTERN || e->type == DOOR) continue;
 
-		int isHostile = (e->type == ZOMBIE || e->type == SKELETON || e->type == CREEPER || e->type == KNIGHT || e->type == SLIME || e->type == AIRWIZARD);
+		int isHostile = (e->type == ZOMBIE || e->type == SKELETON || e->type == CREEPER || e->type == KNIGHT || e->type == SLIME || e->type == BAT || e->type == AIRWIZARD);
 		if (hostileOnly == 1 && isHostile) count++;
 		else if (hostileOnly == 0 && !isHostile) count++;
 		else if (hostileOnly == -1) count++;
@@ -287,15 +288,18 @@ void level_trySpawn(Level* level, int count){
 				int monsterCount = countLivingEntities(level, 1);
 				if (monsterCount >= 45) return;
 
-				if (choice < 35) {
+				if (choice < 25) {
 					mob = malloc(sizeof(Zombie));
 					zombie_create((Zombie *) mob, lvl);
-				} else if (choice < 65) {
+				} else if (choice < 50) {
 					mob = malloc(sizeof(Skeleton));
 					skeleton_create((Skeleton *) mob, lvl);
-				} else if (choice < 85) {
+				} else if (choice < 70) {
 					mob = malloc(sizeof(Creeper));
 					creeper_create((Creeper *) mob, lvl);
+				} else if (choice < 85) {
+					mob = malloc(sizeof(Bat));
+					bat_create((Bat *) mob);
 				} else {
 					mob = malloc(sizeof(Slime));
 					slime_create((Slime *) mob, lvl);
@@ -306,16 +310,19 @@ void level_trySpawn(Level* level, int count){
 			int caveMonsterCount = countLivingEntities(level, 1);
 			if (caveMonsterCount >= 50) return;
 
-			if (choice < 25) {
+			if (choice < 20) {
+				mob = malloc(sizeof(Bat));
+				bat_create((Bat *) mob);
+			} else if (choice < 40) {
 				mob = malloc(sizeof(Slime));
 				slime_create((Slime *) mob, lvl);
-			} else if (choice < 50) {
+			} else if (choice < 60) {
 				mob = malloc(sizeof(Zombie));
 				zombie_create((Zombie *) mob, lvl);
-			} else if (choice < 70) {
+			} else if (choice < 80) {
 				mob = malloc(sizeof(Skeleton));
 				skeleton_create((Skeleton *) mob, lvl);
-			} else if (choice < 85) {
+			} else if (choice < 92) {
 				mob = malloc(sizeof(Creeper));
 				creeper_create((Creeper *) mob, lvl);
 			} else {

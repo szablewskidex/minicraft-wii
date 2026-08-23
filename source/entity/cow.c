@@ -23,42 +23,57 @@ void cow_tick(Cow* cow) {
     mob_tick(&cow->mob);
     Random* random = &cow->mob.entity.random;
 
-    // Peaceful wander - slower if full/fed
-    int speed = (cow->breedCooldown > 0) ? (cow->mob.tickTime % 4 == 0) : (cow->mob.tickTime & 1);
-    if (!mob_move(&cow->mob, cow->xa * speed, cow->ya * speed) || random_next_int(random, 100) == 0) {
-        cow->randomWalkTime = 50;
-        cow->xa = (random_next_int(random, 3) - 1);
-        cow->ya = (random_next_int(random, 3) - 1);
+    if (cow->breedCooldown > 0) {
+        // Satiated / grazing mode
+        if (cow->randomWalkTime > 0) {
+            --cow->randomWalkTime;
+            int speed = (cow->mob.tickTime % 4 == 0);
+            mob_move(&cow->mob, cow->xa * speed, cow->ya * speed);
+        } else {
+            cow->xa = cow->ya = 0;
+            if (random_next_int(random, 120) == 0) {
+                cow->randomWalkTime = 15;
+                cow->xa = (random_next_int(random, 3) - 1);
+                cow->ya = (random_next_int(random, 3) - 1);
+            }
+        }
+    } else if (cow->loveTime <= 0) {
+        // Normal wandering
+        if (cow->randomWalkTime > 0) {
+            --cow->randomWalkTime;
+            int speed = cow->mob.tickTime & 1;
+            if (!mob_move(&cow->mob, cow->xa * speed, cow->ya * speed)) {
+                cow->randomWalkTime = 0;
+            }
+        } else {
+            cow->xa = cow->ya = 0;
+            if (random_next_int(random, 50) == 0) {
+                cow->randomWalkTime = 35;
+                cow->xa = (random_next_int(random, 3) - 1);
+                cow->ya = (random_next_int(random, 3) - 1);
+            }
+        }
     }
-    if (cow->randomWalkTime > 0) --cow->randomWalkTime;
 
     animal_tickBreeding((Entity*)cow, &cow->loveTime, &cow->breedCooldown, &cow->xa, &cow->ya);
 }
 
 void cow_render(Cow* cow, Screen* screen) {
-    int xt = 0;
-    int yt = 14;
-    int flip1 = (cow->mob.walkDist >> 3) & 1;
-    int flip2 = (cow->mob.walkDist >> 3) & 1;
+    int frame = (cow->mob.walkDist >> 3) & 3;
+    int xt = 8 + frame * 2; // cols 8, 10, 12, 14
+    int yt = 50; // Madboar row 50 in spritesheet
 
-    if (cow->mob.dir == 1) xt += 2;
-    if (cow->mob.dir > 1) {
-        flip1 = 0;
-        flip2 = ((cow->mob.walkDist >> 4) & 1);
-        if (cow->mob.dir == 2) flip1 = 1;
-        xt += 4 + ((cow->mob.walkDist >> 3) & 1) * 2;
-    }
-
+    int flip = (cow->mob.dir == 2) ? 1 : 0;
     int xo = cow->mob.entity.x - 8;
     int yo = cow->mob.entity.y - 11;
-    int col = getColor4(-1, 211, 432, 555); // Brown / white cow
+    int col = getColor4(-1, 000, 321, 555); // Rich boar colors with red eyes
 
     if (cow->mob.hurtTime > 0) col = getColor4(-1, 555, 555, 555);
 
-    render_screen(screen, xo + 8 * flip1, yo + 0, xt + yt * 32, col, flip1);
-    render_screen(screen, xo + 8 - 8 * flip1, yo + 0, xt + 1 + yt * 32, col, flip1);
-    render_screen(screen, xo + 8 * flip2, yo + 8, xt + (yt + 1) * 32, col, flip2);
-    render_screen(screen, xo + 8 - 8 * flip2, yo + 8, xt + 1 + (yt + 1) * 32, col, flip2);
+    render_screen(screen, xo + 8 * flip, yo + 0, xt + yt * 32, col, flip);
+    render_screen(screen, xo + 8 - 8 * flip, yo + 0, xt + 1 + yt * 32, col, flip);
+    render_screen(screen, xo + 8 * flip, yo + 8, xt + (yt + 1) * 32, col, flip);
+    render_screen(screen, xo + 8 - 8 * flip, yo + 8, xt + 1 + (yt + 1) * 32, col, flip);
 }
 
 void cow_touchedBy(Cow* cow, Entity* entity) {

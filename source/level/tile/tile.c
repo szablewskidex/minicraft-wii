@@ -30,6 +30,7 @@
 #include "fence_tile.h"
 #include "stone_floor_tile.h"
 #include "glass_wall_tile.h"
+#include "ladder_tile.h"
 
 #include "../../gfx/screen.h"
 #include "../../item/resource/resource.h"
@@ -86,6 +87,7 @@ void init_tiles(){
 	fencetile_init(FENCE_TILE);
 	stonefloortile_init(STONE_FLOOR);
 	glasswalltile_init(GLASS_WALL);
+	laddertile_init(LADDER_TILE);
 }
 
 void tile_init(TileID id){
@@ -192,6 +194,9 @@ void tile_render(TileID id, Screen* screen, Level* level, int x, int y){
 		case GLASS_WALL:
 			glasswalltile_render(id, screen, level, x, y);
 			break;
+		case LADDER_TILE:
+			laddertile_render(id, screen, level, x, y);
+			break;
 		default:
 		case INFINITE_FALL:
 			//render nothing
@@ -238,6 +243,7 @@ char tile_mayPass(TileID id, Level* level, int x, int y, Entity* e){
 			return call_entity_canSwim(e);
 		case WOOD_FLOOR:
 		case STONE_FLOOR:
+		case LADDER_TILE:
 		case CLOUD:
 		default:
 			return 1;
@@ -319,6 +325,9 @@ void tile_hurt(TileID id, Level* level, int x, int y, Mob* source, int dmg, int 
 			break;
 		case GLASS_WALL:
 			glasswalltile_hurt(id, level, x, y, source, dmg, attackDir);
+			break;
+		case LADDER_TILE:
+			laddertile_hurt(id, level, x, y, source, dmg, attackDir);
 			break;
 		case WHEAT:
 			wheattile_hurt(id, level, x, y, source, dmg, attackDir);
@@ -460,6 +469,8 @@ char tile_interact(TileID id, Level* level, int xt, int yt, struct _Player* play
 			return stonefloortile_interact(id, level, xt, yt, player, item, attackDir);
 		case GLASS_WALL:
 			return glasswalltile_interact(id, level, xt, yt, player, item, attackDir);
+		case LADDER_TILE:
+			return laddertile_interact(id, level, xt, yt, player, item, attackDir);
 		default:
 			return 0;
 	}

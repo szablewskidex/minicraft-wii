@@ -23,13 +23,37 @@ void pig_tick(Pig* pig) {
     mob_tick(&pig->mob);
     Random* random = &pig->mob.entity.random;
 
-    int speed = (pig->breedCooldown > 0) ? (pig->mob.tickTime % 4 == 0) : (pig->mob.tickTime & 1);
-    if (!mob_move(&pig->mob, pig->xa * speed, pig->ya * speed) || random_next_int(random, 80) == 0) {
-        pig->randomWalkTime = 40;
-        pig->xa = (random_next_int(random, 3) - 1);
-        pig->ya = (random_next_int(random, 3) - 1);
+    if (pig->breedCooldown > 0) {
+        // Satiated / calm mode
+        if (pig->randomWalkTime > 0) {
+            --pig->randomWalkTime;
+            int speed = (pig->mob.tickTime % 4 == 0);
+            mob_move(&pig->mob, pig->xa * speed, pig->ya * speed);
+        } else {
+            pig->xa = pig->ya = 0;
+            if (random_next_int(random, 120) == 0) {
+                pig->randomWalkTime = 15;
+                pig->xa = (random_next_int(random, 3) - 1);
+                pig->ya = (random_next_int(random, 3) - 1);
+            }
+        }
+    } else if (pig->loveTime <= 0) {
+        // Normal wandering
+        if (pig->randomWalkTime > 0) {
+            --pig->randomWalkTime;
+            int speed = pig->mob.tickTime & 1;
+            if (!mob_move(&pig->mob, pig->xa * speed, pig->ya * speed)) {
+                pig->randomWalkTime = 0;
+            }
+        } else {
+            pig->xa = pig->ya = 0;
+            if (random_next_int(random, 40) == 0) {
+                pig->randomWalkTime = 30;
+                pig->xa = (random_next_int(random, 3) - 1);
+                pig->ya = (random_next_int(random, 3) - 1);
+            }
+        }
     }
-    if (pig->randomWalkTime > 0) --pig->randomWalkTime;
 
     animal_tickBreeding((Entity*)pig, &pig->loveTime, &pig->breedCooldown, &pig->xa, &pig->ya);
 }

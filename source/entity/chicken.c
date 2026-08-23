@@ -19,19 +19,44 @@ void chicken_create(Chicken* chicken) {
     chicken->eggLayTimer = random_next_int(&chicken->mob.entity.random, 3600) + 3600; // 1-2 minutes
     chicken->loveTime = 0;
     chicken->breedCooldown = 0;
+    chicken->babyTime = 0;
 }
 
 void chicken_tick(Chicken* chicken) {
     mob_tick(&chicken->mob);
     Random* random = &chicken->mob.entity.random;
 
-    int speed = (chicken->breedCooldown > 0) ? (chicken->mob.tickTime & 1) : 1;
-    if (!mob_move(&chicken->mob, chicken->xa * speed, chicken->ya * speed) || random_next_int(random, 60) == 0) {
-        chicken->randomWalkTime = 30;
-        chicken->xa = (random_next_int(random, 3) - 1);
-        chicken->ya = (random_next_int(random, 3) - 1);
+    if (chicken->breedCooldown > 0) {
+        // Satiated / pecking grass mode - mostly stationary, very slow small steps
+        if (chicken->randomWalkTime > 0) {
+            --chicken->randomWalkTime;
+            int speed = (chicken->mob.tickTime % 4 == 0);
+            mob_move(&chicken->mob, chicken->xa * speed, chicken->ya * speed);
+        } else {
+            chicken->xa = chicken->ya = 0;
+            if (random_next_int(random, 120) == 0) {
+                chicken->randomWalkTime = 12;
+                chicken->xa = (random_next_int(random, 3) - 1);
+                chicken->ya = (random_next_int(random, 3) - 1);
+            }
+        }
+    } else if (chicken->loveTime <= 0) {
+        // Normal wandering
+        if (chicken->randomWalkTime > 0) {
+            --chicken->randomWalkTime;
+            int speed = chicken->mob.tickTime & 1;
+            if (!mob_move(&chicken->mob, chicken->xa * speed, chicken->ya * speed)) {
+                chicken->randomWalkTime = 0;
+            }
+        } else {
+            chicken->xa = chicken->ya = 0;
+            if (random_next_int(random, 40) == 0) {
+                chicken->randomWalkTime = 25;
+                chicken->xa = (random_next_int(random, 3) - 1);
+                chicken->ya = (random_next_int(random, 3) - 1);
+            }
+        }
     }
-    if (chicken->randomWalkTime > 0) --chicken->randomWalkTime;
 
     // Lay an egg periodically!
     if (--chicken->eggLayTimer <= 0) {
@@ -48,18 +73,20 @@ void chicken_tick(Chicken* chicken) {
         }
     }
 
+    if (chicken->babyTime > 0) --chicken->babyTime;
+
     animal_tickBreeding((Entity*)chicken, &chicken->loveTime, &chicken->breedCooldown, &chicken->xa, &chicken->ya);
 }
 
 void chicken_render(Chicken* chicken, Screen* screen) {
     int frame = (chicken->mob.walkDist >> 3) & 3;
     int xt = frame * 2; // 0, 2, 4, 6
-    int yt = 32;
+    int yt = (chicken->babyTime > 0) ? 50 : 32; // Baby chick row 50, adult chicken row 32
 
     int flip = (chicken->mob.dir == 2) ? 1 : 0;
     int xo = chicken->mob.entity.x - 8;
     int yo = chicken->mob.entity.y - 11;
-    int col = getColor4(-1, 000, 510, 555);
+    int col = (chicken->babyTime > 0) ? getColor4(-1, 000, 540, 550) : getColor4(-1, 000, 510, 555);
 
     if (chicken->mob.hurtTime > 0) col = getColor4(-1, 555, 555, 555);
 

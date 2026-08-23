@@ -173,6 +173,7 @@ static const ItemTranslation item_translations[] = {
     { "Stone Floor", "Kam. Podloga", "Steinboden" },
     { "Glass Window", "Szklane Okno", "Glasfenster" },
     { "Glass Wall", "Szklana Sciana", "Glaswand" },
+    { "Ladder", "Drabina", "Leiter" },
     { NULL, NULL, NULL }
 };
 

@@ -67,6 +67,7 @@ Resource bucket;
 Resource waterBucket;
 Resource stoneFloor;
 Resource glassWallItem;
+Resource ladderItem;
 
 
 void init_resource(Resource* resource, char* name, int sprite, int color) {
@@ -166,6 +167,9 @@ void init_resources() {
 
 	static TileID glasswall_sources[] = {DIRT, GRASS, SAND, HOLE, DIRT_PATH, WOOD_FLOOR, STONE_FLOOR};
 	init_plantable_resource(&glassWallItem, "Glass Window", 31 + 41 * 32, getColor4(-1, 100, 321, 555), GLASS_WALL, glasswall_sources, sizeof(glasswall_sources)/sizeof(TileID));
+
+	static TileID ladder_sources[] = {DIRT, GRASS, SAND, DIRT_PATH, WOOD_FLOOR, STONE_FLOOR, ROCK, HARD_ROCK};
+	init_plantable_resource(&ladderItem, "Ladder", 0 + 40 * 32, getColor4(-1, 100, 321, 431), LADDER_TILE, ladder_sources, sizeof(ladder_sources)/sizeof(TileID));
 
 	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources)/sizeof(TileID));
 	init_resource(&gem, "gem", 13 + 4 * 32, getColor4(-1, 101, 404, 545));

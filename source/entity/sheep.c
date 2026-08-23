@@ -25,13 +25,37 @@ void sheep_tick(Sheep* sheep) {
     mob_tick(&sheep->mob);
     Random* random = &sheep->mob.entity.random;
 
-    int speed = (sheep->breedCooldown > 0) ? (sheep->mob.tickTime % 4 == 0) : (sheep->mob.tickTime & 1);
-    if (!mob_move(&sheep->mob, sheep->xa * speed, sheep->ya * speed) || random_next_int(random, 90) == 0) {
-        sheep->randomWalkTime = 45;
-        sheep->xa = (random_next_int(random, 3) - 1);
-        sheep->ya = (random_next_int(random, 3) - 1);
+    if (sheep->breedCooldown > 0) {
+        // Satiated / grazing mode
+        if (sheep->randomWalkTime > 0) {
+            --sheep->randomWalkTime;
+            int speed = (sheep->mob.tickTime % 4 == 0);
+            mob_move(&sheep->mob, sheep->xa * speed, sheep->ya * speed);
+        } else {
+            sheep->xa = sheep->ya = 0;
+            if (random_next_int(random, 120) == 0) {
+                sheep->randomWalkTime = 15;
+                sheep->xa = (random_next_int(random, 3) - 1);
+                sheep->ya = (random_next_int(random, 3) - 1);
+            }
+        }
+    } else if (sheep->loveTime <= 0) {
+        // Normal wandering
+        if (sheep->randomWalkTime > 0) {
+            --sheep->randomWalkTime;
+            int speed = sheep->mob.tickTime & 1;
+            if (!mob_move(&sheep->mob, sheep->xa * speed, sheep->ya * speed)) {
+                sheep->randomWalkTime = 0;
+            }
+        } else {
+            sheep->xa = sheep->ya = 0;
+            if (random_next_int(random, 45) == 0) {
+                sheep->randomWalkTime = 35;
+                sheep->xa = (random_next_int(random, 3) - 1);
+                sheep->ya = (random_next_int(random, 3) - 1);
+            }
+        }
     }
-    if (sheep->randomWalkTime > 0) --sheep->randomWalkTime;
 
     if (!sheep->hasWool) {
         if (sheep->regrowTimer > 0) {

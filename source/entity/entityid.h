@@ -30,7 +30,8 @@ typedef enum{
 	EXPORB,
 	ARROW,
 	BARREL,
-	SIGN
+	SIGN,
+	BAT
 } EntityId;
 
 #endif // ENTITYID_H

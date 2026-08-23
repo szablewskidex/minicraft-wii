@@ -29,7 +29,7 @@ extern Resource bow, arrow, fishingRod, rawFish, cookedFish, shears, carrot, pot
 extern Resource rawBeef, cookedSteak, rawPork, cookedPork, woodPlank, woodWallItem, egg, torchItem;
 extern Resource stoneWallItem, potItem, tombstoneItem, fenceItem;
 extern Resource bucket, waterBucket;
-extern Resource stoneFloor, glassWallItem;
+extern Resource stoneFloor, glassWallItem, ladderItem;
 
 
 void init_resources();

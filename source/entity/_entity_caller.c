@@ -33,6 +33,7 @@
 #include "arrow.h"
 #include "barrel.h"
 #include "sign.h"
+#include "bat.h"
 #include "../item/item.h"
 
 #include <string.h>
@@ -103,6 +104,9 @@ void call_entity_tick(Entity* entity) {
 		case FROG:
 			frog_tick((Frog *) entity);
 			break;
+		case BAT:
+			bat_tick((Bat *) entity);
+			break;
 		case AIRWIZARD:
 			airwizard_tick((AirWizard *) entity);
 			break;
@@ -119,6 +123,7 @@ uint8_t call_entity_canSwim(Entity* entity) {
 		case PLAYER:
 		case CRAB:
 		case FROG:
+		case BAT:
 			return 1;
 		default:
 			return 0;
@@ -190,6 +195,9 @@ void call_entity_render(Entity* entity, Screen* screen) {
 			break;
 		case FROG:
 			frog_render((Frog *) entity, screen);
+			break;
+		case BAT:
+			bat_render((Bat *) entity, screen);
 			break;
 		case DOOR:
 			door_render((Door *) entity, screen);
@@ -267,6 +275,9 @@ void call_entity_die(Entity* entity) {
 		case FROG:
 			frog_die((Frog *) entity);
 			break;
+		case BAT:
+			bat_die((Bat *) entity);
+			break;
 		case AIRWIZARD:
 			airwizard_die((AirWizard *) entity);
 			break;
@@ -294,6 +305,7 @@ void call_entity_doHurt(Entity* entity, int damage, int attackDir) {
 		case SHEEP:
 		case CRAB:
 		case FROG:
+		case BAT:
 			mob_doHurt((Mob *) entity, damage, attackDir);
 			break;
 		default:
@@ -394,6 +406,9 @@ void call_entity_touchedBy(Entity* entity, Entity* e) {
 			break;
 		case FROG:
 			frog_touchedBy((Frog *) entity, e);
+			break;
+		case BAT:
+			bat_touchedBy((Bat *) entity, e);
 			break;
 		case ITEMENTITY:
 			if (e->type == PLAYER) {
@@ -554,6 +569,9 @@ void animal_tickBreeding(Entity* entity, int* loveTime, int* breedCooldown, int*
 				if (baby) {
 					baby->entity.x = (entity->x + partner->x) / 2;
 					baby->entity.y = (entity->y + partner->y) / 2;
+					if (baby->entity.type == CHICKEN) {
+						((Chicken*)baby)->babyTime = 3600 * 2; // 2 minutes as baby chick
+					}
 					level_addEntity(entity->level, (Entity*)baby);
 				}
 
@@ -625,6 +643,7 @@ char call_entity_blocks(Entity* entity, Entity* e) {
 		case SHEEP:
 		case CRAB:
 		case FROG:
+		case BAT:
 		case AIRWIZARD:
 		case PLAYER:
 			return call_entity_isBlockableBy(e, (Mob *) entity);
@@ -646,6 +665,7 @@ char entity_ismob(Entity* entity) {
 		case SHEEP:
 		case CRAB:
 		case FROG:
+		case BAT:
 		case AIRWIZARD:
 		case PLAYER:
 			return 1;
@@ -772,6 +792,12 @@ Mob* entity_createAnimal(EntityId id) {
 			Frog* frog = malloc(sizeof(Frog));
 			frog_create(frog);
 			mob = (Mob*)frog;
+			break;
+		}
+		case BAT: {
+			Bat* bat = malloc(sizeof(Bat));
+			bat_create(bat);
+			mob = (Mob*)bat;
 			break;
 		}
 		default:

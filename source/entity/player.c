@@ -643,8 +643,37 @@ void player_render(Player* player, Screen* screen){
 
 	if (call_entity_isSwimming(&player->mob.entity)) {
 		if (hasBoat) {
-			render_screen(screen, xo + 0, yo + 6, 5 + 41 * 32, getColor4(-1, 100, 321, 431), 0);
-			render_screen(screen, xo + 8, yo + 6, 5 + 41 * 32, getColor4(-1, 100, 321, 431), 1);
+			int boatCol = getColor4(-1, 100, 321, 431); // Wooden rowboat
+			int frame = (player->mob.walkDist >> 3) & 3; // Animated rowing oars
+			int dir = player->mob.dir;
+			int bxo = player->mob.entity.x - 12;
+			int byo = player->mob.entity.y - 12;
+
+			if (dir == 0 || dir == 1) {
+				// Vertical Boat (Rows 52..54, cols 0..11)
+				int bx = frame * 3;
+				int by = 52;
+				int flip = (dir == 1) ? 2 : 0;
+				for (int ty = 0; ty < 3; ++ty) {
+					for (int tx = 0; tx < 3; ++tx) {
+						int rx = bxo + tx * 8;
+						int ry = byo + (flip ? (2 - ty) * 8 : ty * 8);
+						render_screen(screen, rx, ry, (bx + tx) + (by + ty) * 32, boatCol, flip);
+					}
+				}
+			} else {
+				// Horizontal Boat (Rows 55..57, cols 0..11)
+				int bx = frame * 3;
+				int by = 55;
+				int flip = (dir == 2) ? 1 : 0; // Flip horizontally when moving left
+				for (int ty = 0; ty < 3; ++ty) {
+					for (int tx = 0; tx < 3; ++tx) {
+						int rx = bxo + (flip ? (2 - tx) * 8 : tx * 8);
+						int ry = byo + ty * 8;
+						render_screen(screen, rx, ry, (bx + tx) + (by + ty) * 32, boatCol, flip);
+					}
+				}
+			}
 		} else {
 			yo += 4;
 
