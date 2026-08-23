@@ -376,30 +376,40 @@ void game_renderGui() {
 
 	if (isingame){
         /// RENDER THE HUD with safe margins
-		for (int i = 0; i < 10; ++i) {
+        // 1. Health Bar (Multi-row support for level ups!)
+        int max_hearts = game_player->mob.maxHealth;
+        int cur_health = game_player->mob.health;
+        for (int h = 0; h < max_hearts; ++h) {
+            int row = h / 10;
+            int col = h % 10;
+            int hx = hud_x + col * 8;
+            int hy = hud_y - row * 8;
 
-            // Player's health bar
-			if (i < game_player->mob.health) {
-				render_screen(&game_screen, hud_x + i * 8, hud_y, 0 + 12 * 32, getColor4(-1, 200, 500, 533), 0);
-			} else {
-				render_screen(&game_screen, hud_x + i * 8, hud_y, 0 + 12 * 32, getColor4(-1, 100, 000, 000), 0);
-			}
+            if (h < cur_health) {
+                render_screen(&game_screen, hx, hy, 0 + 12 * 32, getColor4(-1, 200, 500, 533), 0);
+            } else {
+                render_screen(&game_screen, hx, hy, 0 + 12 * 32, getColor4(-1, 100, 000, 000), 0);
+            }
+        }
 
-            // Player's stamina bar
-			if (game_player->staminaRechargeDelay > 0) {
-				if (game_player->staminaRechargeDelay / 4 % 2 == 0) {
-					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(-1, 555, 000, 000), 0);
-				} else {
-					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(-1, 110, 000, 000), 0);
-				}
-			} else {
-				if (i < game_player->stamina) {
-					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(-1, 220, 550, 553), 0);
-				} else {
-					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(-1, 110, 000, 000), 0);
-				}
-			}
-		}
+        // 2. Stamina bar
+        for (int s = 0; s < 10; ++s) {
+            int sx = hud_x + s * 8;
+            int sy = hud_y + 8;
+            if (game_player->staminaRechargeDelay > 0) {
+                if (game_player->staminaRechargeDelay / 4 % 2 == 0) {
+                    render_screen(&game_screen, sx, sy, 1 + 12 * 32, getColor4(-1, 555, 000, 000), 0);
+                } else {
+                    render_screen(&game_screen, sx, sy, 1 + 12 * 32, getColor4(-1, 110, 000, 000), 0);
+                }
+            } else {
+                if (s < game_player->stamina) {
+                    render_screen(&game_screen, sx, sy, 1 + 12 * 32, getColor4(-1, 220, 550, 553), 0);
+                } else {
+                    render_screen(&game_screen, sx, sy, 1 + 12 * 32, getColor4(-1, 110, 000, 000), 0);
+                }
+            }
+        }
 
         // Player Level & EXP Bar in center of HUD
         int exp_x = hud_x + 92;
@@ -444,34 +454,44 @@ void game_renderGui() {
 
         for (int my = 0; my < map_h; ++my) {
             for (int mx = 0; mx < map_w; ++mx) {
+                int world_tx = p_tx - (map_w / 2) + mx;
+                int world_ty = p_ty - (map_h / 2) + my;
+
                 int sx = map_x + mx;
                 int sy = map_y + my;
-                if (sx < 0 || sx >= game_screen.w || sy < 0 || sy >= game_screen.h) continue;
 
-                if (mx == 0 || mx == map_w - 1 || my == 0 || my == map_h - 1) {
-                    game_screen.pixels[sx + sy * game_screen.w] = getColor(111);
+                if (world_tx < 0 || world_ty < 0 || world_tx >= game_level->w || world_ty >= game_level->h) {
+                    game_screen.pixels[sx + sy * game_screen.w] = getColor(000);
                     continue;
                 }
 
-                int sample_x = p_tx - (map_w / 2) + mx;
-                int sample_y = p_ty - (map_h / 2) + my;
+                TileID t = level_get_tile(game_level, world_tx, world_ty);
+                int pix_col = getColor(000);
 
-                unsigned char pix_col = getColor(000);
-                if (sample_x >= 0 && sample_y >= 0 && sample_x < game_level->w && sample_y < game_level->h) {
-                    TileID t = level_get_tile(game_level, sample_x, sample_y);
-                    if (t == WATER) pix_col = getColor(115);
-                    else if (t == SAND) pix_col = getColor(550);
-                    else if (t == GRASS) pix_col = getColor(040);
-                    else if (t == TREE) pix_col = getColor(020);
-                    else if (t == ROCK || t == HARD_ROCK) pix_col = getColor(222);
-                    else if (t == DIRT || t == FARMLAND) pix_col = getColor(320);
-                    else if (t == LAVA) pix_col = getColor(520);
-                    else if (t == STAIRS_DOWN || t == STAIRS_UP) pix_col = getColor(555);
-                }
-
-                // Player dot in center
-                if (mx >= (map_w / 2 - 1) && mx <= (map_w / 2) && my >= (map_h / 2 - 1) && my <= (map_h / 2)) {
-                    pix_col = getColor(555);
+                if (mx == map_w / 2 && my == map_h / 2) {
+                    pix_col = getColor(555); // Player is bright white dot
+                } else if (t == WATER || t == LAVA) {
+                    pix_col = (t == WATER) ? getColor(004) : getColor(400);
+                } else if (t == TREE) {
+                    pix_col = getColor(030);
+                } else if (t == ROCK || t == HARD_ROCK) {
+                    pix_col = (t == HARD_ROCK) ? getColor(111) : getColor(222);
+                } else if (t == SAND) {
+                    pix_col = getColor(441);
+                } else if (t == DIRT || t == FARMLAND) {
+                    pix_col = getColor(210);
+                } else if (t == WOOD_FLOOR || t == WOOD_WALL) {
+                    pix_col = getColor(321);
+                } else if (t == STAIRS_DOWN || t == STAIRS_UP) {
+                    pix_col = getColor(550);
+                } else if (t == GRASS || t == FLOWER) {
+                    pix_col = (t == FLOWER) ? getColor(405) : getColor(040);
+                } else if (t == CACTUS || t == CLOUD_CACTUS) {
+                    pix_col = getColor(031);
+                } else if (t == CLOUD) {
+                    pix_col = getColor(444);
+                } else {
+                    pix_col = getColor(020);
                 }
 
                 game_screen.pixels[sx + sy * game_screen.w] = pix_col;
@@ -487,11 +507,11 @@ void game_renderGui() {
 
             if (g_activeControllerType == 0) {
                 // GameCube Controller Prompts (Large 16x16 Badges)
-                // 1. (A) Atak / Attack
-                render_screen(&game_screen, cur_x,     py,     0 + 44 * 32, getColor4(-1, 000, 141, 555), 0);
-                render_screen(&game_screen, cur_x + 8, py,     1 + 44 * 32, getColor4(-1, 000, 141, 555), 0);
-                render_screen(&game_screen, cur_x,     py + 8, 0 + 45 * 32, getColor4(-1, 000, 141, 555), 0);
-                render_screen(&game_screen, cur_x + 8, py + 8, 1 + 45 * 32, getColor4(-1, 000, 141, 555), 0);
+                // 1. (A) Atak / Attack - Emerald Green
+                render_screen(&game_screen, cur_x,     py,     0 + 44 * 32, getColor4(-1, 000, 041, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py,     1 + 44 * 32, getColor4(-1, 000, 041, 555), 0);
+                render_screen(&game_screen, cur_x,     py + 8, 0 + 45 * 32, getColor4(-1, 000, 041, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py + 8, 1 + 45 * 32, getColor4(-1, 000, 041, 555), 0);
                 cur_x += 18;
                 const char* t_atk = (g_currentLanguage == LANG_PL) ? "Atak" : "Attack";
                 font_draw((char*)t_atk, strlen(t_atk), &game_screen, cur_x, text_y, textColor);

@@ -27,12 +27,17 @@ const char* LEVEL_NAMES[] = {
 };
 
 
+static const int TOOL_MAX_DUR[] = { 60, 100, 250, 120, 600 };
+
 void toolitem_create(Item* item, ToolType type, int level){
 	// item_create(item);
 	item->id = TOOL;
 	random_set_seed(&item->add.tool.random, getTimeMS());
 	item->add.tool.type = type;
 	item->add.tool.level = level;
+	int lvl = (level >= 0 && level < 5) ? level : 0;
+	item->add.tool.maxDur = TOOL_MAX_DUR[lvl];
+	item->add.tool.dur = item->add.tool.maxDur;
 }
 
 
@@ -48,13 +53,28 @@ int toolitem_getSprite(Item* item) {
 
 void toolitem_renderIcon(Item* item, Screen* screen, int x, int y) {
 	render_screen(screen, x, y, toolitem_getSprite(item), toolitem_getColor(item), 0);
+	if (item->add.tool.maxDur > 0 && item->add.tool.dur < item->add.tool.maxDur) {
+		int filled = (item->add.tool.dur * 7) / item->add.tool.maxDur;
+		if (filled < 1) filled = 1;
+		int barCol = getColor(050); // Green
+		if (item->add.tool.dur <= item->add.tool.maxDur / 3) barCol = getColor(500); // Red
+		else if (item->add.tool.dur <= item->add.tool.maxDur * 2 / 3) barCol = getColor(550); // Yellow
+
+		for (int px = 0; px < 7; ++px) {
+			int sx = x + 1 + px;
+			int sy = y + 7;
+			if (sx >= 0 && sx < screen->w && sy >= 0 && sy < screen->h) {
+				screen->pixels[sx + sy * screen->w] = (px < filled) ? barCol : getColor(000);
+			}
+		}
+	}
 }
 
 
 #include "../lang.h"
 
 void toolitem_renderInventory(Item* item, Screen* screen, int x, int y) {
-	render_screen(screen, x, y, toolitem_getSprite(item), toolitem_getColor(item), 0);
+	toolitem_renderIcon(item, screen, x, y);
 	char name[64];
 	toolitem_getName(item, name);
 	font_draw(name, strlen(name), screen, x + 8, y, GETCOLOR4(-1, 555, 555, 555));

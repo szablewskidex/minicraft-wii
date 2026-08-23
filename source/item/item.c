@@ -96,7 +96,9 @@ void item_renderInventory(Item* item, Screen* screen, int x, int y){
 uint8_t item_isDepleted(Item* item){
 	switch(item->id){
 		case RESOURCE:
-			return item->add.resource.count <= 0;
+			return resourceitem_isDepleted(item);
+		case TOOL:
+			return item->add.tool.dur <= 0 && item->add.tool.maxDur > 0;
 		case FURNITURE:
 			return item->add.furniture.placed;
 		default:

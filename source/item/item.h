@@ -19,6 +19,8 @@ typedef struct _Item{
 		struct{
 			Resource* resource;
 			int count;
+			int dur;
+			int maxDur;
 		} resource;
 		struct{
 			struct _Furniture* furniture;
@@ -28,6 +30,8 @@ typedef struct _Item{
 			Random random;
 			ToolType type;
 			int level;
+			int dur;
+			int maxDur;
 		} tool;
 	} add;
 } Item;

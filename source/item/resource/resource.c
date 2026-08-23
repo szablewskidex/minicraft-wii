@@ -201,29 +201,24 @@ char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, 
 		}
 		return 0;
 	} else if (resource == &fishingRod) {
-		if (tile == WATER && player_payStamina(player, 2)) {
-			int r = random_next_int(&player->mob.entity.random, 100);
-			Resource* catchRes = &rawFish;
-			if (r < 65) catchRes = &rawFish;
-			else if (r < 80) catchRes = &ironIngot;
-			else if (r < 90) catchRes = &leather;
-			else catchRes = &gem;
-
-			Item catchItem;
-			resourceitem_create(&catchItem, catchRes);
-			inventory_addItem(&player->inventory, &catchItem);
-
-			sound_play(SND_PICKUP);
-			input_rumble(6);
-
-			TextParticle* text_p = malloc(sizeof(TextParticle));
-			if (text_p) {
-				char msg[32];
-				sprintf(msg, "+%s", lang_translate_item(catchRes->name));
-				textparticle_create(text_p, strdup(msg), player->mob.entity.x, player->mob.entity.y - 8, getColor4(-1, 550, 550, 550));
-				level_addEntity(level, &text_p->entity);
+		if (tile == WATER) {
+			if (player->isFishing) {
+				// Cancel fishing
+				player->isFishing = 0;
+				player->fishBiteWindow = 0;
+				sound_play(SND_SELECT);
+				return 0;
 			}
-			return 1;
+			if (player_payStamina(player, 1)) {
+				player->isFishing = 1;
+				player->fishTimer = 90 + random_next_int(&player->mob.entity.random, 120); // 1.5 - 3.5s
+				player->fishBiteWindow = 0;
+				player->fishBobberX = xt * 16 + 8;
+				player->fishBobberY = yt * 16 + 8;
+				sound_play(SND_SELECT);
+				input_rumble(4);
+				return 0; // Don't deduct durability on cast!
+			}
 		}
 		return 0;
 	} else if (resource == &shears) {

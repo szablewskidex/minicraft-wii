@@ -20,6 +20,7 @@
 #include "chest.h"
 #include "../gfx/color.h"
 #include "../sound.h"
+#include "../lang.h"
 
 void player_create(Player* player) {
 	mob_create(&player->mob);
@@ -249,6 +250,21 @@ void player_attack(Player* player){
 			TileID tile = level_get_tile(player->mob.entity.level, xt, yt);
 			tile_hurt(tile, player->mob.entity.level, xt, yt, (Mob *) player, random_next_int(&player->mob.entity.random, 3) + 1, player->attackDir);
 		}
+
+		if (player->activeItem && player->activeItem->id == TOOL) {
+			--player->activeItem->add.tool.dur;
+			if (item_isDepleted(player->activeItem)) {
+				sound_play(SND_MONSTERHURT);
+				input_rumble(10);
+				arraylist_removeElement(&player->inventory.items, player->activeItem);
+				item_free(player->activeItem);
+				free(player->activeItem);
+				if (player->attackItem == player->activeItem) {
+					player->attackItem = 0;
+				}
+				player->activeItem = 0;
+			}
+		}
 	}
 }
 
@@ -422,6 +438,99 @@ void player_tick(Player* player){
 		mob_move(&player->mob, xa, ya);
 	}
 
+	// Fishing state processing
+	if (player->isFishing) {
+		if (xa != 0 || ya != 0 || !player->activeItem || player->activeItem->id != RESOURCE || player->activeItem->add.resource.resource != &fishingRod) {
+			player->isFishing = 0;
+			player->fishBiteWindow = 0;
+		} else {
+			if (player->fishTimer > 0) {
+				--player->fishTimer;
+				if (player->fishTimer == 0) {
+					// Bite happens!
+					player->fishBiteWindow = 65; // ~1.1s reaction window
+					sound_play(SND_CONFIRM);
+					input_rumble(15);
+
+					TextParticle* tp = malloc(sizeof(TextParticle));
+					if (tp) {
+						textparticle_create(tp, "!", player->fishBobberX, player->fishBobberY - 8, getColor4(-1, 550, 550, 550));
+						level_addEntity(player->mob.entity.level, &tp->entity);
+					}
+				}
+			} else if (player->fishBiteWindow > 0) {
+				--player->fishBiteWindow;
+				if (player->fishBiteWindow == 0) {
+					// Missed bite! Fish got away
+					player->isFishing = 0;
+					TextParticle* tp = malloc(sizeof(TextParticle));
+					if (tp) {
+						const char* missMsg = (g_currentLanguage == LANG_PL) ? "Uciekla!" : "Escaped!";
+						textparticle_create(tp, (char*)missMsg, player->fishBobberX, player->fishBobberY - 8, getColor4(-1, 500, 500, 500));
+						level_addEntity(player->mob.entity.level, &tp->entity);
+					}
+				}
+			}
+
+			if (attack.clicked) {
+				if (player->fishBiteWindow > 0) {
+					// SUCCESSFUL CATCH!
+					player->isFishing = 0;
+					player->fishBiteWindow = 0;
+					sound_play(SND_PICKUP);
+					input_rumble(20);
+
+					int r = random_next_int(&player->mob.entity.random, 100);
+					Resource* catchRes = &rawFish;
+					if (r < 70) catchRes = &rawFish;
+					else if (r < 82) catchRes = &cookedFish;
+					else if (r < 92) catchRes = &leather;
+					else if (r < 97) catchRes = &ironIngot;
+					else catchRes = &gem;
+
+					Item catchItem;
+					resourceitem_create(&catchItem, catchRes);
+					inventory_addItem(&player->inventory, &catchItem);
+
+					// Deduct 1 durability on fishing rod
+					if (player->activeItem->add.resource.maxDur > 0) {
+						--player->activeItem->add.resource.dur;
+						if (player->activeItem->add.resource.dur <= 0) {
+							sound_play(SND_MONSTERHURT);
+							input_rumble(15);
+							arraylist_removeElement(&player->inventory.items, player->activeItem);
+							item_free(player->activeItem);
+							free(player->activeItem);
+							player->activeItem = 0;
+						}
+					}
+
+					player_addExp(player, 15);
+
+					TextParticle* text_p = malloc(sizeof(TextParticle));
+					if (text_p) {
+						char msg[32];
+						snprintf(msg, sizeof(msg), "+%s", lang_translate_item(catchRes->name));
+						textparticle_create(text_p, strdup(msg), player->mob.entity.x, player->mob.entity.y - 8, getColor4(-1, 550, 550, 550));
+						level_addEntity(player->mob.entity.level, &text_p->entity);
+					}
+					return;
+				} else if (player->fishTimer > 0) {
+					// Reeled too early!
+					player->isFishing = 0;
+					sound_play(SND_SELECT);
+					TextParticle* tp = malloc(sizeof(TextParticle));
+					if (tp) {
+						const char* earlyMsg = (g_currentLanguage == LANG_PL) ? "Za wczesnie!" : "Too early!";
+						textparticle_create(tp, (char*)earlyMsg, player->fishBobberX, player->fishBobberY - 8, getColor4(-1, 444, 444, 444));
+						level_addEntity(player->mob.entity.level, &tp->entity);
+					}
+					return;
+				}
+			}
+		}
+	}
+
 	if (attack.clicked) {
 		if (player->stamina == 0) {
             // Nothing :D
@@ -484,17 +593,23 @@ void player_addExp(Player* player, int exp) {
 		player->exp -= player->maxExp;
 		player->level++;
 		player->maxExp = player->level * 50 + 50;
-		player->mob.maxHealth += 1;
-		player->maxStamina += 1;
+
+		// +1 full heart (2 HP) every 2 levels!
+		if (player->level % 2 == 0) {
+			player->mob.maxHealth += 2;
+			player->maxStamina += 1;
+		}
 		player->mob.health = player->mob.maxHealth;
 		player->stamina = player->maxStamina;
 
 		TextParticle* tp = malloc(sizeof(TextParticle));
 		if (tp) {
-			textparticle_create(tp, "LEVEL UP!", player->mob.entity.x, player->mob.entity.y - 12, getColor4(-1, 550, 550, 550));
+			const char* lvl_msg = (g_currentLanguage == LANG_PL) ? "AWANS POZIOMU!" : "LEVEL UP!";
+			textparticle_create(tp, (char*)lvl_msg, player->mob.entity.x, player->mob.entity.y - 12, getColor4(-1, 550, 550, 550));
 			level_addEntity(player->mob.entity.level, &tp->entity);
 		}
 		sound_play(SND_CONFIRM);
+		input_rumble(8);
 	}
 }
 
@@ -603,6 +718,18 @@ void player_render(Player* player, Screen* screen){
 		if (player->attackItem) {
             item_renderIcon(player->attackItem, screen, xo + 4, yo + 8 + 4);
         }
+	}
+
+	if (player->isFishing) {
+		int bx = player->fishBobberX - 4 - screen->xOffset;
+		int by = player->fishBobberY - 4 - screen->yOffset;
+		if (player->fishBiteWindow > 0) {
+			by += (player->mob.tickTime % 4 < 2) ? 1 : -1;
+			render_screen(screen, bx, by, 4 + 42 * 32, getColor4(-1, 500, 555, 335), 0);
+		} else {
+			by += (player->mob.tickTime / 16 % 2);
+			render_screen(screen, bx, by, 4 + 42 * 32, getColor4(-1, 500, 555, 335), 0);
+		}
 	}
 
 	if (player->activeItem && player->activeItem->id == FURNITURE) {

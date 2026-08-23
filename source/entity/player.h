@@ -23,6 +23,10 @@ typedef struct _Player{
 	int maxExp;
 	struct _Resource* armor;
 	int armorDefense;
+	int isFishing;
+	int fishTimer;
+	int fishBiteWindow;
+	int fishBobberX, fishBobberY;
 } Player;
 
 void player_create(Player* player);

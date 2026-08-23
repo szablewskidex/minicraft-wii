@@ -476,6 +476,11 @@ int load_slot(int slot) {
         fread(&pmaxExp, sizeof(int32_t), 1, f);
         fread(&parmorIdx, sizeof(int32_t), 1, f);
         fread(&parmorDef, sizeof(int32_t), 1, f);
+    } else {
+        if (pmaxHealth > 10) {
+            plevel = (pmaxHealth - 10) + 1;
+            pmaxExp = plevel * 50 + 50;
+        }
     }
 
     // Create player

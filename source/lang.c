@@ -1,6 +1,6 @@
 #include "lang.h"
 
-Language g_currentLanguage = LANG_PL; // Default to Polish as requested!
+Language g_currentLanguage = LANG_EN; // Default to English for new players!
 
 static const char* strings[STR_COUNT][LANG_COUNT] = {
     [STR_START_GAME] = { "Zacznij gre", "Start game", "Spiel starten" },
