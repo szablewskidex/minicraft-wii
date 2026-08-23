@@ -78,6 +78,7 @@ void furniture_render(Furniture* furniture, Screen* screen){
 
 void furniture_touchedBy(Furniture* furniture, Entity* entity){
 	if(entity->type == PLAYER && furniture->pushTime == 0){
+		if (furniture->entity.type == DOOR || furniture->entity.type == SIGN) return;
 		furniture->pushDir = ((Mob*) entity)->dir;
 		furniture->pushTime = 10;
 	}

@@ -624,6 +624,9 @@ static inline int item_getLightRadius_safe(Item* item) {
 	if (item->id == FURNITURE && item->add.furniture.furniture) {
 		if (item->add.furniture.furniture->entity.type == LANTERN) return 8;
 	}
+	if (item->id == RESOURCE && item->add.resource.resource == &torchItem) {
+		return 6;
+	}
 	return 0;
 }
 

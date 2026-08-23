@@ -142,7 +142,7 @@ void init_resources() {
 	init_food_resource(&egg, "Egg", 14 + 4 * 32, getColor4(-1, 310, 542, 555), 1, 2);
 
 	// Torch item (Row 41 col 24)
-	static TileID torch_sources[] = {GRASS, DIRT, SAND, FARMLAND, ROCK, HARD_ROCK, WOOD_FLOOR, DIRT_PATH};
+	static TileID torch_sources[] = {GRASS, DIRT, SAND, FARMLAND, WOOD_FLOOR, DIRT_PATH};
 	init_plantable_resource(&torchItem, "Torch", 24 + 41 * 32, getColor4(-1, 000, 520, 550), TORCH_TILE, torch_sources, sizeof(torch_sources)/sizeof(TileID));
 
 	static TileID stonewall_sources[] = {DIRT, GRASS, SAND, WOOD_FLOOR, HOLE, DIRT_PATH};
