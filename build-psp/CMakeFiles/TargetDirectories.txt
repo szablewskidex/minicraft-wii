@@ -1,0 +1,3 @@
+/src/build-psp/CMakeFiles/minicraft.dir
+/src/build-psp/CMakeFiles/edit_cache.dir
+/src/build-psp/CMakeFiles/rebuild_cache.dir

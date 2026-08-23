@@ -11,6 +11,10 @@
 #include <ogc/pad.h>
 #endif
 
+#ifdef __PSP__
+#include <pspctrl.h>
+#endif
+
 Key up;
 Key down;
 Key left;
@@ -115,6 +119,39 @@ void input_tick(){
             PAD_ControlMotor(0, PAD_MOTOR_STOP);
         }
     }
+#endif
+
+#ifdef __PSP__
+    SceCtrlData pad;
+    sceCtrlPeekBufferPositive(&pad, 1);
+
+    char move_up    = (pad.Buttons & PSP_CTRL_UP)    || (pad.Ly < 60);
+    char move_down  = (pad.Buttons & PSP_CTRL_DOWN)  || (pad.Ly > 195);
+    char move_left  = (pad.Buttons & PSP_CTRL_LEFT)  || (pad.Lx < 60);
+    char move_right = (pad.Buttons & PSP_CTRL_RIGHT) || (pad.Lx > 195);
+
+    // Cross (X) or Circle (O) for Attack / Action / Select
+    char act_attack = (pad.Buttons & (PSP_CTRL_CROSS | PSP_CTRL_CIRCLE)) != 0;
+
+    // Square ([]) or Triangle (/_\) or Select for Inventory / Menu
+    char act_menu   = (pad.Buttons & (PSP_CTRL_SQUARE | PSP_CTRL_TRIANGLE | PSP_CTRL_SELECT)) != 0;
+
+    // Start for Pause
+    char act_pause  = (pad.Buttons & PSP_CTRL_START) != 0;
+
+    // R / L Triggers for Next / Prev Item
+    char act_next   = (pad.Buttons & PSP_CTRL_RTRIGGER) != 0;
+    char act_prev   = (pad.Buttons & PSP_CTRL_LTRIGGER) != 0;
+
+    key_toggle(&up, move_up);
+    key_toggle(&down, move_down);
+    key_toggle(&left, move_left);
+    key_toggle(&right, move_right);
+    key_toggle(&attack, act_attack);
+    key_toggle(&menu, act_menu);
+    key_toggle(&pause_key, act_pause);
+    key_toggle(&cycle_next, act_next);
+    key_toggle(&cycle_prev, act_prev);
 #endif
 
     key_tick(&up);

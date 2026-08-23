@@ -1,0 +1,23 @@
+TARGET = minicraft
+
+C_SOURCES = $(shell find source -name "*.c")
+OBJS = $(C_SOURCES:.c=.o)
+
+INCDIR = source /usr/local/pspdev/psp/include/SDL /usr/local/pspdev/psp/include
+CFLAGS = -O2 -G0 -Wall -Wno-unused-variable -Wno-unused-function -D__PSP__ -DUSE_SDL1 -D_GNU_SOURCE=1
+CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
+ASFLAGS = $(CFLAGS)
+
+LIBDIR = /usr/local/pspdev/psp/lib /usr/local/pspdev/psp/sdk/lib
+LIBS = -lSDL_mixer -lSDLmain -lSDL -lvorbisfile -lvorbis -logg -lmad -lmikmod -lpspaudio -lpspgu -lpsphprm -lpsprtc -lpsputility -lpspirkeyb -lpsppower -lm
+
+EXTRA_TARGETS = EBOOT.PBP
+PSP_EBOOT_TITLE = Minicraft PSP
+PSP_EBOOT_ICON = ICON0.PNG
+PSP_EBOOT_PIC1 = PIC1.PNG
+
+BUILD_PRX = 1
+PSP_FW_VERSION = 500
+
+PSPSDK = $(shell psp-config --pspsdk-path)
+include $(PSPSDK)/lib/build.mak

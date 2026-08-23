@@ -24,9 +24,9 @@ void optionsmenu_init(void) {
 
 void optionsmenu_render(Screen* screen) {
     int w = 26;
-    int h = 18;
+    int h = (screen->h < 150) ? 16 : 18;
     int xo = (screen->w / 8 - w) / 2;
-    int yo = (screen->h / 8 - h) / 2;
+    int yo = (screen->h / 8 > h) ? (screen->h / 8 - h) / 2 : 0;
 
     const char* pTitle = _T(STR_OPTIONS);
     font_renderFrame(screen, (char*)pTitle, strlen(pTitle), xo, yo, xo + w, yo + h);

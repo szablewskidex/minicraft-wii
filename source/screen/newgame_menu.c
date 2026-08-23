@@ -1,4 +1,4 @@
-﻿#include "newgame_menu.h"
+#include "newgame_menu.h"
 #include "../inputhandler.h"
 #include "../gfx/color.h"
 #include "../gfx/font.h"
@@ -28,7 +28,8 @@ void newgamemenu_render(Screen* screen) {
 
     const char* title = (g_currentLanguage == LANG_PL) ? "Ustawienia Nowego Swiata" : "New World Settings";
     int tLen = strlen(title);
-    font_draw((char*)title, tLen, screen, (screen->w - tLen * 8) / 2, 20, getColor4(0, 555, 555, 555));
+    int tY = (screen->h < 150) ? 10 : 20;
+    font_draw((char*)title, tLen, screen, (screen->w - tLen * 8) / 2, tY, getColor4(0, 555, 555, 555));
 
     char opt0[64], opt1[64], opt2[64], opt3[64];
     snprintf(opt0, sizeof(opt0), "%s: %s", (g_currentLanguage == LANG_PL) ? "Tryb Gry" : "Gamemode", gamemode_get_name(g_gameMode));
@@ -37,6 +38,9 @@ void newgamemenu_render(Screen* screen) {
     snprintf(opt3, sizeof(opt3), "%s", (g_currentLanguage == LANG_PL) ? "Wstecz" : "Back");
 
     const char* opts[4] = { opt0, opt1, opt2, opt3 };
+
+    int startY = (screen->h < 150) ? 36 : 60;
+    int stepY = (screen->h < 150) ? 20 : 25;
 
     for (int i = 0; i < 4; ++i) {
         char buf[64] = {0};
@@ -50,7 +54,7 @@ void newgamemenu_render(Screen* screen) {
         }
 
         int len = strlen(buf);
-        font_draw(buf, len, screen, (screen->w - len * 8) / 2, 60 + i * 25, col);
+        font_draw(buf, len, screen, (screen->w - len * 8) / 2, startY + i * stepY, col);
     }
 }
 

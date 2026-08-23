@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/src/build-psp/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

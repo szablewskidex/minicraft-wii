@@ -32,6 +32,38 @@
 #include "sound.h"
 #include "lang.h"
 
+#ifdef __PSP__
+#include <pspkernel.h>
+#include <pspdebug.h>
+#include <pspctrl.h>
+#include <pspdisplay.h>
+#include <psppower.h>
+
+PSP_MODULE_INFO("Minicraft", 0, 1, 0);
+PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | THREAD_ATTR_VFPU);
+PSP_HEAP_SIZE_KB(-1024);
+
+static int exit_callback(int arg1, int arg2, void *common) {
+    sceKernelExitGame();
+    return 0;
+}
+
+static int callback_thread(SceSize args, void *argp) {
+    int cbid = sceKernelCreateCallback("Exit Callback", exit_callback, NULL);
+    sceKernelRegisterExitCallback(cbid);
+    sceKernelSleepThreadCB();
+    return 0;
+}
+
+static int setup_callbacks(void) {
+    int thid = sceKernelCreateThread("update_thread", callback_thread, 0x11, 0xFA0, 0, 0);
+    if (thid >= 0) {
+        sceKernelStartThread(thid, 0, 0);
+    }
+    return thid;
+}
+#endif
+
 // Helper: print available SDL video drivers (useful for embedded / RISC-V / no-X11 systems)
 static void print_sdl_video_drivers(void) {
 #ifdef USE_SDL1
@@ -537,6 +569,23 @@ void game_renderGui() {
             int textColor = getColor4(-1, 000, 444, 555);
             int cur_x = (game_screen.w >= 400) ? 14 : 6;
 
+#ifdef __PSP__
+            // PSP Controller Prompts
+            const char* t_atk = (g_currentLanguage == LANG_PL) ? "[X] Atak" : "[X] Attack";
+            font_draw((char*)t_atk, strlen(t_atk), &game_screen, cur_x, text_y, textColor);
+            cur_x += strlen(t_atk) * 8 + 8;
+
+            const char* t_inv = (g_currentLanguage == LANG_PL) ? "[[]] Plecak" : "[[]] Inv";
+            font_draw((char*)t_inv, strlen(t_inv), &game_screen, cur_x, text_y, textColor);
+            cur_x += strlen(t_inv) * 8 + 8;
+
+            const char* t_itm = (g_currentLanguage == LANG_PL) ? "[R] Przedmiot" : "[R] Item";
+            font_draw((char*)t_itm, strlen(t_itm), &game_screen, cur_x, text_y, textColor);
+            cur_x += strlen(t_itm) * 8 + 8;
+
+            const char* t_pau = (g_currentLanguage == LANG_PL) ? "[START] Pauza" : "[START] Pause";
+            font_draw((char*)t_pau, strlen(t_pau), &game_screen, cur_x, text_y, textColor);
+#else
             if (g_activeControllerType == 0) {
                 // GameCube Controller Prompts (Large 16x16 Badges)
                 // 1. (A) Atak / Attack - Emerald Green
@@ -618,6 +667,7 @@ void game_renderGui() {
                 const char* t_pau = (g_currentLanguage == LANG_PL) ? "Pauza" : "Pause";
                 font_draw((char*)t_pau, strlen(t_pau), &game_screen, cur_x, text_y, textColor);
             }
+#endif
         }
 	}
 
@@ -733,6 +783,13 @@ int main(int argc, char** argv) {
 		g_aspectRatio = 1;
 	}
 #endif
+#ifdef __PSP__
+	setup_callbacks();
+	sceCtrlSetSamplingCycle(0);
+	sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
+	scePowerSetClockFrequency(333, 333, 166);
+	g_aspectRatio = 0;
+#endif
 	unsigned long long int lastTime = getTimeUS();
 	unsigned long long int lastPrinted = lastTime;
 	double unprocessed = 0;
@@ -768,7 +825,7 @@ int main(int argc, char** argv) {
 
 	game_init();
 
-#ifndef __wii__
+#if !defined(__wii__) && !defined(__PSP__)
 	// Set video driver hint (FB or SDL_VIDEODRIVER env) BEFORE SDL_Init
 	set_video_driver_hint();
 #endif
@@ -786,8 +843,10 @@ int main(int argc, char** argv) {
 
 #ifdef USE_SDL1
 	/* SDL 1.2: use SDL_SetVideoMode */
-#ifdef __wii__
+#if defined(__wii__)
 	window = SDL_SetVideoMode(winWidth, winHeight, 16, SDL_DOUBLEBUF | SDL_HWSURFACE);
+#elif defined(__PSP__)
+	window = SDL_SetVideoMode(480, 272, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
 #else
 	window = SDL_SetVideoMode(winWidth, winHeight, 32, SDL_SWSURFACE | SDL_DOUBLEBUF);
 #endif

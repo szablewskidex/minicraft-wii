@@ -1,4 +1,4 @@
-﻿#include "slot_menu.h"
+#include "slot_menu.h"
 #include "../inputhandler.h"
 #include "../gfx/color.h"
 #include "../gfx/font.h"
@@ -36,10 +36,11 @@ void slotmenu_render(Screen* screen) {
         ((g_currentLanguage == LANG_PL) ? "Wybierz Slot Nowej Gry" : "Select Slot for New Game");
 
     int tLen = strlen(title);
-    font_draw((char*)title, tLen, screen, (screen->w - tLen * 8) / 2, 16, getColor4(0, 555, 555, 555));
+    int tY = (screen->h < 150) ? 8 : 16;
+    font_draw((char*)title, tLen, screen, (screen->w - tLen * 8) / 2, tY, getColor4(0, 555, 555, 555));
 
     for (int i = 0; i < 3; ++i) {
-        int yo = 40 + i * 40;
+        int yo = (screen->h < 150) ? (24 + i * 26) : (40 + i * 40);
         char line1[64] = {0};
         char line2[64] = {0};
 
@@ -58,15 +59,15 @@ void slotmenu_render(Screen* screen) {
 
         char prefix[64];
         if (i == slot_selected) {
-            snprintf(prefix, sizeof(prefix), "> %s <", line1);
+            snprintf(prefix, sizeof(prefix), "> %s", line1);
         } else {
             snprintf(prefix, sizeof(prefix), "  %s", line1);
         }
 
-        int len1 = strlen(prefix);
-        font_draw(prefix, len1, screen, (screen->w - len1 * 8) / 2, yo, col1);
-        int len2 = strlen(line2);
-        font_draw(line2, len2, screen, (screen->w - len2 * 8) / 2, yo + 12, col2);
+        int l1Len = strlen(prefix);
+        int l2Len = strlen(line2);
+        font_draw(prefix, l1Len, screen, (screen->w - l1Len * 8) / 2, yo, col1);
+        font_draw(line2, l2Len, screen, (screen->w - l2Len * 8) / 2, yo + 10, col2);
     }
 
     char back[64] = "Back to Title";
@@ -76,7 +77,8 @@ void slotmenu_render(Screen* screen) {
     if (slot_selected == 3) snprintf(bBuf, sizeof(bBuf), "> %s <", back);
     else snprintf(bBuf, sizeof(bBuf), "  %s", back);
     int bLen = strlen(bBuf);
-    font_draw(bBuf, bLen, screen, (screen->w - bLen * 8) / 2, 175, bCol);
+    int backY = (screen->h < 150) ? 110 : 175;
+    font_draw(bBuf, bLen, screen, (screen->w - bLen * 8) / 2, backY, bCol);
 }
 
 void slotmenu_tick(void) {

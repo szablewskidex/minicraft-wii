@@ -2,7 +2,11 @@
 #include "entity/player.h"
 #include "screen/menu.h"
 
-#ifdef __wii__
+#if defined(__PSP__)
+#define HEIGHT 136
+#define WIDTH 240
+#define SCALE 2
+#elif defined(__wii__)
 #define HEIGHT 240
 #define WIDTH 320
 #define SCALE 2
