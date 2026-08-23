@@ -23,8 +23,8 @@ void optionsmenu_init(void) {
 }
 
 void optionsmenu_render(Screen* screen) {
-    int w = 24;
-    int h = 16;
+    int w = 26;
+    int h = 18;
     int xo = (screen->w / 8 - w) / 2;
     int yo = (screen->h / 8 - h) / 2;
 
@@ -43,25 +43,32 @@ void optionsmenu_render(Screen* screen) {
     snprintf(opt2, sizeof(opt2), "%s: %s", _T(STR_BUTTON_PROMPTS), promptState);
 
     char opt3[64];
-    if (g_sfxVolume <= 0) {
-        snprintf(opt3, sizeof(opt3), "%s: [OFF]", _T(STR_SFX_VOLUME));
+    if (g_musicVolume <= 0) {
+        snprintf(opt3, sizeof(opt3), "%s: [OFF]", _T(STR_MUSIC_VOLUME));
     } else {
-        snprintf(opt3, sizeof(opt3), "%s: %d0%%", _T(STR_SFX_VOLUME), g_sfxVolume);
+        snprintf(opt3, sizeof(opt3), "%s: %d0%%", _T(STR_MUSIC_VOLUME), g_musicVolume);
     }
 
     char opt4[64];
-    if (g_uiVolume <= 0) {
-        snprintf(opt4, sizeof(opt4), "%s: [OFF]", _T(STR_UI_VOLUME));
+    if (g_sfxVolume <= 0) {
+        snprintf(opt4, sizeof(opt4), "%s: [OFF]", _T(STR_SFX_VOLUME));
     } else {
-        snprintf(opt4, sizeof(opt4), "%s: %d0%%", _T(STR_UI_VOLUME), g_uiVolume);
+        snprintf(opt4, sizeof(opt4), "%s: %d0%%", _T(STR_SFX_VOLUME), g_sfxVolume);
     }
 
     char opt5[64];
-    snprintf(opt5, sizeof(opt5), "%s", _T(STR_BACK));
+    if (g_uiVolume <= 0) {
+        snprintf(opt5, sizeof(opt5), "%s: [OFF]", _T(STR_UI_VOLUME));
+    } else {
+        snprintf(opt5, sizeof(opt5), "%s: %d0%%", _T(STR_UI_VOLUME), g_uiVolume);
+    }
 
-    const char* lines[6] = { opt0, opt1, opt2, opt3, opt4, opt5 };
+    char opt6[64];
+    snprintf(opt6, sizeof(opt6), "%s", _T(STR_BACK));
 
-    for (int i = 0; i < 6; ++i) {
+    const char* lines[7] = { opt0, opt1, opt2, opt3, opt4, opt5, opt6 };
+
+    for (int i = 0; i < 7; ++i) {
         char buf[80] = {0};
         int col = getColor4(0, 222, 222, 222);
 
@@ -88,7 +95,7 @@ void optionsmenu_tick(void) {
     }
 
     if (options_selected < 0) options_selected = 0;
-    if (options_selected > 5) options_selected = 5;
+    if (options_selected > 6) options_selected = 6;
 
     // Left / Right controls
     if (left.clicked) {
@@ -105,9 +112,12 @@ void optionsmenu_tick(void) {
             g_buttonPrompts = 1 - g_buttonPrompts;
             sound_play(SND_CONFIRM);
         } else if (options_selected == 3) {
+            if (g_musicVolume > 0) --g_musicVolume;
+            sound_play(SND_SELECT);
+        } else if (options_selected == 4) {
             if (g_sfxVolume > 0) --g_sfxVolume;
             sound_play(SND_MONSTERHURT);
-        } else if (options_selected == 4) {
+        } else if (options_selected == 5) {
             if (g_uiVolume > 0) --g_uiVolume;
             sound_play(SND_SELECT);
         }
@@ -127,9 +137,12 @@ void optionsmenu_tick(void) {
             g_buttonPrompts = 1 - g_buttonPrompts;
             sound_play(SND_CONFIRM);
         } else if (options_selected == 3) {
+            if (g_musicVolume < 10) ++g_musicVolume;
+            sound_play(SND_SELECT);
+        } else if (options_selected == 4) {
             if (g_sfxVolume < 10) ++g_sfxVolume;
             sound_play(SND_MONSTERHURT);
-        } else if (options_selected == 4) {
+        } else if (options_selected == 5) {
             if (g_uiVolume < 10) ++g_uiVolume;
             sound_play(SND_SELECT);
         }
@@ -149,12 +162,15 @@ void optionsmenu_tick(void) {
             g_buttonPrompts = 1 - g_buttonPrompts;
             sound_play(SND_CONFIRM);
         } else if (options_selected == 3) {
+            g_musicVolume = (g_musicVolume >= 10) ? 0 : (g_musicVolume + 2);
+            sound_play(SND_SELECT);
+        } else if (options_selected == 4) {
             g_sfxVolume = (g_sfxVolume >= 10) ? 0 : (g_sfxVolume + 2);
             sound_play(SND_MONSTERHURT);
-        } else if (options_selected == 4) {
+        } else if (options_selected == 5) {
             g_uiVolume = (g_uiVolume >= 10) ? 0 : (g_uiVolume + 2);
             sound_play(SND_SELECT);
-        } else if (options_selected == 5) {
+        } else if (options_selected == 6) {
             sound_play(SND_CONFIRM);
             game_set_menu(menu_parent ? menu_parent : mid_TITLE);
         }

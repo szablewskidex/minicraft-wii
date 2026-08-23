@@ -36,6 +36,7 @@ typedef enum {
     STR_BACK,
     STR_SFX_VOLUME,
     STR_UI_VOLUME,
+    STR_MUSIC_VOLUME,
     STR_ASPECT_RATIO,
     STR_ASPECT_4_3,
     STR_ASPECT_16_9,

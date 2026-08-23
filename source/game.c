@@ -29,6 +29,8 @@
 #include "item/resourceitem.h"
 #include "icons.h"
 #include "save.h"
+#include "sound.h"
+#include "lang.h"
 
 // Helper: print available SDL video drivers (useful for embedded / RISC-V / no-X11 systems)
 static void print_sdl_video_drivers(void) {
@@ -131,7 +133,14 @@ char CLICK_TO_FOCUS[] = "Click to focus!";
 
 void game_set_menu(enum menu_id menu) {
 	current_menu = menu;
-	init_menu(menu);
+	if (menu) {
+		init_menu(menu);
+		if (menu == mid_TITLE || menu == mid_SLOT_SELECT || menu == mid_NEW_GAME || menu == mid_OPTIONS || menu == mid_ABOUT || menu == mid_INSTRUCTIONS || menu == mid_PAUSE) {
+			music_play_menu();
+		}
+	} else {
+		music_play_game();
+	}
 }
 
 

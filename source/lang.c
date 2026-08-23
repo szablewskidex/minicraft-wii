@@ -30,6 +30,7 @@ static const char* strings[STR_COUNT][LANG_COUNT] = {
     [STR_BACK] = { "Powrot", "Back", "Zurueck" },
     [STR_SFX_VOLUME] = { "Dzwieki gry", "Game SFX", "Spiel-SFX" },
     [STR_UI_VOLUME] = { "Dzwieki menu", "UI SFX", "UI-SFX" },
+    [STR_MUSIC_VOLUME] = { "Muzyka", "Music", "Musik" },
     [STR_ASPECT_RATIO] = { "Format", "Aspect", "Format" },
     [STR_ASPECT_4_3] = { "4:3 Standard", "4:3 Standard", "4:3 Standard" },
     [STR_ASPECT_16_9] = { "16:9 Panorama", "16:9 Widescreen", "16:9 Breitbild" },
