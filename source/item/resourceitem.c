@@ -83,7 +83,7 @@ void resourceitem_renderInventory(Item* item, Screen* screen, int x, int y){
 		int cc = item->add.resource.count;
 		if (cc > 999) cc = 999;
 		char text[64];
-		snprintf(text, sizeof(text), "%d %s", cc, tName);
+		snprintf(text, sizeof(text), "%s %dx", tName, cc);
 		font_draw(text, strlen(text), screen, x + 8, y, getColor4(-1, 555, 555, 555));
 	}
 }
