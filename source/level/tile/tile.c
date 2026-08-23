@@ -28,6 +28,8 @@
 #include "pot_tile.h"
 #include "tombstone_tile.h"
 #include "fence_tile.h"
+#include "stone_floor_tile.h"
+#include "glass_wall_tile.h"
 
 #include "../../gfx/screen.h"
 #include "../../item/resource/resource.h"
@@ -82,6 +84,8 @@ void init_tiles(){
 	pottile_init(POT_TILE);
 	tombstonetile_init(TOMBSTONE_TILE);
 	fencetile_init(FENCE_TILE);
+	stonefloortile_init(STONE_FLOOR);
+	glasswalltile_init(GLASS_WALL);
 }
 
 void tile_init(TileID id){
@@ -182,6 +186,12 @@ void tile_render(TileID id, Screen* screen, Level* level, int x, int y){
 		case WHEAT:
 			wheattile_render(id, screen, level, x, y);
 			break;
+		case STONE_FLOOR:
+			stonefloortile_render(id, screen, level, x, y);
+			break;
+		case GLASS_WALL:
+			glasswalltile_render(id, screen, level, x, y);
+			break;
 		default:
 		case INFINITE_FALL:
 			//render nothing
@@ -211,6 +221,7 @@ char tile_mayPass(TileID id, Level* level, int x, int y, Entity* e){
 		case SPRUCE_TREE:
 		case WOOD_WALL:
 		case STONE_WALL:
+		case GLASS_WALL:
 		case POT_TILE:
 		case TOMBSTONE_TILE:
 		case FENCE_TILE:
@@ -226,6 +237,7 @@ char tile_mayPass(TileID id, Level* level, int x, int y, Entity* e){
 		case WATER:
 			return call_entity_canSwim(e);
 		case WOOD_FLOOR:
+		case STONE_FLOOR:
 		case CLOUD:
 		default:
 			return 1;
@@ -301,6 +313,12 @@ void tile_hurt(TileID id, Level* level, int x, int y, Mob* source, int dmg, int 
 			break;
 		case FENCE_TILE:
 			fencetile_hurt(id, level, x, y, source, dmg, attackDir);
+			break;
+		case STONE_FLOOR:
+			stonefloortile_hurt(id, level, x, y, source, dmg, attackDir);
+			break;
+		case GLASS_WALL:
+			glasswalltile_hurt(id, level, x, y, source, dmg, attackDir);
 			break;
 		case WHEAT:
 			wheattile_hurt(id, level, x, y, source, dmg, attackDir);
@@ -438,6 +456,10 @@ char tile_interact(TileID id, Level* level, int xt, int yt, struct _Player* play
 			return pathtile_interact(id, level, xt, yt, player, item, attackDir);
 		case TORCH_TILE:
 			return torchtile_interact(id, level, xt, yt, player, item, attackDir);
+		case STONE_FLOOR:
+			return stonefloortile_interact(id, level, xt, yt, player, item, attackDir);
+		case GLASS_WALL:
+			return glasswalltile_interact(id, level, xt, yt, player, item, attackDir);
 		default:
 			return 0;
 	}

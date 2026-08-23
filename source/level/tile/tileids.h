@@ -35,7 +35,9 @@ typedef enum tileid_{
 	STONE_WALL,
 	POT_TILE,
 	TOMBSTONE_TILE,
-	FENCE_TILE
+	FENCE_TILE,
+	STONE_FLOOR,
+	GLASS_WALL
 } TileID;
 
 #endif /* LEVEL_TILE_TILEIDS_H_ */

@@ -170,6 +170,9 @@ static const ItemTranslation item_translations[] = {
     { "Bucket", "Wiadro", "Eimer" },
     { "W.Bucket", "Wiadro Woda", "Wassereimer" },
     { "Water Bucket", "Wiadro Woda", "Wassereimer" },
+    { "Stone Floor", "Kam. Podloga", "Steinboden" },
+    { "Glass Window", "Szklane Okno", "Glasfenster" },
+    { "Glass Wall", "Szklana Sciana", "Glaswand" },
     { NULL, NULL, NULL }
 };
 
