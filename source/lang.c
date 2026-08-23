@@ -34,7 +34,10 @@ static const char* strings[STR_COUNT][LANG_COUNT] = {
     [STR_ASPECT_4_3] = { "4:3 Standard", "4:3 Standard", "4:3 Standard" },
     [STR_ASPECT_16_9] = { "16:9 Panorama", "16:9 Widescreen", "16:9 Breitbild" },
     [STR_HAVE] = { "Masz", "Have", "Besitz" },
-    [STR_COST] = { "Koszt", "Cost", "Kosten" }
+    [STR_COST] = { "Koszt", "Cost", "Kosten" },
+    [STR_BUTTON_PROMPTS] = { "Przyciski HUD", "Button Hints", "Tasten-Hilfe" },
+    [STR_ON] = { "Wlaczone", "ON", "AN" },
+    [STR_OFF] = { "Wylaczone", "OFF", "AUS" }
 };
 
 void lang_init(void) {

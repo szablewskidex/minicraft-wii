@@ -41,6 +41,9 @@ typedef enum {
     STR_ASPECT_16_9,
     STR_HAVE,
     STR_COST,
+    STR_BUTTON_PROMPTS,
+    STR_ON,
+    STR_OFF,
     STR_COUNT
 } StringID;
 

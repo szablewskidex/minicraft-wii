@@ -19,6 +19,8 @@ extern GameMode g_gameMode;
 extern WorldSize g_worldSize;
 extern int g_currentSlot;
 extern int g_aspectRatio;
+extern int g_buttonPrompts;
+extern int g_activeControllerType;
 
 const char* gamemode_get_name(GameMode mode);
 const char* worldsize_get_name(WorldSize size);

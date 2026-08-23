@@ -5,6 +5,8 @@ GameMode g_gameMode = MODE_SURVIVAL;
 WorldSize g_worldSize = WORLD_NORMAL;
 int g_currentSlot = 1;
 int g_aspectRatio = 1; // 0 = 4:3, 1 = 16:9 Widescreen
+int g_buttonPrompts = 1; // 0 = OFF, 1 = ON
+int g_activeControllerType = 0; // 0 = GameCube, 1 = Wiimote
 
 const char* gamemode_get_name(GameMode mode) {
     if (g_currentLanguage == LANG_PL) {

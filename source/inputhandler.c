@@ -1,4 +1,5 @@
 #include "inputhandler.h"
+#include "gamemode.h"
 #ifdef USE_SDL1
 	#include <SDL/SDL.h>
 #else
@@ -61,6 +62,12 @@ void input_tick(){
     u16 g_held = PAD_ButtonsHeld(0);
     s8 stick_x = PAD_StickX(0);
     s8 stick_y = PAD_StickY(0);
+
+    if (g_held != 0 || stick_x > 30 || stick_x < -30 || stick_y > 30 || stick_y < -30) {
+        g_activeControllerType = 0; // GameCube
+    } else if (w_held != 0) {
+        g_activeControllerType = 1; // Wiimote
+    }
 
     // Movement: D-Pad, Nunchuk stick, Classic stick/D-pad, GameCube stick/D-pad
     char move_up    = (w_held & (WPAD_BUTTON_UP | WPAD_CLASSIC_BUTTON_UP)) || (g_held & PAD_BUTTON_UP) || (stick_y > 40);

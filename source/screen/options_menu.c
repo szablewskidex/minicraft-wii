@@ -39,25 +39,29 @@ void optionsmenu_render(Screen* screen) {
     snprintf(opt1, sizeof(opt1), "%s", _T(STR_LANGUAGE));
 
     char opt2[64];
-    if (g_sfxVolume <= 0) {
-        snprintf(opt2, sizeof(opt2), "%s: [OFF]", _T(STR_SFX_VOLUME));
-    } else {
-        snprintf(opt2, sizeof(opt2), "%s: %d0%%", _T(STR_SFX_VOLUME), g_sfxVolume);
-    }
+    const char* promptState = (g_buttonPrompts == 1) ? _T(STR_ON) : _T(STR_OFF);
+    snprintf(opt2, sizeof(opt2), "%s: %s", _T(STR_BUTTON_PROMPTS), promptState);
 
     char opt3[64];
-    if (g_uiVolume <= 0) {
-        snprintf(opt3, sizeof(opt3), "%s: [OFF]", _T(STR_UI_VOLUME));
+    if (g_sfxVolume <= 0) {
+        snprintf(opt3, sizeof(opt3), "%s: [OFF]", _T(STR_SFX_VOLUME));
     } else {
-        snprintf(opt3, sizeof(opt3), "%s: %d0%%", _T(STR_UI_VOLUME), g_uiVolume);
+        snprintf(opt3, sizeof(opt3), "%s: %d0%%", _T(STR_SFX_VOLUME), g_sfxVolume);
     }
 
     char opt4[64];
-    snprintf(opt4, sizeof(opt4), "%s", _T(STR_BACK));
+    if (g_uiVolume <= 0) {
+        snprintf(opt4, sizeof(opt4), "%s: [OFF]", _T(STR_UI_VOLUME));
+    } else {
+        snprintf(opt4, sizeof(opt4), "%s: %d0%%", _T(STR_UI_VOLUME), g_uiVolume);
+    }
 
-    const char* lines[5] = { opt0, opt1, opt2, opt3, opt4 };
+    char opt5[64];
+    snprintf(opt5, sizeof(opt5), "%s", _T(STR_BACK));
 
-    for (int i = 0; i < 5; ++i) {
+    const char* lines[6] = { opt0, opt1, opt2, opt3, opt4, opt5 };
+
+    for (int i = 0; i < 6; ++i) {
         char buf[80] = {0};
         int col = getColor4(0, 222, 222, 222);
 
@@ -84,7 +88,7 @@ void optionsmenu_tick(void) {
     }
 
     if (options_selected < 0) options_selected = 0;
-    if (options_selected > 4) options_selected = 4;
+    if (options_selected > 5) options_selected = 5;
 
     // Left / Right controls
     if (left.clicked) {
@@ -98,9 +102,12 @@ void optionsmenu_tick(void) {
             lang_next();
             sound_play(SND_CONFIRM);
         } else if (options_selected == 2) {
+            g_buttonPrompts = 1 - g_buttonPrompts;
+            sound_play(SND_CONFIRM);
+        } else if (options_selected == 3) {
             if (g_sfxVolume > 0) --g_sfxVolume;
             sound_play(SND_MONSTERHURT);
-        } else if (options_selected == 3) {
+        } else if (options_selected == 4) {
             if (g_uiVolume > 0) --g_uiVolume;
             sound_play(SND_SELECT);
         }
@@ -117,9 +124,12 @@ void optionsmenu_tick(void) {
             lang_next();
             sound_play(SND_CONFIRM);
         } else if (options_selected == 2) {
+            g_buttonPrompts = 1 - g_buttonPrompts;
+            sound_play(SND_CONFIRM);
+        } else if (options_selected == 3) {
             if (g_sfxVolume < 10) ++g_sfxVolume;
             sound_play(SND_MONSTERHURT);
-        } else if (options_selected == 3) {
+        } else if (options_selected == 4) {
             if (g_uiVolume < 10) ++g_uiVolume;
             sound_play(SND_SELECT);
         }
@@ -136,12 +146,15 @@ void optionsmenu_tick(void) {
             lang_next();
             sound_play(SND_CONFIRM);
         } else if (options_selected == 2) {
+            g_buttonPrompts = 1 - g_buttonPrompts;
+            sound_play(SND_CONFIRM);
+        } else if (options_selected == 3) {
             g_sfxVolume = (g_sfxVolume >= 10) ? 0 : (g_sfxVolume + 2);
             sound_play(SND_MONSTERHURT);
-        } else if (options_selected == 3) {
+        } else if (options_selected == 4) {
             g_uiVolume = (g_uiVolume >= 10) ? 0 : (g_uiVolume + 2);
             sound_play(SND_SELECT);
-        } else if (options_selected == 4) {
+        } else if (options_selected == 5) {
             sound_play(SND_CONFIRM);
             game_set_menu(menu_parent ? menu_parent : mid_TITLE);
         }
