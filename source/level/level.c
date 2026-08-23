@@ -497,7 +497,8 @@ void level_getEntities(Level* level, ArrayList* list, int x0, int y0, int x1, in
 
 
 void level_tick(Level* level) {
-	level_trySpawn(level, 1);
+	int spawnTries = (level->depth < 0) ? 4 : 2;
+	level_trySpawn(level, spawnTries);
 
 	for (int i = 0; i < level->w*level->h / 50; ++i) {
 		int xt = random_next_int(&level->random, level->w);

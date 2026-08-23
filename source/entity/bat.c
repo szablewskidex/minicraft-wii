@@ -13,8 +13,8 @@ void bat_create(Bat* bat) {
     mob_create(&bat->mob);
     bat->mob.entity.type = BAT;
     bat->mob.health = bat->mob.maxHealth = 4;
-    bat->mob.entity.xr = 4;
-    bat->mob.entity.yr = 4;
+    bat->mob.entity.xr = 6;
+    bat->mob.entity.yr = 6;
     bat->xa = bat->ya = 0;
     bat->randomWalkTime = 0;
 }
@@ -23,40 +23,50 @@ void bat_tick(Bat* bat) {
     mob_tick(&bat->mob);
     Random* random = &bat->mob.entity.random;
 
+    if (bat->mob.hurtTime > 0) {
+        // Knockback recoil when hit
+        return;
+    }
+
+    int speed = 0;
+
     if (game_player && game_player->mob.entity.level == bat->mob.entity.level) {
         int xd = game_player->mob.entity.x - bat->mob.entity.x;
         int yd = game_player->mob.entity.y - bat->mob.entity.y;
         int d2 = xd * xd + yd * yd;
 
-        if (d2 < 70 * 70) {
-            // Aggressive swooping towards player!
+        if (d2 < 80 * 80) {
+            // Swooping towards player at comfortable balanced speed (2/3 of player speed)
+            speed = (bat->mob.tickTime % 3 != 0);
             bat->xa = (xd > 0) ? 1 : ((xd < 0) ? -1 : 0);
             bat->ya = (yd > 0) ? 1 : ((yd < 0) ? -1 : 0);
         } else {
-            // Erratic flutter
+            // Idle wandering at half speed
+            speed = (bat->mob.tickTime & 1);
             if (--bat->randomWalkTime <= 0) {
-                bat->randomWalkTime = 15 + random_next_int(random, 25);
+                bat->randomWalkTime = 20 + random_next_int(random, 30);
                 bat->xa = random_next_int(random, 3) - 1;
                 bat->ya = random_next_int(random, 3) - 1;
             }
         }
     } else {
+        speed = (bat->mob.tickTime & 1);
         if (--bat->randomWalkTime <= 0) {
-            bat->randomWalkTime = 15 + random_next_int(random, 25);
+            bat->randomWalkTime = 20 + random_next_int(random, 30);
             bat->xa = random_next_int(random, 3) - 1;
             bat->ya = random_next_int(random, 3) - 1;
         }
     }
 
-    // Fast flying movement (flapping every tick)
-    int speed = 1;
-    if (!mob_move(&bat->mob, bat->xa * speed, bat->ya * speed)) {
-        bat->randomWalkTime = 0;
+    if (speed) {
+        if (!mob_move(&bat->mob, bat->xa, bat->ya)) {
+            bat->randomWalkTime = 0;
+        }
     }
 }
 
 void bat_render(Bat* bat, Screen* screen) {
-    int frame = (bat->mob.tickTime >> 2) & 3; // Fast wing flapping!
+    int frame = (bat->mob.tickTime >> 2) & 3; // Wing flapping
     int xt = 8 + frame * 2; // cols 8, 10, 12, 14
     int yt = 36; // Row 36
 
@@ -76,6 +86,10 @@ void bat_render(Bat* bat, Screen* screen) {
 void bat_touchedBy(Bat* bat, Entity* entity) {
     if (entity->type == PLAYER) {
         call_entity_hurt(entity, &bat->mob, 1, bat->mob.dir ^ 1);
+        // Bounce bat away after striking player
+        bat->xa = -bat->xa;
+        bat->ya = -bat->ya;
+        bat->randomWalkTime = 15;
     }
 }
 

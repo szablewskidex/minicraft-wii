@@ -75,14 +75,14 @@ void mob_hurtTile(Mob* mob, TileID tile, int x, int y, int damage) {
 char mob_findStartPos(Mob* mob, Level* level) {
 	Random* random = &mob->entity.random;
 
-	for (int tries = 0; tries < 20; ++tries) {
+	for (int tries = 0; tries < 30; ++tries) {
 		int x, y;
 		if (game_player && game_player->mob.entity.level == level && random_next_int(random, 3) != 0) {
-			// Spawn in active region around player (between 5 and 22 tiles away)
+			// Spawn in active region around player (between 5 and 24 tiles away)
 			int px = game_player->mob.entity.x >> 4;
 			int py = game_player->mob.entity.y >> 4;
-			int dx = (random_next_int(random, 45) - 22);
-			int dy = (random_next_int(random, 45) - 22);
+			int dx = (random_next_int(random, 49) - 24);
+			int dy = (random_next_int(random, 49) - 24);
 			x = px + dx;
 			y = py + dy;
 			if (x < 1 || y < 1 || x >= level->w - 1 || y >= level->h - 1) continue;
@@ -97,7 +97,7 @@ char mob_findStartPos(Mob* mob, Level* level) {
 		if (game_player && game_player->mob.entity.level == level) {
 			int xd = game_player->mob.entity.x - xx;
 			int yd = game_player->mob.entity.y - yy;
-			if (((xd * xd) + (yd * yd)) < 64 * 64) {
+			if (((xd * xd) + (yd * yd)) < 55 * 55) {
 				continue; // Don't spawn right on top of player
 			}
 		}
@@ -105,7 +105,7 @@ char mob_findStartPos(Mob* mob, Level* level) {
 		TileID id = level_get_tile(level, x, y);
 		if (!tile_mayPass(id, level, x, y, &mob->entity)) continue;
 
-		int r = (level->depth < 0) ? 20 : (level->monsterDensity * 8);
+		int r = (level->depth < 0) ? 12 : 20;
 		ArrayList ents;
 		create_arraylist(&ents);
 		level_getEntities(level, &ents, xx - r, yy - r, xx + r, yy + r);
