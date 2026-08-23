@@ -6,14 +6,19 @@
 
 struct _Player;
 
+typedef enum {
+	RES_TYPE_NORMAL = 0,
+	RES_TYPE_PLANTABLE = 1,
+	RES_TYPE_FOOD = 2
+} ResourceType;
+
 typedef struct _Resource{
 	char name[16]; // max name len
 	int sprite;
 	int color;
-	union{
-		res_food food;
-		res_plantable plantable;
-	} add;
+	ResourceType type;
+	res_food food;
+	res_plantable plantable;
 } Resource;
 
 extern Resource wood, stone, flower, acorn, dirt, sand, cactusFlower, seeds, wheat, bread, apple;

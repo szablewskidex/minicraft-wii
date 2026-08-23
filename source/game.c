@@ -372,7 +372,7 @@ void game_renderGui() {
     #endif
 
 	int hud_x = 12;
-	int hud_y = (g_buttonPrompts) ? (game_screen.h - 30) : (game_screen.h - 22);
+	int hud_y = (g_buttonPrompts) ? (game_screen.h - 38) : (game_screen.h - 22);
 
 	if (isingame){
         /// RENDER THE HUD with safe margins
@@ -480,58 +480,91 @@ void game_renderGui() {
 
         // Render Minecraft-style HUD button prompt hints at bottom
         if (g_buttonPrompts) {
-            int py = game_screen.h - 13;
+            int py = game_screen.h - 18;
+            int text_y = py + 4;
             int textColor = getColor4(-1, 000, 444, 555);
             int cur_x = (game_screen.w >= 400) ? 14 : 6;
 
             if (g_activeControllerType == 0) {
-                // GameCube Controller Prompts
-                render_screen(&game_screen, cur_x, py, 0 + 44 * 32, getColor4(-1, 000, 141, 555), 0);
-                cur_x += 9;
+                // GameCube Controller Prompts (Large 16x16 Badges)
+                // 1. (A) Atak / Attack
+                render_screen(&game_screen, cur_x,     py,     0 + 44 * 32, getColor4(-1, 000, 141, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py,     1 + 44 * 32, getColor4(-1, 000, 141, 555), 0);
+                render_screen(&game_screen, cur_x,     py + 8, 0 + 45 * 32, getColor4(-1, 000, 141, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py + 8, 1 + 45 * 32, getColor4(-1, 000, 141, 555), 0);
+                cur_x += 18;
                 const char* t_atk = (g_currentLanguage == LANG_PL) ? "Atak" : "Attack";
-                font_draw((char*)t_atk, strlen(t_atk), &game_screen, cur_x, py, textColor);
+                font_draw((char*)t_atk, strlen(t_atk), &game_screen, cur_x, text_y, textColor);
                 cur_x += strlen(t_atk) * 8 + 8;
 
-                render_screen(&game_screen, cur_x, py, 2 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
-                cur_x += 9;
+                // 2. (Y) Plecak / Inv (Changed to Y as requested!)
+                render_screen(&game_screen, cur_x,     py,     6 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py,     7 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x,     py + 8, 6 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py + 8, 7 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                cur_x += 18;
                 const char* t_inv = (g_currentLanguage == LANG_PL) ? "Plecak" : "Inv";
-                font_draw((char*)t_inv, strlen(t_inv), &game_screen, cur_x, py, textColor);
+                font_draw((char*)t_inv, strlen(t_inv), &game_screen, cur_x, text_y, textColor);
                 cur_x += strlen(t_inv) * 8 + 8;
 
-                render_screen(&game_screen, cur_x, py, 5 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
-                cur_x += 9;
+                // 3. (R) Przedmiot / Item
+                render_screen(&game_screen, cur_x,     py,     12 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py,     13 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x,     py + 8, 12 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py + 8, 13 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                cur_x += 18;
                 const char* t_itm = (g_currentLanguage == LANG_PL) ? "Przedmiot" : "Item";
-                font_draw((char*)t_itm, strlen(t_itm), &game_screen, cur_x, py, textColor);
+                font_draw((char*)t_itm, strlen(t_itm), &game_screen, cur_x, text_y, textColor);
                 cur_x += strlen(t_itm) * 8 + 8;
 
-                render_screen(&game_screen, cur_x, py, 7 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
-                cur_x += 9;
+                // 4. (Start) Pauza / Pause
+                render_screen(&game_screen, cur_x,     py,     14 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py,     15 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x,     py + 8, 14 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py + 8, 15 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                cur_x += 18;
                 const char* t_pau = (g_currentLanguage == LANG_PL) ? "Pauza" : "Pause";
-                font_draw((char*)t_pau, strlen(t_pau), &game_screen, cur_x, py, textColor);
+                font_draw((char*)t_pau, strlen(t_pau), &game_screen, cur_x, text_y, textColor);
             } else {
-                // Wiimote Controller Prompts
-                render_screen(&game_screen, cur_x, py, 9 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
-                cur_x += 9;
+                // Wiimote Controller Prompts (Large 16x16 Badges)
+                // 1. (A) Atak / Attack
+                render_screen(&game_screen, cur_x,     py,     16 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py,     17 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x,     py + 8, 16 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py + 8, 17 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                cur_x += 18;
                 const char* t_atk = (g_currentLanguage == LANG_PL) ? "Atak" : "Attack";
-                font_draw((char*)t_atk, strlen(t_atk), &game_screen, cur_x, py, textColor);
+                font_draw((char*)t_atk, strlen(t_atk), &game_screen, cur_x, text_y, textColor);
                 cur_x += strlen(t_atk) * 8 + 8;
 
-                render_screen(&game_screen, cur_x, py, 11 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
-                cur_x += 9;
+                // 2. (1) Plecak / Inv
+                render_screen(&game_screen, cur_x,     py,     20 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py,     21 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x,     py + 8, 20 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py + 8, 21 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                cur_x += 18;
                 const char* t_inv = (g_currentLanguage == LANG_PL) ? "Plecak" : "Inv";
-                font_draw((char*)t_inv, strlen(t_inv), &game_screen, cur_x, py, textColor);
+                font_draw((char*)t_inv, strlen(t_inv), &game_screen, cur_x, text_y, textColor);
                 cur_x += strlen(t_inv) * 8 + 8;
 
-                render_screen(&game_screen, cur_x, py, 10 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
-                cur_x += 9;
+                // 3. (B) Przedmiot / Item
+                render_screen(&game_screen, cur_x,     py,     18 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py,     19 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x,     py + 8, 18 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py + 8, 19 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                cur_x += 18;
                 const char* t_itm = (g_currentLanguage == LANG_PL) ? "Przedmiot" : "Item";
-                font_draw((char*)t_itm, strlen(t_itm), &game_screen, cur_x, py, textColor);
+                font_draw((char*)t_itm, strlen(t_itm), &game_screen, cur_x, text_y, textColor);
                 cur_x += strlen(t_itm) * 8 + 8;
 
-                render_screen(&game_screen, cur_x, py, 13 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
-                cur_x += 9;
+                // 4. (+) Pauza / Pause
+                render_screen(&game_screen, cur_x,     py,     24 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py,     25 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x,     py + 8, 24 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                render_screen(&game_screen, cur_x + 8, py + 8, 25 + 45 * 32, getColor4(-1, 000, 333, 555), 0);
+                cur_x += 18;
                 const char* t_pau = (g_currentLanguage == LANG_PL) ? "Pauza" : "Pause";
-                font_draw((char*)t_pau, strlen(t_pau), &game_screen, cur_x, py, textColor);
+                font_draw((char*)t_pau, strlen(t_pau), &game_screen, cur_x, text_y, textColor);
             }
         }
 	}

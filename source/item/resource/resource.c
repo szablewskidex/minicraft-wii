@@ -66,6 +66,9 @@ void init_resource(Resource* resource, char* name, int sprite, int color) {
 	resource->name[15] = '\0';
 	resource->sprite = sprite;
 	resource->color = color;
+	resource->type = RES_TYPE_NORMAL;
+	memset(&resource->food, 0, sizeof(res_food));
+	memset(&resource->plantable, 0, sizeof(res_plantable));
 }
 
 
@@ -139,18 +142,18 @@ void init_resources() {
 
 
 char resource_interactOn(Resource* resource, TileID tile, Level* level, int xt, int yt, Player* player, int attackDir) {
-	if (resource->add.plantable.sourceTiles) {
-		for (int i = 0; i < resource->add.plantable.sourceTilesSize; ++i) {
-			if (tile == resource->add.plantable.sourceTiles[i]) {
-				level_set_tile(level, xt, yt, resource->add.plantable.targetTile, 0);
+	if (resource->type == RES_TYPE_PLANTABLE && resource->plantable.sourceTiles) {
+		for (int i = 0; i < resource->plantable.sourceTilesSize; ++i) {
+			if (tile == resource->plantable.sourceTiles[i]) {
+				level_set_tile(level, xt, yt, resource->plantable.targetTile, 0);
 				sound_play(SND_CONFIRM);
 				return 1;
 			}
 		}
 		return 0;
-	} else if (resource == &bread || resource == &apple || resource == &rawFish || resource == &cookedFish || resource == &carrot || resource == &potato || resource == &rawBeef || resource == &cookedSteak || resource == &rawPork || resource == &cookedPork || resource == &egg) {
-		if (player->mob.health < player->mob.maxHealth && player_payStamina(player, resource->add.food.staminaCost)) {
-			mob_heal(&player->mob, resource->add.food.heal);
+	} else if (resource->type == RES_TYPE_FOOD) {
+		if (player->mob.health < player->mob.maxHealth && player_payStamina(player, resource->food.staminaCost)) {
+			mob_heal(&player->mob, resource->food.heal);
 			sound_play(SND_CONFIRM);
 			return 1;
 		}
