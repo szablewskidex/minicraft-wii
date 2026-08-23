@@ -214,17 +214,97 @@ char tile_mayPass(TileID id, Level* level, int x, int y, Entity* e){
         }
     #endif
 
-	switch (id) {
-		case HARD_ROCK:
-		case ROCK:
-			if (e->type == PLAYER && ((Player*)e)->onMountain) {
-				return 1;
+	if (e->type == PLAYER) {
+		Player* p = (Player*)e;
+		TileID curTile = (level) ? level_get_tile(level, p->mob.entity.x >> 4, p->mob.entity.y >> 4) : GRASS;
+
+		if (id == LADDER_TILE) {
+			return 1; // Ladder is the doorway between ground and mountain
+		}
+
+		if (p->onMountain) {
+			// On mountain plateau: can walk on rocks and mountain floors, cannot walk off cliff without ladder
+			switch (id) {
+				case ROCK:
+				case HARD_ROCK:
+				case WOOD_FLOOR:
+				case STONE_FLOOR:
+				case LADDER_TILE:
+					return 1;
+				case WOOD_WALL:
+				case STONE_WALL:
+				case GLASS_WALL:
+				case CACTUS:
+				case GEM_ORE:
+				case GOLD_ORE:
+				case IRON_ORE:
+				case POT_TILE:
+				case TOMBSTONE_TILE:
+				case FENCE_TILE:
+					return 0; // Solid walls
+				case GRASS:
+				case DIRT:
+				case SAND:
+				case DIRT_PATH:
+				case FARMLAND:
+				case WHEAT:
+				case WATER:
+				case HOLE:
+				case LAVA:
+				default:
+					if (curTile == LADDER_TILE) {
+						return 1; // Allowed to step down from ladder to ground
+					}
+					return 0; // Cliff edge: can only descend using a ladder
 			}
-			return 0;
+		} else {
+			// On normal ground level: cannot walk onto rocks/walls without a ladder
+			switch (id) {
+				case ROCK:
+				case HARD_ROCK:
+					if (curTile == LADDER_TILE) {
+						return 1; // Allowed to climb up from ladder onto rock
+					}
+					return 0;
+				case CACTUS:
+				case GEM_ORE:
+				case GOLD_ORE:
+				case IRON_ORE:
+				// XXX unused case STONE:
+				case TREE:
+				case BIRCH_TREE:
+				case SPRUCE_TREE:
+				case WOOD_WALL:
+				case STONE_WALL:
+				case GLASS_WALL:
+				case POT_TILE:
+				case TOMBSTONE_TILE:
+				case FENCE_TILE:
+					return 0;
+				case CLOUD_CACTUS:
+				case INFINITE_FALL:
+					return 0;
+				case HOLE:
+				case LAVA:
+				case WATER:
+					return call_entity_canSwim(e);
+				case WOOD_FLOOR:
+				case STONE_FLOOR:
+				case LADDER_TILE:
+				case CLOUD:
+				default:
+					return 1;
+			}
+		}
+	}
+
+	switch (id) {
 		case CACTUS:
+		case HARD_ROCK:
 		case GEM_ORE:
 		case GOLD_ORE:
 		case IRON_ORE:
+		case ROCK:
 		// XXX unused case STONE:
 		case TREE:
 		case BIRCH_TREE:

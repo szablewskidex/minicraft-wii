@@ -425,31 +425,16 @@ void player_tick(Player* player){
 	if (left.down) --xa;
 	if (right.down) ++xa;
 
-	// Update Mountain Climbing status based on current and adjacent tiles
+	// Update elevation status
 	if (player->mob.entity.level) {
 		int px = player->mob.entity.x >> 4;
 		int py = player->mob.entity.y >> 4;
 		TileID curTile = level_get_tile(player->mob.entity.level, px, py);
 
-		if (curTile == LADDER_TILE) {
+		if (curTile == ROCK || curTile == HARD_ROCK) {
 			player->onMountain = 1;
-		} else if (curTile == ROCK || curTile == HARD_ROCK) {
-			player->onMountain = 1;
-		} else if (player->onMountain) {
-			if (curTile == GRASS || curTile == SAND || curTile == WATER || curTile == HOLE) {
-				int nearMountain = 0;
-				for (int dy = -1; dy <= 1; ++dy) {
-					for (int dx = -1; dx <= 1; ++dx) {
-						TileID t = level_get_tile(player->mob.entity.level, px + dx, py + dy);
-						if (t == LADDER_TILE || t == ROCK || t == HARD_ROCK) {
-							nearMountain = 1;
-						}
-					}
-				}
-				if (!nearMountain) {
-					player->onMountain = 0;
-				}
-			}
+		} else if (curTile == GRASS || curTile == DIRT || curTile == SAND || curTile == DIRT_PATH || curTile == WATER || curTile == HOLE) {
+			player->onMountain = 0;
 		}
 	}
 
