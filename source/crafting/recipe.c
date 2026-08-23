@@ -43,6 +43,15 @@ void resourcerecipe_create(Recipe* recipe, Resource* resource) {
 }
 
 
+void resourcerecipe_create_cnt(Recipe* recipe, Resource* resource, int count) {
+	Item item;
+	resourceitem_create_cnt(&item, resource, count);
+	recipe_create(recipe, &item);
+	recipe->add.resource.resource = resource;
+	recipe->id = rip_RESOURCE;
+}
+
+
 void toolrecipe_create(Recipe* recipe, ToolType type, int level) {
 	Item item;
 	toolitem_create(&item, type, level);

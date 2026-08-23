@@ -120,6 +120,9 @@ static const ItemTranslation item_translations[] = {
     { "Lantern", "Latarnia", "Laterne" },
     { "Bed", "Lozko", "Bett" },
     { "Door", "Drzwi", "Tuer" },
+    { "Torch", "Pochodnia", "Fackel" },
+    { "Wildflower", "Dzikie Kwiaty", "Wildblumen" },
+    { "Path", "Sciezka", "Pfad" },
     { "Pow Glove", "Rekawica", "Krafthandschuh" },
     { "Power Glove", "Rekawica", "Krafthandschuh" },
     // Tools (Full & Abbreviated names)

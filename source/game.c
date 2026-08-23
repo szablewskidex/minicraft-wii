@@ -500,8 +500,12 @@ void game_renderGui() {
                     pix_col = getColor(321);
                 } else if (t == STAIRS_DOWN || t == STAIRS_UP) {
                     pix_col = getColor(550);
-                } else if (t == GRASS || t == FLOWER) {
-                    pix_col = (t == FLOWER) ? getColor(405) : getColor(040);
+                } else if (t == GRASS || t == FLOWER || t == WILDFLOWER) {
+                    pix_col = getColor(040); // Clean green grass on minimap (flowers not marked)
+                } else if (t == DIRT_PATH) {
+                    pix_col = getColor(210); // Earthy path on minimap
+                } else if (t == TORCH_TILE) {
+                    pix_col = getColor(550); // Glowing yellow torch on minimap
                 } else if (t == CACTUS || t == CLOUD_CACTUS) {
                     pix_col = getColor(031);
                 } else if (t == CLOUD) {

@@ -28,7 +28,10 @@ typedef enum tileid_{
 	WOOD_FLOOR,
 	WOOD_WALL,
 	BIRCH_TREE,
-	SPRUCE_TREE
+	SPRUCE_TREE,
+	WILDFLOWER,
+	DIRT_PATH,
+	TORCH_TILE
 } TileID;
 
 #endif /* LEVEL_TILE_TILEIDS_H_ */

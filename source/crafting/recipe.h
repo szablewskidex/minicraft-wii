@@ -33,6 +33,7 @@ typedef struct _Recipe{
 void recipe_create(Recipe* recipe, Item* result);
 void furniturerecipe_create(Recipe* recipe, EntityId furniture);
 void resourcerecipe_create(Recipe* recipe, struct _Resource* resource);
+void resourcerecipe_create_cnt(Recipe* recipe, struct _Resource* resource, int count);
 void toolrecipe_create(Recipe* recipe, ToolType type, int level);
 
 void recipe_addCost(Recipe* recipe, struct _Resource* resource, int count);

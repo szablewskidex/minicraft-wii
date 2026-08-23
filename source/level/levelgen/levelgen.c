@@ -389,6 +389,54 @@ void createTopMap(unsigned char** map_r, unsigned char** data_r, int w, int h) {
 		}
 	}
 
+	// Generate wildflower meadows
+	for (int i = 0; i < w * h / 600; ++i) {
+		int x = random_next_int(&lg_random, w);
+		int y = random_next_int(&lg_random, h);
+
+		for (int j = 0; j < 25; ++j) {
+			int xx = x + random_next_int(&lg_random, 6) - random_next_int(&lg_random, 6);
+			int yy = y + random_next_int(&lg_random, 6) - random_next_int(&lg_random, 6);
+
+			if (xx >= 0 && yy >= 0 && xx < w && yy < h) {
+				if (map[xx + yy * w] == GRASS) {
+					map[xx + yy * w] = WILDFLOWER;
+				}
+			}
+		}
+	}
+
+	// Generate abandoned winding paths across the world
+	int numPaths = (w * h) / 3000 + 4;
+	for (int p = 0; p < numPaths; ++p) {
+		int px = random_next_int(&lg_random, w - 20) + 10;
+		int py = random_next_int(&lg_random, h - 20) + 10;
+		int pathLen = 30 + random_next_int(&lg_random, 40);
+		int dir = random_next_int(&lg_random, 4);
+
+		for (int s = 0; s < pathLen; ++s) {
+			if (px >= 1 && py >= 1 && px < w - 1 && py < h - 1) {
+				if (map[px + py * w] == GRASS || map[px + py * w] == DIRT) {
+					map[px + py * w] = DIRT_PATH;
+				}
+				if (random_next_int(&lg_random, 2) == 0) {
+					int ox = px + (random_next_int(&lg_random, 2) == 0 ? 1 : -1);
+					if (ox >= 1 && ox < w - 1 && map[ox + py * w] == GRASS) {
+						map[ox + py * w] = DIRT_PATH;
+					}
+				}
+			}
+
+			if (random_next_int(&lg_random, 4) == 0) {
+				dir = (dir + (random_next_int(&lg_random, 2) == 0 ? 1 : 3)) % 4;
+			}
+			if (dir == 0) py--;
+			else if (dir == 1) px++;
+			else if (dir == 2) py++;
+			else px--;
+		}
+	}
+
 	for (int i = 0; i < w * h / 100; ++i) {
 		int xx = random_next_int(&lg_random, w);
 		int yy = random_next_int(&lg_random, h);

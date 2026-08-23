@@ -21,6 +21,9 @@
 #include "farmland.h"
 #include "wood_floor_tile.h"
 #include "wood_wall_tile.h"
+#include "torch_tile.h"
+#include "wildflower_tile.h"
+#include "path_tile.h"
 
 #include "../../gfx/screen.h"
 #include "../../item/resource/resource.h"
@@ -68,6 +71,9 @@ void init_tiles(){
 	tile_init(CLOUD_CACTUS);
 	woodfloortile_init(WOOD_FLOOR);
 	woodwalltile_init(WOOD_WALL);
+	wildflowertile_init(WILDFLOWER);
+	pathtile_init(DIRT_PATH);
+	torchtile_init(TORCH_TILE);
 }
 
 void tile_init(TileID id){
@@ -141,6 +147,15 @@ void tile_render(TileID id, Screen* screen, Level* level, int x, int y){
 		case WOOD_WALL:
 			woodwalltile_render(id, screen, level, x, y);
 			break;
+		case WILDFLOWER:
+			wildflowertile_render(id, screen, level, x, y);
+			break;
+		case DIRT_PATH:
+			pathtile_render(id, screen, level, x, y);
+			break;
+		case TORCH_TILE:
+			torchtile_render(id, screen, level, x, y);
+			break;
 		case WATER:
 			watertile_render(id, screen, level, x, y);
 			break;
@@ -198,6 +213,8 @@ int tile_getLightRadius(TileID id, Level* level, int x, int y){
 	switch(id){
 		case LAVA:
 			return 6;
+		case TORCH_TILE:
+			return 5;
 		default:
 			return 0;
 	}
@@ -239,6 +256,15 @@ void tile_hurt(TileID id, Level* level, int x, int y, Mob* source, int dmg, int 
 			break;
 		case WOOD_WALL:
 			woodwalltile_hurt(id, level, x, y, source, dmg, attackDir);
+			break;
+		case WILDFLOWER:
+			wildflowertile_hurt(id, level, x, y, source, dmg, attackDir);
+			break;
+		case DIRT_PATH:
+			pathtile_hurt(id, level, x, y, source, dmg, attackDir);
+			break;
+		case TORCH_TILE:
+			torchtile_hurt(id, level, x, y, source, dmg, attackDir);
 			break;
 		case WHEAT:
 			wheattile_hurt(id, level, x, y, source, dmg, attackDir);
@@ -364,6 +390,10 @@ char tile_interact(TileID id, Level* level, int xt, int yt, struct _Player* play
 			return wheattile_interact(id, level, xt, yt, player, item, attackDir);
 		case FLOWER:
 			return flowertile_interact(id, level, xt, yt, player, item, attackDir);
+		case DIRT_PATH:
+			return pathtile_interact(id, level, xt, yt, player, item, attackDir);
+		case TORCH_TILE:
+			return torchtile_interact(id, level, xt, yt, player, item, attackDir);
 		default:
 			return 0;
 	}

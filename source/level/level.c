@@ -74,10 +74,11 @@ void level_init(Level* lvl, int w, int h, int level, Level* parent) {
 	}
 
 	if (level < 0) {
-		// Generate 3 underground dungeon rooms with treasure chests!
-		for (int d = 0; d < 3; ++d) {
-			int rx = 15 + (d * 36) + random_next_int(&lvl->random, 10);
-			int ry = 15 + random_next_int(&lvl->random, h - 35);
+		// Generate underground dungeon rooms with torches and treasure chests!
+		int numDungeons = (w >= 128) ? 4 : 2;
+		for (int d = 0; d < numDungeons; ++d) {
+			int rx = 12 + (d * (w / (numDungeons + 1))) + random_next_int(&lvl->random, 10);
+			int ry = 12 + random_next_int(&lvl->random, h - 30);
 			if (rx + 5 < w && ry + 5 < h) {
 				for (int dy = 0; dy < 5; ++dy) {
 					for (int dx = 0; dx < 5; ++dx) {
@@ -88,8 +89,12 @@ void level_init(Level* lvl, int w, int h, int level, Level* parent) {
 						}
 					}
 				}
-				// Door opening
+				// Entry opening
 				level_set_tile(lvl, rx + 2, ry, (int)DIRT, 0);
+
+				// Place torches inside dungeon room corners to illuminate it!
+				level_set_tile(lvl, rx + 1, ry + 1, (int)TORCH_TILE, 0);
+				level_set_tile(lvl, rx + 3, ry + 1, (int)TORCH_TILE, 0);
 
 				// Place treasure Chest in center
 				Chest* chest = malloc(sizeof(Chest));
@@ -98,13 +103,38 @@ void level_init(Level* lvl, int w, int h, int level, Level* parent) {
 					chest->furniture.entity.x = (rx + 2) * 16 + 8;
 					chest->furniture.entity.y = (ry + 2) * 16 + 8;
 
-					Item loot1, loot2, loot3;
-					resourceitem_create(&loot1, &gem);
-					inventory_addItem(&chest->inventory, &loot1);
-					resourceitem_create(&loot2, &ironIngot);
-					inventory_addItem(&chest->inventory, &loot2);
-					resourceitem_create(&loot3, &arrow);
-					inventory_addItem(&chest->inventory, &loot3);
+					Item loot1, loot2, loot3, loot4;
+					if (level == -1) {
+						// Upper Cave: Iron, Torches, Arrows, Steak
+						resourceitem_create_cnt(&loot1, &ironIngot, 4 + random_next_int(&lvl->random, 4));
+						inventory_addItem(&chest->inventory, &loot1);
+						resourceitem_create_cnt(&loot2, &torchItem, 8);
+						inventory_addItem(&chest->inventory, &loot2);
+						resourceitem_create_cnt(&loot3, &arrow, 15);
+						inventory_addItem(&chest->inventory, &loot3);
+						resourceitem_create_cnt(&loot4, &cookedSteak, 5);
+						inventory_addItem(&chest->inventory, &loot4);
+					} else if (level == -2) {
+						// Deep Cave: Gold, Gems, Bow, Torches
+						resourceitem_create_cnt(&loot1, &goldIngot, 5 + random_next_int(&lvl->random, 5));
+						inventory_addItem(&chest->inventory, &loot1);
+						resourceitem_create_cnt(&loot2, &gem, 3 + random_next_int(&lvl->random, 3));
+						inventory_addItem(&chest->inventory, &loot2);
+						resourceitem_create(&loot3, &bow);
+						inventory_addItem(&chest->inventory, &loot3);
+						resourceitem_create_cnt(&loot4, &torchItem, 12);
+						inventory_addItem(&chest->inventory, &loot4);
+					} else {
+						// Dungeon / Boss Cave: Gems, Gold, Steak, Torches
+						resourceitem_create_cnt(&loot1, &gem, 6 + random_next_int(&lvl->random, 6));
+						inventory_addItem(&chest->inventory, &loot1);
+						resourceitem_create_cnt(&loot2, &goldIngot, 8);
+						inventory_addItem(&chest->inventory, &loot2);
+						resourceitem_create_cnt(&loot3, &cookedSteak, 8);
+						inventory_addItem(&chest->inventory, &loot3);
+						resourceitem_create_cnt(&loot4, &torchItem, 16);
+						inventory_addItem(&chest->inventory, &loot4);
+					}
 
 					level_addEntity(lvl, (Entity*)chest);
 				}

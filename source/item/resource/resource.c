@@ -58,6 +58,7 @@ Resource cookedPork;
 Resource woodPlank;
 Resource woodWallItem;
 Resource egg;
+Resource torchItem;
 
 
 void init_resource(Resource* resource, char* name, int sprite, int color) {
@@ -135,6 +136,10 @@ void init_resources() {
 
 	// Egg in row 4 col 14 (Exact user selection!)
 	init_food_resource(&egg, "Egg", 14 + 4 * 32, getColor4(-1, 310, 542, 555), 1, 2);
+
+	// Torch item (Row 41 col 24)
+	static TileID torch_sources[] = {GRASS, DIRT, SAND, FARMLAND, ROCK, HARD_ROCK, WOOD_FLOOR, DIRT_PATH};
+	init_plantable_resource(&torchItem, "Torch", 24 + 41 * 32, getColor4(-1, 000, 520, 550), TORCH_TILE, torch_sources, sizeof(torch_sources)/sizeof(TileID));
 
 	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources)/sizeof(TileID));
 	init_resource(&gem, "gem", 13 + 4 * 32, getColor4(-1, 101, 404, 545));
