@@ -13,8 +13,8 @@ void bat_create(Bat* bat) {
     mob_create(&bat->mob);
     bat->mob.entity.type = BAT;
     bat->mob.health = bat->mob.maxHealth = 4;
-    bat->mob.entity.xr = 6;
-    bat->mob.entity.yr = 6;
+    bat->mob.entity.xr = 10;
+    bat->mob.entity.yr = 10;
     bat->xa = bat->ya = 0;
     bat->randomWalkTime = 0;
 }
@@ -36,23 +36,23 @@ void bat_tick(Bat* bat) {
         int d2 = xd * xd + yd * yd;
 
         if (d2 < 80 * 80) {
-            // Swooping towards player at comfortable balanced speed (2/3 of player speed)
-            speed = (bat->mob.tickTime % 3 != 0);
+            // Slow, easy to hit swooping (half speed: 1px per 3 ticks)
+            speed = (bat->mob.tickTime % 3 == 0);
             bat->xa = (xd > 0) ? 1 : ((xd < 0) ? -1 : 0);
             bat->ya = (yd > 0) ? 1 : ((yd < 0) ? -1 : 0);
         } else {
-            // Idle wandering at half speed
-            speed = (bat->mob.tickTime & 1);
+            // Very slow idle wandering (1px per 4 ticks)
+            speed = (bat->mob.tickTime % 4 == 0);
             if (--bat->randomWalkTime <= 0) {
-                bat->randomWalkTime = 20 + random_next_int(random, 30);
+                bat->randomWalkTime = 25 + random_next_int(random, 35);
                 bat->xa = random_next_int(random, 3) - 1;
                 bat->ya = random_next_int(random, 3) - 1;
             }
         }
     } else {
-        speed = (bat->mob.tickTime & 1);
+        speed = (bat->mob.tickTime % 4 == 0);
         if (--bat->randomWalkTime <= 0) {
-            bat->randomWalkTime = 20 + random_next_int(random, 30);
+            bat->randomWalkTime = 25 + random_next_int(random, 35);
             bat->xa = random_next_int(random, 3) - 1;
             bat->ya = random_next_int(random, 3) - 1;
         }

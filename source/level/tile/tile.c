@@ -219,58 +219,16 @@ char tile_mayPass(TileID id, Level* level, int x, int y, Entity* e){
 		TileID curTile = (level) ? level_get_tile(level, p->mob.entity.x >> 4, p->mob.entity.y >> 4) : GRASS;
 
 		if (id == LADDER_TILE) {
-			return 1; // Ladder is the doorway between ground and mountain
+			return 1; // Ladder is always accessible
 		}
 
-		if (p->onMountain) {
-			// On mountain plateau: can walk on rocks and mountain floors, cannot walk off cliff without ladder
+		if (curTile == LADDER_TILE) {
+			// On ladder: can step up onto mountain rocks or down onto ground
 			switch (id) {
-				case ROCK:
-				case HARD_ROCK:
-				case WOOD_FLOOR:
-				case STONE_FLOOR:
-				case LADDER_TILE:
-					return 1;
-				case WOOD_WALL:
-				case STONE_WALL:
-				case GLASS_WALL:
 				case CACTUS:
 				case GEM_ORE:
 				case GOLD_ORE:
 				case IRON_ORE:
-				case POT_TILE:
-				case TOMBSTONE_TILE:
-				case FENCE_TILE:
-					return 0; // Solid walls
-				case GRASS:
-				case DIRT:
-				case SAND:
-				case DIRT_PATH:
-				case FARMLAND:
-				case WHEAT:
-				case WATER:
-				case HOLE:
-				case LAVA:
-				default:
-					if (curTile == LADDER_TILE) {
-						return 1; // Allowed to step down from ladder to ground
-					}
-					return 0; // Cliff edge: can only descend using a ladder
-			}
-		} else {
-			// On normal ground level: cannot walk onto rocks/walls without a ladder
-			switch (id) {
-				case ROCK:
-				case HARD_ROCK:
-					if (curTile == LADDER_TILE) {
-						return 1; // Allowed to climb up from ladder onto rock
-					}
-					return 0;
-				case CACTUS:
-				case GEM_ORE:
-				case GOLD_ORE:
-				case IRON_ORE:
-				// XXX unused case STONE:
 				case TREE:
 				case BIRCH_TREE:
 				case SPRUCE_TREE:
@@ -280,10 +238,51 @@ char tile_mayPass(TileID id, Level* level, int x, int y, Entity* e){
 				case POT_TILE:
 				case TOMBSTONE_TILE:
 				case FENCE_TILE:
-					return 0;
 				case CLOUD_CACTUS:
 				case INFINITE_FALL:
-					return 0;
+					return 0; // Solid obstacles
+				case HOLE:
+				case LAVA:
+				case WATER:
+					return call_entity_canSwim(e);
+				default:
+					return 1; // Allowed to step onto rock, grass, floors, etc.
+			}
+		}
+
+		if (curTile == ROCK || curTile == HARD_ROCK) {
+			// Standing on top of mountain: can walk on rocks, hard rocks, mountain floors; CANNOT jump off cliff onto ground without ladder
+			switch (id) {
+				case ROCK:
+				case HARD_ROCK:
+				case WOOD_FLOOR:
+				case STONE_FLOOR:
+				case LADDER_TILE:
+					return 1;
+				default:
+					return 0; // Cliff drop! Cannot walk off mountain onto grass/dirt/water without ladder
+			}
+		} else {
+			// Standing on ground: CANNOT walk onto rocks or walls without ladder
+			switch (id) {
+				case ROCK:
+				case HARD_ROCK:
+				case CACTUS:
+				case GEM_ORE:
+				case GOLD_ORE:
+				case IRON_ORE:
+				case TREE:
+				case BIRCH_TREE:
+				case SPRUCE_TREE:
+				case WOOD_WALL:
+				case STONE_WALL:
+				case GLASS_WALL:
+				case POT_TILE:
+				case TOMBSTONE_TILE:
+				case FENCE_TILE:
+				case CLOUD_CACTUS:
+				case INFINITE_FALL:
+					return 0; // Completely solid and impassable from ground
 				case HOLE:
 				case LAVA:
 				case WATER:
