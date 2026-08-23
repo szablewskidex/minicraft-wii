@@ -372,7 +372,7 @@ void game_renderGui() {
     #endif
 
 	int hud_x = 12;
-	int hud_y = game_screen.h - 22;
+	int hud_y = (g_buttonPrompts) ? (game_screen.h - 30) : (game_screen.h - 22);
 
 	if (isingame){
         /// RENDER THE HUD with safe margins
@@ -380,23 +380,23 @@ void game_renderGui() {
 
             // Player's health bar
 			if (i < game_player->mob.health) {
-				render_screen(&game_screen, hud_x + i * 8, hud_y, 0 + 12 * 32, getColor4(000, 200, 500, 533), 0);
+				render_screen(&game_screen, hud_x + i * 8, hud_y, 0 + 12 * 32, getColor4(-1, 200, 500, 533), 0);
 			} else {
-				render_screen(&game_screen, hud_x + i * 8, hud_y, 0 + 12 * 32, getColor4(000, 100, 000, 000), 0);
+				render_screen(&game_screen, hud_x + i * 8, hud_y, 0 + 12 * 32, getColor4(-1, 100, 000, 000), 0);
 			}
 
             // Player's stamina bar
 			if (game_player->staminaRechargeDelay > 0) {
 				if (game_player->staminaRechargeDelay / 4 % 2 == 0) {
-					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(000, 555, 000, 000), 0);
+					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(-1, 555, 000, 000), 0);
 				} else {
-					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(000, 110, 000, 000), 0);
+					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(-1, 110, 000, 000), 0);
 				}
 			} else {
 				if (i < game_player->stamina) {
-					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(000, 220, 550, 553), 0);
+					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(-1, 220, 550, 553), 0);
 				} else {
-					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(000, 110, 000, 000), 0);
+					render_screen(&game_screen, hud_x + i * 8, hud_y + 8, 1 + 12 * 32, getColor4(-1, 110, 000, 000), 0);
 				}
 			}
 		}
@@ -410,9 +410,9 @@ void game_renderGui() {
         int exp_pct = (game_player->maxExp > 0) ? (game_player->exp * 8 / game_player->maxExp) : 0;
         for (int e = 0; e < 8; ++e) {
             if (e < exp_pct) {
-                render_screen(&game_screen, exp_x + e * 8, hud_y + 8, 2 + 12 * 32, getColor4(000, 050, 252, 050), 0);
+                render_screen(&game_screen, exp_x + e * 8, hud_y + 8, 2 + 12 * 32, getColor4(-1, 050, 252, 050), 0);
             } else {
-                render_screen(&game_screen, exp_x + e * 8, hud_y + 8, 2 + 12 * 32, getColor4(000, 020, 020, 020), 0);
+                render_screen(&game_screen, exp_x + e * 8, hud_y + 8, 2 + 12 * 32, getColor4(-1, 020, 020, 020), 0);
             }
         }
 
@@ -480,19 +480,19 @@ void game_renderGui() {
 
         // Render Minecraft-style HUD button prompt hints at bottom
         if (g_buttonPrompts) {
-            int py = game_screen.h - 10;
+            int py = game_screen.h - 13;
             int textColor = getColor4(-1, 000, 444, 555);
             int cur_x = (game_screen.w >= 400) ? 14 : 6;
 
             if (g_activeControllerType == 0) {
                 // GameCube Controller Prompts
-                render_screen(&game_screen, cur_x, py, 0 + 44 * 32, getColor4(-1, 000, 141, 252), 0);
+                render_screen(&game_screen, cur_x, py, 0 + 44 * 32, getColor4(-1, 000, 141, 555), 0);
                 cur_x += 9;
                 const char* t_atk = (g_currentLanguage == LANG_PL) ? "Atak" : "Attack";
                 font_draw((char*)t_atk, strlen(t_atk), &game_screen, cur_x, py, textColor);
                 cur_x += strlen(t_atk) * 8 + 8;
 
-                render_screen(&game_screen, cur_x, py, 2 + 44 * 32, getColor4(-1, 000, 444, 555), 0);
+                render_screen(&game_screen, cur_x, py, 2 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
                 cur_x += 9;
                 const char* t_inv = (g_currentLanguage == LANG_PL) ? "Plecak" : "Inv";
                 font_draw((char*)t_inv, strlen(t_inv), &game_screen, cur_x, py, textColor);
@@ -510,25 +510,25 @@ void game_renderGui() {
                 font_draw((char*)t_pau, strlen(t_pau), &game_screen, cur_x, py, textColor);
             } else {
                 // Wiimote Controller Prompts
-                render_screen(&game_screen, cur_x, py, 9 + 44 * 32, getColor4(-1, 000, 444, 555), 0);
+                render_screen(&game_screen, cur_x, py, 9 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
                 cur_x += 9;
                 const char* t_atk = (g_currentLanguage == LANG_PL) ? "Atak" : "Attack";
                 font_draw((char*)t_atk, strlen(t_atk), &game_screen, cur_x, py, textColor);
                 cur_x += strlen(t_atk) * 8 + 8;
 
-                render_screen(&game_screen, cur_x, py, 11 + 44 * 32, getColor4(-1, 000, 444, 555), 0);
+                render_screen(&game_screen, cur_x, py, 11 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
                 cur_x += 9;
                 const char* t_inv = (g_currentLanguage == LANG_PL) ? "Plecak" : "Inv";
                 font_draw((char*)t_inv, strlen(t_inv), &game_screen, cur_x, py, textColor);
                 cur_x += strlen(t_inv) * 8 + 8;
 
-                render_screen(&game_screen, cur_x, py, 10 + 44 * 32, getColor4(-1, 000, 444, 555), 0);
+                render_screen(&game_screen, cur_x, py, 10 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
                 cur_x += 9;
                 const char* t_itm = (g_currentLanguage == LANG_PL) ? "Przedmiot" : "Item";
                 font_draw((char*)t_itm, strlen(t_itm), &game_screen, cur_x, py, textColor);
                 cur_x += strlen(t_itm) * 8 + 8;
 
-                render_screen(&game_screen, cur_x, py, 13 + 44 * 32, getColor4(-1, 000, 444, 555), 0);
+                render_screen(&game_screen, cur_x, py, 13 + 44 * 32, getColor4(-1, 000, 333, 555), 0);
                 cur_x += 9;
                 const char* t_pau = (g_currentLanguage == LANG_PL) ? "Pauza" : "Pause";
                 font_draw((char*)t_pau, strlen(t_pau), &game_screen, cur_x, py, textColor);
