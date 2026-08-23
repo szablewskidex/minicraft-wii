@@ -59,6 +59,10 @@ Resource woodPlank;
 Resource woodWallItem;
 Resource egg;
 Resource torchItem;
+Resource stoneWallItem;
+Resource potItem;
+Resource tombstoneItem;
+Resource fenceItem;
 
 
 void init_resource(Resource* resource, char* name, int sprite, int color) {
@@ -140,6 +144,18 @@ void init_resources() {
 	// Torch item (Row 41 col 24)
 	static TileID torch_sources[] = {GRASS, DIRT, SAND, FARMLAND, ROCK, HARD_ROCK, WOOD_FLOOR, DIRT_PATH};
 	init_plantable_resource(&torchItem, "Torch", 24 + 41 * 32, getColor4(-1, 000, 520, 550), TORCH_TILE, torch_sources, sizeof(torch_sources)/sizeof(TileID));
+
+	static TileID stonewall_sources[] = {DIRT, GRASS, SAND, WOOD_FLOOR, HOLE, DIRT_PATH};
+	init_plantable_resource(&stoneWallItem, "Stone Wall", 25 + 41 * 32, getColor4(-1, 111, 333, 555), STONE_WALL, stonewall_sources, sizeof(stonewall_sources)/sizeof(TileID));
+
+	static TileID pot_sources[] = {DIRT, GRASS, SAND, WOOD_FLOOR, DIRT_PATH};
+	init_plantable_resource(&potItem, "Clay Pot", 26 + 41 * 32, getColor4(-1, 210, 420, 542), POT_TILE, pot_sources, sizeof(pot_sources)/sizeof(TileID));
+
+	static TileID tombstone_sources[] = {DIRT, GRASS, SAND, DIRT_PATH};
+	init_plantable_resource(&tombstoneItem, "Tombstone", 27 + 41 * 32, getColor4(-1, 111, 333, 555), TOMBSTONE_TILE, tombstone_sources, sizeof(tombstone_sources)/sizeof(TileID));
+
+	static TileID fence_sources[] = {DIRT, GRASS, SAND, WOOD_FLOOR, DIRT_PATH};
+	init_plantable_resource(&fenceItem, "Fence", 28 + 41 * 32, getColor4(-1, 100, 321, 431), FENCE_TILE, fence_sources, sizeof(fence_sources)/sizeof(TileID));
 
 	init_plantable_resource(&cloud, "cloud", 2 + 4 * 32, getColor4(-1, 222, 555, 444), CLOUD, cloud_sources, sizeof(cloud_sources)/sizeof(TileID));
 	init_resource(&gem, "gem", 13 + 4 * 32, getColor4(-1, 101, 404, 545));

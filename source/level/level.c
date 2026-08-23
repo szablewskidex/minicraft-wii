@@ -74,7 +74,7 @@ void level_init(Level* lvl, int w, int h, int level, Level* parent) {
 	}
 
 	if (level < 0) {
-		// Generate underground dungeon rooms with torches and treasure chests!
+		// Generate underground dungeon rooms with stone walls, pots, torches and treasure chests!
 		int numDungeons = (w >= 128) ? 4 : 2;
 		for (int d = 0; d < numDungeons; ++d) {
 			int rx = 12 + (d * (w / (numDungeons + 1))) + random_next_int(&lvl->random, 10);
@@ -83,7 +83,7 @@ void level_init(Level* lvl, int w, int h, int level, Level* parent) {
 				for (int dy = 0; dy < 5; ++dy) {
 					for (int dx = 0; dx < 5; ++dx) {
 						if (dx == 0 || dx == 4 || dy == 0 || dy == 4) {
-							level_set_tile(lvl, rx + dx, ry + dy, (int)HARD_ROCK, 0);
+							level_set_tile(lvl, rx + dx, ry + dy, (int)STONE_WALL, 0);
 						} else {
 							level_set_tile(lvl, rx + dx, ry + dy, (int)DIRT, 0);
 						}
@@ -92,9 +92,13 @@ void level_init(Level* lvl, int w, int h, int level, Level* parent) {
 				// Entry opening
 				level_set_tile(lvl, rx + 2, ry, (int)DIRT, 0);
 
-				// Place torches inside dungeon room corners to illuminate it!
+				// Place torches inside dungeon room top corners
 				level_set_tile(lvl, rx + 1, ry + 1, (int)TORCH_TILE, 0);
 				level_set_tile(lvl, rx + 3, ry + 1, (int)TORCH_TILE, 0);
+
+				// Place smashable clay pots in bottom corners!
+				level_set_tile(lvl, rx + 1, ry + 3, (int)POT_TILE, 0);
+				level_set_tile(lvl, rx + 3, ry + 3, (int)POT_TILE, 0);
 
 				// Place treasure Chest in center
 				Chest* chest = malloc(sizeof(Chest));
@@ -138,6 +142,23 @@ void level_init(Level* lvl, int w, int h, int level, Level* parent) {
 
 					level_addEntity(lvl, (Entity*)chest);
 				}
+			}
+		}
+	}
+
+	if (level == 0) {
+		// Generate 2 small atmospheric Graveyards on surface
+		for (int g = 0; g < 2; ++g) {
+			int gx = 16 + random_next_int(&lvl->random, w - 40);
+			int gy = 16 + random_next_int(&lvl->random, h - 40);
+			if (level_get_tile(lvl, gx, gy) == GRASS) {
+				level_set_tile(lvl, gx, gy, (int)TOMBSTONE_TILE, 0);
+				level_set_tile(lvl, gx + 2, gy, (int)TOMBSTONE_TILE, 0);
+				level_set_tile(lvl, gx + 1, gy + 1, (int)TOMBSTONE_TILE, 0);
+				level_set_tile(lvl, gx - 1, gy, (int)FENCE_TILE, 0);
+				level_set_tile(lvl, gx + 3, gy, (int)FENCE_TILE, 0);
+				level_set_tile(lvl, gx, gy - 1, (int)FENCE_TILE, 0);
+				level_set_tile(lvl, gx + 2, gy - 1, (int)FENCE_TILE, 0);
 			}
 		}
 	}

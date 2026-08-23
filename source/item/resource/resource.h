@@ -27,6 +27,7 @@ extern Resource slime, glass, cloth, cloud, gem, leather, boat;
 extern Resource leatherArmor, ironArmor, goldArmor, gemArmor;
 extern Resource bow, arrow, fishingRod, rawFish, cookedFish, shears, carrot, potato;
 extern Resource rawBeef, cookedSteak, rawPork, cookedPork, woodPlank, woodWallItem, egg, torchItem;
+extern Resource stoneWallItem, potItem, tombstoneItem, fenceItem;
 
 
 void init_resources();

@@ -518,6 +518,18 @@ void game_renderGui() {
             }
         }
 
+        // Minimap depth level indicator (LVL 0, LVL -1, LVL -2, LVL -3, LVL +1)
+        char depth_str[24];
+        if (game_level->depth == 0) {
+            snprintf(depth_str, sizeof(depth_str), "LVL 0");
+        } else if (game_level->depth > 0) {
+            snprintf(depth_str, sizeof(depth_str), "LVL +%d", game_level->depth);
+        } else {
+            snprintf(depth_str, sizeof(depth_str), "LVL %d", game_level->depth);
+        }
+        int dlen = strlen(depth_str);
+        font_draw(depth_str, dlen, &game_screen, map_x + (map_w - dlen * 8) / 2, map_y + map_h + 3, getColor4(-1, 000, 444, 550));
+
         // Render Minecraft-style HUD button prompt hints at bottom
         if (g_buttonPrompts) {
             int py = game_screen.h - 18;

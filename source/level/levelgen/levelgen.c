@@ -175,17 +175,20 @@ void createUndergroundMap(unsigned char** map_r, unsigned char** data_r, int w, 
 			int x = random_next_int(&lg_random, w-20) + 10;
 			int y = random_next_int(&lg_random, h-20) + 10;
 
-			for (int yy = y - 1; yy <= y + 1; ++yy) {
-				for (int xx = x - 1; xx <= x + 1; ++xx) {
-					if (map[xx + yy*w] != ROCK) goto cont_loop_1;
+			if (map[x + y * w] == ROCK || map[x + y * w] == DIRT) {
+				map[x + y * w] = STAIRS_DOWN;
+				for (int yy = y - 1; yy <= y + 1; ++yy) {
+					for (int xx = x - 1; xx <= x + 1; ++xx) {
+						if (xx != x || yy != y) {
+							if (map[xx + yy * w] == ROCK || map[xx + yy * w] == HARD_ROCK) {
+								map[xx + yy * w] = DIRT;
+							}
+						}
+					}
 				}
+				++count;
+				if (count == 4) break;
 			}
-
-			map[x + y * w] = STAIRS_DOWN;
-			++count;
-			if (count == 4) break;
-			cont_loop_1:
-			continue;
 		}
 	}
 

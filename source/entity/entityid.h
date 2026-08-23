@@ -28,7 +28,9 @@ typedef enum{
 	FROG,
 	DOOR,
 	EXPORB,
-	ARROW
+	ARROW,
+	BARREL,
+	SIGN
 } EntityId;
 
 #endif // ENTITYID_H

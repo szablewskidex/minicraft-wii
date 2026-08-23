@@ -103,6 +103,38 @@ void crafting_init() {
 	arraylist_push(&workbenchRecipes, recipe);
 
 	recipe = malloc(sizeof(Recipe));
+	resourcerecipe_create(recipe, &stoneWallItem);
+	recipe_addCost(recipe, &stone, 2);
+	arraylist_push(&workbenchRecipes, recipe);
+
+	recipe = malloc(sizeof(Recipe));
+	resourcerecipe_create_cnt(recipe, &fenceItem, 2);
+	recipe_addCost(recipe, &wood, 2);
+	arraylist_push(&workbenchRecipes, recipe);
+
+	recipe = malloc(sizeof(Recipe));
+	resourcerecipe_create(recipe, &potItem);
+	recipe_addCost(recipe, &dirt, 2);
+	recipe_addCost(recipe, &sand, 2);
+	arraylist_push(&workbenchRecipes, recipe);
+
+	recipe = malloc(sizeof(Recipe));
+	furniturerecipe_create(recipe, BARREL);
+	recipe_addCost(recipe, &wood, 10);
+	recipe_addCost(recipe, &ironIngot, 2);
+	arraylist_push(&workbenchRecipes, recipe);
+
+	recipe = malloc(sizeof(Recipe));
+	furniturerecipe_create(recipe, SIGN);
+	recipe_addCost(recipe, &wood, 4);
+	arraylist_push(&workbenchRecipes, recipe);
+
+	recipe = malloc(sizeof(Recipe));
+	resourcerecipe_create(recipe, &tombstoneItem);
+	recipe_addCost(recipe, &stone, 4);
+	arraylist_push(&workbenchRecipes, recipe);
+
+	recipe = malloc(sizeof(Recipe));
 	toolrecipe_create(recipe, SWORD, 0);
 	recipe_addCost(recipe, &wood, 5);
 	arraylist_push(&workbenchRecipes, recipe);

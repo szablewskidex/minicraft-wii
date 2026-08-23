@@ -31,6 +31,8 @@
 #include "door.h"
 #include "exporb.h"
 #include "arrow.h"
+#include "barrel.h"
+#include "sign.h"
 #include "../item/item.h"
 
 #include <string.h>
@@ -64,6 +66,8 @@ void call_entity_tick(Entity* entity) {
 		case OVEN:
 		case WORKBENCH:
 		case DOOR:
+		case BARREL:
+		case SIGN:
 			furniture_tick((Furniture*)entity);
 			break;
 		case SLIME:
@@ -197,6 +201,8 @@ void call_entity_render(Entity* entity, Screen* screen) {
 		case LANTERN:
 		case OVEN:
 		case WORKBENCH:
+		case BARREL:
+		case SIGN:
 			furniture_render((Furniture *) entity, screen);
 			break;
 		case AIRWIZARD:
@@ -352,6 +358,8 @@ void call_entity_touchedBy(Entity* entity, Entity* e) {
 		case OVEN:
 		case WORKBENCH:
 		case DOOR:
+		case BARREL:
+		case SIGN:
 			furniture_touchedBy((Furniture *) entity, e);
 			break;
 		case SLIME:
@@ -423,6 +431,8 @@ char call_entity_use(Entity* entity, Player* player, int attackDir) {
 		case OVEN: return oven_use((Oven *) entity, player, attackDir);
 		case WORKBENCH: return workbench_use((Workbench *) entity, player, attackDir);
 		case DOOR: return door_use((Door *) entity, player, attackDir);
+		case BARREL: return barrel_use((Barrel *) entity, player, attackDir);
+		case SIGN: return sign_use((Sign *) entity, player, attackDir);
 		default: return 0;
 	}
 }
@@ -440,6 +450,8 @@ char call_entity_blocks(Entity* entity, Entity* e) {
 		case LANTERN:
 		case OVEN:
 		case WORKBENCH:
+		case BARREL:
+		case SIGN:
 			return 1;
 		case SLIME:
 		case ZOMBIE:
@@ -516,6 +528,14 @@ Furniture* entity_createFurniture(EntityId id) {
 			furn = malloc(sizeof(Door));
 			door_create((Door *) furn);
 			break;
+		case BARREL:
+			furn = malloc(sizeof(Barrel));
+			barrel_create((Barrel *) furn);
+			break;
+		case SIGN:
+			furn = malloc(sizeof(Sign));
+			sign_create((Sign *) furn);
+			break;
 		default:
 			break;
 	}
@@ -532,6 +552,8 @@ char entity_isfurniture(Entity* entity) {
 		case OVEN:
 		case WORKBENCH:
 		case DOOR:
+		case BARREL:
+		case SIGN:
 			return 1;
 		default:
 			return 0;

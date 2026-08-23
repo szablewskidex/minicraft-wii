@@ -24,6 +24,10 @@
 #include "torch_tile.h"
 #include "wildflower_tile.h"
 #include "path_tile.h"
+#include "stone_wall_tile.h"
+#include "pot_tile.h"
+#include "tombstone_tile.h"
+#include "fence_tile.h"
 
 #include "../../gfx/screen.h"
 #include "../../item/resource/resource.h"
@@ -74,6 +78,10 @@ void init_tiles(){
 	wildflowertile_init(WILDFLOWER);
 	pathtile_init(DIRT_PATH);
 	torchtile_init(TORCH_TILE);
+	stonewalltile_init(STONE_WALL);
+	pottile_init(POT_TILE);
+	tombstonetile_init(TOMBSTONE_TILE);
+	fencetile_init(FENCE_TILE);
 }
 
 void tile_init(TileID id){
@@ -156,6 +164,18 @@ void tile_render(TileID id, Screen* screen, Level* level, int x, int y){
 		case TORCH_TILE:
 			torchtile_render(id, screen, level, x, y);
 			break;
+		case STONE_WALL:
+			stonewalltile_render(id, screen, level, x, y);
+			break;
+		case POT_TILE:
+			pottile_render(id, screen, level, x, y);
+			break;
+		case TOMBSTONE_TILE:
+			tombstonetile_render(id, screen, level, x, y);
+			break;
+		case FENCE_TILE:
+			fencetile_render(id, screen, level, x, y);
+			break;
 		case WATER:
 			watertile_render(id, screen, level, x, y);
 			break;
@@ -190,6 +210,10 @@ char tile_mayPass(TileID id, Level* level, int x, int y, Entity* e){
 		case BIRCH_TREE:
 		case SPRUCE_TREE:
 		case WOOD_WALL:
+		case STONE_WALL:
+		case POT_TILE:
+		case TOMBSTONE_TILE:
+		case FENCE_TILE:
 			return 0;
 		case CLOUD_CACTUS:
 		case INFINITE_FALL:
@@ -265,6 +289,18 @@ void tile_hurt(TileID id, Level* level, int x, int y, Mob* source, int dmg, int 
 			break;
 		case TORCH_TILE:
 			torchtile_hurt(id, level, x, y, source, dmg, attackDir);
+			break;
+		case STONE_WALL:
+			stonewalltile_hurt(id, level, x, y, source, dmg, attackDir);
+			break;
+		case POT_TILE:
+			pottile_hurt(id, level, x, y, source, dmg, attackDir);
+			break;
+		case TOMBSTONE_TILE:
+			tombstonetile_hurt(id, level, x, y, source, dmg, attackDir);
+			break;
+		case FENCE_TILE:
+			fencetile_hurt(id, level, x, y, source, dmg, attackDir);
 			break;
 		case WHEAT:
 			wheattile_hurt(id, level, x, y, source, dmg, attackDir);
@@ -386,6 +422,14 @@ char tile_interact(TileID id, Level* level, int xt, int yt, struct _Player* play
 			return woodfloortile_interact(id, level, xt, yt, player, item, attackDir);
 		case WOOD_WALL:
 			return woodwalltile_interact(id, level, xt, yt, player, item, attackDir);
+		case STONE_WALL:
+			return stonewalltile_interact(id, level, xt, yt, player, item, attackDir);
+		case POT_TILE:
+			return pottile_interact(id, level, xt, yt, player, item, attackDir);
+		case TOMBSTONE_TILE:
+			return tombstonetile_interact(id, level, xt, yt, player, item, attackDir);
+		case FENCE_TILE:
+			return fencetile_interact(id, level, xt, yt, player, item, attackDir);
 		case WHEAT:
 			return wheattile_interact(id, level, xt, yt, player, item, attackDir);
 		case FLOWER:

@@ -161,6 +161,12 @@ static const ItemTranslation item_translations[] = {
     { "Iron Hoe", "Zel. Motyka", "Eisenhacke" },
     { "Gold Hoe", "Zlot. Motyka", "Goldhacke" },
     { "Gem Hoe", "Djam. Motyka", "Diamanthacke" },
+    { "Stone Wall", "Kam. Sciana", "Steinwand" },
+    { "Clay Pot", "Dzbanek", "Krug" },
+    { "Tombstone", "Nagrobek", "Grabstein" },
+    { "Fence", "Plot", "Zaun" },
+    { "Barrel", "Beczka", "Fass" },
+    { "Sign", "Tabliczka", "Schild" },
     { NULL, NULL, NULL }
 };
 

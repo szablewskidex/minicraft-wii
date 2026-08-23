@@ -53,6 +53,22 @@ void furniture_render(Furniture* furniture, Screen* screen){
 	int sprite = furniture->sprite;
 	int col = furniture->col;
 
+	if (furniture->entity.type == BARREL) {
+		render_screen(screen, x - 8, y - 8 - 4, (24 + 0) + 42 * 32, col, 0);
+		render_screen(screen, x - 0, y - 8 - 4, (24 + 1) + 42 * 32, col, 0);
+		render_screen(screen, x - 8, y - 0 - 4, (24 + 0) + 43 * 32, col, 0);
+		render_screen(screen, x - 0, y - 0 - 4, (24 + 1) + 43 * 32, col, 0);
+		return;
+	}
+
+	if (furniture->entity.type == SIGN) {
+		render_screen(screen, x - 8, y - 8 - 4, (26 + 0) + 42 * 32, col, 0);
+		render_screen(screen, x - 0, y - 8 - 4, (26 + 1) + 42 * 32, col, 0);
+		render_screen(screen, x - 8, y - 0 - 4, (26 + 0) + 43 * 32, col, 0);
+		render_screen(screen, x - 0, y - 0 - 4, (26 + 1) + 43 * 32, col, 0);
+		return;
+	}
+
 	render_screen(screen, x - 8, y - 8 - 4, sprite * 2 + 8 * 32, col, 0);
 	render_screen(screen, x - 0, y - 8 - 4, sprite * 2 + 8 * 32 + 1, col, 0);
 	render_screen(screen, x - 8, y - 0 - 4, sprite * 2 + 8 * 32 + 32, col, 0);

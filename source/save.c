@@ -35,6 +35,9 @@
 #define SAVE_VERSION_2 2
 #define SAVE_VERSION_3 3
 
+#include "entity/barrel.h"
+#include "entity/sign.h"
+
 static Resource* resource_list[] = {
     &wood, &stone, &flower, &acorn, &dirt, &sand, &cactusFlower, &seeds,
     &wheat, &bread, &apple, &coal, &ironOre, &goldOre, &ironIngot, &goldIngot,
@@ -42,7 +45,7 @@ static Resource* resource_list[] = {
     &leatherArmor, &ironArmor, &goldArmor, &gemArmor,
     &bow, &arrow, &fishingRod, &rawFish, &cookedFish, &shears, &carrot, &potato,
     &rawBeef, &cookedSteak, &rawPork, &cookedPork, &woodPlank, &woodWallItem,
-    &egg
+    &egg, &torchItem, &stoneWallItem, &potItem, &tombstoneItem, &fenceItem
 };
 #define NUM_RESOURCES (sizeof(resource_list) / sizeof(Resource*))
 
@@ -126,6 +129,8 @@ static void load_inventory(Inventory* inv, FILE* f) {
             else if (f_type == LANTERN) lantern_create((Lantern*)furn);
             else if (f_type == BED) bed_create((Bed*)furn);
             else if (f_type == DOOR) door_create((Door*)furn);
+            else if (f_type == BARREL) barrel_create((Barrel*)furn);
+            else if (f_type == SIGN) sign_create((Sign*)furn);
             else workbench_create((Workbench*)furn);
             furnitureitem_create(item, furn);
             inventory_addItem(inv, item);
