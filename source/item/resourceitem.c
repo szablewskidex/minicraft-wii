@@ -82,9 +82,16 @@ void resourceitem_renderInventory(Item* item, Screen* screen, int x, int y){
 	} else {
 		int cc = item->add.resource.count;
 		if (cc > 999) cc = 999;
-		char text[64];
-		snprintf(text, sizeof(text), "%s %dx", tName, cc);
-		font_draw(text, strlen(text), screen, x + 8, y, getColor4(-1, 555, 555, 555));
+		
+		// 1. Item name on the left
+		font_draw((char*)tName, strlen(tName), screen, x + 8, y, getColor4(-1, 555, 555, 555));
+
+		// 2. Quantity right-aligned at the far right end of the box
+		char countText[16];
+		snprintf(countText, sizeof(countText), "%dx", cc);
+		int clen = strlen(countText);
+		int right_x = x + (14 * 8) - (clen * 8);
+		font_draw(countText, clen, screen, right_x, y, getColor4(-1, 555, 555, 555));
 	}
 }
 

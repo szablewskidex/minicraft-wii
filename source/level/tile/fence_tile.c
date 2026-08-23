@@ -1,4 +1,4 @@
-﻿#include "fence_tile.h"
+#include "fence_tile.h"
 #include "../level.h"
 #include "../../entity/itementity.h"
 #include "../../item/item.h"
@@ -16,11 +16,7 @@ void fencetile_init(TileID id) {
 }
 
 void fencetile_render(TileID id, Screen* screen, Level* level, int x, int y) {
-    int bgCol = (level->depth < 0) ? getColor4(111, 222, 333, 222) : getColor4(level->grassColor, level->grassColor, level->grassColor + 111, level->grassColor + 111);
-    render_screen(screen, (x * 16) + 0, (y * 16) + 0, 0, bgCol, 0);
-    render_screen(screen, (x * 16) + 8, (y * 16) + 0, 1, bgCol, 0);
-    render_screen(screen, (x * 16) + 0, (y * 16) + 8, 2, bgCol, 0);
-    render_screen(screen, (x * 16) + 8, (y * 16) + 8, 3, bgCol, 0);
+    tile_render((level->depth < 0) ? DIRT : GRASS, screen, level, x, y);
 
     int col = getColor4(-1, 100, 321, 431); // Rustic wooden fence
 

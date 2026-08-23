@@ -1,4 +1,4 @@
-﻿#include "tombstone_tile.h"
+#include "tombstone_tile.h"
 #include "../level.h"
 #include "../../entity/itementity.h"
 #include "../../entity/skeleton.h"
@@ -16,11 +16,7 @@ void tombstonetile_init(TileID id) {
 }
 
 void tombstonetile_render(TileID id, Screen* screen, Level* level, int x, int y) {
-    int bgCol = getColor4(level->grassColor, level->grassColor, level->grassColor + 111, level->grassColor + 111);
-    render_screen(screen, (x * 16) + 0, (y * 16) + 0, 0, bgCol, 0);
-    render_screen(screen, (x * 16) + 8, (y * 16) + 0, 1, bgCol, 0);
-    render_screen(screen, (x * 16) + 0, (y * 16) + 8, 2, bgCol, 0);
-    render_screen(screen, (x * 16) + 8, (y * 16) + 8, 3, bgCol, 0);
+    tile_render((level->depth < 0) ? DIRT : GRASS, screen, level, x, y);
 
     int col = getColor4(-1, 111, 333, 555); // Aged stone cross/grave
 
