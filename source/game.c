@@ -230,7 +230,7 @@ void game_reset() {
 	level_addEntity(game_level, &game_player->mob.entity);
 
 	for (int i = 0; i < 5; ++i) {
-        level_trySpawn(game_levels + i, 5000);
+        level_trySpawn(game_levels + i, 60);
     }
 }
 

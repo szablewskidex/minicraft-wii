@@ -201,6 +201,22 @@ void level_sortAndRender(Level* level, Screen* screen, ArrayList* list) {
 #include "../entity/frog.h"
 #include "../game.h"
 
+static int countLivingEntities(Level* level, int hostileOnly) {
+	int count = 0;
+	for (int i = 0; i < level->entities.size; ++i) {
+		Entity* e = (Entity*)level->entities.elements[i];
+		if (!e || e->removed) continue;
+		if (e->type == PLAYER || e->type == ITEMENTITY || e->type == EXPORB || e->type == ARROW) continue;
+		if (e->type == CHEST || e->type == WORKBENCH || e->type == FURNACE || e->type == OVEN || e->type == ANVIL || e->type == BED || e->type == LANTERN || e->type == DOOR) continue;
+
+		int isHostile = (e->type == ZOMBIE || e->type == SKELETON || e->type == CREEPER || e->type == KNIGHT || e->type == SLIME || e->type == AIRWIZARD);
+		if (hostileOnly == 1 && isHostile) count++;
+		else if (hostileOnly == 0 && !isHostile) count++;
+		else if (hostileOnly == -1) count++;
+	}
+	return count;
+}
+
 void level_trySpawn(Level* level, int count){
 	Random* random = &level->random;
 
@@ -222,32 +238,34 @@ void level_trySpawn(Level* level, int count){
 			int isNight = (dayTime > 12000 && dayTime < 22000);
 
 			if (!isNight) {
-				if (choice < 15) {
+				// Day: Cap passive animals at 20 max!
+				int passiveCount = countLivingEntities(level, 0);
+				if (passiveCount >= 20) return;
+
+				if (choice < 20) {
 					mob = malloc(sizeof(Cow));
 					cow_create((Cow *) mob);
-				} else if (choice < 30) {
+				} else if (choice < 40) {
 					mob = malloc(sizeof(Chicken));
 					chicken_create((Chicken *) mob);
-				} else if (choice < 45) {
+				} else if (choice < 60) {
 					mob = malloc(sizeof(Pig));
 					pig_create((Pig *) mob);
-				} else if (choice < 60) {
+				} else if (choice < 80) {
 					mob = malloc(sizeof(Sheep));
 					sheep_create((Sheep *) mob);
-				} else if (choice < 75) {
+				} else if (choice < 90) {
 					mob = malloc(sizeof(Crab));
 					crab_create((Crab *) mob);
-				} else if (choice < 88) {
+				} else {
 					mob = malloc(sizeof(Frog));
 					frog_create((Frog *) mob);
-				} else if (choice < 95) {
-					mob = malloc(sizeof(Slime));
-					slime_create((Slime *) mob, lvl);
-				} else {
-					mob = malloc(sizeof(Zombie));
-					zombie_create((Zombie *) mob, lvl);
 				}
 			} else {
+				// Night: Cap hostile night monsters at 18 max!
+				int monsterCount = countLivingEntities(level, 1);
+				if (monsterCount >= 18) return;
+
 				if (choice < 35) {
 					mob = malloc(sizeof(Zombie));
 					zombie_create((Zombie *) mob, lvl);
@@ -263,7 +281,10 @@ void level_trySpawn(Level* level, int count){
 				}
 			}
 		} else if (level->depth < 0) {
-			// Caves
+			// Underground Caves: Cap monsters at 20 max!
+			int caveMonsterCount = countLivingEntities(level, 1);
+			if (caveMonsterCount >= 20) return;
+
 			if (choice < 25) {
 				mob = malloc(sizeof(Slime));
 				slime_create((Slime *) mob, lvl);
@@ -281,6 +302,9 @@ void level_trySpawn(Level* level, int count){
 				knight_create((Knight *) mob, lvl);
 			}
 		} else {
+			int skyMonsterCount = countLivingEntities(level, 1);
+			if (skyMonsterCount >= 12) return;
+
 			mob = malloc(sizeof(Slime));
 			slime_create((Slime *) mob, lvl);
 		}
@@ -445,7 +469,9 @@ void level_getEntities(Level* level, ArrayList* list, int x0, int y0, int x1, in
 
 
 void level_tick(Level* level) {
-	level_trySpawn(level, 1);
+	if (random_next_int(&level->random, 60) == 0) {
+		level_trySpawn(level, 1);
+	}
 
 	for (int i = 0; i < level->w*level->h / 50; ++i) {
 		int xt = random_next_int(&level->random, level->w);
