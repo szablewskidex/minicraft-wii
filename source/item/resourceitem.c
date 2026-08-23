@@ -78,14 +78,13 @@ void resourceitem_renderInventory(Item* item, Screen* screen, int x, int y){
 	const char* tName = lang_translate_item(item->add.resource.resource->name);
 
 	if (item->add.resource.maxDur > 0) {
-		font_draw((char*)tName, strlen(tName), screen, x + 10, y, getColor4(-1, 555, 555, 555));
+		font_draw((char*)tName, strlen(tName), screen, x + 8, y, getColor4(-1, 555, 555, 555));
 	} else {
 		int cc = item->add.resource.count;
 		if (cc > 999) cc = 999;
-		char num[16] = {0};
-		snprintf(num, sizeof(num), "%-3d ", cc);
-		font_draw(num, strlen(num), screen, x + 8, y, getColor4(-1, 444, 444, 444));
-		font_draw((char*)tName, strlen(tName), screen, x + 8 + (int)strlen(num) * 8, y, getColor4(-1, 555, 555, 555));
+		char text[64];
+		snprintf(text, sizeof(text), "%d %s", cc, tName);
+		font_draw(text, strlen(text), screen, x + 8, y, getColor4(-1, 555, 555, 555));
 	}
 }
 

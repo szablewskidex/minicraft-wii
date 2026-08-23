@@ -38,6 +38,11 @@ void zombie_tick(Zombie* zombie) {
 			if (xd > 0) zombie->xa = 1;
 			if (yd < 0) zombie->ya = -1;
 			if (yd > 0) zombie->ya = 1;
+
+			// Deal damage when touching player even if standing still!
+			if (((xd * xd) + (yd * yd)) <= (14 * 14) && (zombie->mob.tickTime % 30 == 0)) {
+				call_entity_hurt((Entity*)game_player, &zombie->mob, zombie->lvl + 1, zombie->mob.dir);
+			}
 		}
 	}
 

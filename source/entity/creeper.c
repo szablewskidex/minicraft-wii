@@ -126,6 +126,8 @@ void creeper_touchedBy(Creeper* creeper, Entity* entity) {
     }
 }
 
+#include "exporb.h"
+
 void creeper_die(Creeper* creeper){
     mob_die(&creeper->mob);
     Random* random = &creeper->mob.entity.random;
@@ -142,8 +144,12 @@ void creeper_die(Creeper* creeper){
         level_addEntity(creeper->mob.entity.level, &item_entity->entity);
     }
 
-    if (game_player && game_player->mob.entity.level == creeper->mob.entity.level) {
-        game_player->score += 75 * creeper->lvl;
-        player_addExp(game_player, 35 * creeper->lvl);
+    int expCount = random_next_int(random, 3) + 3;
+    for (int i = 0; i < expCount; ++i) {
+        ExpOrb* orb = malloc(sizeof(ExpOrb));
+        if (orb) {
+            exporb_create(orb, creeper->mob.entity.x, creeper->mob.entity.y, 8 * creeper->lvl);
+            level_addEntity(creeper->mob.entity.level, &orb->entity);
+        }
     }
 }

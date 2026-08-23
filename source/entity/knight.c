@@ -1,4 +1,4 @@
-﻿#include "knight.h"
+#include "knight.h"
 #include "../gfx/screen.h"
 #include "_entity_caller.h"
 #include "itementity.h"
@@ -90,7 +90,14 @@ void knight_die(Knight* knight){
         level_addEntity(knight->mob.entity.level, &item_entity->entity);
     }
 
-    if (game_player && game_player->mob.entity.level == knight->mob.entity.level) {
-        game_player->score += 100 * knight->lvl;
+#include "exporb.h"
+
+    int expCount = random_next_int(random, 3) + 3;
+    for (int i = 0; i < expCount; ++i) {
+        ExpOrb* orb = malloc(sizeof(ExpOrb));
+        if (orb) {
+            exporb_create(orb, knight->mob.entity.x, knight->mob.entity.y, 12 * knight->lvl);
+            level_addEntity(knight->mob.entity.level, &orb->entity);
+        }
     }
 }

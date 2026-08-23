@@ -114,14 +114,12 @@ void music_play_menu(void) {
     if (!sound_ready) return;
     if (music_mode == 1 && Mix_PlayingMusic()) return;
 
-    if (Mix_PlayingMusic()) {
-        Mix_HaltMusic();
-    }
-
     music_mode = 1;
     if (g_musicVolume > 0 && g_music_surface) {
         Mix_VolumeMusic((g_musicVolume * 128) / 10);
-        Mix_PlayMusic(g_music_surface, -1); // Infinite loop in menu
+        if (!Mix_PlayingMusic()) {
+            Mix_PlayMusic(g_music_surface, -1);
+        }
     }
 }
 
@@ -129,13 +127,11 @@ void music_play_game(void) {
     if (!sound_ready) return;
     if (music_mode == 2) return;
 
-    if (Mix_PlayingMusic()) {
-        Mix_HaltMusic();
-    }
-
     music_mode = 2;
-    // Ambient interval: start playing after 2 to 6 seconds
-    music_ambient_timer = 120 + (rand() % 240);
+    // If music is already playing, let it finish naturally without restarting
+    if (!Mix_PlayingMusic()) {
+        music_ambient_timer = 120 + (rand() % 240);
+    }
 }
 
 void music_set_level(int level_index) {

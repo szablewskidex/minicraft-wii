@@ -44,6 +44,10 @@ void slime_tick(Slime* slime){
 					if (xd > 0) slime->xa = 1;
 					if (yd < 0) slime->ya = -1;
 					if (yd > 0) slime->ya = 1;
+
+					if (((xd * xd) + (yd * yd)) <= (14 * 14) && (slime->mob.tickTime % 30 == 0)) {
+						call_entity_hurt((Entity*)game_player, &slime->mob, slime->lvl, slime->mob.dir);
+					}
 				}
 
 			}
@@ -93,11 +97,6 @@ void slime_die(Slime* slimee){
 			exporb_create(orb, slimee->mob.entity.x, slimee->mob.entity.y, 5 * slimee->lvl);
 			level_addEntity(slimee->mob.entity.level, &orb->entity);
 		}
-	}
-
-	if (game_player && game_player->mob.entity.level == slimee->mob.entity.level) {
-		game_player->score += 25 * slimee->lvl;
-		player_addExp(game_player, 15 * slimee->lvl);
 	}
 }
 

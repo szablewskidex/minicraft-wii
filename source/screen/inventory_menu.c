@@ -62,10 +62,9 @@ void inventorymenu_init() {
 
 void inventorymenu_render(Screen* screen) {
 	const char* inv = _T(STR_INVENTORY);
-	int box_w = (screen->w >= 400) ? 22 : 18;
+	int box_w = 16;
 	int box_h = 16;
-	int x0 = (screen->w / 8 - box_w) / 2;
-	if (x0 < 1) x0 = 1;
+	int x0 = 1;
 	int x1 = x0 + box_w;
 
 	font_renderFrame(screen, (char*)inv, strlen(inv), x0, 1, x1, box_h);

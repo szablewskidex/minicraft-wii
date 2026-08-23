@@ -104,6 +104,7 @@ uint8_t entity_move2(Entity* entity, int xa, int ya) {
 		Entity* e = isInside.elements[i];
 		if (e == entity) continue;
 		call_entity_touchedBy(e, entity);
+		call_entity_touchedBy(entity, e);
 	}
 
 	for (int j = 0; j < wasInside.size; ++j) {

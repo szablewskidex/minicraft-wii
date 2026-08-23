@@ -135,7 +135,7 @@ void game_set_menu(enum menu_id menu) {
 	current_menu = menu;
 	if (menu) {
 		init_menu(menu);
-		if (menu == mid_TITLE || menu == mid_SLOT_SELECT || menu == mid_NEW_GAME || menu == mid_OPTIONS || menu == mid_ABOUT || menu == mid_INSTRUCTIONS || menu == mid_PAUSE) {
+		if (menu == mid_TITLE || menu == mid_SLOT_SELECT || menu == mid_NEW_GAME) {
 			music_play_menu();
 		}
 	} else {
