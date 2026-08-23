@@ -33,7 +33,7 @@ void door_render(Door* door, Screen* screen) {
     int y = door->furniture.entity.y;
     int col = door->furniture.col;
     int xt = door->isOpen ? 2 : 0;
-    int yt = 40;
+    int yt = 46;
 
     render_screen(screen, x - 8, y - 8 - 4, xt + yt * 32, col, 0);
     render_screen(screen, x - 0, y - 8 - 4, xt + 1 + yt * 32, col, 0);
