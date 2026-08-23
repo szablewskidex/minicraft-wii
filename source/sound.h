@@ -24,6 +24,7 @@ void sound_cleanup(void);
 
 void music_play_menu(void);
 void music_play_game(void);
+void music_set_level(int level_index);
 void music_stop(void);
 void music_tick(void);
 

@@ -139,6 +139,7 @@ void game_set_menu(enum menu_id menu) {
 			music_play_menu();
 		}
 	} else {
+		music_set_level(game_currentLevel);
 		music_play_game();
 	}
 }
@@ -153,6 +154,7 @@ void game_changeLevel(int dir) {
 	game_player->mob.entity.y = (game_player->mob.entity.y >> 4) * 16 + 8;
 
 	level_addEntity(game_level, &game_player->mob.entity);
+	music_set_level(game_currentLevel);
 	save_game(NULL);
 }
 
