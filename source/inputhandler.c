@@ -64,43 +64,130 @@ void input_tick(){
 
     u32 w_held = WPAD_ButtonsHeld(0);
     u16 g_held = PAD_ButtonsHeld(0);
-    s8 stick_x = PAD_StickX(0);
-    s8 stick_y = PAD_StickY(0);
+    s8 gc_stick_x = PAD_StickX(0);
+    s8 gc_stick_y = PAD_StickY(0);
 
-    if (g_held != 0 || stick_x > 30 || stick_x < -30 || stick_y > 30 || stick_y < -30) {
+    // Read expansion data (Nunchuk / Classic Controller)
+    expansion_t exp;
+    memset(&exp, 0, sizeof(exp));
+    WPAD_Expansion(0, &exp);
+
+    if (g_held != 0 || gc_stick_x > 30 || gc_stick_x < -30 || gc_stick_y > 30 || gc_stick_y < -30) {
         g_activeControllerType = 0; // GameCube
-    } else if (w_held != 0) {
-        g_activeControllerType = 1; // Wiimote
+    } else if (w_held != 0 || exp.type != WPAD_EXP_NONE) {
+        g_activeControllerType = 1; // Wiimote / Nunchuk
     }
 
-    // Movement: D-Pad, Nunchuk stick, Classic stick/D-pad, GameCube stick/D-pad
-    char move_up    = (w_held & (WPAD_BUTTON_UP | WPAD_CLASSIC_BUTTON_UP)) || (g_held & PAD_BUTTON_UP) || (stick_y > 40);
-    char move_down  = (w_held & (WPAD_BUTTON_DOWN | WPAD_CLASSIC_BUTTON_DOWN)) || (g_held & PAD_BUTTON_DOWN) || (stick_y < -40);
-    char move_left  = (w_held & (WPAD_BUTTON_LEFT | WPAD_CLASSIC_BUTTON_LEFT)) || (g_held & PAD_BUTTON_LEFT) || (stick_x < -40);
-    char move_right = (w_held & (WPAD_BUTTON_RIGHT | WPAD_CLASSIC_BUTTON_RIGHT)) || (g_held & PAD_BUTTON_RIGHT) || (stick_x > 40);
+    char move_up    = 0;
+    char move_down  = 0;
+    char move_left  = 0;
+    char move_right = 0;
 
-    // Also support Horizontal (Sideways) Wiimote orientation if player is using 2 as attack and 1 as menu
-    if (w_held & WPAD_BUTTON_2) {
+    // 1. GameCube Controller (D-Pad & Analog Stick)
+    if (g_held & PAD_BUTTON_UP)    move_up = 1;
+    if (g_held & PAD_BUTTON_DOWN)  move_down = 1;
+    if (g_held & PAD_BUTTON_LEFT)  move_left = 1;
+    if (g_held & PAD_BUTTON_RIGHT) move_right = 1;
+    if (gc_stick_y > 35)  move_up = 1;
+    if (gc_stick_y < -35) move_down = 1;
+    if (gc_stick_x < -35) move_left = 1;
+    if (gc_stick_x > 35)  move_right = 1;
+
+    // 2. Nunchuk Expansion: Walk with Nunchuk Analog Stick (Full 360-degree support)
+    if (exp.type == WPAD_EXP_NUNCHUK) {
+        float mag = exp.nunchuk.js.mag;
+        float ang = exp.nunchuk.js.ang;
+        if (mag > 0.28f) {
+            // Nunchuk angle: 0 deg = UP, 90 deg = RIGHT, 180 deg = DOWN, 270 deg = LEFT
+            if (ang >= 337.5f || ang < 22.5f) {
+                move_up = 1;
+            } else if (ang >= 22.5f && ang < 67.5f) {
+                move_up = 1; move_right = 1;
+            } else if (ang >= 67.5f && ang < 112.5f) {
+                move_right = 1;
+            } else if (ang >= 112.5f && ang < 157.5f) {
+                move_down = 1; move_right = 1;
+            } else if (ang >= 157.5f && ang < 202.5f) {
+                move_down = 1;
+            } else if (ang >= 202.5f && ang < 247.5f) {
+                move_down = 1; move_left = 1;
+            } else if (ang >= 247.5f && ang < 292.5f) {
+                move_left = 1;
+            } else if (ang >= 292.5f && ang < 337.5f) {
+                move_up = 1; move_left = 1;
+            }
+        }
+        // Wiimote D-Pad when Nunchuk is attached (Vertical orientation)
+        if (w_held & WPAD_BUTTON_UP)    move_up = 1;
+        if (w_held & WPAD_BUTTON_DOWN)  move_down = 1;
+        if (w_held & WPAD_BUTTON_LEFT)  move_left = 1;
+        if (w_held & WPAD_BUTTON_RIGHT) move_right = 1;
+    } else if (exp.type == WPAD_EXP_CLASSIC) {
+        // Classic Controller (Left Stick & D-Pad)
+        float mag = exp.classic.ljs.mag;
+        float ang = exp.classic.ljs.ang;
+        if (mag > 0.28f) {
+            if (ang >= 337.5f || ang < 22.5f) {
+                move_up = 1;
+            } else if (ang >= 22.5f && ang < 67.5f) {
+                move_up = 1; move_right = 1;
+            } else if (ang >= 67.5f && ang < 112.5f) {
+                move_right = 1;
+            } else if (ang >= 112.5f && ang < 157.5f) {
+                move_down = 1; move_right = 1;
+            } else if (ang >= 157.5f && ang < 202.5f) {
+                move_down = 1;
+            } else if (ang >= 202.5f && ang < 247.5f) {
+                move_down = 1; move_left = 1;
+            } else if (ang >= 247.5f && ang < 292.5f) {
+                move_left = 1;
+            } else if (ang >= 292.5f && ang < 337.5f) {
+                move_up = 1; move_left = 1;
+            }
+        }
+        if (w_held & WPAD_CLASSIC_BUTTON_UP)    move_up = 1;
+        if (w_held & WPAD_CLASSIC_BUTTON_DOWN)  move_down = 1;
+        if (w_held & WPAD_CLASSIC_BUTTON_LEFT)  move_left = 1;
+        if (w_held & WPAD_CLASSIC_BUTTON_RIGHT) move_right = 1;
+    } else {
+        // 3. Standalone Wiimote (Held Sideways / Horizontal NES-Style by default)
+        // Wiimote held sideways: D-Pad on the left hand, Buttons (1/2/A/B) on the right hand.
+        // Physical RIGHT -> UP (Move Up)
+        // Physical LEFT  -> DOWN (Move Down)
+        // Physical UP    -> LEFT (Move Left)
+        // Physical DOWN  -> RIGHT (Move Right)
         if (w_held & WPAD_BUTTON_RIGHT) move_up = 1;
         if (w_held & WPAD_BUTTON_LEFT)  move_down = 1;
         if (w_held & WPAD_BUTTON_UP)    move_left = 1;
         if (w_held & WPAD_BUTTON_DOWN)  move_right = 1;
     }
 
-    // Action / Attack: Wiimote 2 or A, Nunchuk C, Classic A/B, GC A/B
-    char act_attack = (w_held & (WPAD_BUTTON_2 | WPAD_BUTTON_A | WPAD_NUNCHUK_BUTTON_C | WPAD_CLASSIC_BUTTON_A | WPAD_CLASSIC_BUTTON_B)) || (g_held & (PAD_BUTTON_A | PAD_BUTTON_B));
+    // Action / Attack / Mine / Confirm:
+    // - Wiimote Sideways: Button 2 or Button A
+    // - Nunchuk: Button Z (trigger) or Button C
+    // - Wiimote Vertical: Button A or Button 2
+    // - Classic: Button A / Button B
+    // - GameCube: Button A / Button B
+    char act_attack = (w_held & (WPAD_BUTTON_2 | WPAD_BUTTON_A | WPAD_NUNCHUK_BUTTON_Z | WPAD_CLASSIC_BUTTON_A | WPAD_CLASSIC_BUTTON_B)) || (g_held & (PAD_BUTTON_A | PAD_BUTTON_B));
 
-    // Menu / Inventory: Wiimote 1 or Minus, Classic X/Y, GC X/Y
-    char act_menu   = (w_held & (WPAD_BUTTON_1 | WPAD_CLASSIC_BUTTON_X | WPAD_CLASSIC_BUTTON_Y)) || (g_held & (PAD_BUTTON_X | PAD_BUTTON_Y));
+    // Menu / Inventory / Crafting:
+    // - Wiimote Sideways: Button 1 or Button Minus (-)
+    // - Nunchuk: Button C
+    // - Wiimote Vertical: Button 1 or Button Minus (-)
+    // - Classic: Button X / Button Y
+    // - GameCube: Button X / Button Y
+    char act_menu   = (w_held & (WPAD_BUTTON_1 | WPAD_BUTTON_MINUS | WPAD_NUNCHUK_BUTTON_C | WPAD_CLASSIC_BUTTON_X | WPAD_CLASSIC_BUTTON_Y)) || (g_held & (PAD_BUTTON_X | PAD_BUTTON_Y));
 
-    // Pause: Wiimote Plus/Home, Classic Plus/Home, GC Start
+    // Pause / Settings:
+    // - Wiimote: Button Plus (+) or Button Home
+    // - GameCube: Start button
     char act_pause  = (w_held & (WPAD_BUTTON_PLUS | WPAD_BUTTON_HOME | WPAD_CLASSIC_BUTTON_PLUS | WPAD_CLASSIC_BUTTON_HOME)) || (g_held & PAD_BUTTON_START);
 
     // Quick Tool / Item Cycle:
-    // Next: Wiimote B (trigger under wiimote), Nunchuk Z, Classic R / ZR, GC R / Z
-    // Prev: Wiimote Minus, Classic L / ZL, GC L
-    char act_next   = (w_held & (WPAD_BUTTON_B | WPAD_NUNCHUK_BUTTON_Z | WPAD_CLASSIC_BUTTON_FULL_R | WPAD_CLASSIC_BUTTON_ZR)) || (g_held & (PAD_TRIGGER_R | PAD_TRIGGER_Z));
-    char act_prev   = (w_held & (WPAD_BUTTON_MINUS | WPAD_CLASSIC_BUTTON_FULL_L | WPAD_CLASSIC_BUTTON_ZL)) || (g_held & PAD_TRIGGER_L);
+    // Next Item: Wiimote B (trigger on back under index finger), Classic R / ZR, GC R / Z
+    // Prev Item: Classic L / ZL, GC L
+    char act_next   = (w_held & (WPAD_BUTTON_B | WPAD_CLASSIC_BUTTON_FULL_R | WPAD_CLASSIC_BUTTON_ZR)) || (g_held & (PAD_TRIGGER_R | PAD_TRIGGER_Z));
+    char act_prev   = (w_held & (WPAD_CLASSIC_BUTTON_FULL_L | WPAD_CLASSIC_BUTTON_ZL)) || (g_held & PAD_TRIGGER_L);
 
     key_toggle(&up, move_up);
     key_toggle(&down, move_down);
